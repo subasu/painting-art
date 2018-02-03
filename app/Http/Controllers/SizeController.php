@@ -26,12 +26,15 @@ class SizeController extends Controller
     //below function is related to add new size in data base
     public function addNewSize(Request $request)
     {
-        $count = count($request->size);
+        $count = count($request->title);
         $i = 0;
         while($i < $count)
         {
             $newSize = new Size();
-            $newSize->title = trim($request->size[$i]);
+            $newSize->title    = trim($request->title[$i]);
+            $newSize->width    = trim($request->width[$i]);
+            $newSize->length   = trim($request->length[$i]);
+            $newSize->diameter = trim($request->diameter[$i]);
             $newSize->save();
             $i++;
         }
@@ -61,7 +64,7 @@ class SizeController extends Controller
     }
 
     //below function is related toi edit size title
-    public function editSizeTitle(Request $request)
+    public function editSizeInformation(Request $request)
     {
         if(!$request->ajax())
         {
@@ -69,7 +72,10 @@ class SizeController extends Controller
         }else
         {
             $update = Size::find($request->id);
-            $update->title = trim($request->title);
+            $update->title    = trim($request->title);
+            $update->width    = trim($request->width);
+            $update->length   = trim($request->length);
+            $update->diameter = trim($request->diameter);
             $update->save();
             if($update)
             {
@@ -98,7 +104,7 @@ class SizeController extends Controller
                     $update = DB::table('sizes')->where('id',$request->sizeId)->update(['active' => 0 ]);
                     if($update)
                     {
-                        return response()->json(['message' => 'سایز  مورد نظر شما غیر فعال گردید' , 'code' => '1']);
+                        return response()->json(['message' => 'اندازه  مورد نظر شما غیر فعال گردید' , 'code' => '1']);
                     }else
                     {
                         return response()->json(['message' => 'خطایی رخ داده است ، با بخش پشتیبانی تماس بگیرید']);
@@ -109,7 +115,7 @@ class SizeController extends Controller
                     $update = DB::table('sizes')->where('id',$request->sizeId)->update(['active' => 1 ]);
                     if($update)
                     {
-                        return response()->json(['message' => 'سایز مورد نظر شما  فعال گردید' , 'code' => '1']);
+                        return response()->json(['message' => 'اندازه مورد نظر شما  فعال گردید' , 'code' => '1']);
                     }else
                     {
                         return response()->json(['message' => 'خطایی رخ داده است ، با بخش پشتیبانی تماس بگیرید']);

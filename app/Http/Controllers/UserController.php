@@ -292,12 +292,16 @@ class UserController extends Controller
     {
         $pageTitle = 'مشاهده و بررسی سفارشات';
         $data = Order::where([['user_id', Auth::user()->id], ['pay', '<>', null], ['transaction_code', '<>', null]])->get();
-        $baskets = Basket::find($data[0]->basket_id);
-        foreach ($data as $datum) {
-            $datum->orderDate = $this->toPersian($datum->created_at->toDateString());
-        }
+        if(count($data) > 0)
+        {
+            $baskets = Basket::find($data[0]->basket_id);
+            foreach ($data as $datum) {
+                $datum->orderDate = $this->toPersian($datum->created_at->toDateString());
+            }
 
-        return view('user.ordersList', compact('data', 'pageTitle', 'baskets'));
+            return view('user.ordersList', compact('data', 'pageTitle', 'baskets'));
+        }
+        return view('errors.notFound');
     }
 
     //
@@ -434,6 +438,13 @@ class UserController extends Controller
             {
                 abort(403);
             }
+    }
+
+    //below function is related to return adNewOrders blade...
+    public function addNewOrders()
+    {
+        $pageTitle = "ثبت سفارش جدید";
+        return view('user.addNewOrders',compact('pageTitle'));
     }
 }
 

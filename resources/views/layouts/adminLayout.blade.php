@@ -76,7 +76,8 @@
 </div>
 </body>
 </html>
-@else<!DOCTYPE html>
+@else
+    <!DOCTYPE html>
 <html lang="en">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <!-- Meta, title, CSS, favicons, etc. -->
@@ -202,20 +203,11 @@
                                     </li>
                                 </ul>
                             </li>
-                            <li><a><i class="fa fa-paint-brush"></i>مدیریت رنگها <span
-                                            class="fa fa-chevron-down"></span></a>
+                            <li><a><i class="fa fa-expand"></i>مدیریت حالت ها و اندازه ها<span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu" style="display: none">
-                                    <li><a href="{{url('admin/colorsManagement')}}"> نمایش و مدیریت رنگها</a>
+                                    <li><a href="{{url('admin/sizesManagement')}}"> نمایش و مدیریت حالت ها و اندازه ها</a>
                                     </li>
-                                    <li><a href="{{url('admin/addColors')}}">افزودن رنگها</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li><a><i class="fa fa-expand"></i>مدیریت سایزها<span class="fa fa-chevron-down"></span></a>
-                                <ul class="nav child_menu" style="display: none">
-                                    <li><a href="{{url('admin/sizesManagement')}}"> نمایش و مدیریت سایزها</a>
-                                    </li>
-                                    <li><a href="{{url('admin/addSizes')}}">افزودن سایزها</a>
+                                    <li><a href="{{url('admin/addSizes')}}">افزودن حالت ها و اندازه ها</a>
                                     </li>
                                 </ul>
                             </li>
@@ -232,8 +224,8 @@
                             <li><a><i class="fa fa-print"></i>بررسی سفارش ها و فاکتورها<span
                                             class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu" style="display: none">
-                                    <li><a href="{{url('admin/ordersManagement')}}">سفارش های جدید</a>
-                                    </li>
+                                    <li><a href="{{url('admin/newOrders')}}">سفارشات</a></li>
+                                    <li><a href="{{url('admin/ordersManagement')}}">خرید ها</a></li>
                                     <li><a href="{{url('admin/oldOrders')}}">سفارش های پیگیری شده</a>
                                     </li>
                                 </ul>
@@ -318,6 +310,12 @@
                 <nav class="" role="navigation">
                     <div class="nav toggle">
                         <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+                    </div>
+                    <div class="nav toggle">
+                        <a id="makeBodySmall"><i class="fa fa-search-minus" data-toggle="" title="کوچک نمایی"></i></a>
+                    </div>
+                    <div class="nav toggle">
+                        <a id="makeBodyLarg"><i class="fa fa-search-plus" data-toggle="" title="بزرگ نمایی"></i></a>
                     </div>
                     {{--<div class="" style="float: right;padding: 1% 2% 0 0 !important;">--}}
                     {{--<a id="back" class="btn btn-info">بازگشت به صفحه قبل</a>--}}
@@ -753,6 +751,16 @@
             })
         }, 10000);
     })
+</script>
+<!-- below script is to handle zoom body -->
+<script>
+    $(document).on('click','#makeBodySmall',function(){
+       $(document.body).css('zoom','100%');
+    });
+
+    $(document).on('click','#makeBodyLarg',function(){
+        $(document.body).css('zoom','120%');
+    });
 </script>
 </body>
 </html>

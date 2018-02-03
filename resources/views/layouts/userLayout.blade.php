@@ -158,11 +158,18 @@
                             {{--//system manager menu--}}
                             <li><a><i class="fa f a-home"></i>پنل کاربر<span></span></a>
                             </li>
-                            <li><a><i class="fa fa-print"></i>بررسی سفارشات و فاکتورها<span class="fa fa-chevron-down"></span></a>
+                            <li><a><i class="fa fa-cart-arrow-down"></i>ثبت سفارش و پیگیری سفارشات<span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu" style="display: none">
-                                    <li><a href="{{url('user/userOrders')}}">نمایش لیست سفارشات</a>
+                                    <li><a href="{{url('user/addNewOrders')}}">ثبت سفارش جدید</a>
                                     </li>
-                                    {{--<li><a href="{{url('admin/addPaymentType')}}">افزودن وضعیت پرداخت</a>--}}
+                                    <li><a href="{{url('admin/addPaymentType')}}">پیگیری سفارشات</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li><a><i class="fa fa-print"></i>بررسی خریدها و فاکتورها<span class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu" style="display: none">
+                                    <li><a href="{{url('user/userOrders')}}">نمایش لیست خریدها</a>
+                                    </li>
                                     </li>
                                 </ul>
                             </li>
@@ -240,6 +247,12 @@
                 <nav class="" role="navigation">
                     <div class="nav toggle">
                         <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+                    </div>
+                    <div class="nav toggle">
+                        <a id="makeBodySmall"><i class="fa fa-search-minus" data-toggle="" title="کوچک نمایی"></i></a>
+                    </div>
+                    <div class="nav toggle">
+                        <a id="makeBodyLarg"><i class="fa fa-search-plus" data-toggle="" title="بزرگ نمایی"></i></a>
                     </div>
                     {{--<div class="" style="float: right;padding: 1% 2% 0 0 !important;">--}}
                     {{--<a id="back" class="btn btn-info">بازگشت به صفحه قبل</a>--}}
@@ -611,7 +624,16 @@
         });
     });
 </script>
+<!-- below script is to handle zoom body -->
+<script>
+    $(document).on('click','#makeBodySmall',function(){
+        $(document.body).css('zoom','100%');
+    });
 
+    $(document).on('click','#makeBodyLarg',function(){
+        $(document.body).css('zoom','120%');
+    });
+</script>
 {{--<script>--}}
     {{--$(document).ready(function(){--}}
         {{--setInterval(function(){--}}

@@ -29,6 +29,9 @@
                         <tr>
                             <th style="text-align: center">ردیف</th>
                             <th style="text-align: center">عنوان سایز</th>
+                            <th style="text-align: center">طول(سانتیمتر)</th>
+                            <th style="text-align: center">عرض(سانتیمتر)</th>
+                            <th style="text-align: center">قطر(سانتیمتر)</th>
                             <th style="text-align: center">تغییر وضعیت</th>
                             <th style="text-align: center">ویرایش</th>
                         </tr>
@@ -41,7 +44,10 @@
                             {{--@foreach($categoryInfo as $category)--}}
                             <tr class="unit">
                                 <td style="font-size: 120%;">{{++$i}}</td>
-                                <td class="col-md-6 "><input  class="form-control" style="width: 100%;" id="title" name="title" value="{{$data[0]->title}}"></td>
+                                <td class="col-md-3 "><input  class="form-control" style="width: 100%;" id="title" name="title" value="{{$data[0]->title}}"></td>
+                                <td class="col-md-2 "><input  class="form-control" style="width: 100%;" id="length" name="title" value="{{$data[0]->length}}"></td>
+                                <td class="col-md-2 "><input  class="form-control" style="width: 100%;" id="width" name="title" value="{{$data[0]->width}}"></td>
+                                <td class="col-md-2 "><input  class="form-control" style="width: 100%;" id="diameter" name="title" value="{{$data[0]->diameter}}"></td>
                                 @if($data[0]->active == 1)
                                     <td><a id="active" content="{{$data[0]->active}}" name="{{$data[0]->id}}" type="button"  data-content="غیر فعال" class="btn btn-danger col-md-8 col-md-offset-2" >غیر فعال</a></td>
                                 @endif
@@ -62,9 +68,12 @@
 
         <script>
             $(document).on('click','#edit',function () {
-                var title = $('#title').val();
-                var id   = $('#id').val();
-                var token = $('#token').val();
+                var title  = $('#title').val();
+                var length = $('#length').val();
+                var width  = $('#width').val();
+                var diameter  = $('#diameter').val();
+                var id     = $('#id').val();
+                var token  = $('#token').val();
                 $.ajaxSetup({
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -86,8 +95,8 @@
                             $.ajax
                             ({
                                 cache: false,
-                                url: "{{url('admin/editSizeTitle')}}",
-                                data: {'title': title, 'id': id, '_token': token},
+                                url: "{{url('admin/editSizeInformation')}}",
+                                data: {'title': title, 'id': id, '_token': token,'length' : length , 'width' : width , 'diameter' : diameter},
                                 type: "post",
                                 dataType: "JSON",
                                 beforeSend: function () {
@@ -151,7 +160,7 @@
                 var title      = $(this).attr('data-content');
                 //alert(title);
                 swal({
-                        title:   " آیا در نظر دارید این سایز را " +"(( "+ title +" ))"+  "  نمایید؟ ",
+                        title:   " آیا در نظر دارید این اندازه را " +"(( "+ title +" ))"+  "  نمایید؟ ",
                         text: "",
                         type: "info",
                         showCancelButton: true,

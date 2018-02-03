@@ -20,7 +20,7 @@
         <div class="col-md-10 col-sm-6 col-xs-12 col-md-offset-1">
             <div class="x_panel">
                 <div class="x_title">
-                    <h2> فرم ایجاد سایزها</h2>
+                    <h2> فرم ایجاد اندازه ها</h2>
                     <ul class="nav navbar-right panel_toolbox">
                         <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                         </li>
@@ -61,7 +61,7 @@
 
 
                                     </div>
-                                    <label class="control-label col-md-3 col-sm-4 col-xs-3" for="title">سایزهای موجود : <span
+                                    <label class="control-label col-md-3 col-sm-4 col-xs-3" for="title">اندازه های موجود : <span
                                                 class="star" title="پر کردن این فیلد الزامی است"></span>
                                     </label>
 
@@ -115,11 +115,11 @@
                                 item.empty();
                                 item.append
                                 (
-                                    "<option selected='true' disabled='disabled'>سایزهای موجود</option>"
+                                    "<option selected='true' disabled='disabled'>حالت ها و اندازه های موجود</option>"
                                 )
                                 item.append
                                 (
-                                    option += "<option id='"+value.id+"' name='"+value.depth+"'>"+value.title+"</option>"
+                                    option += "<option id='"+value.id+"' name='"+value.depth+"'>"+value.title+ " - طول :  "+ value.length + " عرض :  "+ value.width + " قطر :  "+ value.diameter + "</option>"
                                 );
                             });
                             //$('#addMainUnit').css('display','block');
@@ -149,14 +149,22 @@
                 (
                     "<div id='child'>"+
                     "<br/><br/>"+
+                       "<div class='col-md-2 col-sm-9 col-xs-12'>"+
+                       "<input id='unit' class='form-control col-md-6 col-xs-6 required' placeholder='عرض' name='width[]' required='required' type='text'>"+
+                       "</div>"+
 
-                    "<div class='col-md-9 col-sm-9 col-xs-9'>"+
-                    "<input id='unit' class='form-control col-md-12 col-xs-12 required' name='size[]' placeholder='' required='required' type='text'>"+
-                    "</div>"+
-                    "<label class='control-label col-md-3 col-sm-4 col-xs-3' for='name'>عنوان سایز  :"+
-                    "<span class='star' title='پر کردن این فیلد الزامی است'>*</span>"+
-                    "</label>"+
-                    "</div>"
+                        "<div class='col-md-2 col-sm-9 col-xs-12'>"+
+                        "<input id='unit' class='form-control col-md-6 col-xs-6 required' name='length[]' placeholder='طول' required='required' type='text'>"+
+                        "</div>"+
+                        "<div class='col-md-2 col-sm-9 col-xs-12'>"+
+                        "<input id='unit' class='form-control col-md-6 col-xs-6 required' name='diameter[]' placeholder='قطر' required='required' type='text'>"+
+                        "</div>"+
+                        "<div class='col-md-3 col-sm-9 col-xs-12'>"+
+                        "<input id='unit' class='form-control col-md-6 col-xs-6 required' name='title[]' placeholder='شکل هندسی' required='required' type='text'>"+
+                        "</div>"+
+                        "<label class='control-label col-md-3 col-sm-4 col-xs-3' for='name'>مشخصات حالت و اندازه   :"+
+                        "<span class='star' title='پر کردن این فیلد الزامی است'>*</span>"+
+                        "</label>"
                 );
             }
 
@@ -251,15 +259,13 @@
                                     $.each(response,function (key,value) {
                                         var item = $('#sizes');
                                         item.empty();
-                                        //
                                         item.append
                                         (
-                                            "<option selected='true' disabled='disabled'>سایزهای موجود</option>"
+                                            "<option selected='true' disabled='disabled'>حالت ها و اندازه های موجود</option>"
                                         )
-
                                         item.append
                                         (
-                                            option += "<option id='"+value.id+"' name='"+value.depth+"'>"+value.title+"</option>"
+                                            option += "<option id='"+value.id+"' name='"+value.depth+"'>"+value.title+ " - طول :  "+ value.length + " عرض :  "+ value.width + " قطر :  "+ value.diameter + "</option>"
                                         );
 
                                     })

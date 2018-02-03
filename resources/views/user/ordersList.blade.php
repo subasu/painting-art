@@ -50,6 +50,7 @@
 
                         <tbody>
                         <?php $i=0 ?>
+                        @if(!empty($data))
                         @foreach($data as $datum)
                             <tr class="unit">
                                 <td style="font-size: 120%"> {{++$i}}</td>
@@ -65,7 +66,7 @@
                                 @endif
                                 <td ><strong><a style="font-size: 120%" class="btn btn-dark" href="{{url('user/orderDetails/'.$datum->basket_id)}}">مشاهده جزئیات</a></strong></td>
                         @endforeach
-
+                        @endif
                         </tbody>
 
                     </table>
