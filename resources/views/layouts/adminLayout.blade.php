@@ -205,10 +205,10 @@
                             </li>
                             <li><a><i class="fa fa-expand"></i>مدیریت حالت ها و اندازه ها<span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu" style="display: none">
-                                    <li><a href="{{url('admin/sizesManagement')}}"> نمایش و مدیریت حالت ها و اندازه ها</a>
-                                    </li>
-                                    <li><a href="{{url('admin/addSizes')}}">افزودن حالت ها و اندازه ها</a>
-                                    </li>
+                                    <li><a href="{{url('admin/sizesManagement')}}"> نمایش و مدیریت اندازه ها</a></li>
+                                    <li><a href="{{url('admin/addSizes')}}">افزودن  اندازه ها</a></li>
+                                    <li><a href="{{url('admin/modelsManagement')}}"> نمایش و مدیریت حالت ها </a></li>
+                                    <li><a href="{{url('admin/addModels')}}">افزودن حالت ها</a></li>
                                 </ul>
                             </li>
                             <li><a><i class="fa fa-dollar"></i>مدیریت وضعیتهای پرداخت<span

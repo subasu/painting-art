@@ -11,7 +11,7 @@ class SizeController extends Controller
     // below function is related to return
     public function sizesManagement()
     {
-        $pageTitle = 'مدیریت و نمایش سایزها';
+        $pageTitle = 'مدیریت و نمایش اندازه ها';
         $data = Size::all();
         return view('admin.sizesManagement',compact('data','pageTitle'));
     }
@@ -19,22 +19,23 @@ class SizeController extends Controller
     //below function is related to return view of add size
     public function addSizes()
     {
-        $pageTitle = 'افزودن سایز';
+        $pageTitle = 'افزودن اندازه ها';
         return view('admin.addSizes',compact('pageTitle'));
     }
 
     //below function is related to add new size in data base
     public function addNewSize(Request $request)
     {
-        $count = count($request->title);
+        $count = count($request->sideways);
         $i = 0;
         while($i < $count)
         {
             $newSize = new Size();
-            $newSize->title    = trim($request->title[$i]);
-            $newSize->width    = trim($request->width[$i]);
-            $newSize->length   = trim($request->length[$i]);
-            $newSize->diameter = trim($request->diameter[$i]);
+            $newSize->model_id    = $request->modelId;
+            $newSize->sideways    = trim($request->sideways[$i]);
+            $newSize->width       = trim($request->width[$i]);
+            $newSize->length      = trim($request->length[$i]);
+            $newSize->diameter    = trim($request->diameter[$i]);
             $newSize->save();
             $i++;
         }
@@ -52,7 +53,7 @@ class SizeController extends Controller
     //below function is related to edit size
     public function editSize($id)
     {
-        $pageTitle = 'ویرایش سایز';
+        $pageTitle = 'ویرایش اندازه';
         $data = Size::where('id',$id)->get();
         if(count($data) > 0)
         {

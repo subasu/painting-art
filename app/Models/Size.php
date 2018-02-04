@@ -11,4 +11,9 @@ class Size extends Model
     {
         return $this->belongsToMany('App\Models\Product');
     }
+
+    public function models()
+    {
+        return $this->belongsToMany('App\Models\Modol');
+    }
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\CategoryProduct;
 use App\Models\Color;
+use App\Models\Modol;
 use App\Models\PaymentType;
 use App\Models\Product;
 use App\Models\Size;
@@ -159,9 +160,9 @@ class CommonController extends Controller
     }
 
     //below function is related to existed sizes
-    public function getSizes()
+    public function getSizes($id)
     {
-        $sizes = Size::where('active', '=', '1')->get();
+        $sizes = Size::where('model_id', '=', $id)->get();
         if (count($sizes) > 0) {
             return response()->json($sizes);
         } else {
@@ -194,6 +195,17 @@ class CommonController extends Controller
         $disabledCategories = Category::where('active', 0)->get();
         if (count($disabledCategories) > 0) {
             return response()->json($disabledCategories);
+        } else {
+            return response()->json(0);
+        }
+    }
+
+    //below function is related to existed models
+    public function getModels()
+    {
+        $models = Modol::where('active', '=', '1')->get();
+        if (count($models) > 0) {
+            return response()->json($models);
         } else {
             return response()->json(0);
         }

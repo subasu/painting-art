@@ -56,7 +56,7 @@ class Product extends Model
     //relation of products and unit_count
 //    public function unitCounts()
 //    {
-//        return $this->belongsTo('App\Models\UnitCount');
+//        return $this->belongsTo('App\Modol\UnitCount');
 //    }
 
     //relation of products and sub_unit_counts

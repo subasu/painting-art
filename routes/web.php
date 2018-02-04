@@ -144,6 +144,13 @@
             Route::post('addGoogleMapPost', 'AdminController@addGoogleMapPost');
             Route::get('editGoogleMap', 'AdminController@editGoogleMap');
             Route::post('editGoogleMapPost', 'AdminController@editGoogleMapPost');
+            //models route
+            Route::get('addModels','ModelsController@addModels');
+            Route::get('modelsManagement','ModelsController@modelsManagement');
+            Route::post('addNewModels','ModelsController@addNewModels');
+            Route::post('editModelTitle','ModelsController@editModelTitle');
+            Route::post('enableOrDisableModel','ModelsController@enableOrDisableModel');
+            Route::get('editModel/{id}', 'ModelsController@editModel'); //this route is related to return edit color view
         });
         //end admin panel routes
         //user panel routes

@@ -53,7 +53,7 @@
                             <div class="item form-group">
                                 <div id="showSizes" style="display: none; !important;">
                                     <div class="col-md-9 col-sm-6 col-xs-9">
-                                        <select id="sizes"  class="form-control" name="colors">
+                                        <select id="models"  class="form-control" name="models">
 
                                         </select>
 
@@ -61,7 +61,7 @@
 
 
                                     </div>
-                                    <label class="control-label col-md-3 col-sm-4 col-xs-3" for="title">اندازه های موجود : <span
+                                    <label class="control-label col-md-3 col-sm-4 col-xs-3" for="title">حالت های موجود : <span
                                                 class="star" title="پر کردن این فیلد الزامی است"></span>
                                     </label>
 
@@ -73,16 +73,43 @@
                                     @endif
                                 </div>
                             </div>
+                            <br/>
+                            <br/>
 
+                            <div class="item form-group" id="change1" style="display:none;!important;">
+                                <div class='col-md-2'>
+                                    <select id="sideways" class='form-control col-md-12 col-sm-9 col-xs-12'>
+                                        <option> اندازه یک ضلع</option>
+                                    </select>
+                                </div>
+                                <div class='col-md-2'>
+                                    <select id="diameter" class='form-control col-md-12 col-sm-9 col-xs-12'>
+                                        <option>قطر</option>
+                                    </select>
+                                </div>
+                                <div class='col-md-2'>
+                                    <select id="width"  class='form-control col-md-12 col-sm-9 col-xs-12'>
+                                        <option>عرض</option>
+                                    </select>
+                                </div>
+                                <div class='col-md-3'>
+                                    <select id="length" class='form-control col-md-12 col-sm-9 col-xs-12'>
+                                        <option>طول</option>
+                                    </select>
+                                </div>
+                                <label class='control-label col-md-3 col-sm-4 col-xs-3' for='name'>اندازه های حالت انتخاب شده
+                                    <span class='star' title='پر کردن این فیلد الزامی است'>*</span>
+                                    </label>
+
+                            </div>
                             <div class="item form-group" id="change" style="display:none;!important;">
-
-
-
 
                             </div>
                             <div class="form-group">
                                 <div class="col-md-12" style="margin-top: 2%;">
-                                    <button id="reg" type="button" class="col-md-9 btn btn-primary">ثبت نهایی</button>
+                                    <button id="reg" type="button" class="col-md-9 btn btn-primary" style="display: none; !important;">ثبت نهایی</button>
+                                    <button id="newSize" type="button" class="col-md-9 btn btn-success" style="display: none;">افزودن اندازه های جدید</button>
+                                    <input type="hidden" value="" id="modelId" name="modelId">
                                 </div>
                             </div>
 
@@ -103,37 +130,37 @@
                 $.ajax
                 ({
                     cache: false,
-                    url: "{{Url('api/v1/getSizes')}}",
+                    url: "{{Url('api/v1/getModels')}}",
                     dataType: "json",
                     type: "get",
                     success: function (response) {
                         console.log(response);
                         if (response != 0) {
                             $('#showSizes').css('display','block');
-                            var item = $('#sizes');
+                            var item = $('#models');
                             $.each(response, function (key, value) {
                                 item.empty();
                                 item.append
                                 (
-                                    "<option selected='true' disabled='disabled'>حالت ها و اندازه های موجود</option>"
+                                    "<option selected='true' disabled='disabled'>برای افزودن اندازه ها از بین حالت های موجود حالتی را انتخاب کنید</option>"
                                 )
                                 item.append
                                 (
-                                    option += "<option id='"+value.id+"' name='"+value.depth+"'>"+value.title+ " - طول :  "+ value.length + " عرض :  "+ value.width + " قطر :  "+ value.diameter + "</option>"
+                                    option += "<option name='models' content='"+value.id+"'>"+value.title+ "</option>"
                                 );
                             });
                             //$('#addMainUnit').css('display','block');
                             $('#addInput').css('display','block');
-                            $('#reg').css('display','block');
+                           // $('#reg').css('display','block');
                             $('#removeInput').css('display','block');
                             $('#change').css('display','block');
-                            appendToChange();
+                          //  appendToChange();
 
                         }
                         else {
-                            $('#change').css('display','block');
+                            //$('#change').css('display','block');
 
-                            appendToChange();
+                            //appendToChange();
                         }
                     }
                 });
@@ -149,20 +176,19 @@
                 (
                     "<div id='child'>"+
                     "<br/><br/>"+
-                       "<div class='col-md-2 col-sm-9 col-xs-12'>"+
-                       "<input id='unit' class='form-control col-md-6 col-xs-6 required' placeholder='عرض' name='width[]' required='required' type='text'>"+
-                       "</div>"+
-
                         "<div class='col-md-2 col-sm-9 col-xs-12'>"+
                         "<input id='unit' class='form-control col-md-6 col-xs-6 required' name='length[]' placeholder='طول' required='required' type='text'>"+
+                        "</div>"+
+                        "<div class='col-md-2 col-sm-9 col-xs-12'>"+
+                        "<input id='unit' class='form-control col-md-6 col-xs-6 required' placeholder='عرض' name='width[]' required='required' type='text'>"+
                         "</div>"+
                         "<div class='col-md-2 col-sm-9 col-xs-12'>"+
                         "<input id='unit' class='form-control col-md-6 col-xs-6 required' name='diameter[]' placeholder='قطر' required='required' type='text'>"+
                         "</div>"+
                         "<div class='col-md-3 col-sm-9 col-xs-12'>"+
-                        "<input id='unit' class='form-control col-md-6 col-xs-6 required' name='title[]' placeholder='شکل هندسی' required='required' type='text'>"+
+                        "<input id='unit' class='form-control col-md-6 col-xs-6 required' name='sideways[]' placeholder='اندازه یک ضلع' required='required' type='text'>"+
                         "</div>"+
-                        "<label class='control-label col-md-3 col-sm-4 col-xs-3' for='name'>مشخصات حالت و اندازه   :"+
+                        "<label class='control-label col-md-3 col-sm-4 col-xs-3' for='name'>لیست اندازه های جدید   :"+
                         "<span class='star' title='پر کردن این فیلد الزامی است'>*</span>"+
                         "</label>"
                 );
@@ -192,6 +218,12 @@
 
         </script>
 
+        <!--below script is related to define model id -->
+        <script>
+            $(function(){
+
+            })
+        </script>
 
 
 
@@ -199,6 +231,12 @@
         <script>
             $(document).on('click','#reg',function(){
                 var option = '';
+
+                $("[name = 'models']option:selected").each(function(){
+                    $('#modelId').val($(this).attr('content'));
+                })
+                var id = $('#modelId').val();
+               // alert(id);
                 var formData = new FormData ($('#unitForm')[0]);
                 $.ajax
                 ({
@@ -230,54 +268,63 @@
                     },
                     success  : function(res)
                     {
-                        if(res.code == 1)
-                        {
-                            console.log(res.message);
-                            swal({
-                                title: "",
-                                text: res.message,
-                                type: "success",
-                                confirmButtonText: "بستن"
-                            });
-                        }
+//                        if(res.code == 1)
+//                        {
+//                            console.log(res.message);
+//                            swal({
+//                                title: "",
+//                                text: res.message,
+//                                type: "success",
+//                                confirmButtonText: "بستن"
+//                            });
 
-                        $.ajax({
 
-                            cache:false,
-                            url:"{{url('api/v1/getSizes')}}",
-                            type:'get',
-                            dataType:"json",
-                            success:function (response) {
-                                console.log(response);
-                                console.log(response);
-                                if(response)
+                            $.ajax
+                            ({
+
+                                cache: false,
+                                url: "{{url('api/v1/getSizes')}}"/+id,
+                                type: 'get',
+                                dataType: "json",
+                                success: function (response)
                                 {
-                                    $('#showSizes').css('display','block');
-//                                    $('#subUnits').css('display','none');
-//                                    $('#reg').css('display','none');
-
-                                    $.each(response,function (key,value) {
-                                        var item = $('#sizes');
-                                        item.empty();
-                                        item.append
-                                        (
-                                            "<option selected='true' disabled='disabled'>حالت ها و اندازه های موجود</option>"
-                                        )
-                                        item.append
-                                        (
-                                            option += "<option id='"+value.id+"' name='"+value.depth+"'>"+value.title+ " - طول :  "+ value.length + " عرض :  "+ value.width + " قطر :  "+ value.diameter + "</option>"
-                                        );
-
-                                    })
-                                    $('#change').empty();
-                                    appendToChange();
-                                    // $('#addMainUnit').css('display','block');
-
+                                    console.log(response +'I am here');
+                                    if (response != 0)
+                                    {
+                                        var len = response.length;
+                                        var i = 0;
+                                        $('#sideways').empty();
+                                        $('#diameter').empty();
+                                        $('#width').empty();
+                                        $('#length').empty();
+                                        while (i < len) {
+                                            $('#change').css('display', 'none');
+                                            var item = $('#change1');
+                                            item.css('display', 'block');
+                                            $('#sideways').append
+                                            (
+                                                "<option>" + response[i].sideways + "</option>"
+                                            );
+                                            $('#diameter').append
+                                            (
+                                                "<option>" + response[i].diameter + "</option>"
+                                            );
+                                            $('#width').append
+                                            (
+                                                "<option>" + response[i].width + "</option>"
+                                            );
+                                            $('#length').append
+                                            (
+                                                "<option>" + response[i].length + "</option>"
+                                            );
+                                            i++;
+                                        }
+                                        $('#newSize').css('display', 'block');
+                                        $('#reg').css('display', 'none');
+                                    }
                                 }
-
-                            }
-
-                        })
+                            })
+                        }
 
                     },error:function(error)
                     {
@@ -298,5 +345,82 @@
                     }
                 });
             })
+        </script>
+        <!-- below script is related to get sizes of each model -->
+        <script>
+            $(function(){
+                $(document).on('change','#models',function(){
+                    $("[name = 'models' ]:selected ").each(function () {
+                        var id = $(this).attr('content');
+                        if(id != null || id != '')
+                        {
+                            $.ajax
+                            ({
+                                url      : "{{url('api/v1/getSizes')}}/"+id,
+                                type     : "get",
+                                dataType : "json",
+                                success  : function(response)
+                                {
+                                    if(response != 0)
+                                    {
+                                        var len = response.length;
+                                        var i   = 0;
+                                        $('#sideways').empty();
+                                        $('#diameter').empty();
+                                        $('#width').empty();
+                                        $('#length').empty();
+                                        while(i < len) {
+                                                $('#change').css('display','none');
+                                                var item = $('#change1');
+                                                item.css('display','block');
+                                                $('#sideways').append
+                                                (
+                                                    "<option>" + response[i].sideways + "</option>"
+                                                );
+                                                $('#diameter').append
+                                                (
+                                                    "<option>" + response[i].diameter + "</option>"
+                                                );
+                                                $('#width').append
+                                                (
+                                                    "<option>" + response[i].width + "</option>"
+                                                );
+                                                $('#length').append
+                                                (
+                                                    "<option>" + response[i].length + "</option>"
+                                                );
+                                            i++;
+                                        }
+                                        $('#newSize').css('display','block');
+                                        $('#reg').css('display','none');
+                                    }else
+                                        {
+                                            $('#change1').css('display','none');
+                                            $('#change').css('display','block');
+                                            $('#newSize').css('display','none');
+                                            $('#reg').css('display','block');
+                                            $('#change').empty();
+                                            appendToChange();
+                                        }
+                                },
+                                error    : function(error)
+                                {
+                                    console.log(error);
+                                }
+                            })
+                        }
+                    })
+                })
+            })
+        </script>
+        <!-- below script is related to handle newSize button -->
+        <script>
+            $(document).on('click','#newSize',function(){
+               $('#change').css('display','block');
+               $('#newSize').css('display','none');
+                $('#reg').css('display','block');
+                $('#change').empty();
+                appendToChange();
+            });
         </script>
 @endsection

@@ -66,7 +66,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | User Model namespace
+    | User Modol namespace
     |--------------------------------------------------------------------------
     |
     | Specify the full namespace to your User model.

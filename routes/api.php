@@ -36,7 +36,10 @@ Route::group(['prefix' => '/v1'], function () {
     Route::get('getColors','CommonController@getColors');
 
     //size routes
-    Route::get('getSizes','CommonController@getSizes');
+    Route::get('getSizes/{id}','CommonController@getSizes');
+
+    //models routes
+    Route::get('getModels','CommonController@getModels');
 
     //payment type routes
     Route::get('getPaymentTypes','CommonController@getPaymentTypes');
