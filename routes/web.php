@@ -11,6 +11,8 @@
 */
 //main site
 
+    Route::get('/test', 'IndexController@test');
+    Route::get('/404', 'IndexController@load404');
     Route::get('/', 'IndexController@home');
     Route::post('/search', 'IndexController@search');
     Route::get('/aboutUs', 'IndexController@aboutUs');
@@ -36,7 +38,7 @@
     });
 //Auth::routes();
 // Authentication Routes...
-    Route::get('login', 'IndexController@login')->name('login');//rayat 20-9-96 //show register and login form
+    Route::get('/login', 'IndexController@login')->name('login');//rayat 20-9-96 //show register and login form
     Route::post('login', 'Auth\LoginController@login');//rayat 20-9-96
 // Registration Routes...
     Route::post('register', 'IndexController@register');//rayat 20-9-96
