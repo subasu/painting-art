@@ -34,6 +34,14 @@ class IndexController extends Controller
             return view('layouts.userLayout');
     }
 
+    public function test()
+    {
+        return view('main.index1');
+    }
+    public function load404()
+    {
+        return view('main.masonry-blog-list');
+    }
     public function aboutUs()
     {
         $menu = $this->loadMenu();

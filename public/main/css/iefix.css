@@ -1,0 +1,26 @@
+@charset "utf-8";
+/* CSS Document */
+
+#loader, #percentage, .menu-item, .menu-background, .menu-item>.menu-item, .masonryImage img.icon, .simpleImage img.icon, .masonryBlogPost img.icon, .galleryImage img.icon, .masonryImage p, .simpleImage p, span.description, #onclickWrapper, #onclickDescriptionWrapper, #onclickItemWrapper, span.itemDescription, div.blog-background, div.blog-post-light .blog-info, a.blog-post-link{
+
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+
+}
+
+#social-wrapper img, .disabledButton, .colour-picker img{
+
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+
+}
+
+#onclickBackground{
+
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=90)";
+
+}
+
+.menu-item{
+
+	width:245px;
+	
+}

@@ -1,0 +1,8 @@
+[DEFAULT]
+BASEURL=http://scriptgates.com/
+[InternetShortcut]
+URL=http://scriptgates.com/
+IDList=
+HotKey=0
+IconFile=C:\Program Files\Adobe\Adobe Dreamweaver CS4\Dreamweaver.exe
+IconIndex=13
