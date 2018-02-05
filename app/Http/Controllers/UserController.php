@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\OrderRegistrationValidation;
 use App\Http\Requests\NewPasswordValidation;
+use App\Http\SelfClasses\CheckFiles;
 use App\Http\SelfClasses\CheckUserCellphone;
 use App\Models\Basket;
+use App\Models\NewOrders;
 use App\Models\Order;
 use App\Models\Product;
 use App\User;
@@ -445,6 +447,41 @@ class UserController extends Controller
     {
         $pageTitle = "ثبت سفارش جدید";
         return view('user.addNewOrders',compact('pageTitle'));
+    }
+    //
+    public function saveNewOrder(Request $request)
+    {
+        if(!$request->ajax())
+        {
+            abort(403);
+        }else{
+            $checkFile = new CheckFiles();
+            $result    = $checkFile->checkCategoryFiles($request,'');
+            if(is_bool($result))
+            {
+                $newOrders                = new NewOrders();
+                $newOrders->user_id       = Auth::user()->id;
+                $newOrders->title         = trim($request->title);
+                $newOrders->shape         = trim($request->model);
+                $newOrders->sideways      = trim($request->sideways);
+                $newOrders->diameter      = trim($request->diameter);
+                $newOrders->width         = trim($request->width);
+                $newOrders->length        = trim($request->length);
+                $newOrders->description   = trim($request->description);
+                $file = $request->file[0];
+                $src = $file->getClientOriginalName();
+                $file->move('public/dashboard/orderImages/', $src);
+                $newOrders->file = $request->file[0]->getClientOriginalName();
+                $newOrders->save();
+                if($newOrders)
+                {
+                    return response()->json(['message' => 'اطلاعات شما با موفقیت ثبت گردید' , 'code' => 'success']);
+                }else
+                    {
+                        return response()->json(['message' => 'در ثبت اطلاعات خطایی رخ داده است ، لطفا با بخش پشتیبانی تماس بگیرید' , 'code' => 'error']);
+                    }
+            }
+        }
     }
 }
 

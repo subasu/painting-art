@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Modol;
 use App\Models\Size;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -9,11 +10,12 @@ use Illuminate\Support\Facades\DB;
 class SizeController extends Controller
 {
     // below function is related to return
-    public function sizesManagement()
+    public function sizesManagement($id)
     {
         $pageTitle = 'مدیریت و نمایش اندازه ها';
-        $data = Size::all();
-        return view('admin.sizesManagement',compact('data','pageTitle'));
+        $data = Size::where('model_id',$id)->get();
+        $title = Modol::where('id',$id)->value('title');
+        return view('admin.sizesManagement',compact('data','pageTitle','title'));
     }
 
     //below function is related to return view of add size
@@ -39,7 +41,6 @@ class SizeController extends Controller
             $newSize->save();
             $i++;
         }
-
         if($newSize)
         {
             return response()->json(['message' => 'اطلاعات با موفقیت ثبت شد', 'code' => '1']);
@@ -55,9 +56,10 @@ class SizeController extends Controller
     {
         $pageTitle = 'ویرایش اندازه';
         $data = Size::where('id',$id)->get();
+        $title = Modol::where('id',$data[0]->model_id)->value('title');
         if(count($data) > 0)
         {
-            return view('admin.editSize',compact('data','pageTitle'));
+            return view('admin.editSize',compact('data','pageTitle','title'));
         }else
         {
             return view('errors.403');
@@ -73,10 +75,10 @@ class SizeController extends Controller
         }else
         {
             $update = Size::find($request->id);
-            $update->title    = trim($request->title);
             $update->width    = trim($request->width);
             $update->length   = trim($request->length);
             $update->diameter = trim($request->diameter);
+            $update->sideways = trim($request->sideways);
             $update->save();
             if($update)
             {

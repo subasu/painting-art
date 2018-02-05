@@ -30,6 +30,7 @@
                             <th style="text-align: center">ردیف</th>
                             <th style="text-align: center"> عنوان </th>
                             <th style="text-align: center">وضعیت</th>
+                            <th style="text-align: center">مشاهده اندازه ها</th>
                             <th style="text-align: center;border-right: 1px solid #d6d6c2">ویرایش</th>
                         </tr>
                         </thead>
@@ -47,7 +48,9 @@
                                 @if($datum->active == 0)
                                     <td style="color:red; font-size : 150%;">غیر فعال</td>
                                 @endif
+                                <td style="font-size: 120%;"><a class="btn btn-danger col-md-8 col-md-offset-2"  href="{{url('admin/sizesManagement')}}/{{$datum->id}}">مشاهده اندازه ها</a></td>
                                 <td style="font-size: 120%;"><a class="btn btn-warning col-md-8 col-md-offset-2"  href="{{url('admin/editModel')}}/{{$datum->id}}">ویرایش</a></td>
+
                             </tr>
                             {{--@endif--}}
                         @endforeach

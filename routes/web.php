@@ -100,7 +100,7 @@
             Route::post('editColorTitle', 'ColorController@editColorTitle');//this route is related to edit color title
             Route::post('enableOrDisableColor', 'ColorController@enableOrDisableColor');
             //size routes
-            Route::get('sizesManagement', 'SizeController@sizesManagement');//this route is related to return view of size management
+            Route::get('sizesManagement/{id}', 'SizeController@sizesManagement');//this route is related to return view of size management
             Route::get('addSizes', 'SizeController@addSizes');//this route is related to return view of add size
             Route::post('addNewSize', 'SizeController@addNewSize');//this route is related to add new size in data base
             Route::get('editSize/{id}', 'SizeController@editSize'); //this route is related to return edit color view
@@ -162,6 +162,7 @@
             Route::post('saveNewPassword', 'UserController@saveNewPassword');
             //below routes is related to add new orders
             Route::get('addNewOrders','UserController@addNewOrders');
+            Route::post('saveNewOrder','UserController@saveNewOrder');
          });
         //end user panel routes
         Route::post('logout', 'Auth\LoginController@logout');//rayat 20-9-96

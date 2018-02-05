@@ -6,7 +6,7 @@
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="x_panel">
                 <div class="x_title">
-                    <h2> مدیریت و نمایش اندازه ها</h2>
+                    <h2> مدیریت و نمایش اندازه های : <strong style="color: red;">{{$title}}</strong></h2>
                     <ul class="nav navbar-right panel_toolbox">
                         <li><a class="collapse-link" data-toggle="tooltip" title="جمع کردن"><i
                                         class="fa fa-chevron-up"></i></a>
@@ -28,25 +28,23 @@
                         <thead>
                         <tr>
                             <th style="text-align: center">ردیف</th>
-                            <th style="text-align: center"> عنوان اندازه</th>
                             <th style="text-align: center">طول(سانتیمتر)</th>
                             <th style="text-align: center">عرض(سانتیمتر)</th>
                             <th style="text-align: center">قطر(سانتیمتر)</th>
+                            <th style="text-align: center">اندازه یک ضلع(سانتیمتر)</th>
                             <th style="text-align: center">وضعیت</th>
                             <th style="text-align: center;border-right: 1px solid #d6d6c2">ویرایش</th>
                         </tr>
                         </thead>
-
                         <tbody>
-                        <?php $i = 0 ?>
+                        <?php $i = 0;?>
                         @foreach($data as $datum)
-                            {{--                            @if($val->unit_id!=3)--}}
                             <tr class="unit">
                                 <td style="font-size: 120%;">{{++$i}}</td>
-                                <td style="font-size: 120%;">{{$datum->title}}</td>
                                 <td style="font-size: 120%;">{{$datum->length}}</td>
                                 <td style="font-size: 120%;">{{$datum->width}}</td>
                                 <td style="font-size: 120%;">{{$datum->diameter}}</td>
+                                <td style="font-size: 120%;">{{$datum->sideways}}</td>
                                 @if($datum->active == 1)
                                     <td style="color: green; font-size: 150%;">فعال</td>
                                 @endif
@@ -55,7 +53,6 @@
                                 @endif
                                 <td style="font-size: 120%;"><a class="btn btn-warning col-md-8 col-md-offset-2"  href="{{url('admin/editSize')}}/{{$datum->id}}">ویرایش</a></td>
                             </tr>
-                            {{--@endif--}}
                         @endforeach
                         </tbody>
                     </table>

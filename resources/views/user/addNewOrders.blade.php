@@ -1,22 +1,15 @@
 @extends('layouts.userLayout')
 @section('content')
-    <style>
-        label{
-            font-size: 115%;
-            color: darkcyan;
-        }
-        .b{
-            background-color: darkcyan;
-            font-size: 115%;
-        }
-    </style>
     <!-- page content -->
-    <div class="right_col" role="main">
+    <div class="" role="main">
+        <div class="">
+            <div class="clearfix"></div>
+
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-10 col-xs-12 col-md-offset-1">
                     <div class="x_panel">
                         <div class="x_title">
-                            <h2>ثبت سفارش</h2>
+                            <h2>ثبت سفارش جدید</h2>
                             <ul class="nav navbar-right panel_toolbox">
                                 <li><a class="collapse-link" data-toggle="tooltip" title="جمع کردن"><i class="fa fa-chevron-up"></i></a>
                                 </li>
@@ -25,45 +18,66 @@
                             </ul>
                             <div class="clearfix"></div>
                         </div>
-                        <div class="col-md-12">
+                        <div class="x_content">
                             <br />
                             {{--<a href="{{url('admin/realStateManagement')}}" class="btn btn-warning col-md-6 col-xs-12 col-sm-12 col-md-offset-3" style="margin-bottom: 20px;display: none;" id="goAdminPage">بازگشت به مدیریت</a>--}}
-                            <form id="firstForm" class="form-label-left">
-                                {{csrf_field()}}
-                                <div dir="rtl">
-                                    <label class="text-right"> عنوان :</label>
+                            <form id="newOrderForm" enctype="multipart/form-data" class="form-horizontal form-label-left input_mask" style="direction:rtl" >
+                                {{ csrf_field() }}
+                                <div class="form-group">
+                                    <div class="col-md-12 col-sm-12 col-xs-12 form-group has-feedback">
+                                        <h2 class="">عنوان :</h2>
+                                        <input type="text" class="form-control" id="title" name="title">
+                                    </div>
                                 </div>
-                                <div class="form-group col-md-12">
-                                        <input  class="form-control" id="title" placeholder="عنوان سفارش" name="title" maxlength="35" required>
-                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-12 col-sm-12 col-xs-12 form-group has-feedback">
+                                        <h2 class="">لطفا حالت بوم مورد نظر خود را از بین حالت های زیر انتخاب نمائید :</h2>
+                                        <select id="models"  name="model" class="form-control">
 
-                                <div dir="rtl">
-                                    <label class="text-right">لطفا حالت تابلو خود را از بین حالت های زیر انتخاب نمایید :</label>
+                                        </select>
+                                    </div>
                                 </div>
-                                <div  class="form-group col-md-12">
-                                    <select dir="rtl" name="degree" class="form-control">
-                                            <option><strong>حالت تابلو خود را انتخاب نمائید</strong></option>
-                                            <option>مستطیل</option>
-                                            <option>مربع</option>
-                                            <option>دایره</option>
-                                            <option>مثلث</option>
-                                    </select>
-                                </div>
-                                <div dir="rtl">
-                                    <label class="text-right">برای هرچه واضح تر شدن سفارش و جزئیات آن و در صورت تمایل نمونه ای از تابلو مورد نظر خود را در قالب فایل ارسال نمائید. پسو ندهای مجاز :png , jpg</label>
-                                </div>
+                                <div class="form-group" id="size" style="display: none;">
+                                    <div class="col-md-12  form-group has-feedback">
+                                        <h2 class="">اندازه های مربوط به حالت انتخاب شده :</h2>
+                                            <div class='col-md-3'>
+                                                <select name="sideways" id="sideways"  class='form-control col-md-12 col-sm-9 col-xs-12'>
+                                                </select>
+                                            </div>
+                                            <div class='col-md-3'>
+                                                <select name="diameter" id="diameter" class='form-control col-md-12 col-sm-9 col-xs-12'>
 
-                                <div class="form-group col-md-12">
-                                    <input type="file" class="form-control" id="example"  name="example">
+                                                </select>
+                                            </div>
+                                            <div class='col-md-3'>
+                                                <select name="width" id="width"  class='form-control col-md-12 col-sm-9 col-xs-12'>
+
+                                                </select>
+                                            </div>
+                                            <div class='col-md-3'>
+                                                <select name="length" id="length" class='form-control col-md-12 col-sm-9 col-xs-12'>
+
+                                                </select>
+                                            </div>
+                                    </div>
                                 </div>
-                                <div dir="rtl">
-                                    <label class="text-right">لطفا جزئیات سفارش خود را بطور کامل در کادر زیر توضیح دهید :</label>
+                                <div class="form-group">
+                                    <div class="col-md-12 col-sm-12 col-xs-12 form-group has-feedback">
+                                        <h2>در صورت لزوم میتوانید نمونه ای از طرح خود را در قالب فایل با پسوند jpg  یا  png  برای ما ارسال نمائید:</h2>
+                                        <input id="file" type="file" name="file[]"  class="form-control" >
+                                    </div>
                                 </div>
-                                <div class="form-group col-md-12">
-                                    <textarea class="form-control" maxlength="200" name="address"></textarea>
+                                <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                                    <div class="col-md-12 col-sm-12 col-xs-12 form-group has-feedback">
+                                        <h2>لطفا توضیحات مربوط به سفارش خود را بطور کامل در کادر زیر بنویسید:</h2>
+                                        <textarea id="description"  name="description"  class="form-control"  ></textarea>
+
+                                    </div>
                                 </div>
-                                <div class="form-group col-md-12">
-                                    <button class="col-md-12 btn btn-dark b" >ثبت سفارش</button>
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        <button type="button" id="saveNewOrder" class="btn btn-success col-md-12" style="font-size:20px;">ثبت سفارش</button>
+                                    </div>
                                 </div>
                             </form>
                         </div>
@@ -74,101 +88,156 @@
         </div>
 
         <script>
-            $(document).on('click','#saveChangePassButton',function(){
-                var formData = new FormData($('#passwordForm')[0]);
-                var password = $('#password').val();
-                var confirmPassword = $('#confirmPassword').val();
-                var oldPassword     = $('#oldPassword').val();
+            $(function () {
+                var option = '';
                 $.ajax
                 ({
-                    beforeSend : function () {
-                        if(password !== confirmPassword)
-                        {
-                            swal({
-                                title: "",
-                                text: 'رمزهای وارد شده با هم مطابقت ندارند',
-                                type: "error",
-                                confirmButtonText: "بستن"
-                            });
-                            return false;
-                        }
-                        if (password == '' || password == null)
-                        {
-                            $('#password').focus();
-                            $('#password').css('border-color','red');
-                            return false;
-                        }
-                        if (confirmPassword == '' || confirmPassword == null)
-                        {
-                            $('#confirmPassword').focus();
-                            $('#confirmPassword').css('border-color','red');
-                            return false;
-                        }
-                        if (oldPassword == '' || oldPassword == null)
-                        {
-                            $('#oldPassword').focus();
-                            $('#oldPassword').css('border-color','red');
-                            return false;
-                        }
-
+                    url      : "{{url('api/v1/getModels')}}",
+                    type     : "get",
+                    dataType : "json",
+                    success  : function(response)
+                    {
+                        console.log(response);
+                        $.each(response,function (key,value) {
+                            $('#models').empty();
+                            $('#models').append
+                            (
+                              "<option>لطفا از بین حالت های موجود یک حالت را انتخاب نمائید و سپس اندازه آن را نیز مشخص کنید</option>"
+                            );
+                            $('#models').append
+                            (
+                               option +=  "<option  name='models' id='"+value.id+"'>"+value.title+"</option>"
+                            );
+                        })
                     },
-                    cache : false,
-                    url   : "{{url('user/saveNewPassword')}}",
-                    type  : "post",
-                    data  : formData,
-                    contentType : false,
-                    processData : false,
-                    success : function (response) {
-                        if(response == 'رمز عبور شما تغییر یافت')
-                        {
-                            swal({
-                                title: "",
-                                text: response,
-                                type: "info",
-                                confirmButtonText: "بستن"
-                            });
-                            setTimeout(function () {
-                                window.location.href ='../logout';
-                            },3000);
-                        }else
-                        {
-                            swal({
-                                title: "",
-                                text: response,
-                                type: "info",
-                                confirmButtonText: "بستن"
-                            });
-                        }
-
-                    },error : function (error) {
-                        if (error.status === 422) {
-                            var x = error.responseJSON;
-                            var errorsHtml = '';
-                            var count = 0;
-                            $.each(x, function (key, value) {
-                                errorsHtml += value[0] + '\n'; //showing only the first error.
-                            });
-                            console.log(count)
-                            swal({
-                                title: "",
-                                text: errorsHtml,
-                                type: "info",
-                                confirmButtonText: "بستن"
-                            });
-                        }
-                        if(error.status === 500)
-                        {
-                            swal({
-                                title: "",
-                                text: 'خطایی رخ داده است ، لطفا با بخش پشتیبانی تماس بگیرید',
-                                type: "warning",
-                                confirmButtonText: "بستن"
-                            });
-                            console.log(error);
-                        }
-
+                    error    : function(error)
+                    {
+                        console.log(error);
                     }
                 })
-            });
+            })
+        </script>
+        <script>
+            $(function(){
+                $(document).on('change','#models',function(){
+                    $("[name = 'models' ]:selected ").each(function () {
+                        var id = $(this).attr('id');
+                        if(id != null || id != '')
+                        {
+                            $.ajax
+                            ({
+                                url      : "{{url('api/v1/getSizes')}}/"+id,
+                                type     : "get",
+                                dataType : "json",
+                                success  : function(response)
+                                {
+                                    if(response != 0)
+                                    {
+                                        var len = response.length;
+                                        var i   = 0;
+                                        $('#sideways').empty();
+                                        $('#sideways').append
+                                        (
+                                            "<option>اندازه یک ضلع</option>"
+                                        );
+                                        $('#diameter').empty();
+                                        $('#diameter').append
+                                        (
+                                            "<option>قطر</option>"
+                                        );
+                                        $('#width').empty();
+                                        $('#width').append
+                                        (
+                                            "<option>عرض</option>"
+                                        );
+                                        $('#length').empty();
+                                        $('#length').append
+                                        (
+                                            "<option>طول</option>"
+                                        );
+                                        while(i < len) {
+                                            var item = $('#size');
+                                            item.css('display','block');
+                                            $('#sideways').append
+                                            (
+                                                "<option >" + response[i].sideways + "</option>"
+                                            );
+                                            $('#diameter').append
+                                            (
+                                                "<option >" + response[i].diameter + "</option>"
+                                            );
+                                            $('#width').append
+                                            (
+                                                "<option >" + response[i].width + "</option>"
+                                            );
+                                            $('#length').append
+                                            (
+                                                "<option >" + response[i].length + "</option>"
+                                            );
+                                            i++;
+                                        }
+                                    }else
+                                    {
+
+                                    }
+                                },
+                                error    : function(error)
+                                {
+                                    console.log(error);
+                                }
+                            })
+                        }
+                    })
+                })
+            })
+        </script>
+        <script>
+            $(document).on('click','#saveNewOrder',function(){
+
+                var formData = new FormData($('#newOrderForm')[0]);
+                $.ajax
+                ({
+                    cache       : false,
+                    url         : "{{url('user/saveNewOrder')}}",
+                    type        : "post",
+                    processData : false,
+                    contentType : false,
+                    dataType    : "json",
+                    data        : formData,
+                    success     : function(response)
+                    {
+                       if (response.code == 'success')
+                       {
+                           swal
+                           ({
+                               title: '',
+                               text: response.message,
+                               type:'success',
+                               confirmButtonText: "بستن"
+                           });
+                       }else
+                           {
+                               swal
+                               ({
+                                   title: '',
+                                   text: response.message,
+                                   type:'warning',
+                                   confirmButtonText: "بستن"
+                               });
+                           }
+                    },
+                    error       : function(error)
+                    {
+                          console.log(error);
+                        swal
+                        ({
+                            title: '',
+                            text: 'خطایی رخ داده است ، لطفا با بخش پشتیبانی تماس بگیرید',
+                            type:'warning',
+                            confirmButtonText: "بستن"
+                        });
+                    }
+                });
+            })
         </script>
 @endsection

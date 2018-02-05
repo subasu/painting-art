@@ -79,25 +79,24 @@
                             <div class="item form-group" id="change1" style="display:none;!important;">
                                 <div class='col-md-2'>
                                     <select id="sideways" class='form-control col-md-12 col-sm-9 col-xs-12'>
-                                        <option> اندازه یک ضلع</option>
                                     </select>
                                 </div>
                                 <div class='col-md-2'>
                                     <select id="diameter" class='form-control col-md-12 col-sm-9 col-xs-12'>
-                                        <option>قطر</option>
+
                                     </select>
                                 </div>
                                 <div class='col-md-2'>
                                     <select id="width"  class='form-control col-md-12 col-sm-9 col-xs-12'>
-                                        <option>عرض</option>
+
                                     </select>
                                 </div>
                                 <div class='col-md-3'>
                                     <select id="length" class='form-control col-md-12 col-sm-9 col-xs-12'>
-                                        <option>طول</option>
+
                                     </select>
                                 </div>
-                                <label class='control-label col-md-3 col-sm-4 col-xs-3' for='name'>اندازه های حالت انتخاب شده
+                                <label class='control-label col-md-3 col-sm-4 col-xs-3' for='name'>اندازه های از پیش درج شده:
                                     <span class='star' title='پر کردن این فیلد الزامی است'>*</span>
                                     </label>
 
@@ -174,19 +173,19 @@
             {
                 $('#change').append
                 (
-                    "<div id='child'>"+
+                    "<div id='child' dir='ltr'>"+
                     "<br/><br/>"+
                         "<div class='col-md-2 col-sm-9 col-xs-12'>"+
-                        "<input id='unit' class='form-control col-md-6 col-xs-6 required' name='length[]' placeholder='طول' required='required' type='text'>"+
+                        "<input id='unit' class='form-control col-md-6 col-xs-6 required' name='sideways[] ' value='0' placeholder='اندازه یک ضلع' required='required' type='text'>"+
                         "</div>"+
                         "<div class='col-md-2 col-sm-9 col-xs-12'>"+
-                        "<input id='unit' class='form-control col-md-6 col-xs-6 required' placeholder='عرض' name='width[]' required='required' type='text'>"+
+                        "<input id='unit' class='form-control col-md-6 col-xs-6 required' placeholder='قطر' value='0'  name='diameter[]' required='required' type='text'>"+
                         "</div>"+
                         "<div class='col-md-2 col-sm-9 col-xs-12'>"+
-                        "<input id='unit' class='form-control col-md-6 col-xs-6 required' name='diameter[]' placeholder='قطر' required='required' type='text'>"+
+                        "<input id='unit' class='form-control col-md-6 col-xs-6 required' name='width[]' value='0'  placeholder='عرض' required='required' type='text'>"+
                         "</div>"+
                         "<div class='col-md-3 col-sm-9 col-xs-12'>"+
-                        "<input id='unit' class='form-control col-md-6 col-xs-6 required' name='sideways[]' placeholder='اندازه یک ضلع' required='required' type='text'>"+
+                        "<input id='unit' class='form-control col-md-6 col-xs-6 required' name='length[]' value='0'  placeholder='طول' required='required' type='text'>"+
                         "</div>"+
                         "<label class='control-label col-md-3 col-sm-4 col-xs-3' for='name'>لیست اندازه های جدید   :"+
                         "<span class='star' title='پر کردن این فیلد الزامی است'>*</span>"+
@@ -266,37 +265,46 @@
                             return false;
                         }
                     },
-                    success  : function(res)
-                    {
-//                        if(res.code == 1)
-//                        {
-//                            console.log(res.message);
-//                            swal({
-//                                title: "",
-//                                text: res.message,
-//                                type: "success",
-//                                confirmButtonText: "بستن"
-//                            });
-
-
+                    success  : function(res) {
+                        if (res.code == 1)
+                        {
                             $.ajax
                             ({
-
-                                cache: false,
-                                url: "{{url('api/v1/getSizes')}}"/+id,
-                                type: 'get',
+                                url: "{{url('api/v1/getSizes')}}/" + id,
+                                type: "get",
                                 dataType: "json",
-                                success: function (response)
-                                {
-                                    console.log(response +'I am here');
-                                    if (response != 0)
-                                    {
+                                success: function (response) {
+                                    console.log(response);
+                                    if (response != 0) {
+                                        swal
+                                        ({
+                                            title: '',
+                                            text: res.message,
+                                            type:'success',
+                                            confirmButtonText: "بستن"
+                                        });
                                         var len = response.length;
                                         var i = 0;
                                         $('#sideways').empty();
+                                        $('#sideways').append
+                                        (
+                                            "<option>اندازه یک ضلع</option>"
+                                        );
                                         $('#diameter').empty();
+                                        $('#diameter').append
+                                        (
+                                            "<option>قطر</option>"
+                                        );
                                         $('#width').empty();
+                                        $('#width').append
+                                        (
+                                            "<option>عرض</option>"
+                                        );
                                         $('#length').empty();
+                                        $('#length').append
+                                        (
+                                            "<option>طول</option>"
+                                        );
                                         while (i < len) {
                                             $('#change').css('display', 'none');
                                             var item = $('#change1');
@@ -319,31 +327,20 @@
                                             );
                                             i++;
                                         }
-                                        $('#newSize').css('display', 'block');
-                                        $('#reg').css('display', 'none');
+                                        $('#reg').css('display','none');
+                                        $('#newSize').css('display','block');
                                     }
+                                },error : function(error)
+                                {
+                                    console.log(error);
                                 }
                             })
                         }
-
-                    },error:function(error)
+                    },error : function (error)
                     {
-                        if(error.status === 500)
-                        {
-                            console.log(error);
-                            swal({
-                                title: "",
-                                text: 'خطایی رخ داده است، با بخش پشتیبانی تماس بگیرید',
-                                type: "warning",
-                                confirmButtonText: "بستن"
-                            });
-                        }else if(error.status === 422)
-                        {
-                            console.log(error);
-                        }
-
+                        console.log(error);
                     }
-                });
+                })
             })
         </script>
         <!-- below script is related to get sizes of each model -->
@@ -366,9 +363,25 @@
                                         var len = response.length;
                                         var i   = 0;
                                         $('#sideways').empty();
+                                        $('#sideways').append
+                                        (
+                                            "<option>اندازه یک ضلع</option>"
+                                        );
                                         $('#diameter').empty();
+                                        $('#diameter').append
+                                        (
+                                            "<option>قطر</option>"
+                                        );
                                         $('#width').empty();
+                                        $('#width').append
+                                        (
+                                            "<option>عرض</option>"
+                                        );
                                         $('#length').empty();
+                                        $('#length').append
+                                        (
+                                            "<option>طول</option>"
+                                        );
                                         while(i < len) {
                                                 $('#change').css('display','none');
                                                 var item = $('#change1');

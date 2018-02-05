@@ -48,7 +48,11 @@ class User extends Authenticatable
     }
     public function Role()
     {
-        $this->hasMany('App\Models\Role');
+      return $this->hasMany('App\Models\Role');
+    }
+    public function newOrders()
+    {
+        return $this->hasMany('App\Models\NewOrders','user_id');
     }
 
 }
