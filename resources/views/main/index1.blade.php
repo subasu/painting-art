@@ -209,9 +209,8 @@
     <!-- onclick wrapper for gallery and masonry popups -->
 
 </div>
-
 <script type="text/javascript" src="{{URL::asset('public/main/scripts/jquery-1.11.1.min.js')}}"></script> <!-- jQuery implementation -->
-<script type="text/javascript" src="{{URL::asset('public/main/scripts/custom-scripts.js')}}"></script> <!-- all my custom scripts -->
+<script type="text/javascript" src="{{URL::asset('public/main/scripts/jquery.nivo.slider.pack.js')}}"></script> <!-- nivo slider packed -->
 <script type="text/javascript" src="{{URL::asset('public/main/scripts/jquery-ui-1.9.1.custom.min.js')}}"></script> <!-- jQueryUI implementation -->
 <script type="text/javascript" src="{{URL::asset('public/main/scripts/jquery.easing.1.3.js')}}"></script> <!-- jQuery easing implementation -->
 <script type="text/javascript" src="{{URL::asset('public/main/scripts/jquery.tipsy.js')}}"></script> <!-- Tipsy -->
@@ -225,7 +224,7 @@
 <script type="text/javascript" src="{{URL::asset('public/main/scripts/jquery.mousewheel.min.js')}}"></script> <!-- mousewheel plugin -->
 <script type="text/javascript" src="{{URL::asset('public/main/scripts/modernizr.js')}}"></script> <!-- modernizr plugin -->
 <script type="text/javascript" src="{{URL::asset('public/main/scripts/jquery.quicksand.js')}}"></script> <!-- quicksand plugin -->
-<script type="text/javascript" src="{{URL::asset('public/main/scripts/jquery.nivo.slider.pack.js')}}"></script> <!-- nivo slider packed -->
+<script type="text/javascript" src="{{URL::asset('public/main/scripts/custom-scripts.js')}}"></script> <!-- all my custom scripts -->
 
 </body>
 </html>

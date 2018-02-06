@@ -9,12 +9,12 @@
 	//check if the page was called via ajax - if not, redirect to index.html, crawlers will ignore this and fetch the simple HTML pageHash
 	function checkIfAsgard(){
 
-		var thisHref = window.location.href;
-		thisHref = thisHref.substr(thisHref.lastIndexOf('/') + 1);
-		thisHref = thisHref.split(".html");
-
-		if(typeof this["isAsgard"] === 'undefined')
-			window.location.href = "index.html"+"#"+thisHref[0];
+//		var thisHref = window.location.href;
+//		thisHref = thisHref.substr(thisHref.lastIndexOf('/') + 1);
+//		thisHref = thisHref.split(".html");
+//
+//		if(typeof this["isAsgard"] === 'undefined')
+//			window.location.href = "index.html"+"#"+thisHref[0];
 
 	}
 
@@ -49,8 +49,9 @@
 
 <div id="gallery">
 
+
 	<div class="simpleImage">
-		<img class="item link" src="images/thumbnails/1.jpg" alt="1-jpg" />
+		<img class="item blog" src="{{URL::asset('public/main/images/thumbnails/2.jpg')}}" alt="2-jpg" />
 		<span class="description">
 
 لورم ایپسوم یا طرح‌نما</span>
@@ -59,7 +60,7 @@
 	</div>
 
 	<div class="simpleImage">
-		<img class="item blog" src="images/thumbnails/2.jpg" alt="2-jpg" />
+		<img class="item music" src="{{URL::asset('public/main/images/thumbnails/3.jpg')}}" alt="3-jpg" />
 		<span class="description">
 
 لورم ایپسوم یا طرح‌نما</span>
@@ -68,7 +69,7 @@
 	</div>
 
 	<div class="simpleImage">
-		<img class="item music" src="images/thumbnails/3.jpg" alt="3-jpg" />
+		<img class="item image" src="{{URL::asset('public/main/images/thumbnails/4.jpg')}}" alt="4-jpg" />
 		<span class="description">
 
 لورم ایپسوم یا طرح‌نما</span>
@@ -77,16 +78,7 @@
 	</div>
 
 	<div class="simpleImage">
-		<img class="item image" src="images/thumbnails/4.jpg" alt="4-jpg" />
-		<span class="description">
-
-لورم ایپسوم یا طرح‌نما</span>
-		<p>
-لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد</p>
-	</div>
-
-	<div class="simpleImage">
-		<img class="item video" src="images/thumbnails/6.jpg" alt="http://www.youtube.com/embed/9bZkp7q19f0" />
+		<img class="item video" src="{{URL::asset('public/main/images/thumbnails/6.jpg')}}" alt="http://www.youtube.com/embed/9bZkp7q19f0" />
 		<span class="description">
 
 لورم ایپسوم یا طرح‌نما</span>
@@ -94,7 +86,7 @@
 لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد	</div>
 
 	<div class="simpleImage">
-		<img class="item link" src="images/thumbnails/5.jpg" alt="5-jpg" />
+		<img class="item link" src="{{URL::asset('public/main/images/thumbnails/5.jpg')}}" alt="5-jpg" />
 		<span class="description">
 
 لورم ایپسوم یا طرح‌نما</span>
@@ -103,7 +95,7 @@
 	</div>
 
 	<div class="simpleImage">
-		<img class="item video" src="images/thumbnails/7.jpg" alt="http://www.youtube.com/embed/9bZkp7q19f0" />
+		<img class="item video" src="{{URL::asset('public/main/images/thumbnails/7.jpg')}}" alt="http://www.youtube.com/embed/9bZkp7q19f0" />
 		<span class="description">
 
 لورم ایپسوم یا طرح‌نما</span>
@@ -112,7 +104,7 @@
 	</div>
 
 	<div class="simpleImage">
-		<img class="item image" src="images/thumbnails/8.jpg" alt="8-jpg" />
+		<img class="item image" src="{{URL::asset('public/main/images/thumbnails/8.jpg')}}" alt="8-jpg" />
 		<span class="description">
 
 لورم ایپسوم یا طرح‌نما</span>
@@ -121,7 +113,7 @@
 	</div>
 
 	<div class="simpleImage">
-		<img class="item video" src="images/thumbnails/9.jpg" alt="http://www.youtube.com/embed/9bZkp7q19f0" />
+		<img class="item video" src="{{URL::asset('public/main/images/thumbnails/9.jpg')}}" alt="http://www.youtube.com/embed/9bZkp7q19f0" />
 		<span class="description">
 
 لورم ایپسوم یا طرح‌نما</span>
@@ -130,7 +122,7 @@
 	</div>
 
 	<div class="simpleImage">
-		<img class="item image" src="images/thumbnails/10.jpg" alt="10-jpg" />
+		<img class="item image" src="{{URL::asset('public/main/images/thumbnails/10.jpg')}}" alt="10-jpg" />
 		<span class="description">
 
 لورم ایپسوم یا طرح‌نما</span>
@@ -139,7 +131,7 @@
 	</div>
 
 	<div class="simpleImage">
-		<img class="item image" src="images/thumbnails/11.jpg" alt="11-jpg" />
+		<img class="item image" src="{{URL::asset('public/main/images/thumbnails/11.jpg')}}" alt="11-jpg" />
 		<span class="description">
 
 لورم ایپسوم یا طرح‌نما</span>
@@ -148,7 +140,7 @@
 	</div>
 
 	<div class="simpleImage">
-		<img class="item link" src="images/thumbnails/12.jpg" alt="12-jpg" />
+		<img class="item link" src="{{URL::asset('public/main/images/thumbnails/12.jpg')}}" alt="12-jpg" />
 		<span class="description">
 
 لورم ایپسوم یا طرح‌نما</span>
@@ -157,7 +149,7 @@
 	</div>
 
 	<div class="simpleImage">
-		<img class="item video" src="images/thumbnails/1.jpg" alt="http://www.youtube.com/embed/9bZkp7q19f0" />
+		<img class="item video" src="{{URL::asset('public/main/images/thumbnails/1.jpg')}}" alt="http://www.youtube.com/embed/9bZkp7q19f0" />
 		<span class="description">
 
 لورم ایپسوم یا طرح‌نما</span>
@@ -166,7 +158,7 @@
 	</div>
 
 	<div class="simpleImage">
-		<img class="item link" src="images/thumbnails/2.jpg" alt="2-jpg" />
+		<img class="item link" src="{{URL::asset('public/main/images/thumbnails/2.jpg')}}" alt="2-jpg" />
 		<span class="description">
 
 لورم ایپسوم یا طرح‌نما</span>
@@ -175,7 +167,7 @@
 	</div>
 
 	<div class="simpleImage">
-		<img class="item video" src="images/thumbnails/3.jpg" alt="http://www.youtube.com/embed/9bZkp7q19f0" />
+		<img class="item video" src="{{URL::asset('public/main/images/thumbnails/3.jpg')}}" alt="http://www.youtube.com/embed/9bZkp7q19f0" />
 		<span class="description">
 
 لورم ایپسوم یا طرح‌نما</span>
@@ -184,7 +176,7 @@
 	</div>
 
 	<div class="simpleImage">
-		<img class="item image" src="images/thumbnails/4.jpg" alt="4-jpg" />
+		<img class="item image" src="{{URL::asset('public/main/images/thumbnails/4.jpg')}}" alt="4-jpg" />
 		<span class="description">
 
 لورم ایپسوم یا طرح‌نما</span>
@@ -193,7 +185,7 @@
 	</div>
 
 	<div class="simpleImage">
-		<img class="item video" src="images/thumbnails/5.jpg" alt="http://www.youtube.com/embed/9bZkp7q19f0" />
+		<img class="item video" src="{{URL::asset('public/main/images/thumbnails/5.jpg')}}" alt="http://www.youtube.com/embed/9bZkp7q19f0" />
 		<span class="description">
 
 لورم ایپسوم یا طرح‌نما</span>
@@ -202,7 +194,7 @@
 	</div>
 
 	<div class="simpleImage">
-		<img class="item music" src="images/thumbnails/6.jpg" alt="6-jpg" />
+		<img class="item music" src="{{URL::asset('public/main/images/thumbnails/6.jpg')}}" alt="6-jpg" />
 		<span class="description">
 
 لورم ایپسوم یا طرح‌نما</span>
@@ -211,7 +203,7 @@
 	</div>
 
 	<div class="simpleImage">
-		<img class="item image" src="images/thumbnails/7.jpg" alt="7-jpg" />
+		<img class="item image" src="{{URL::asset('public/main/images/thumbnails/7.jpg')}}" alt="7-jpg" />
 		<span class="description">
 
 لورم ایپسوم یا طرح‌نما</span>
@@ -220,7 +212,7 @@
 	</div>
 
 	<div class="simpleImage">
-		<img class="item blog" src="images/thumbnails/8.jpg" alt="8-jpg" />
+		<img class="item blog" src="{{URL::asset('public/main/images/thumbnails/8.jpg')}}" alt="8-jpg" />
 		<span class="description">
 
 لورم ایپسوم یا طرح‌نما</span>
@@ -229,7 +221,7 @@
 	</div>
 
 	<div class="simpleImage">
-		<img class="item video" src="images/thumbnails/9.jpg" alt="http://www.youtube.com/embed/9bZkp7q19f0" />
+		<img class="item video" src="{{URL::asset('public/main/images/thumbnails/9.jpg')}}" alt="http://www.youtube.com/embed/9bZkp7q19f0" />
 		<span class="description">
 
 لورم ایپسوم یا طرح‌نما</span>
@@ -238,7 +230,7 @@
 	</div>
 
 	<div class="simpleImage">
-		<img class="item image" src="images/thumbnails/10.jpg" alt="10-jpg" />
+		<img class="item image" src="{{URL::asset('public/main/images/thumbnails/10.jpg')}}" alt="10-jpg" />
 		<span class="description">
 
 لورم ایپسوم یا طرح‌نما</span>
@@ -247,7 +239,7 @@
 	</div>
 
 	<div class="simpleImage">
-		<img class="item link" src="images/thumbnails/11.jpg" alt="11-jpg" />
+		<img class="item link" src="{{URL::asset('public/main/images/thumbnails/11.jpg')}}" alt="11-jpg" />
 		<span class="description">
 
 لورم ایپسوم یا طرح‌نما</span>
@@ -256,7 +248,7 @@
 	</div>
 
 	<div class="simpleImage">
-		<img class="item image" src="images/thumbnails/12.jpg" alt="12-jpg" />
+		<img class="item image" src="{{URL::asset('public/main/images/thumbnails/12.jpg')}}" alt="12-jpg" />
 		<span class="description">
 
 لورم ایپسوم یا طرح‌نما</span>
@@ -265,7 +257,7 @@
 	</div>
 
 	<div class="simpleImage">
-		<img class="item image" src="images/thumbnails/1.jpg" alt="1-jpg" />
+		<img class="item image" src="{{URL::asset('public/main/images/thumbnails/1.jpg')}}" alt="1-jpg" />
 		<span class="description">
 
 لورم ایپسوم یا طرح‌نما</span>
@@ -274,7 +266,7 @@
 	</div>
 
 	<div class="simpleImage">
-		<img class="item blog" src="images/thumbnails/2.jpg" alt="2-jpg" />
+		<img class="item blog" src="{{URL::asset('public/main/images/thumbnails/2.jpg')}}" alt="2-jpg" />
 		<span class="description">
 
 لورم ایپسوم یا طرح‌نما</span>
@@ -283,7 +275,7 @@
 	</div>
 
 	<div class="simpleImage">
-		<img class="item music" src="images/thumbnails/3.jpg" alt="3-jpg" />
+		<img class="item music" src="{{URL::asset('public/main/images/thumbnails/3.jpg')}}" alt="3-jpg" />
 		<span class="description">
 
 لورم ایپسوم یا طرح‌نما</span>
@@ -292,7 +284,7 @@
 	</div>
 
 	<div class="simpleImage">
-		<img class="item video" src="images/thumbnails/4.jpg" alt="http://www.youtube.com/embed/9bZkp7q19f0" />
+		<img class="item video" src="{{URL::asset('public/main/images/thumbnails/4.jpg')}}" alt="http://www.youtube.com/embed/9bZkp7q19f0" />
 		<span class="description">
 
 لورم ایپسوم یا طرح‌نما</span>
@@ -301,7 +293,7 @@
 	</div>
 
 	<div class="simpleImage">
-		<img class="item image" src="images/thumbnails/5.jpg" alt="5-jpg" />
+		<img class="item image" src="{{URL::asset('public/main/images/thumbnails/5.jpg')}}" alt="5-jpg" />
 		<span class="description">
 
 لورم ایپسوم یا طرح‌نما</span>
@@ -310,7 +302,7 @@
 	</div>
 
 	<div class="simpleImage">
-		<img class="item image" src="images/thumbnails/6.jpg" alt="6-jpg" />
+		<img class="item image" src="{{URL::asset('public/main/images/thumbnails/6.jpg')}}" alt="6-jpg" />
 		<span class="description">
 
 لورم ایپسوم یا طرح‌نما</span>
@@ -319,7 +311,7 @@
 	</div>
 
 	<div class="simpleImage">
-		<img class="item image" src="images/thumbnails/7.jpg" alt="7-jpg" />
+		<img class="item image" src="{{URL::asset('public/main/images/thumbnails/7.jpg')}}" alt="7-jpg" />
 		<span class="description">
 
 لورم ایپسوم یا طرح‌نما</span>
@@ -328,7 +320,7 @@
 	</div>
 
 	<div class="simpleImage">
-		<img class="item video" src="images/thumbnails/8.jpg" alt="http://www.youtube.com/embed/9bZkp7q19f0" />
+		<img class="item video" src="{{URL::asset('public/main/images/thumbnails/8.jpg')}}" alt="http://www.youtube.com/embed/9bZkp7q19f0" />
 		<span class="description">
 
 لورم ایپسوم یا طرح‌نما</span>
@@ -337,7 +329,7 @@
 	</div>
 
 	<div class="simpleImage">
-		<img class="item blog" src="images/thumbnails/9.jpg" alt="9-jpg" />
+		<img class="item blog" src="{{URL::asset('public/main/images/thumbnails/9.jpg')}}" alt="9-jpg" />
 		<span class="description">
 
 لورم ایپسوم یا طرح‌نما</span>
@@ -346,7 +338,7 @@
 	</div>
 
 	<div class="simpleImage">
-		<img class="item blog" src="images/thumbnails/10.jpg" alt="10-jpg" />
+		<img class="item blog" src="{{URL::asset('public/main/images/thumbnails/10.jpg')}}" alt="10-jpg" />
 		<span class="description">
 
 لورم ایپسوم یا طرح‌نما</span>
@@ -355,7 +347,7 @@
 	</div>
 
 	<div class="simpleImage">
-		<img class="item image" src="images/thumbnails/11.jpg" alt="11-jpg" />
+		<img class="item image" src="{{URL::asset('public/main/images/thumbnails/11.jpg')}}" alt="11-jpg" />
 		<span class="description">
 
 لورم ایپسوم یا طرح‌نما</span>
@@ -364,7 +356,7 @@
 	</div>
 
 	<div class="simpleImage">
-		<img class="item blog" src="images/thumbnails/12.jpg" alt="12-jpg" />
+		<img class="item blog" src="{{URL::asset('public/main/images/thumbnails/12.jpg')}}" alt="12-jpg" />
 		<span class="description">
 
 لورم ایپسوم یا طرح‌نما</span>
@@ -373,7 +365,7 @@
 	</div>
 
 	<div class="simpleImage">
-		<img class="item link" src="images/thumbnails/1.jpg" alt="1-jpg" />
+		<img class="item link" src="{{URL::asset('public/main/images/thumbnails/1.jpg')}}" alt="1-jpg" />
 		<span class="description">
 
 لورم ایپسوم یا طرح‌نما</span>
@@ -382,7 +374,7 @@
 	</div>
 
 	<div class="simpleImage">
-		<img class="item blog" src="images/thumbnails/2.jpg" alt="2-jpg" />
+		<img class="item blog" src="{{URL::asset('public/main/images/thumbnails/2.jpg')}}" alt="2-jpg" />
 		<span class="description">
 
 لورم ایپسوم یا طرح‌نما</span>
@@ -391,7 +383,7 @@
 	</div>
 
 	<div class="simpleImage">
-		<img class="item music" src="images/thumbnails/3.jpg" alt="3-jpg" />
+		<img class="item music" src="{{URL::asset('public/main/images/thumbnails/3.jpg')}}" alt="3-jpg" />
 		<span class="description">
 
 لورم ایپسوم یا طرح‌نما</span>
@@ -400,7 +392,7 @@
 	</div>
 
 	<div class="simpleImage">
-		<img class="item image" src="images/thumbnails/4.jpg" alt="4-jpg" />
+		<img class="item image" src="{{URL::asset('public/main/images/thumbnails/4.jpg')}}" alt="4-jpg" />
 		<span class="description">
 
 لورم ایپسوم یا طرح‌نما</span>
@@ -409,7 +401,7 @@
 	</div>
 
 	<div class="simpleImage">
-		<img class="item video" src="images/thumbnails/6.jpg" alt="http://www.youtube.com/embed/9bZkp7q19f0" />
+		<img class="item video" src="{{URL::asset('public/main/images/thumbnails/6.jpg')}}" alt="http://www.youtube.com/embed/9bZkp7q19f0" />
 		<span class="description">
 
 لورم ایپسوم یا طرح‌نما</span>
@@ -418,7 +410,7 @@
 	</div>
 
 	<div class="simpleImage">
-		<img class="item link" src="images/thumbnails/5.jpg" alt="5-jpg" />
+		<img class="item link" src="{{URL::asset('public/main/images/thumbnails/5.jpg')}}" alt="5-jpg" />
 		<span class="description">
 
 لورم ایپسوم یا طرح‌نما</span>
@@ -427,7 +419,7 @@
 	</div>
 
 	<div class="simpleImage">
-		<img class="item video" src="images/thumbnails/7.jpg" alt="http://www.youtube.com/embed/9bZkp7q19f0" />
+		<img class="item video" src="{{URL::asset('public/main/images/thumbnails/7.jpg')}}" alt="http://www.youtube.com/embed/9bZkp7q19f0" />
 		<span class="description">
 
 لورم ایپسوم یا طرح‌نما</span>
@@ -436,7 +428,7 @@
 	</div>
 
 	<div class="simpleImage">
-		<img class="item image" src="images/thumbnails/8.jpg" alt="8-jpg" />
+		<img class="item image" src="{{URL::asset('public/main/images/thumbnails/8.jpg')}}" alt="8-jpg" />
 		<span class="description">
 
 لورم ایپسوم یا طرح‌نما</span>
@@ -445,7 +437,7 @@
 	</div>
 
 	<div class="simpleImage">
-		<img class="item video" src="images/thumbnails/9.jpg" alt="http://www.youtube.com/embed/9bZkp7q19f0" />
+		<img class="item video" src="{{URL::asset('public/main/images/thumbnails/9.jpg')}}" alt="http://www.youtube.com/embed/9bZkp7q19f0" />
 		<span class="description">
 
 لورم ایپسوم یا طرح‌نما</span>
@@ -454,7 +446,7 @@
 	</div>
 
 	<div class="simpleImage">
-		<img class="item image" src="images/thumbnails/10.jpg" alt="10-jpg" />
+		<img class="item image" src="{{URL::asset('public/main/images/thumbnails/10.jpg')}}" alt="10-jpg" />
 		<span class="description">
 
 لورم ایپسوم یا طرح‌نما</span>
@@ -463,7 +455,7 @@
 	</div>
 
 	<div class="simpleImage">
-		<img class="item image" src="images/thumbnails/11.jpg" alt="11-jpg" />
+		<img class="item image" src="{{URL::asset('public/main/images/thumbnails/11.jpg')}}" alt="11-jpg" />
 		<span class="description">
 
 لورم ایپسوم یا طرح‌نما</span>
@@ -472,7 +464,7 @@
 	</div>
 
 	<div class="simpleImage">
-		<img class="item link" src="images/thumbnails/12.jpg" alt="12-jpg" />
+		<img class="item link" src="{{URL::asset('public/main/images/thumbnails/12.jpg')}}" alt="12-jpg" />
 		<span class="description">
 
 لورم ایپسوم یا طرح‌نما</span>
@@ -481,7 +473,7 @@
 	</div>
 
 	<div class="simpleImage">
-		<img class="item video" src="images/thumbnails/1.jpg" alt="http://www.youtube.com/embed/9bZkp7q19f0" />
+		<img class="item video" src="{{URL::asset('public/main/images/thumbnails/1.jpg')}}" alt="http://www.youtube.com/embed/9bZkp7q19f0" />
 		<span class="description">
 
 لورم ایپسوم یا طرح‌نما</span>
@@ -490,7 +482,7 @@
 	</div>
 
 	<div class="simpleImage">
-		<img class="item link" src="images/thumbnails/2.jpg" alt="2-jpg" />
+		<img class="item link" src="{{URL::asset('public/main/images/thumbnails/2.jpg')}}" alt="2-jpg" />
 		<span class="description">
 
 لورم ایپسوم یا طرح‌نما</span>
@@ -499,7 +491,7 @@
 	</div>
 
 	<div class="simpleImage">
-		<img class="item video" src="images/thumbnails/3.jpg" alt="http://www.youtube.com/embed/9bZkp7q19f0" />
+		<img class="item video" src="{{URL::asset('public/main/images/thumbnails/3.jpg')}}" alt="http://www.youtube.com/embed/9bZkp7q19f0" />
 		<span class="description">
 
 لورم ایپسوم یا طرح‌نما</span>
@@ -508,7 +500,7 @@
 	</div>
 
 	<div class="simpleImage">
-		<img class="item image" src="images/thumbnails/4.jpg" alt="4-jpg" />
+		<img class="item image" src="{{URL::asset('public/main/images/thumbnails/4.jpg')}}" alt="4-jpg" />
 		<span class="description">
 
 لورم ایپسوم یا طرح‌نما</span>
@@ -517,7 +509,7 @@
 	</div>
 
 	<div class="simpleImage">
-		<img class="item video" src="images/thumbnails/5.jpg" alt="http://www.youtube.com/embed/9bZkp7q19f0" />
+		<img class="item video" src="{{URL::asset('public/main/images/thumbnails/5.jpg')}}" alt="http://www.youtube.com/embed/9bZkp7q19f0" />
 		<span class="description">
 
 لورم ایپسوم یا طرح‌نما</span>
@@ -526,7 +518,7 @@
 	</div>
 
 	<div class="simpleImage">
-		<img class="item music" src="images/thumbnails/6.jpg" alt="6-jpg" />
+		<img class="item music" src="{{URL::asset('public/main/images/thumbnails/6.jpg')}}" alt="6-jpg" />
 		<span class="description">
 
 لورم ایپسوم یا طرح‌نما</span>
@@ -535,7 +527,7 @@
 	</div>
 
 	<div class="simpleImage">
-		<img class="item image" src="images/thumbnails/7.jpg" alt="7-jpg" />
+		<img class="item image" src="{{URL::asset('public/main/images/thumbnails/7.jpg')}}" alt="7-jpg" />
 		<span class="description">
 
 لورم ایپسوم یا طرح‌نما</span>
@@ -544,7 +536,7 @@
 	</div>
 
 	<div class="simpleImage">
-		<img class="item blog" src="images/thumbnails/8.jpg" alt="8-jpg" />
+		<img class="item blog" src="{{URL::asset('public/main/images/thumbnails/8.jpg')}}" alt="8-jpg" />
 		<span class="description">
 
 لورم ایپسوم یا طرح‌نما</span>
@@ -553,7 +545,7 @@
 	</div>
 
 	<div class="simpleImage">
-		<img class="item video" src="images/thumbnails/9.jpg" alt="http://www.youtube.com/embed/9bZkp7q19f0" />
+		<img class="item video" src="{{URL::asset('public/main/images/thumbnails/9.jpg')}}" alt="http://www.youtube.com/embed/9bZkp7q19f0" />
 		<span class="description">
 
 لورم ایپسوم یا طرح‌نما</span>
@@ -562,7 +554,7 @@
 	</div>
 
 	<div class="simpleImage">
-		<img class="item image" src="images/thumbnails/10.jpg" alt="10-jpg" />
+		<img class="item image" src="{{URL::asset('public/main/images/thumbnails/10.jpg')}}" alt="10-jpg" />
 		<span class="description">
 
 لورم ایپسوم یا طرح‌نما</span>
@@ -571,7 +563,7 @@
 	</div>
 
 	<div class="simpleImage">
-		<img class="item link" src="images/thumbnails/11.jpg" alt="11-jpg" />
+		<img class="item link" src="{{URL::asset('public/main/images/thumbnails/11.jpg')}}" alt="11-jpg" />
 		<span class="description">
 
 لورم ایپسوم یا طرح‌نما</span>
@@ -580,69 +572,7 @@
 	</div>
 
 	<div class="simpleImage">
-		<img class="item image" src="images/thumbnails/12.jpg" alt="12-jpg" />
-		<span class="description">
-
-لورم ایپسوم یا طرح‌نما</span>
-		<p>
-لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد	</div>
-
-	<div class="simpleImage">
-		<img class="item image" src="images/thumbnails/1.jpg" alt="1-jpg" />
-		<span class="description">
-
-لورم ایپسوم یا طرح‌نما</span>
-		<p>
-لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد</p>
-	</div>
-
-	<div class="simpleImage">
-		<img class="item blog" src="images/thumbnails/2.jpg" alt="2-jpg" />
-		<span class="description">
-
-لورم ایپسوم یا طرح‌نما</span>
-		<p>
-لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد</p>
-	</div>
-
-	<div class="simpleImage">
-		<img class="item music" src="images/thumbnails/3.jpg" alt="3-jpg" />
-		<span class="description">
-
-لورم ایپسوم یا طرح‌نما</span>
-		<p>
-لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد</p>
-	</div>
-
-	<div class="simpleImage">
-		<img class="item video" src="images/thumbnails/4.jpg" alt="http://www.youtube.com/embed/9bZkp7q19f0" />
-		<span class="description">
-
-لورم ایپسوم یا طرح‌نما</span>
-		<p>
-لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد</p>
-	</div>
-
-	<div class="simpleImage">
-		<img class="item image" src="images/thumbnails/5.jpg" alt="5-jpg" />
-		<span class="description">
-
-لورم ایپسوم یا طرح‌نما</span>
-		<p>
-لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد</p>
-	</div>
-
-	<div class="simpleImage">
-		<img class="item image" src="images/thumbnails/6.jpg" alt="6-jpg" />
-		<span class="description">
-
-لورم ایپسوم یا طرح‌نما</span>
-		<p>
-لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد</p>
-	</div>
-
-	<div class="simpleImage">
-		<img class="item image" src="images/thumbnails/7.jpg" alt="7-jpg" />
+		<img class="item image" src="{{URL::asset('public/main/images/thumbnails/12.jpg')}}" alt="12-jpg" />
 		<span class="description">
 
 لورم ایپسوم یا طرح‌نما</span>
@@ -650,7 +580,7 @@
 لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد	</div>
 
 	<div class="simpleImage">
-		<img class="item video" src="images/thumbnails/8.jpg" alt="http://www.youtube.com/embed/9bZkp7q19f0" />
+		<img class="item image" src="{{URL::asset('public/main/images/thumbnails/1.jpg')}}" alt="1-jpg" />
 		<span class="description">
 
 لورم ایپسوم یا طرح‌نما</span>
@@ -659,7 +589,7 @@
 	</div>
 
 	<div class="simpleImage">
-		<img class="item blog" src="images/thumbnails/9.jpg" alt="9-jpg" />
+		<img class="item blog" src="{{URL::asset('public/main/images/thumbnails/2.jpg')}}" alt="2-jpg" />
 		<span class="description">
 
 لورم ایپسوم یا طرح‌نما</span>
@@ -668,7 +598,7 @@
 	</div>
 
 	<div class="simpleImage">
-		<img class="item blog" src="images/thumbnails/10.jpg" alt="10-jpg" />
+		<img class="item music" src="{{URL::asset('public/main/images/thumbnails/3.jpg')}}" alt="3-jpg" />
 		<span class="description">
 
 لورم ایپسوم یا طرح‌نما</span>
@@ -677,7 +607,7 @@
 	</div>
 
 	<div class="simpleImage">
-		<img class="item image" src="images/thumbnails/11.jpg" alt="11-jpg" />
+		<img class="item video" src="{{URL::asset('public/main/images/thumbnails/4.jpg')}}" alt="http://www.youtube.com/embed/9bZkp7q19f0" />
 		<span class="description">
 
 لورم ایپسوم یا طرح‌نما</span>
@@ -686,7 +616,69 @@
 	</div>
 
 	<div class="simpleImage">
-		<img class="item blog" src="images/thumbnails/12.jpg" alt="12-jpg" />
+		<img class="item image" src="{{URL::asset('public/main/images/thumbnails/5.jpg')}}" alt="5-jpg" />
+		<span class="description">
+
+لورم ایپسوم یا طرح‌نما</span>
+		<p>
+لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد</p>
+	</div>
+
+	<div class="simpleImage">
+		<img class="item image" src="{{URL::asset('public/main/images/thumbnails/6.jpg')}}" alt="6-jpg" />
+		<span class="description">
+
+لورم ایپسوم یا طرح‌نما</span>
+		<p>
+لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد</p>
+	</div>
+
+	<div class="simpleImage">
+		<img class="item image" src="{{URL::asset('public/main/images/thumbnails/7.jpg')}}" alt="7-jpg" />
+		<span class="description">
+
+لورم ایپسوم یا طرح‌نما</span>
+		<p>
+لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد	</div>
+
+	<div class="simpleImage">
+		<img class="item video" src="{{URL::asset('public/main/images/thumbnails/8.jpg')}}" alt="http://www.youtube.com/embed/9bZkp7q19f0" />
+		<span class="description">
+
+لورم ایپسوم یا طرح‌نما</span>
+		<p>
+لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد</p>
+	</div>
+
+	<div class="simpleImage">
+		<img class="item blog" src="{{URL::asset('public/main/images/thumbnails/9.jpg')}}" alt="9-jpg" />
+		<span class="description">
+
+لورم ایپسوم یا طرح‌نما</span>
+		<p>
+لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد</p>
+	</div>
+
+	<div class="simpleImage">
+		<img class="item blog" src="{{URL::asset('public/main/images/thumbnails/10.jpg')}}" alt="10-jpg" />
+		<span class="description">
+
+لورم ایپسوم یا طرح‌نما</span>
+		<p>
+لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد</p>
+	</div>
+
+	<div class="simpleImage">
+		<img class="item image" src="{{URL::asset('public/main/images/thumbnails/11.jpg')}}" alt="11-jpg" />
+		<span class="description">
+
+لورم ایپسوم یا طرح‌نما</span>
+		<p>
+لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد</p>
+	</div>
+
+	<div class="simpleImage">
+		<img class="item blog" src="{{URL::asset('public/main/images/thumbnails/12.jpg')}}" alt="12-jpg" />
 		<span class="description">
 
 لورم ایپسوم یا طرح‌نما</span>
@@ -695,6 +687,22 @@
 	</div>
 
 </div>
+<script type="text/javascript" src="{{URL::asset('public/main/scripts/jquery-1.11.1.min.js')}}"></script> <!-- jQuery implementation -->
+<script type="text/javascript" src="{{URL::asset('public/main/scripts/jquery.nivo.slider.pack.js')}}"></script> <!-- nivo slider packed -->
+<script type="text/javascript" src="{{URL::asset('public/main/scripts/jquery-ui-1.9.1.custom.min.js')}}"></script> <!-- jQueryUI implementation -->
+<script type="text/javascript" src="{{URL::asset('public/main/scripts/jquery.easing.1.3.js')}}"></script> <!-- jQuery easing implementation -->
+<script type="text/javascript" src="{{URL::asset('public/main/scripts/jquery.tipsy.js')}}"></script> <!-- Tipsy -->
+{{--<script type="text/javascript" src="http://maps.google.com/maps?file=api&amp;v=3&amp;key=AIzaSyBAuLHHG5oKcTn7PMG0jLPrhVqIZWfGSMQ"></script><!-- Google maps API -->--}}
+{{--<script type="text/javascript" src="{{URL::asset('public/main/scripts/jquery.gmap-1.1.0-min.js')}}"></script><!-- Google maps GMap plugin -->--}}
+<script type="text/javascript" src="{{URL::asset('public/main/scripts/jquery.animate-shadow-min.js')}}"></script><!-- animate shadow plugin -->
+<script type="text/javascript" src="{{URL::asset('public/main/scripts/animateBackground-plugin.js')}}"></script><!-- animate background plugin -->
+<script type="text/javascript" src="{{URL::asset('public/main/scripts/jquery.quicksand.js')}}"></script><!-- quickSand implementation -->
+<script type="text/javascript" src="{{URL::asset('public/main/scripts/jquery.mCustomScrollbar.min.js')}}"></script> <!-- mCustomScrollbar -->
+<script type="text/javascript" src="{{URL::asset('public/main/scripts/jquery.masonry.min.js')}}"></script> <!-- Masonry plugin -->
+<script type="text/javascript" src="{{URL::asset('public/main/scripts/jquery.mousewheel.min.js')}}"></script> <!-- mousewheel plugin -->
+<script type="text/javascript" src="{{URL::asset('public/main/scripts/modernizr.js')}}"></script> <!-- modernizr plugin -->
+<script type="text/javascript" src="{{URL::asset('public/main/scripts/jquery.quicksand.js')}}"></script> <!-- quicksand plugin -->
+<script type="text/javascript" src="{{URL::asset('public/main/scripts/custom-scripts.js')}}"></script> <!-- all my custom scripts -->
 
 </body>
 </html>
