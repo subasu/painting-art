@@ -109,6 +109,7 @@
                                     <button id="reg" type="button" class="col-md-9 btn btn-primary" style="display: none; !important;">ثبت نهایی</button>
                                     <button id="newSize" type="button" class="col-md-9 btn btn-success" style="display: none;">افزودن اندازه های جدید</button>
                                     <input type="hidden" value="" id="modelId" name="modelId">
+                                    <input type="hidden" value="" id="title" name="title">
                                 </div>
                             </div>
 
@@ -171,26 +172,40 @@
         <script>
             function appendToChange()
             {
-                $('#change').append
-                (
-                    "<div id='child' dir='ltr'>"+
-                    "<br/><br/>"+
+                if($('#title').val() != '')
+                {
+                    $('#change').append
+                    (
+                        "<div id='child' dir='ltr'>"+
+                        "<br/><br/>"+
                         "<div class='col-md-2 col-sm-9 col-xs-12'>"+
-                        "<input id='unit' class='form-control col-md-6 col-xs-6 required' name='sideways[] ' value='0' placeholder='اندازه یک ضلع' required='required' type='text'>"+
+                        "<input id='unit' class='form-control col-md-6 col-xs-6 required side' name='sideways[] ' value='0' placeholder='اندازه یک ضلع' required='required' type='text'>"+
                         "</div>"+
                         "<div class='col-md-2 col-sm-9 col-xs-12'>"+
-                        "<input id='unit' class='form-control col-md-6 col-xs-6 required' placeholder='قطر' value='0'  name='diameter[]' required='required' type='text'>"+
+                        "<input id='unit' class='form-control col-md-6 col-xs-6 required circle' placeholder='قطر' value='0'  name='diameter[]' required='required' type='text'>"+
                         "</div>"+
                         "<div class='col-md-2 col-sm-9 col-xs-12'>"+
-                        "<input id='unit' class='form-control col-md-6 col-xs-6 required' name='width[]' value='0'  placeholder='عرض' required='required' type='text'>"+
+                        "<input id='unit' class='form-control col-md-6 col-xs-6 required rectangle' name='width[]' value='0'  placeholder='عرض' required='required' type='text'>"+
                         "</div>"+
                         "<div class='col-md-3 col-sm-9 col-xs-12'>"+
-                        "<input id='unit' class='form-control col-md-6 col-xs-6 required' name='length[]' value='0'  placeholder='طول' required='required' type='text'>"+
+                        "<input id='unit' class='form-control col-md-6 col-xs-6 required rectangle' name='length[]' value='0'  placeholder='طول' required='required' type='text'>"+
                         "</div>"+
                         "<label class='control-label col-md-3 col-sm-4 col-xs-3' for='name'>لیست اندازه های جدید   :"+
                         "<span class='star' title='پر کردن این فیلد الزامی است'>*</span>"+
                         "</label>"
-                );
+                    );
+                }else
+                    {
+                        swal
+                        ({
+                            title: '',
+                            text: 'ابتدا حالتی را انتخاب نمائید سپس دکمه افزودن فیلد را بزنید',
+                            type: 'warning',
+                            confirmButtonText: "بستن"
+                        });
+                        return false;
+                    }
+
             }
 
         </script>
@@ -217,12 +232,6 @@
 
         </script>
 
-        <!--below script is related to define model id -->
-        <script>
-            $(function(){
-
-            })
-        </script>
 
 
 
@@ -230,9 +239,11 @@
         <script>
             $(document).on('click','#reg',function(){
                 var option = '';
-
+                var title  = '';
                 $("[name = 'models']option:selected").each(function(){
                     $('#modelId').val($(this).attr('content'));
+                    title += $(this).val();
+
                 })
                 var id = $('#modelId').val();
                // alert(id);
@@ -264,6 +275,61 @@
                             });
                             return false;
                         }
+                        if(title == 'مستطیل') {
+                            $(".rectangle").each(function () {
+                                if ($(this).val() == 0) {
+                                    $(this).css("border-color", "red");
+                                    counter++;
+                                }
+                            });
+                            if (counter > 0) {
+                                swal
+                                ({
+                                    title: '',
+                                    text: 'با توجه به اینکه حالت '+title+' را انتخاب نموده اید باید اندازه های طول و عرض را وارد نمایید',
+                                    type: 'warning',
+                                    confirmButtonText: "بستن"
+                                })
+                                return false;
+                            }
+                        }
+                        if(title ==  'مربع' || title== 'مثلث') {
+                            $(".side").each(function () {
+                                if ($(this).val() == 0) {
+                                    $(this).css("border-color", "red");
+                                    counter++;
+                                }
+                            });
+                            if (counter > 0) {
+                                swal
+                                ({
+                                    title: '',
+                                    text: 'با توجه به اینکه حالت '+title+' را انتخاب نموده اید باید اندازه ی یک ضلع را وارد نمایید',
+                                    type: 'warning',
+                                    confirmButtonText: "بستن"
+                                })
+                                return false;
+                            }
+                        }
+                        if(title ==  'دایره') {
+                            $(".circle").each(function () {
+                                if ($(this).val() == 0) {
+                                    $(this).css("border-color", "red");
+                                    counter++;
+                                }
+                            });
+                            if (counter > 0) {
+                                swal
+                                ({
+                                    title: '',
+                                    text: 'با توجه به اینکه حالت '+title+' را انتخاب نموده اید باید اندازه ی قطر را وارد نمایید',
+                                    type: 'warning',
+                                    confirmButtonText: "بستن"
+                                })
+                                return false;
+                            }
+                        }
+
                     },
                     success  : function(res) {
                         if (res.code == 1)
@@ -311,7 +377,7 @@
                                             item.css('display', 'block');
                                             $('#sideways').append
                                             (
-                                                "<option>" + response[i].sideways + "</option>"
+                                                "<option >" + response[i].sideways + "</option>"
                                             );
                                             $('#diameter').append
                                             (
@@ -349,6 +415,7 @@
                 $(document).on('change','#models',function(){
                     $("[name = 'models' ]:selected ").each(function () {
                         var id = $(this).attr('content');
+                        $('#title').val($(this).val());
                         if(id != null || id != '')
                         {
                             $.ajax
@@ -435,5 +502,70 @@
                 $('#change').empty();
                 appendToChange();
             });
+        </script>
+        <!-- below script is to check model and size of them -->
+        <script>
+            function checkModelSize(title)
+            {
+                return false;
+                var counter = 0;
+                if(title == 'مستطیل')
+                {
+                    $(".rec").each(function() {
+                        if ($(this).val() == 0) {
+                            $(this).css("border-color" , "red");
+                            counter++;
+                        }
+                    });
+                        if(counter > 0)
+                        {
+                            swal
+                            ({
+                                title: '',
+                                text: 'با توجه به اینکه حالت مستطیل را انتخاب نموده اید باید اندازه های طول و عرض را وارد نمایید',
+                                type:'warning',
+                                confirmButtonText: "بستن"
+                            })
+                            return false;
+                        }
+//                        else
+//                            {
+//                                return true;
+//                            }
+               }
+// else if(title == 'مربع' || title== 'مثلث')
+//                {
+//                    if($('#sideways').val() == 0 )
+//                    {
+//                        swal
+//                        ({
+//                            title: '',
+//                            text: 'با توجه به اینکه حالت مربع را انتخاب نموده اید باید اندازه ی یک ضلع را وارد نمایید',
+//                            type:'warning',
+//                            confirmButtonText: "بستن"
+//                        });
+//                        return false;
+//                    }else
+//                    {
+//                        return true;
+//                    }
+//                }else if(title == 'دایره')
+//                {
+//                    if($('#diameter').val() == 0 )
+//                    {
+//                        swal
+//                        ({
+//                            title: '',
+//                            text: 'با توجه به اینکه حالت دایره را انتخاب نموده اید باید اندازه ی قطر را وارد نمایید',
+//                            type:'warning',
+//                            confirmButtonText: "بستن"
+//                        });
+//                        return false;
+//                    }else
+//                    {
+//                        return true;
+//                    }
+//                }
+            }
         </script>
 @endsection

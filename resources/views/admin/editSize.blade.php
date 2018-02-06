@@ -7,6 +7,7 @@
             <div class="x_panel">
                 <div class="x_title">
                     <h2>ویرایش سایز: <strong style="color: red;">{{$title}}</strong>  </h2>
+                    <input type="hidden" id="title" value="{{$title}}">
                     <ul class="nav navbar-right panel_toolbox">
                         <li><a class="collapse-link" data-toggle="tooltip" title="جمع کردن"><i
                                         class="fa fa-chevron-up"></i></a>
@@ -44,10 +45,10 @@
                             {{--@foreach($categoryInfo as $category)--}}
                             <tr class="unit">
                                 <td style="font-size: 120%;">{{++$i}}</td>
-                                <td class="col-md-2 "><input  class="form-control" style="width: 100%;" id="length" name="title" value="{{$data[0]->length}}"></td>
-                                <td class="col-md-2 "><input  class="form-control" style="width: 100%;" id="width" name="title" value="{{$data[0]->width}}"></td>
-                                <td class="col-md-2 "><input  class="form-control" style="width: 100%;" id="diameter" name="title" value="{{$data[0]->diameter}}"></td>
-                                <td class="col-md-2 "><input  class="form-control" style="width: 100%;" id="sideways" name="title" value="{{$data[0]->sideways}}"></td>
+                                <td class="col-md-2 "><input  class="form-control required rectangle" style="width: 100%;" id="length" name="length" value="{{$data[0]->length}}"></td>
+                                <td class="col-md-2 "><input  class="form-control required rectangle" style="width: 100%;" id="width" name="width" value="{{$data[0]->width}}"></td>
+                                <td class="col-md-2 "><input  class="form-control required circle" style="width: 100%;" id="diameter" name="diameter" value="{{$data[0]->diameter}}"></td>
+                                <td class="col-md-2 "><input  class="form-control required side" style="width: 100%;" id="sideways" name="sideways" value="{{$data[0]->sideways}}"></td>
                                 @if($data[0]->active == 1)
                                     <td><a id="active" content="{{$data[0]->active}}" name="{{$data[0]->id}}" type="button"  data-content="غیر فعال" class="btn btn-danger col-md-8 col-md-offset-2" >غیر فعال</a></td>
                                 @endif
@@ -74,6 +75,7 @@
                 var sideways  = $('#sideways').val();
                 var id     = $('#id').val();
                 var token  = $('#token').val();
+                var title  = $('#title').val();
                 $.ajaxSetup({
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -87,7 +89,7 @@
                         confirmButtonColor: "	#5cb85c",
                         cancelButtonText: "خیر",
                         confirmButtonText: "آری",
-                        closeOnConfirm: true,
+                        closeOnConfirm: false,
                         closeOnCancel: true
                     },
                     function (isConfirm) {
@@ -100,17 +102,78 @@
                                 type: "post",
                                 dataType: "JSON",
                                 beforeSend: function () {
-                                    if ($('#sideways').val() == null || $('#sideways').val() == '') {
-                                        $('#title').css('border-color', 'red');
-                                        $('#title').focus();
-                                        swal({
-                                            title: "",
-                                            text: 'پر کردن عنوان سایز الزامی است',
-                                            type: "warning",
-                                            confirmButtonText: "بستن"
-                                        });
-                                        return false;
+                                    var counter = 0;
+                                    if ($('#sideways').val() == null || $('#sideways').val() == '' || $('#diameter').val() == null || $('#diameter').val() == '' || $('#width').val() == null || $('#width').val() == '' || $('#length').val() == null || $('#length').val() == '') {
+                                        $('.required').each(function () {
+                                            if ($(this).val() == '') {
+                                                $(this).css("border-color", "red");
+                                                counter++;
+                                            }
+                                        })
+                                        if (counter > 0) {
+                                            swal({
+                                                title: "",
+                                                text: 'هیچ کدام از اندازه ها نباید خالی باشند ، در صورت عدم نیاز به اندازه مربوطه مقدار آن را برابر با صفر قرار دهید',
+                                                type: "warning",
+                                                confirmButtonText: "بستن"
+                                            });
+                                            return false;
+                                        }
                                     }
+                                        if(title == 'مستطیل') {
+                                            $(".rectangle").each(function () {
+                                                if ($(this).val() == 0) {
+                                                    $(this).css("border-color", "red");
+                                                    counter++;
+                                                }
+                                            });
+                                            if (counter > 0) {
+                                                swal
+                                                ({
+                                                    title: '',
+                                                    text: 'با توجه به اینکه حالت '+title+' را انتخاب نموده اید باید اندازه های طول و عرض را وارد نمایید',
+                                                    type: 'warning',
+                                                    confirmButtonText: "بستن"
+                                                })
+                                                return false;
+                                            }
+                                        }
+                                        if(title ==  'مربع' || title== 'مثلث') {
+                                            $(".side").each(function () {
+                                                if ($(this).val() == 0) {
+                                                    $(this).css("border-color", "red");
+                                                    counter++;
+                                                }
+                                            });
+                                            if (counter > 0) {
+                                                swal
+                                                ({
+                                                    title: '',
+                                                    text: 'با توجه به اینکه حالت '+title+' را انتخاب نموده اید باید اندازه ی یک ضلع را وارد نمایید',
+                                                    type: 'warning',
+                                                    confirmButtonText: "بستن"
+                                                })
+                                                return false;
+                                            }
+                                        }
+                                        if(title ==  'دایره') {
+                                            $(".circle").each(function () {
+                                                if ($(this).val() == 0) {
+                                                    $(this).css("border-color", "red");
+                                                    counter++;
+                                                }
+                                            });
+                                            if (counter > 0) {
+                                                swal
+                                                ({
+                                                    title: '',
+                                                    text: 'با توجه به اینکه حالت '+title+' را انتخاب نموده اید باید اندازه ی قطر را وارد نمایید',
+                                                    type: 'warning',
+                                                    confirmButtonText: "بستن"
+                                                })
+                                                return false;
+                                            }
+                                        }
                                 },
                                 success: function (response) {
                                     if (response.code == 1) {

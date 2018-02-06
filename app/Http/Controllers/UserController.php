@@ -468,10 +468,13 @@ class UserController extends Controller
                 $newOrders->width         = trim($request->width);
                 $newOrders->length        = trim($request->length);
                 $newOrders->description   = trim($request->description);
-                $file = $request->file[0];
-                $src = $file->getClientOriginalName();
-                $file->move('public/dashboard/orderImages/', $src);
-                $newOrders->file = $request->file[0]->getClientOriginalName();
+                if(!empty($request->file[0]))
+                {
+                    $file = $request->file[0];
+                    $src = $file->getClientOriginalName();
+                    $file->move('public/dashboard/orderImages/', $src);
+                    $newOrders->file = $request->file[0]->getClientOriginalName();
+                }
                 $newOrders->save();
                 if($newOrders)
                 {
