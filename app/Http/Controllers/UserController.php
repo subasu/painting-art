@@ -10,6 +10,7 @@ use App\Models\Basket;
 use App\Models\NewOrders;
 use App\Models\Order;
 use App\Models\Product;
+use App\Models\Size;
 use App\User;
 use Carbon\Carbon;
 use Hekmatinasser\Verta\Verta;
@@ -478,13 +479,41 @@ class UserController extends Controller
                 $newOrders->save();
                 if($newOrders)
                 {
-                    return response()->json(['message' => 'اطلاعات شما با موفقیت ثبت گردید' , 'code' => 'success']);
+                    return response()->json(['message' => 'سفارش شما با موفقیت ثبت گردید ، برای پیگیری سفارش به منوی پیگیری سفارشات مراجعه فرمائید' , 'code' => 'success']);
                 }else
                     {
                         return response()->json(['message' => 'در ثبت اطلاعات خطایی رخ داده است ، لطفا با بخش پشتیبانی تماس بگیرید' , 'code' => 'error']);
                     }
             }
         }
+    }
+
+    //below function is related to check length
+    public function checkLength(Request $request)
+    {
+        $data = Size::where([['length',$request->len],['active',1]])->pluck('width');
+        if(count($data) > 0)
+        {
+            return response()->json(['data' => $data]);
+        }else
+            {
+                return response()->json('0');
+            }
+
+    }
+
+    //below function is related to check width
+    public function checkWidth(Request $request)
+    {
+        $data = Size::where([['width',$request->width],['active',1]])->pluck('length');
+        if(count($data) > 0)
+        {
+            return response()->json(['data' => $data]);
+        }else
+        {
+            return response()->json('0');
+        }
+
     }
 }
 

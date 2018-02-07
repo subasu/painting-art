@@ -110,6 +110,7 @@
                                     <button id="newSize" type="button" class="col-md-9 btn btn-success" style="display: none;">افزودن اندازه های جدید</button>
                                     <input type="hidden" value="" id="modelId" name="modelId">
                                     <input type="hidden" value="" id="title" name="title">
+                                    <input type="hidden" value="0" id="counter" name="counter">
                                 </div>
                             </div>
 
@@ -170,30 +171,80 @@
 
         <!-- below script is to append html element to change tag -->
         <script>
-            function appendToChange()
+            function appendToChange(title)
             {
-                if($('#title').val() != '')
+                if(title != '')
                 {
-                    $('#change').append
-                    (
-                        "<div id='child' dir='ltr'>"+
-                        "<br/><br/>"+
-                        "<div class='col-md-2 col-sm-9 col-xs-12'>"+
-                        "<input id='unit' class='form-control col-md-6 col-xs-6 required side' name='sideways[] ' value='0' placeholder='اندازه یک ضلع' required='required' type='text'>"+
-                        "</div>"+
-                        "<div class='col-md-2 col-sm-9 col-xs-12'>"+
-                        "<input id='unit' class='form-control col-md-6 col-xs-6 required circle' placeholder='قطر' value='0'  name='diameter[]' required='required' type='text'>"+
-                        "</div>"+
-                        "<div class='col-md-2 col-sm-9 col-xs-12'>"+
-                        "<input id='unit' class='form-control col-md-6 col-xs-6 required rectangle' name='width[]' value='0'  placeholder='عرض' required='required' type='text'>"+
-                        "</div>"+
-                        "<div class='col-md-3 col-sm-9 col-xs-12'>"+
-                        "<input id='unit' class='form-control col-md-6 col-xs-6 required rectangle' name='length[]' value='0'  placeholder='طول' required='required' type='text'>"+
-                        "</div>"+
-                        "<label class='control-label col-md-3 col-sm-4 col-xs-3' for='name'>لیست اندازه های جدید   :"+
-                        "<span class='star' title='پر کردن این فیلد الزامی است'>*</span>"+
-                        "</label>"
-                    );
+                    if(title == 'مستطیل')
+                    {
+                        $('#change').append
+                        (
+                            "<div id='child' dir='ltr'>"+
+                            "<br/><br/>"+
+                            "<div class='col-md-2 col-sm-9 col-xs-12'>"+
+                            "<input id='unit' class='form-control col-md-6 col-xs-6 required side' disabled name='sideways[] ' value='0' placeholder='اندازه یک ضلع' required='required' type='text'>"+
+                            "</div>"+
+                            "<div class='col-md-2 col-sm-9 col-xs-12'>"+
+                            "<input id='unit' class='form-control col-md-6 col-xs-6 required circle' disabled placeholder='قطر' value='0'  name='diameter[]' required='required' type='text'>"+
+                            "</div>"+
+                            "<div class='col-md-2 col-sm-9 col-xs-12'>"+
+                            "<input id='unit' class='form-control col-md-6 col-xs-6 required rectangle' name='width[]'   placeholder='عرض' required='required' type='text'>"+
+                            "</div>"+
+                            "<div class='col-md-3 col-sm-9 col-xs-12'>"+
+                            "<input id='unit' class='form-control col-md-6 col-xs-6 required rectangle' name='length[]'   placeholder='طول' required='required' type='text'>"+
+                            "</div>"+
+                            "<label class='control-label col-md-3 col-sm-4 col-xs-3' for='name'>لیست اندازه های جدید   :"+
+                            "<span class='star' title='پر کردن این فیلد الزامی است'>*</span>"+
+                            "</label>"
+                        );
+                    }
+                    if(title == 'مثلث' || title == 'مربع')
+                    {
+                        $('#change').append
+                        (
+                            "<div id='child' dir='ltr'>"+
+                            "<br/><br/>"+
+                            "<div class='col-md-2 col-sm-9 col-xs-12'>"+
+                            "<input id='unit' class='form-control col-md-6 col-xs-6 required side'  name='sideways[] '  placeholder='اندازه یک ضلع' required='required' type='text'>"+
+                            "</div>"+
+                            "<div class='col-md-2 col-sm-9 col-xs-12'>"+
+                            "<input id='unit' class='form-control col-md-6 col-xs-6 required circle' disabled placeholder='قطر' value='0'  name='diameter[]' required='required' type='text'>"+
+                            "</div>"+
+                            "<div class='col-md-2 col-sm-9 col-xs-12'>"+
+                            "<input id='unit' class='form-control col-md-6 col-xs-6 required rectangle' disabled name='width[]' value='0'  placeholder='عرض' required='required' type='text'>"+
+                            "</div>"+
+                            "<div class='col-md-3 col-sm-9 col-xs-12'>"+
+                            "<input id='unit' class='form-control col-md-6 col-xs-6 required rectangle' disabled name='length[]' value='0'  placeholder='طول' required='required' type='text'>"+
+                            "</div>"+
+                            "<label class='control-label col-md-3 col-sm-4 col-xs-3' for='name'>لیست اندازه های جدید   :"+
+                            "<span class='star' title='پر کردن این فیلد الزامی است'>*</span>"+
+                            "</label>"
+                        );
+                    }
+                    if(title == 'دایره')
+                    {
+                        $('#change').append
+                        (
+                            "<div id='child' dir='ltr'>"+
+                            "<br/><br/>"+
+                            "<div class='col-md-2 col-sm-9 col-xs-12'>"+
+                            "<input id='unit' class='form-control col-md-6 col-xs-6 required side' disabled name='sideways[] ' value='0' placeholder='اندازه یک ضلع' required='required' type='text'>"+
+                            "</div>"+
+                            "<div class='col-md-2 col-sm-9 col-xs-12'>"+
+                            "<input id='unit' class='form-control col-md-6 col-xs-6 required circle'  placeholder='قطر'   name='diameter[]' required='required' type='text'>"+
+                            "</div>"+
+                            "<div class='col-md-2 col-sm-9 col-xs-12'>"+
+                            "<input id='unit' class='form-control col-md-6 col-xs-6 required rectangle' disabled name='width[]' value='0'  placeholder='عرض' required='required' type='text'>"+
+                            "</div>"+
+                            "<div class='col-md-3 col-sm-9 col-xs-12'>"+
+                            "<input id='unit' class='form-control col-md-6 col-xs-6 required rectangle' disabled name='length[]' value='0'  placeholder='طول' required='required' type='text'>"+
+                            "</div>"+
+                            "<label class='control-label col-md-3 col-sm-4 col-xs-3' for='name'>لیست اندازه های جدید   :"+
+                            "<span class='star' title='پر کردن این فیلد الزامی است'>*</span>"+
+                            "</label>"
+                        );
+                    }
+
                 }else
                     {
                         swal
@@ -213,7 +264,8 @@
         <!-- below script is to append input type -->
         <script>
             $(document).on('click','#addInput',function () {
-                appendToChange();
+                var title = $('#title').val();
+                appendToChange(title);
             })
         </script>
 
@@ -395,6 +447,7 @@
                                         }
                                         $('#reg').css('display','none');
                                         $('#newSize').css('display','block');
+                                        handleSelectBox(title);
                                     }
                                 },error : function(error)
                                 {
@@ -416,6 +469,7 @@
                     $("[name = 'models' ]:selected ").each(function () {
                         var id = $(this).attr('content');
                         $('#title').val($(this).val());
+                        var title = $('#title').val();
                         if(id != null || id != '')
                         {
                             $.ajax
@@ -473,6 +527,7 @@
                                         }
                                         $('#newSize').css('display','block');
                                         $('#reg').css('display','none');
+                                        handleSelectBox(title);
                                     }else
                                         {
                                             $('#change1').css('display','none');
@@ -480,7 +535,7 @@
                                             $('#newSize').css('display','none');
                                             $('#reg').css('display','block');
                                             $('#change').empty();
-                                            appendToChange();
+                                            appendToChange(title);
                                         }
                                 },
                                 error    : function(error)
@@ -496,76 +551,38 @@
         <!-- below script is related to handle newSize button -->
         <script>
             $(document).on('click','#newSize',function(){
+                var title = $('#title').val();
                $('#change').css('display','block');
                $('#newSize').css('display','none');
                 $('#reg').css('display','block');
                 $('#change').empty();
-                appendToChange();
+                appendToChange(title);
             });
         </script>
-        <!-- below script is to check model and size of them -->
         <script>
-            function checkModelSize(title)
+            function handleSelectBox(title)
             {
-                return false;
-                var counter = 0;
                 if(title == 'مستطیل')
                 {
-                    $(".rec").each(function() {
-                        if ($(this).val() == 0) {
-                            $(this).css("border-color" , "red");
-                            counter++;
-                        }
-                    });
-                        if(counter > 0)
-                        {
-                            swal
-                            ({
-                                title: '',
-                                text: 'با توجه به اینکه حالت مستطیل را انتخاب نموده اید باید اندازه های طول و عرض را وارد نمایید',
-                                type:'warning',
-                                confirmButtonText: "بستن"
-                            })
-                            return false;
-                        }
-//                        else
-//                            {
-//                                return true;
-//                            }
-               }
-// else if(title == 'مربع' || title== 'مثلث')
-//                {
-//                    if($('#sideways').val() == 0 )
-//                    {
-//                        swal
-//                        ({
-//                            title: '',
-//                            text: 'با توجه به اینکه حالت مربع را انتخاب نموده اید باید اندازه ی یک ضلع را وارد نمایید',
-//                            type:'warning',
-//                            confirmButtonText: "بستن"
-//                        });
-//                        return false;
-//                    }else
-//                    {
-//                        return true;
-//                    }
-//                }else if(title == 'دایره')
-//                {
-//                    if($('#diameter').val() == 0 )
-//                    {
-//                        swal
-//                        ({
-//                            title: '',
-//                            text: 'با توجه به اینکه حالت دایره را انتخاب نموده اید باید اندازه ی قطر را وارد نمایید',
-//                            type:'warning',
-//                            confirmButtonText: "بستن"
-//                        });
-//                        return false;
-//                    }else
-//                    {
-//                        return true;
-//                    }
-//                }
+                    $('#sideways').prop('disabled',true);
+                    $('#diameter').prop('disabled',true);
+                    $('#length').prop('disabled',false);
+                    $('#width').prop('disabled',false);
+                }
+                if(title == 'مربع' || title == 'مثلث')
+                {
+                    $('#length').prop('disabled',true);
+                    $('#width').prop('disabled',true);
+                    $('#diameter').prop('disabled',true);
+                    $('#sideways').prop('disabled',false);
+                }
+                if(title == 'دایره')
+                {
+                    $('#length').prop('disabled',true);
+                    $('#width').prop('disabled',true);
+                    $('#sideways').prop('disabled',true);
+                    $('#diameter').prop('disabled',false);
+                }
             }
         </script>
 @endsection

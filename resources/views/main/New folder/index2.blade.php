@@ -38,7 +38,7 @@
     linkage();
 
     //start nivo slider
-    $('#slider').nivoSlider();
+//    $('#slider').nivoSlider();
 
     //function that handles blog list post animation and linking
     blogListPost();
@@ -52,17 +52,18 @@
 
 <!-- home background -->
 <div class="full-width-background">
-    <img src="images/backgrounds/grey.jpg" alt="grey" />
+    <img src="{{url('public/main/images/backgrounds/grey.jpg')}}" alt="grey" />
 </div>
 <!-- home background -->
-
 <!-- nivo slider -->
 <div class="slider-wrapper theme-default" id="home">
     <div id="slider" class="nivoSlider">
-        <img src="images/full-images/9.jpg" alt="" title="This is an example of a caption" />
-        <img src="images/full-images/6.jpg" alt="" title="This is an example of a caption" />
-        <img src="images/full-images/8.jpg" alt="" title="This is an example of a caption" />
-        <img src="images/full-images/10.jpg" alt="" title="This is an example of a caption" />
+        <img src="{{url('public/main/images/backgrounds/grey.jpg')}}" alt="grey" />
+        <img src="{{url('public/main/images/backgrounds/grey.jpg')}}" alt="grey" />
+
+        {{--        @foreach($sliders as $slide)--}}
+{{--        <img src="{{url('public/dashboard/sliderImages/')}}{{'/'.$slide->image_src}}" alt="{{$slide->title}}" title="{{$slide->title}}" />--}}
+        {{--@endforeach--}}
     </div>
     <div id="htmlcaption" class="nivo-html-caption">
         <strong>این </strong> یک مثال است <em>HTML</em> با عنوان <a href="#">یک لینک</a>. 
@@ -87,7 +88,7 @@
         <!-- multiple columns and icons -->
         <div class="row" style="margin-bottom:0px">
             <div class="about-circle four columns alpha centered">
-                <img class="full-width-image" src="images/1-circle.png" alt="circle-1" />
+                {{--<img class="full-width-image" src="images/1-circle.png" alt="circle-1" />--}}
                 <h5 class="circle-heading">لورم ایپسوم</h5>
                 <p>
                     لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد
@@ -95,7 +96,7 @@
             </div>
 
             <div class="about-circle four columns centered">
-                <img class="full-width-image" src="images/2-circle.png" alt="circle-2" />
+                {{--<img class="full-width-image" src="images/2-circle.png" alt="circle-2" />--}}
                 <h5 class="circle-heading">پشتیبانی از سرویس ابر</h5>
                 <p>
                     لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد
@@ -103,7 +104,7 @@
             </div>
 
             <div class="about-circle four columns centered">
-                <img class="full-width-image" src="images/3-circle.png" alt="circle-3" />
+                {{--<img class="full-width-image" src="images/3-circle.png" alt="circle-3" />--}}
                 <h5 class="circle-heading">لورم ایپسوم</h5>
                 <p>
                     لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد
@@ -111,7 +112,7 @@
             </div>
 
             <div class="about-circle four columns omega centered">
-                <img class="full-width-image" src="images/4-circle.png" alt="circle-4" />
+                {{--<img class="full-width-image" src="images/4-circle.png" alt="circle-4" />--}}
                 <h5 class="circle-heading">همه تحت حفاظت ما</h5>
                 <p>
                     لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد

@@ -28,7 +28,18 @@ class SizeController extends Controller
     //below function is related to add new size in data base
     public function addNewSize(Request $request)
     {
-        $count = count($request->sideways);
+        $count = 0;
+        if($request->title == 'مستطیل')
+        {
+            $count += count($request->length);
+        }elseif($request->title == 'مثلث' || $request->title == 'مربع')
+        {
+            $count += count($request->sideways);
+        }
+        elseif($request->title == 'دایره')
+        {
+            $count += count($request->diameter);
+        }
         $i = 0;
         while($i < $count)
         {

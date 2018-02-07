@@ -10,7 +10,7 @@ Contact - info@roussounelosweb.gr
 */
 
 //Main configuration
-var hexDigits = new Array("0","1","2","3","4","5","6","7","8","9","a","b","c","d","e","f"); 
+var hexDigits = new Array("0","1","2","3","4","5","6","7","8","9","a","b","c","d","e","f");
 var menuVisible = true;
 var windowHeight = document.documentElement.clientHeight;
 var windowWidth = document.documentElement.clientWidth;
@@ -27,7 +27,7 @@ var videoWidth = 640;
 var hoverColor = "9c0606";
 
 $(window).load(function(){
-	
+
 	//start the intro
 	intro();
 
@@ -40,7 +40,7 @@ $(window).resize(function() {
 
 	//readjust gallery, simple portfolio images - performance hit on resize :-(
 	//autoImageAdjust();
-						  
+
 });
 
 //me
@@ -55,12 +55,13 @@ function loadHash(){
 	if (pageHash.length > 1) {
 		anchorage = pageHash.split("#")[1];
 		//loadContents(anchorage);console.log(pageHash);
-        loadContents('test')
-        console.log('ds')
+        loadContents('404');
 	}
 	else
 	{
-		loadContents('404');}
+		loadContents('404');
+		console.log('40/4');
+	}//load home page
 
 }
 
@@ -174,13 +175,13 @@ function portfolioClicked(){
 	var playlistOn = false;
 	var playlist;
 
-	$(".masonryImage, .simpleImage").on("click", function(evt){ 
+	$(".masonryImage, .simpleImage").on("click", function(evt){
 
 		evt.preventDefault();
 		evt.stopPropagation();
 
 		showItem($(this));
-		
+
 	});
 
 	function showItem(thiss){
@@ -225,7 +226,7 @@ function portfolioClicked(){
 		//if item is not a video, adjust the width and height
 		if(thisItem.hasClass("video")){
 
-			newitem.css({"width":videoWidth+"px", "height":videoHeight+"px"});	
+			newitem.css({"width":videoWidth+"px", "height":videoHeight+"px"});
 
 		}
 		else{
@@ -416,13 +417,13 @@ function galleryClicked(){
 	var playlistOn = false;
 	var playlist;
 
-	$(".galleryImage").on("click", function(evt){ 
+	$(".galleryImage").on("click", function(evt){
 
 		evt.preventDefault();
 		evt.stopPropagation();
 
 		showItem($(this));
-		
+
 	});
 
 	function showItem(thiss){
@@ -453,7 +454,7 @@ function galleryClicked(){
 		if(newitem.width() > newitem.height()){
 
 			newitem.css({"width":"80%", "height":"auto"});
-			
+
 			if(newitem.height() >= 0.8 * windowHeight)
 				newitem.css({"height":"80%", "width":"auto"});
 
@@ -718,31 +719,31 @@ function prepareGallery(){
 		//add an icon according to its class
 		if(innerImg.hasClass("image")){
 
-			$(this).append("<img src='images/image.png' alt='image' class='icon' />");
+			$(this).append("<img src='public/main/images/image.png' alt='image' class='icon' />");
 
 		}
 
 		if(innerImg.hasClass("video")){
 
-			$(this).append("<img src='images/video.png' alt='video' class='icon' />");
+			$(this).append("<img src='public/main/images/video.png' alt='video' class='icon' />");
 
 		}
 
 		if(innerImg.hasClass("music")){
 
-			$(this).append("<img src='images/music.png' alt='music' class='icon' />");
+			$(this).append("<img src='public/main/images/music.png' alt='music' class='icon' />");
 
 		}
 
 		if(innerImg.hasClass("link")){
 
-			$(this).append("<img src='images/link.png' alt='link' class='icon' />");
+			$(this).append("<img src='public/main/images/link.png' alt='link' class='icon' />");
 
 		}
 
 		if(innerImg.hasClass("blog")){
 
-			$(this).append("<img src='images/blog.png' alt='blog' class='icon' />");
+			$(this).append("<img src='public/main/images/blog.png' alt='blog' class='icon' />");
 
 		}
 
@@ -767,7 +768,7 @@ function prepareGallery(){
 
 	});
 
-} 
+}
 
 //function that handles image items animation
 function animateImages(){
@@ -792,7 +793,7 @@ function animateImages(){
 			var hoverItem = $(this).children("#hover-item");
 
 			thisIcon.stop().animate({"opacity": "1", "margin-top":"-"+iconHeight-10+"px"},{duration:animationLength, easing:"easeInOutQuad"});
-			thisDescription.stop().animate({"opacity": "1", "margin-top":"10px"},{duration:animationLength, easing:"easeInOutQuad"});	
+			thisDescription.stop().animate({"opacity": "1", "margin-top":"10px"},{duration:animationLength, easing:"easeInOutQuad"});
 			hoverItem.stop().css("width","100%").animate({"opacity":"1", "right":"0px", "top":"0px", "height":thisHeight}, {duration:animationLength, easing:"easeInOutQuad"});
 
 		});
@@ -827,7 +828,7 @@ function animateImages(){
 
 				thisItem.stop().animate({"opacity": "0"},{duration:animationLength, easing:"easeInOutQuad"});
 				thisIcon.stop().animate({"opacity": "1", "margin-top":"-"+iconHeight-10+"px"},{duration:animationLength, easing:"easeInOutQuad"});
-				thisDescription.stop().animate({"opacity": "1", "margin-top":"10px"},{duration:animationLength, easing:"easeInOutQuad"});	
+				thisDescription.stop().animate({"opacity": "1", "margin-top":"10px"},{duration:animationLength, easing:"easeInOutQuad"});
 
 			}
 
@@ -845,8 +846,8 @@ function animateImages(){
 				thisDescription.stop().animate({"opacity": "0", "margin-top":"30px"},{duration:animationLength, easing:"easeInOutQuad"});
 
 			}
-			
-		});	
+
+		});
 
 	});
 
@@ -895,33 +896,33 @@ function animateImages(){
 function customScrollbar(){
 
 	$("#main-wrapper").mCustomScrollbar({
-	  set_width:false, 
-	  set_height:false, 
-	  horizontalScroll:false, 
-	  scrollInertia:550, 
-	  scrollEasing:"easeOutCirc", 
-	  mouseWheel:"auto", 
-	  autoDraggerLength:true, 
-	  scrollButtons:{ 
-	    enable:false, 
-	    scrollType:"continuous", 
-	    scrollSpeed:20, 
-	    scrollAmount:40 
+	  set_width:false,
+	  set_height:false,
+	  horizontalScroll:false,
+	  scrollInertia:550,
+	  scrollEasing:"easeOutCirc",
+	  mouseWheel:"auto",
+	  autoDraggerLength:true,
+	  scrollButtons:{
+	    enable:false,
+	    scrollType:"continuous",
+	    scrollSpeed:20,
+	    scrollAmount:40
 	  },
 	  advanced:{
-	    updateOnBrowserResize:true, 
-	    updateOnContentResize:false, 
-	    autoExpandHorizontalScroll:false, 
-	    autoScrollOnFocus:true 
+	    updateOnBrowserResize:true,
+	    updateOnContentResize:false,
+	    autoExpandHorizontalScroll:false,
+	    autoScrollOnFocus:true
 	  },
 	  callbacks:{
-	    onScrollStart:function(){}, 
-	    onScroll:function(){}, 
-	    onTotalScroll:function(){}, 
-	    onTotalScrollBack:function(){}, 
-	    onTotalScrollOffset:0, 
-	    whileScrolling:false, 
-	    whileScrollingInterval:30 
+	    onScrollStart:function(){},
+	    onScroll:function(){},
+	    onTotalScroll:function(){},
+	    onTotalScrollBack:function(){},
+	    onTotalScrollOffset:0,
+	    whileScrolling:false,
+	    whileScrollingInterval:30
 	  }
 	});
 
@@ -949,7 +950,7 @@ function responsive(){
 
 		$("#social-wrapper, #menu").css("display", "none");
 		$("#tablet-menu").css("display", "block");
-		
+
 	}
 	else{
 
@@ -1029,7 +1030,7 @@ function loadContents(anchorage){
 					});
 				else
 					animateBackFromAjax();
-				
+
 			});
 
 		}, animationLength+400);
@@ -1089,7 +1090,7 @@ function animateBackFromAjax(){
 			$("#menu-wrapper").stop().animate({"width":previousMenuDimensions + "px"},{duration:animationLength+200, easing:"easeInOutQuad", complete:function(){$("#menu-wrapper").css("width","")}});
 
 		$("#loader, #percentage").stop().animate({"opacity":"0"},{duration:animationLength, easing:"easeInOutQuad"});
-		
+
 		//when the entire animation's complete, run the appropriate inner page animation and add the custom scrollbar
 		animateThis();
 
@@ -1113,7 +1114,7 @@ function animateBackFromAjax(){
 
 			}});
 
-		}});		
+		}});
 
     });
 
@@ -1172,7 +1173,7 @@ function animateMenuItems(){
 
 	//on mouse enter
 	$(".menu-item").on("mouseenter", function(){
-	
+
 		var menuItem = $(this);
 
 		menuItem.children(".menu-background").stop().animate({"opacity": "1", "top":"-1px"},{duration:animationLength, easing:"easeOutQuad"});
@@ -1183,7 +1184,7 @@ function animateMenuItems(){
 
 	//on mouse leave
 	$(".menu-item").on("mouseleave", function(){
-	
+
 		var menuItem = $(this);
 
 		menuItem.children(".menu-background").stop().animate({"opacity": "0", "top":-menuWrapperHeight+"px"},{duration:animationLength, easing:"easeOutQuad"});
@@ -1198,30 +1199,30 @@ function animateMenuItems(){
 function inputTextFix(){
 
 	$("input[type='text'], input[type='password']").each(function(){
-			
+
 		//each time a user clicks on a input field
 		$(this).click(function(){
-						
+
 			//save the current value, if any
 			if($(this).attr("value")!=""){
-				
+
 				$(this).attr("previous_value", $(this).attr("value"));
-				$(this).attr("value","");   
-			
+				$(this).attr("value","");
+
 			}
 
 		});
-		
+
 		//on blur, if right empty, restore the saved value, if any
 		$(this).blur(function(){
-					
+
 			if($(this).attr("value") == "")
-				$(this).attr("value",$(this).attr("previous_value"));					  
-							  
+				$(this).attr("value",$(this).attr("previous_value"));
+
 		});
-										   
+
 	});
-	
+
 }
 
 //function that simply animates opacity of the social media icons
@@ -1289,7 +1290,7 @@ function intro(){
 
 	//animate social icons
 	animateSocialIcons();
-	
+
 	//Tipsy implementation
 	$('.with-tooltip').tipsy({gravity: $.fn.tipsy.autoNS, fade : true, offset:12});
 
@@ -1320,10 +1321,10 @@ function animationFinish(){
 
 	//make the animation progressively longer
 	var counter = 0;
-	
+
 	//split for smaller than 960px resolution - horizontal or vertical menu
 	if(windowWidth <= 960){
-		
+
 		var menuWrapperHeight = $("#menu-wrapper").height();
 
 		//animate the menu and main wrappers
@@ -1356,7 +1357,7 @@ function animationFinish(){
 
 				}});
 				counter++;
-				
+
 			});
 
 		}});
@@ -1369,59 +1370,59 @@ function animationFinish(){
 	    loadHash();
 
 	});
-	
+
 }
 
 //function that handles contact form basic validation
 function validateForm(){
-	
+
 	//user clicked the reser button; reset all settings
 	$("#clearForm").click(function(){
-		
-		$("#messageForm-contact").find("select, input, textarea").each(function(){						   
-		
+
+		$("#messageForm-contact").find("select, input, textarea").each(function(){
+
 			$(this).animate({opacity:'0.1'},{duration:800, queue:true, easing: 'easeInOutQuad', complete:function(){
-				
+
 				$(this).attr("value","");
 				$(this).animate({opacity:'1'},{duration:300, queue:true, easing: 'easeInOutQuad'});
-																										
+
 			}});
-			
+
 		});
-								   
+
 	});
-	
+
 	//variable that acts as a flag; if true, a validation error occured
 	var flag = "";
-	
+
 	$("#submitForm").click(function(){
-		
+
 		$("#loadingForm").css("display","inline"); //IE fix
 		$("#loadingForm").css("opacity","1");
-		
+
 		//nice fake loading animation trick; remove if it bothers you
 		$("#loadingForm").delay(2000).animate({opacity:'1'},{duration:10, easing: 'easeInOutQuad', complete:function(){
-		
+
 			flag = "";
 			$("#loadingForm").animate({opacity:'0'},{duration:100, easing: 'easeInOutQuad'});
 			$("#loadingForm").css("display","none"); //IE fix
-			
+
 			//get all required elements
 			$("#messageForm-contact").find("*.required").each(function(){
-				
+
 				$(this).removeClass("error");
-				
+
 				//if any of them is null
 				if($(this).val().length == 0){
-				
+
 					$(this).addClass("error");
 					$(this).stop().animate({opacity:'1'},{duration:animationLength, easing: 'easeInOutQuad'});
-					
+
 					//validation error
 					flag += "Form field <strong>"+$(this).attr("name")+"</strong> is empty, please give a value<br />";
-					
+
 				}
-																				 
+
 			});
 
 			//email validation
@@ -1430,15 +1431,15 @@ function validateForm(){
 
 			if(!emailReg.test(emailValue))
 				flag += "Not a valid <strong>email</strong>! Please try again<br />";
-			
+
 			if(flag=="") {
-				
+
 					//submit form via ajax
 				    var dataString = 'name='+ $("#name").attr("value") + '&email=' + $("#email").attr("value") + '&subject=' + $("#subject").attr("value")  + '&message=' + $("#message").attr("value");
-				    //alert (dataString);return false;  
-				    $.ajax({  
-				      type: "POST",  
-				      url: "php/mail.php",  
+				    //alert (dataString);return false;
+				    $.ajax({
+				      type: "POST",
+				      url: "php/mail.php",
 				      data: dataString,
 				      error: function(xhr, ajaxOptions, thrownError){
 
@@ -1466,24 +1467,24 @@ function validateForm(){
 						$("#contact-notice").stop().animate({opacity:'1'},{duration:animationLength, easing: 'easeInOutQuad'});
 				        $("#contact-notice").html(data[1]);
 
-				      });  
-				    
+				      });
+
 			}
 			else {
-			
+
 				//validation errors, alert
 				$("#contact-notice").css("opacity","0.3");
 				$("#contact-notice").removeClass("ok notice alert error");
 				$("#contact-notice").addClass("error");
 				$("#contact-notice").html(flag);
 				$("#contact-notice").stop().animate({opacity:'1'},{duration:animationLength, easing: 'easeInOutQuad'});
-				
+
 			}
-			
+
 		}});
-									
+
 	});
-	
+
 }
 
 //function that handles normal clicks
@@ -1663,5 +1664,5 @@ function filterGalleryImages(){
 			});
 
 	});
-	
+
 }

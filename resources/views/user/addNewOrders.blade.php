@@ -59,6 +59,8 @@
                                 <li><a class="close-link" data-toggle="tooltip" title="بستن"  ><i class="fa fa-close"></i></a>
                                 </li>
                             </ul>
+                            <button class="btn btn-info col-md-6 col-md-offset-2" style="font-size: 120%;"  onclick="window.location.reload(true);">در صورت بروز مشکل در انتخاب اندازه و حالت اینجا را کلیک نمائید</button>
+
                             <div class="clearfix"></div>
                         </div>
                         <div class="x_content">
@@ -121,6 +123,7 @@
                                     <div class="col-md-12">
                                         <button type="button" id="saveNewOrder" class="btn btn-success col-md-12" style="font-size:20px;">ثبت سفارش</button>
                                         <input type="hidden" id="status" value="0">
+                                        <input type="hidden" id="type" value="0">
                                     </div>
                                 </div>
                             </form>
@@ -166,6 +169,8 @@
                 $(document).on('change','#models',function(){
                     $("[name = 'models' ]:selected ").each(function () {
                         var id = $(this).attr('id');
+                        $('#type').val($(this).val());
+                        var type = $('#type').val();
                         if(id != null || id != '')
                         {
                             $.ajax
@@ -211,24 +216,25 @@
                                                 item.css('display','block');
                                                 $('#sideways').append
                                                 (
-                                                    "<option >" + response[i].sideways + "</option>"
+                                                    "<option id='side' name='side'>" + response[i].sideways + "</option>"
                                                 );
                                                 $('#diameter').append
                                                 (
-                                                    "<option >" + response[i].diameter + "</option>"
+                                                    "<option id='dia' name='dia'>" + response[i].diameter + "</option>"
                                                 );
                                                 $('#width').append
                                                 (
-                                                    "<option >" + response[i].width + "</option>"
+                                                    "<option id='wid' name='width1'>" + response[i].width + "</option>"
                                                 );
                                                 $('#length').append
                                                 (
-                                                    "<option >" + response[i].length + "</option>"
+                                                    "<option id='len' name='length1'>" + response[i].length + "</option>"
                                                 );
                                                 i++;
                                             }
                                             $('#myModal').modal('hide');
-                                        },5000);
+                                        },3000);
+                                        handleSelectBox(type);
 
                                     }else
                                         {
@@ -241,7 +247,7 @@
                                             $('#showMessage').show();
                                             setTimeout(function () {
                                                 $('#myModal').modal('hide');
-                                            },5000);
+                                            },3000);
 
                                         }
                                 },
@@ -362,6 +368,7 @@
                                type:'success',
                                confirmButtonText: "بستن"
                            });
+                           setTimeout(function(){window.location.reload(true);},3000);
                        }else
                            {
                                swal
@@ -386,5 +393,131 @@
                     }
                 });
             })
+        </script>
+        <script>
+            $(function(){
+
+                    $(document).on('change','#length',function(){
+                        if($('#type').val() == 'مستطیل')
+                        {
+                            $('[name = "length1"]:selected').each(function(){
+                                var len = $(this).val();
+                                $.ajax
+                                ({
+                                    url      : "{{url('user/checkLength')}}",
+                                    type     : "get",
+                                    data     : {'len' : len},
+                                    dataType : "json",
+                                    success  : function(response)
+                                    {
+                                        console.log(response);
+                                        if(response != 0)
+                                        {
+                                            $('#myModal').modal('show');
+                                            var length = response.data.length;
+                                            console.log(length);
+                                            $('#width').empty();
+                                            $('#width').append
+                                            (
+                                                "<option>عرض</option>"
+                                            );
+                                            var i = 0;
+                                            while(i < length)
+                                            {
+                                                $('#width').append
+                                                (
+                                                   "<option>"+response.data[i]+"</option>"
+                                                );
+                                                i++;
+                                            }
+                                            setTimeout(function () {
+                                                $('#myModal').modal('hide');
+                                            },3000);
+                                        }
+                                    },error  : function(error)
+                                    {
+                                        console.log(error);
+                                    }
+                                })
+                            })
+                        }
+                    })
+
+            })
+        </script>
+        <script>
+            $(function(){
+                $(document).on('change','#width',function(){
+                    if($('#type').val() == 'مستطیل')
+                    {
+                        $('[name = "width1"]:selected').each(function(){
+                            var width = $(this).val();
+                            $.ajax
+                            ({
+                                url      : "{{url('user/checkWidth')}}",
+                                type     : "get",
+                                data     : {'width' : width},
+                                dataType : "json",
+                                success  : function(response)
+                                {
+                                    console.log(response);
+                                    if(response != 0)
+                                    {
+                                        $('#myModal').modal('show');
+                                        var length = response.data.length;
+                                        console.log(length);
+                                        $('#length').empty();
+                                        $('#length').append
+                                        (
+                                            "<option>طول</option>"
+                                        );
+                                        var i = 0;
+                                        while(i < length)
+                                        {
+                                            $('#length').append
+                                            (
+                                                "<option>"+response.data[i]+"</option>"
+                                            );
+                                            i++;
+                                        }
+                                        setTimeout(function () {
+                                            $('#myModal').modal('hide');
+                                        },3000);
+                                    }
+                                },error  : function(error)
+                                {
+                                    console.log(error);
+                                }
+                            })
+                        })
+                    }
+                })
+            })
+        </script>
+        <script>
+            function handleSelectBox(type)
+            {
+                if(type == 'مستطیل')
+                {
+                    $('#sideways').prop('disabled',true);
+                    $('#diameter').prop('disabled',true);
+                    $('#length').prop('disabled',false);
+                    $('#width').prop('disabled',false);
+                }
+                if(type == 'مربع' || type == 'مثلث')
+                {
+                    $('#length').prop('disabled',true);
+                    $('#width').prop('disabled',true);
+                    $('#diameter').prop('disabled',true);
+                    $('#sideways').prop('disabled',false);
+                }
+                if(type == 'دایره')
+                {
+                    $('#length').prop('disabled',true);
+                    $('#width').prop('disabled',true);
+                    $('#sideways').prop('disabled',true);
+                    $('#diameter').prop('disabled',false);
+                }
+            }
         </script>
 @endsection
