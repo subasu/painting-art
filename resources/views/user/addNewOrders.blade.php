@@ -359,6 +359,7 @@
                     },
                     success     : function(response)
                     {
+                        console.log(response.message);
                        if (response.code == 'success')
                        {
                            swal

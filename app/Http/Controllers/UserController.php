@@ -9,6 +9,7 @@ use App\Http\SelfClasses\CheckUserCellphone;
 use App\Models\Basket;
 use App\Models\NewOrders;
 use App\Models\Order;
+use App\Models\OrderMessages;
 use App\Models\Product;
 use App\Models\Size;
 use App\User;
@@ -479,10 +480,21 @@ class UserController extends Controller
                 $newOrders->save();
                 if($newOrders)
                 {
-                    return response()->json(['message' => 'سفارش شما با موفقیت ثبت گردید ، برای پیگیری سفارش به منوی پیگیری سفارشات مراجعه فرمائید' , 'code' => 'success']);
-                }else
+                    $orderMessage = new OrderMessages();
+                    $orderMessage->new_order_id = $newOrders->id;
+                    $orderMessage->user_message = $newOrders->description;
+                    $orderMessage->save();
+                    if($orderMessage)
+                    {
+                        return response()->json(['message' => 'سفارش شما با موفقیت ثبت گردید ، برای پیگیری سفارش به منوی پیگیری سفارشات مراجعه فرمائید' , 'code' => 'success']);
+                    }else
                     {
                         return response()->json(['message' => 'در ثبت اطلاعات خطایی رخ داده است ، لطفا با بخش پشتیبانی تماس بگیرید' , 'code' => 'error']);
+                    }
+
+                }else
+                    {
+                        return response()->json(['message' => 'در ثبت اطلاعات خطایی رخ داده است ، لطفا با بخش پشتیبانی تماس بگیرید' , 'code' => 'error1']);
                     }
             }
         }
