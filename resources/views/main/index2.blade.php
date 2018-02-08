@@ -1,47 +1,66 @@
 ﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+    <script type="text/javascript" src="{{URL::asset('public/main/scripts/jquery.mCustomScrollbar.min.js')}}"></script> <!-- mCustomScrollbar -->
+
+    <script type="text/javascript" src="{{URL::asset('public/main/scripts/jquery-1.11.1.min.js')}}"></script> <!-- jQuery implementation -->
+    <script type="text/javascript" src="{{URL::asset('public/main/scripts/jquery.nivo.slider.pack.js')}}"></script> <!-- nivo slider packed -->
+    <script type="text/javascript" src="{{URL::asset('public/main/scripts/jquery-ui-1.9.1.custom.min.js')}}"></script> <!-- jQueryUI implementation -->
+    <script type="text/javascript" src="{{URL::asset('public/main/scripts/jquery.easing.1.3.js')}}"></script> <!-- jQuery easing implementation -->
+    <script type="text/javascript" src="{{URL::asset('public/main/scripts/jquery.tipsy.js')}}"></script> <!-- Tipsy -->
+    <script type="text/javascript" src="{{URL::asset('public/main/scripts/jquery.animate-shadow-min.js')}}"></script><!-- animate shadow plugin -->
+    <script type="text/javascript" src="{{URL::asset('public/main/scripts/animateBackground-plugin.js')}}"></script><!-- animate background plugin -->
+    <script type="text/javascript" src="{{URL::asset('public/main/scripts/jquery.quicksand.js')}}"></script><!-- quickSand implementation -->
+    <script type="text/javascript" src="{{URL::asset('public/main/scripts/jquery.mCustomScrollbar.min.js')}}"></script> <!-- mCustomScrollbar -->
+    <script type="text/javascript" src="{{URL::asset('public/main/scripts/jquery.masonry.min.js')}}"></script> <!-- Masonry plugin -->
+    <script type="text/javascript" src="{{URL::asset('public/main/scripts/jquery.mousewheel.min.js')}}"></script> <!-- mousewheel plugin -->
+    <script type="text/javascript" src="{{URL::asset('public/main/scripts/modernizr.js')}}"></script> <!-- modernizr plugin -->
+    <script type="text/javascript" src="{{URL::asset('public/main/scripts/jquery.quicksand.js')}}"></script> <!-- quicksand plugin -->
+    <script type="text/javascript" src="{{URL::asset('public/main/scripts/custom-scripts.js')}}"></script> <!-- all my custom scripts -->
 
 
 
 <script type="text/javascript">
+    $(document).ready(function () {
+        function checkIfAsgard(){
 
+//        var thisHref = window.location.href;
+//        thisHref = thisHref.substr(thisHref.lastIndexOf('/') + 1);
+//        thisHref = thisHref.split(".html");
+//
+//        if(typeof this["isAsgard"] === 'undefined')
+//            window.location.href = "index.html"+"#"+thisHref[0];
+
+        }
+
+        //check if the page was called via ajax - if not, redirect to index.html, crawlers will ignore this and fetch the simple HTML pageHash
+        checkIfAsgard();
+
+        function animateThis(){
+
+            //custom inner page animations
+            animatePage("home1", "right");
+            animatePage("home2", "left");
+            animatePage("home", "top");
+            animatePage("home3", "bottom");
+
+        }
+
+        //animate buttons and other elements on hover
+        animateOnHover();
+
+        //function that handles all normal links
+        linkage();
+
+        //start nivo slider
+//        $('#slider').nivoSlider();
+
+        //function that handles blog list post animation and linking
+        blogListPost();
+
+    })
     //check if the page was called via ajax - if not, redirect to index.html, crawlers will ignore this and fetch the simple HTML pageHash
-    function checkIfAsgard(){
 
-        var thisHref = window.location.href;
-        thisHref = thisHref.substr(thisHref.lastIndexOf('/') + 1);
-        thisHref = thisHref.split(".html");
-
-        if(typeof this["isAsgard"] === 'undefined')
-            window.location.href = "index.html"+"#"+thisHref[0];
-
-    }
-
-    //check if the page was called via ajax - if not, redirect to index.html, crawlers will ignore this and fetch the simple HTML pageHash
-    checkIfAsgard();
-
-    function animateThis(){
-
-        //custom inner page animations
-        animatePage("home1", "right");
-        animatePage("home2", "left");
-        animatePage("home", "top");
-        animatePage("home3", "bottom");
-
-    }
-
-    //animate buttons and other elements on hover
-    animateOnHover();
-
-    //function that handles all normal links
-    linkage();
-
-    //start nivo slider
-//    $('#slider').nivoSlider();
-
-    //function that handles blog list post animation and linking
-    blogListPost();
 
 </script>
 
@@ -66,7 +85,7 @@
         {{--@endforeach--}}
     </div>
     <div id="htmlcaption" class="nivo-html-caption">
-        <strong>این </strong> یک مثال است <em>HTML</em> با عنوان <a href="#">یک لینک</a>. 
+        <strong>این </strong> یک مثال است <em>HTML</em> با عنوان <a href="#">یک لینک</a>.
     </div>
 </div>
 <!-- nivo slider -->

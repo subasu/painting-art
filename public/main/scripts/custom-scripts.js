@@ -3,7 +3,7 @@
 CUSTOM SCRIPTS
 
 Author - Roussounelos Nikos
-Template - Asgard 
+Template - Asgard
 Version - 1.00
 Contact - info@roussounelosweb.gr
 
@@ -904,7 +904,7 @@ function customScrollbar(){
 	  mouseWheel:"auto",
 	  autoDraggerLength:true,
 	  scrollButtons:{
-	    enable:false,
+	    enable:true,
 	    scrollType:"continuous",
 	    scrollSpeed:20,
 	    scrollAmount:40
@@ -1091,8 +1091,8 @@ function animateBackFromAjax(){
 
 		$("#loader, #percentage").stop().animate({"opacity":"0"},{duration:animationLength, easing:"easeInOutQuad"});
 
-		//when the entire animation's complete, run the appropriate inner page animation and add the custom scrollbar
 		animateThis();
+
 
 		$("#logo-wrapper").stop().animate({"top":"0%", "margin-top":"20px"},{duration:animationLength+200, easing:"easeInOutQuad", complete:function(){
 
