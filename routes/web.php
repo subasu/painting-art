@@ -35,6 +35,8 @@
         Route::post('addOrSubCount', 'UserController@addOrSubCount');
         Route::post('orderRegistration', 'UserController@orderRegistration');
         Route::post('addToSeenCount', 'UserController@addToSeenCount');
+        Route::get('checkLength', 'UserController@checkLength');
+        Route::get('checkWidth', 'UserController@checkWidth');
     });
 //Auth::routes();
 // Authentication Routes...

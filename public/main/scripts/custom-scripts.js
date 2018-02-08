@@ -904,7 +904,11 @@ function customScrollbar(){
 	  mouseWheel:"auto",
 	  autoDraggerLength:true,
 	  scrollButtons:{
+<<<<<<< HEAD
 	    enable:true,
+=======
+	    enable:false,
+>>>>>>> af6f47a39356165e21f57b7e3f015c81792707f7
 	    scrollType:"continuous",
 	    scrollSpeed:20,
 	    scrollAmount:40
@@ -1091,6 +1095,10 @@ function animateBackFromAjax(){
 
 		$("#loader, #percentage").stop().animate({"opacity":"0"},{duration:animationLength, easing:"easeInOutQuad"});
 
+<<<<<<< HEAD
+=======
+		//when the entire animation's complete, run the appropriate inner page animation and add the custom scrollbar
+>>>>>>> af6f47a39356165e21f57b7e3f015c81792707f7
 		animateThis();
 
 
@@ -1665,4 +1673,8 @@ function filterGalleryImages(){
 
 	});
 
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> af6f47a39356165e21f57b7e3f015c81792707f7

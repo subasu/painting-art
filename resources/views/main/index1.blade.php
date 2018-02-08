@@ -261,6 +261,7 @@
     <!-- onclick wrapper for gallery and masonry popups -->
 
 </div>
+<<<<<<< HEAD
 <script type="text/javascript" src="{{URL::asset('public/main/scripts/jquery-1.11.1.min.js')}}"></script>
 <!-- jQuery implementation -->
 <script type="text/javascript" src="{{URL::asset('public/main/scripts/jquery-ui-1.9.1.custom.min.js')}}"></script>
@@ -291,5 +292,24 @@
 <script type="text/javascript" src="{{URL::asset('public/main/scripts/jquery.mCustomScrollbar.min.js')}}"></script>
 <!-- mCustomScrollbar -->
 <script type="text/javascript" src="{{URL::asset('public/main/scripts/custom-scripts.js')}}"></script>
+=======
+<script type="text/javascript" src="{{URL::asset('public/main/scripts/jquery-1.11.1.min.js')}}"></script> <!-- jQuery implementation -->
+<script type="text/javascript" src="{{URL::asset('public/main/scripts/jquery.nivo.slider.pack.js')}}"></script> <!-- nivo slider packed -->
+<script type="text/javascript" src="{{URL::asset('public/main/scripts/jquery-ui-1.9.1.custom.min.js')}}"></script> <!-- jQueryUI implementation -->
+<script type="text/javascript" src="{{URL::asset('public/main/scripts/jquery.easing.1.3.js')}}"></script> <!-- jQuery easing implementation -->
+<script type="text/javascript" src="{{URL::asset('public/main/scripts/jquery.tipsy.js')}}"></script> <!-- Tipsy -->
+{{--<script type="text/javascript" src="http://maps.google.com/maps?file=api&amp;v=3&amp;key=AIzaSyBAuLHHG5oKcTn7PMG0jLPrhVqIZWfGSMQ"></script><!-- Google maps API -->--}}
+{{--<script type="text/javascript" src="{{URL::asset('public/main/scripts/jquery.gmap-1.1.0-min.js')}}"></script><!-- Google maps GMap plugin -->--}}
+<script type="text/javascript" src="{{URL::asset('public/main/scripts/jquery.animate-shadow-min.js')}}"></script><!-- animate shadow plugin -->
+<script type="text/javascript" src="{{URL::asset('public/main/scripts/animateBackground-plugin.js')}}"></script><!-- animate background plugin -->
+<script type="text/javascript" src="{{URL::asset('public/main/scripts/jquery.quicksand.js')}}"></script><!-- quickSand implementation -->
+<script type="text/javascript" src="{{URL::asset('public/main/scripts/jquery.mCustomScrollbar.min.js')}}"></script> <!-- mCustomScrollbar -->
+<script type="text/javascript" src="{{URL::asset('public/main/scripts/jquery.masonry.min.js')}}"></script> <!-- Masonry plugin -->
+<script type="text/javascript" src="{{URL::asset('public/main/scripts/jquery.mousewheel.min.js')}}"></script> <!-- mousewheel plugin -->
+<script type="text/javascript" src="{{URL::asset('public/main/scripts/modernizr.js')}}"></script> <!-- modernizr plugin -->
+<script type="text/javascript" src="{{URL::asset('public/main/scripts/jquery.quicksand.js')}}"></script> <!-- quicksand plugin -->
+<script type="text/javascript" src="{{URL::asset('public/main/scripts/custom-scripts.js')}}"></script> <!-- all my custom scripts -->
+
+>>>>>>> af6f47a39356165e21f57b7e3f015c81792707f7
 </body>
 </html>
