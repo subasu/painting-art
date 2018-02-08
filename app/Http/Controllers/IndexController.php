@@ -44,6 +44,7 @@ class IndexController extends Controller
     public function load404()
     {
         return view('main.404');
+        return view('main.gallery');
     }
 
     public function aboutUs()

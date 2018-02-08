@@ -904,7 +904,7 @@ function customScrollbar(){
 	  mouseWheel:"auto",
 	  autoDraggerLength:true,
 	  scrollButtons:{
-	    enable:true,
+	    enable:false,
 	    scrollType:"continuous",
 	    scrollSpeed:20,
 	    scrollAmount:40
@@ -1664,5 +1664,5 @@ function filterGalleryImages(){
 			});
 
 	});
-
 }
+
