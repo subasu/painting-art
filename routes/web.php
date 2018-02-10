@@ -155,6 +155,10 @@
             Route::post('editModelTitle','ModelsController@editModelTitle');
             Route::post('enableOrDisableModel','ModelsController@enableOrDisableModel');
             Route::get('editModel/{id}', 'ModelsController@editModel'); //this route is related to return edit color view
+
+            //new orders management
+            Route::get('newOrders','NewOrdersController@newOrders');
+
         });
         //end admin panel routes
         //user panel routes
