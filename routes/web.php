@@ -158,6 +158,9 @@
 
             //new orders management
             Route::get('newOrders','NewOrdersController@newOrders');
+            Route::get('showNewOrders/{id}','NewOrdersController@showNewOrders');
+            Route::get('showOrdersMessage/{id}','NewOrdersController@showOrdersMessage');
+            Route::post('saveAdminMessage','NewOrdersController@saveAdminMessage');
 
         });
         //end admin panel routes
