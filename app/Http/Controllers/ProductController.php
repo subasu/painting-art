@@ -47,7 +47,7 @@ class ProductController extends Controller
                 $result = $checkProduct->ProductValidate($request);
                 if ($result == "true") {
                     $checkFiles = new CheckFiles();
-                    $result = $checkFiles->checkCategoryFiles($request);
+                    $result = $checkFiles->checkCategoryFiles($request,'');
                     if (is_bool($result)) {
                         $addNewProduct = new AddProduct();
                         $ans = $addNewProduct->addProduct($request);

@@ -769,56 +769,56 @@
                                             </label>
                                         </div>
                                     </div>
-                                    <div class="grandparent" id="grandparent">
-                                        <div class="col-md-10 margin-bot-1 parent">
-                                            <div class="col-md-2 col-md-offset-3">
-                                                <a type="button" name="edit" id="edit"
-                                                   class="glyphicon glyphicon-edit btn btn-success edit"
-                                                   title="ویرایش "></a>
-                                            </div>
+                                    {{--<div class="grandparent" id="grandparent">--}}
+                                        {{--<div class="col-md-10 margin-bot-1 parent">--}}
+                                            {{--<div class="col-md-2 col-md-offset-3">--}}
+                                                {{--<a type="button" name="edit" id="edit"--}}
+                                                   {{--class="glyphicon glyphicon-edit btn btn-success edit"--}}
+                                                   {{--title="ویرایش "></a>--}}
+                                            {{--</div>--}}
 
-                                            <div class="col-md-5 col-sm-6 col-xs-9 editable" name="colors"
-                                                 id="editable">
-                                                @foreach($products[0]->colors as $color)
-                                                    <div class="col-md-4 col-sm-6 col-xs-3 float-right">
-                                                        <label class="myLabel">
-                                                            <input class="form-control myColor" disabled="disabled"
-                                                                   checked type="checkbox"
-                                                                   name="color[]" value="{{$color->title}}"/>
-                                                            {{$color->title}}
-                                                        </label></div>
-                                                @endforeach
-                                            </div>
-                                            <label class="control-label col-md-2 col-sm-4 col-xs-3" for="color">انتخاب
-                                                رنگهای محصول :
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div class="grandparent" id="grandparent">
-                                        <div class="col-md-10 margin-bot-1 parent">
-                                            <div class="col-md-2 col-md-offset-3">
-                                                <a type="button" name="edit" id="edit"
-                                                   class="glyphicon glyphicon-edit btn btn-success edit"
-                                                   title="ویرایش "></a>
-                                            </div>
+                                            {{--<div class="col-md-5 col-sm-6 col-xs-9 editable" name="colors"--}}
+                                                 {{--id="editable">--}}
+                                                {{--@foreach($products[0]->colors as $color)--}}
+                                                    {{--<div class="col-md-4 col-sm-6 col-xs-3 float-right">--}}
+                                                        {{--<label class="myLabel">--}}
+                                                            {{--<input class="form-control myColor" disabled="disabled"--}}
+                                                                   {{--checked type="checkbox"--}}
+                                                                   {{--name="color[]" value="{{$color->title}}"/>--}}
+                                                            {{--{{$color->title}}--}}
+                                                        {{--</label></div>--}}
+                                                {{--@endforeach--}}
+                                            {{--</div>--}}
+                                            {{--<label class="control-label col-md-2 col-sm-4 col-xs-3" for="color">انتخاب--}}
+                                                {{--رنگهای محصول :--}}
+                                            {{--</label>--}}
+                                        {{--</div>--}}
+                                    {{--</div>--}}
+                                    {{--<div class="grandparent" id="grandparent">--}}
+                                        {{--<div class="col-md-10 margin-bot-1 parent">--}}
+                                            {{--<div class="col-md-2 col-md-offset-3">--}}
+                                                {{--<a type="button" name="edit" id="edit"--}}
+                                                   {{--class="glyphicon glyphicon-edit btn btn-success edit"--}}
+                                                   {{--title="ویرایش "></a>--}}
+                                            {{--</div>--}}
 
-                                            <div class="col-md-5 col-sm-6 col-xs-9 editable" name="sizes" id="editable">
-                                                @foreach($products[0]->sizes as $size)
-                                                    <div class="col-md-4 col-sm-6 col-xs-3 float-right">
-                                                        <label class="myLabel">
-                                                            <input class="form-control myColor" disabled="disabled"
-                                                                   checked type="checkbox"
-                                                                   name="size[]" value="{{$size->title}}"/>
-                                                            {{$size->title}}
-                                                        </label></div>
-                                                @endforeach
-                                            </div>
-                                            <label class="control-label col-md-2 col-sm-4 col-xs-3" for="size">انتخاب
-                                                اندازه
-                                                های محصول :
-                                            </label>
-                                        </div>
-                                    </div>
+                                            {{--<div class="col-md-5 col-sm-6 col-xs-9 editable" name="sizes" id="editable">--}}
+                                                {{--@foreach($products[0]->sizes as $size)--}}
+                                                    {{--<div class="col-md-4 col-sm-6 col-xs-3 float-right">--}}
+                                                        {{--<label class="myLabel">--}}
+                                                            {{--<input class="form-control myColor" disabled="disabled"--}}
+                                                                   {{--checked type="checkbox"--}}
+                                                                   {{--name="size[]" value="{{$size->title}}"/>--}}
+                                                            {{--{{$size->title}}--}}
+                                                        {{--</label></div>--}}
+                                                {{--@endforeach--}}
+                                            {{--</div>--}}
+                                            {{--<label class="control-label col-md-2 col-sm-4 col-xs-3" for="size">انتخاب--}}
+                                                {{--اندازه--}}
+                                                {{--های محصول :--}}
+                                            {{--</label>--}}
+                                        {{--</div>--}}
+                                    {{--</div>--}}
                                     {{--<div>--}}
                                     {{--<div class="col-md-12 margin-2 margin-bot-1">--}}
                                     {{--<div class="col-md-5 col-sm-6 col-xs-9 col-md-offset-3 margin-1 padding-right-2"--}}

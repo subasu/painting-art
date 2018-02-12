@@ -45,19 +45,19 @@
                         <td style="font-size:18px;">{{$info->width}}</td>
                         <td style="font-size:18px;">{{$info->diameter}}</td>
                         <td style="font-size:18px;">{{$info->sideways}}</td>
-                        @if($info->status == 0)
+                        @if($info->orderMessages[0]->status == 0)
                             <td style="font-size:18px;">
-                                <button class="btn btn-info">در حال بررسی</button>
+                                <button class="btn btn-info col-md-10">در حال بررسی</button>
                             </td>
                         @endif
-                        @if($info->status == 1)
+                        @if($info->orderMessages[0]->status == 1)
                             <td style="font-size:18px;">
-                                <button class="btn btn-warning">در حال انجام</button>
+                                <button class="btn btn-warning col-md-10">در حال انجام</button>
                             </td>
                         @endif
-                        @if($info->status == 2)
+                        @if($info->orderMessages[0]->status == 2)
                             <td style="font-size:18px;">
-                                <button class="btn btn-success">انجام شده</button>
+                                <button class="btn btn-success col-md-10">انجام شده</button>
                             </td>
                         @endif
                         <td style="font-size:18px;"><a class="btn btn-dark" href="{{url('admin/showOrdersMessage/'.$info->id)}}">بررسی توضیحات و تعیین وضعیت</a></td>

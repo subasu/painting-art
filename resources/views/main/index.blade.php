@@ -226,7 +226,7 @@
                                     <div class="col-md-6" dir="rtl">
                                         <div class="right_content">
                                             <p class="row yekan t-justify">
-                                                {!! $aboutUs !!}
+                                                {{--{!! $aboutUs !!}--}}
                                             </p>
                                             <p class="row yekan t-justify"></p>
                                         </div>

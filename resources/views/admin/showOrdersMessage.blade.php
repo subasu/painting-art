@@ -70,17 +70,17 @@
                                 <td style="font-size:18px;">{{$orders->sideways}}</td>
                                 @if($orders->orderMessages[0]->status == 0)
                                     <td style="font-size:18px;">
-                                        <button class="btn btn-info">در حال بررسی</button>
+                                        <button class="btn btn-info col-md-10 col-md-offset-1">در حال بررسی</button>
                                     </td>
                                 @endif
                                 @if($orders->orderMessages[0]->status == 1)
                                     <td style="font-size:18px;">
-                                        <button class="btn btn-warning">در حال انجام</button>
+                                        <button class="btn btn-warning col-md-10 col-md-offset-1">در حال انجام</button>
                                     </td>
                                 @endif
                                 @if($orders->orderMessages[0]->status == 2)
                                     <td style="font-size:18px;">
-                                        <button class="btn btn-success">انجام شده</button>
+                                        <button class="btn btn-success col-md-10 col-md-offset-1">انجام شده</button>
                                     </td>
                                 @endif
                             </tr>
@@ -142,12 +142,12 @@
                                 <div class="col-md-12">
                                     <br>
                                     @if($message->status == 0)
-                                        <button id="changeStatus" value="{{$message->id}}" content="{{$message->status}}" type="button"
+                                        <button id="changeStatus" value="{{$message->new_order_id}}" content="{{$message->status}}" type="button"
                                                 class="col-md-8 btn btn-info col-md-offset-3">تغییر وضعیت از <strong>در حال بررسی</strong>  به  <strong>در حال انجام</strong>
                                         </button>
                                     @endif
                                     @if($message->status == 1)
-                                        <button disabled id="changeStatus" value="{{$message->id}}"  content="{{$message->status}}" type="button"
+                                        <button  id="changeStatus" value="{{$message->new_order_id}}"  content="{{$message->status}}" type="button"
                                                 class="col-md-8 btn btn-warning col-md-offset-3">تغییر وضعیت از <strong>در حال انجام</strong><strong>  به  </strong> انجام شده
                                         </button>
                                     @endif
@@ -233,14 +233,14 @@
     <!-- below script is related to change status -->
     <script>
         $(document).on('click','#changeStatus',function () {
-            var messageId = $(this).val();
+            var newOrderId = $(this).val();
             var status    = $(this).attr('content');
             var token     = $('#token').val();
             $.ajax
             ({
                 url     : "{{url('admin/changeOrderStatus')}}",
                 type    : "post",
-                data    : {"messageId" : messageId , 'status' : status , '_token' : token},
+                data    : {"newOrderId" : newOrderId , 'status' : status , '_token' : token},
                 success : function (response) {
                     if(response.code == 'success')
                     {

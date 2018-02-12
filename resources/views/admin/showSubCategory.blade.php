@@ -54,7 +54,6 @@
                             <th style="text-align: center">ردیف</th>
                             <th style="text-align: center">عنوان دسته</th>
                             <th style="text-align: center">سطح دسته</th>
-                            <th style="text-align: center">تصویر</th>
                             <th style="text-align: center">وضعیت</th>
                             <th  style="text-align: center;border-right: 1px solid #d6d6c2;">عملیات</th>
                             <th  style="text-align: center;border-right: 1px solid #d6d6c2;">مشاهده زیر دسته</th>
@@ -70,12 +69,6 @@
                                     <td style="font-size:18px">{{++$i}}</td>
                                     <td style="font-size:18px">{{$category->title}}</td>
                                     <td style="font-size:18px">{{$category->depth}}</td>
-                                    @if($category->image_src == null)
-                                        <td style="font-size:18px">تصویر ندارد</td>
-                                    @endif
-                                    @if($category->image_src != null)
-                                        <td><button class="btn btn-basic" id="showPicture">مشاهده تصویر</button></td>
-                                    @endif
                                     @if($category->active == 1)
                                         <td style="color: green; font-size: 150%;">فعال</td>
                                     @endif

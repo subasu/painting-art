@@ -9,6 +9,7 @@ use App\User;
 use Carbon\Carbon;
 use Hekmatinasser\Verta\Verta;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use OrderMessage;
 use function PHPSTORM_META\elementType;
 
@@ -102,9 +103,7 @@ class NewOrdersController extends Controller
                 switch ($request->status)
                 {
                     case 0 :
-                        $update = OrderMessages::find($request->messageId);
-                        $update->status = 1;
-                        $update->save();
+                        $update = DB::table('order_messages')->where('new_order_id',$request->newOrderId)->update(['status' => 1]);
                         if($update)
                         {
                             return response()->json(['message' => 'وضعیت سفارش از در حال بررسی به در حال انجام تغییر یافت', 'code' => 'success']);
@@ -114,9 +113,7 @@ class NewOrdersController extends Controller
                             }
                     break;
                     case 1 :
-                        $update = OrderMessages::find($request->messageId);
-                        $update->status = 2;
-                        $update->save();
+                        $update = DB::table('order_messages')->where('new_order_id',$request->newOrderId)->update(['status' => 2]);
                         if($update)
                         {
                             return response()->json(['message' => 'وضعیت سفارش از در حال انجام به انجام شده تغییر یافت', 'code' => 'success']);
