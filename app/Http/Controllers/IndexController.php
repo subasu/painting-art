@@ -81,12 +81,11 @@ class IndexController extends Controller
         $pageTitle = 'صفحه ی اصلی';
         $services = Service::where('active', '=', '1')->get();
         $sliders = Slider::where('active', '=', '1')->get();
-//        $categories = Category::find($id);
         $logo = Logo::latest()->first();
         $googleMap = GoogleMap::latest()->first();
-//        $products = $categories->products()->paginate(12);
+        $products = Product::all();
         $aboutUs = About::latest()->first()->value('description');
-        return view('main.index', compact('pageTitle', 'menu', 'services', 'sliders', 'logo', 'googleMap','aboutUs'));
+        return view('main.index', compact('pageTitle', 'menu', 'services', 'sliders', 'logo', 'googleMap','aboutUs','products'));
     }
 
     //show login blade :in login blade there are 2 form for login and registeration
