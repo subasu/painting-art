@@ -161,6 +161,7 @@
             Route::get('showNewOrders/{id}','NewOrdersController@showNewOrders');
             Route::get('showOrdersMessage/{id}','NewOrdersController@showOrdersMessage');
             Route::post('saveAdminMessage','NewOrdersController@saveAdminMessage');
+            Route::post('changeOrderStatus','NewOrdersController@changeOrderStatus');
 
         });
         //end admin panel routes
@@ -177,6 +178,7 @@
             Route::get('followOrders','UserController@followOrders');
             Route::get('showOrdersMessage/{id}','UserController@showOrdersMessage');
             Route::post('saveNewMessage','UserController@saveNewMessage');
+
 
          });
         //end user panel routes

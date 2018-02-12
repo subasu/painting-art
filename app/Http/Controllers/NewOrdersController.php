@@ -90,4 +90,42 @@ class NewOrdersController extends Controller
                 return response()->json(['message' => 'خطایی رخ داده است ، با بخش پشتیبانی تماس بگیرید','code' => 'error']);
             }
     }
+
+    //
+    public function changeOrderStatus(Request $request)
+    {
+        if(!$request->ajax())
+        {
+            abort(403);
+        }else
+            {
+                switch ($request->status)
+                {
+                    case 0 :
+                        $update = OrderMessages::find($request->messageId);
+                        $update->status = 1;
+                        $update->save();
+                        if($update)
+                        {
+                            return response()->json(['message' => 'وضعیت سفارش از در حال بررسی به در حال انجام تغییر یافت', 'code' => 'success']);
+                        }else
+                            {
+                                return response()->json(['message' => 'خطایی رخ داده است ، لطفا با بخش پشتیبانی تماس بگیرید', 'code' => 'error']);
+                            }
+                    break;
+                    case 1 :
+                        $update = OrderMessages::find($request->messageId);
+                        $update->status = 2;
+                        $update->save();
+                        if($update)
+                        {
+                            return response()->json(['message' => 'وضعیت سفارش از در حال انجام به انجام شده تغییر یافت', 'code' => 'success']);
+                        }else
+                        {
+                            return response()->json(['message' => 'خطایی رخ داده است ، لطفا با بخش پشتیبانی تماس بگیرید', 'code' => 'error']);
+                        }
+                        break;
+                }
+            }
+    }
 }

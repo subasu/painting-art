@@ -68,13 +68,13 @@
                         <td style="font-size:18px;">{{$orders->width}}</td>
                         <td style="font-size:18px;">{{$orders->diameter}}</td>
                         <td style="font-size:18px;">{{$orders->sideways}}</td>
-                        @if($orders->status == 0)
+                        @if($orders->orderMessages[0]->status == 0)
                             <td style="font-size:18px;"><button class="btn btn-info">در حال بررسی</button></td>
                         @endif
-                        @if($orders->status == 1)
+                        @if($orders->orderMessages[0]->status == 1)
                             <td style="font-size:18px;"><button class="btn btn-warning">در حال انجام</button></td>
                         @endif
-                        @if($orders->status == 2)
+                        @if($orders->orderMessages[0]->status == 2)
                             <td style="font-size:18px;"><button class="btn btn-success">انجام شده</button></td>
                         @endif
                     </tr>
