@@ -34,18 +34,6 @@ class IndexController extends Controller
             return view('layouts.userLayout');
     }
 
-    public function test()
-    {
-        $sliders = Slider::where('active', '=', '1')->get();
-
-        return view('main.index1', compact($sliders));
-    }
-
-    public function load404()
-    {
-                return view('main.gallery');
-    }
-
     public function aboutUs()
     {
         $menu = $this->loadMenu();
@@ -56,30 +44,6 @@ class IndexController extends Controller
 
     public function search(Request $request)
     {
-//        if($request->search_type==1)
-//        {
-//
-//        }
-//        elseif($request->search_type==2)
-//        {
-//            $result=Category::where('title','like','%'.$request->search_key.'%')->get();
-//            foreach ($result as $item) {
-//                if($item->depth==2)
-//                {
-//                    $item->subcat=Category::where('parent_id','=',$item->id)->get();
-//                }
-//                if($item->depth==1)
-//                {
-//                    $item->brand=Category::where('parent_id','=',$item->id)->get();
-//                }
-//                $results1=CategoryProduct::where('category_id','=','383')->get();
-//                $results2=CategoryProduct::where('category_id','=','383')->get();
-//                $results = array_merge($results1->toArray(), $results2->toArray());
-//                $collection = collect($results);
-//            }
-//            dd($collection);
-//        }
-
         $results = Product::where('title', 'like', '%' . $request->search_key . '%')
             ->orWhere('description', 'like', '%' . $request->search_key . '%')->get();
         $menu = $this->loadMenu();
@@ -117,9 +81,12 @@ class IndexController extends Controller
         $pageTitle = 'صفحه ی اصلی';
         $services = Service::where('active', '=', '1')->get();
         $sliders = Slider::where('active', '=', '1')->get();
+//        $categories = Category::find($id);
         $logo = Logo::latest()->first();
         $googleMap = GoogleMap::latest()->first();
-        return view('main.index', compact('pageTitle', 'menu', 'services', 'sliders', 'logo', 'googleMap'));
+//        $products = $categories->products()->paginate(12);
+        $aboutUs = About::latest()->first()->value('description');
+        return view('main.index', compact('pageTitle', 'menu', 'services', 'sliders', 'logo', 'googleMap','aboutUs'));
     }
 
     //show login blade :in login blade there are 2 form for login and registeration
