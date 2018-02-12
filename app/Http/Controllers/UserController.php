@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\MessageValidation;
 use App\Http\Requests\OrderRegistrationValidation;
 use App\Http\Requests\NewPasswordValidation;
 use App\Http\SelfClasses\CheckFiles;
@@ -451,7 +452,7 @@ class UserController extends Controller
         return view('user.addNewOrders',compact('pageTitle'));
     }
     //
-    public function saveNewOrder(Request $request)
+    public function saveNewOrder(MessageValidation $request)
     {
         if(!$request->ajax())
         {
@@ -483,6 +484,7 @@ class UserController extends Controller
                     $orderMessage = new OrderMessages();
                     $orderMessage->new_order_id = $newOrders->id;
                     $orderMessage->user_message = $newOrders->description;
+                    $orderMessage->created_at   = Carbon::now(new \DateTimeZone('Asia/Tehran'));
                     $orderMessage->save();
                     if($orderMessage)
                     {
@@ -526,6 +528,58 @@ class UserController extends Controller
             return response()->json('0');
         }
 
+    }
+
+    //below function is related to show orders
+    public function followOrders()
+    {
+        $pageTitle = 'سفارشات';
+        $orders = NewOrders::where('user_id',Auth::user()->id)->get();
+        return view('user.followOrders',compact('pageTitle','orders'));
+    }
+
+    public function showOrdersMessage($id)
+    {
+        $pageTitle = 'بررسی توضیحات و ارسال پیام';
+        $orders = NewOrders::find($id);
+        if(count($orders) > 0)
+        {
+            foreach ($orders->orderMessages as $message )
+            {
+                $message->persianDate = $this->toPersian($message->created_at);
+                $message->jalaliDate  = $this->toPersian($message->updated_at);
+                $message->time        = $message->created_at->format('H:i:s');
+                $message->adminTime   = $message->updated_at->format('H:i:s');
+            }
+            //  dd($orders);
+            return view('user.showOrdersMessage',compact('orders','pageTitle'));
+        }else
+        {
+            return view('errors.403');
+        }
+    }
+
+    //
+    public function saveNewMessage(MessageValidation $request)
+    {
+        if(!$request->ajax())
+        {
+            abort(404);
+        }else
+            {
+                $newMessage = new OrderMessages();
+                $newMessage->new_order_id = $request->newOrderId;
+                $newMessage->user_message = trim($request->message);
+                $newMessage->created_at   = Carbon::now(new \DateTimeZone('Asia/Tehran'));
+                $newMessage->save();
+                if($newMessage)
+                {
+                    return response()->json(['message' => 'پیام شما با موفقیت ثبت گردید','code' => 'success']);
+                }else
+                {
+                    return response()->json(['message' => 'خطایی رخ داده است ، لطفا با بخش پشتیبانی تماس بگیرید','code' => 'error']);
+                }
+            }
     }
 }
 

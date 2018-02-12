@@ -171,9 +171,13 @@
             Route::get('userShowFactor/{id}', 'UserController@userShowFactor');
             Route::get('changePassword', 'UserController@changePassword');
             Route::post('saveNewPassword', 'UserController@saveNewPassword');
-            //below routes is related to add new orders
+            //below routes is related to  new orders
             Route::get('addNewOrders','UserController@addNewOrders');
             Route::post('saveNewOrder','UserController@saveNewOrder');
+            Route::get('followOrders','UserController@followOrders');
+            Route::get('showOrdersMessage/{id}','UserController@showOrdersMessage');
+            Route::post('saveNewMessage','UserController@saveNewMessage');
+
          });
         //end user panel routes
         Route::post('logout', 'Auth\LoginController@logout');//rayat 20-9-96

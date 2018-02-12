@@ -68,11 +68,20 @@
                                 <td style="font-size:18px;">{{$orders->width}}</td>
                                 <td style="font-size:18px;">{{$orders->diameter}}</td>
                                 <td style="font-size:18px;">{{$orders->sideways}}</td>
-                                @if($orders->active == 1)
-                                    <td style="font-size:18px;"><button class="btn btn-danger">بررسی نشده</button></td>
+                                @if($orders->status == 0)
+                                    <td style="font-size:18px;">
+                                        <button class="btn btn-info">در حال بررسی</button>
+                                    </td>
                                 @endif
-                                @if($orders->active == 0)
-                                    <td style="font-size:18px;"><button class="btn btn-success">بررسی شده</button></td>
+                                @if($orders->status == 1)
+                                    <td style="font-size:18px;">
+                                        <button class="btn btn-warning">در حال انجام</button>
+                                    </td>
+                                @endif
+                                @if($orders->status == 2)
+                                    <td style="font-size:18px;">
+                                        <button class="btn btn-success">انجام شده</button>
+                                    </td>
                                 @endif
                             </tr>
                         </tbody>
@@ -130,6 +139,19 @@
                                     @endif
                                 </div>
                              @endforeach
+                                <div class="col-md-12">
+                                    <br>
+                                    @if($message->status == 0)
+                                        <button id="changeStatus" value="{{$message->id}}" content="{{$message->status}}" type="button"
+                                                class="col-md-8 btn btn-info col-md-offset-3">تغییر وضعیت از <strong>در حال بررسی</strong>  به  <strong>در حال انجام</strong>
+                                        </button>
+                                    @endif
+                                    @if($message->status == 1)
+                                        <button disabled id="changeStatus" value="{{$message->id}}"  content="{{$message->status}}" type="button"
+                                                class="col-md-8 btn btn-warning col-md-offset-3">تغییر وضعیت از <strong>در حال انجام</strong><strong>  به  </strong> انجام شده
+                                        </button>
+                                    @endif
+                                </div>
                     </div>
                 </div>
             </div>
@@ -154,15 +176,6 @@
                 contentType : false,
                 processData : false,
                 data        : formData,
-                beforeSend  : function()
-                {
-                   if($('#message').value == '' || $('#message').value == null )
-                   {
-                      /// $('#message').focus();
-                      // $('#message').css('border-color','red');
-                      // return false;
-                   }
-                },
                 success     : function (response) {
                     if(response.code == 'success')
                     {
@@ -194,6 +207,44 @@
                         type:'warning',
                         confirmButtonText: "بستن"
                     });
+                    if (error.status === 422) {
+                        $('#message').focus();
+                        $('#message').css('border-color','red');
+                        var errors = error.responseJSON; //this will get the errors response data.
+
+                        var errorsHtml = '';
+
+                        $.each(errors, function (key, value) {
+                            errorsHtml += value[0] + '\n'; //showing only the first error.
+                        });
+                        //errorsHtml += errorsHtml;
+
+                        swal({
+                            title: "",
+                            text: errorsHtml,
+                            type: "warning",
+                            confirmButtonText: "بستن"
+                        });
+                    }
+                }
+            })
+        })
+    </script>
+    <!-- below script is related to change status -->
+    <script>
+        $(document).on('click','#changeStatus',function () {
+            var messageId = $(this).val();
+            var status    = $(this).attr('content');
+            var token     = $('#token').val();
+            $.ajax
+            ({
+                url     : "{{url('admin/changeOrderStatus')}}",
+                type    : "post",
+                data    : {"messageId" : messageId , 'status' : status , '_token' : token},
+                success : function (response) {
+
+                },error : function (error) {
+
                 }
             })
         })

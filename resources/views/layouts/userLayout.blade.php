@@ -162,7 +162,7 @@
                                 <ul class="nav child_menu" style="display: none">
                                     <li><a href="{{url('user/addNewOrders')}}">ثبت سفارش جدید</a>
                                     </li>
-                                    <li><a href="{{url('admin/addPaymentType')}}">پیگیری سفارشات</a>
+                                    <li><a href="{{url('user/followOrders')}}">پیگیری سفارشات</a>
                                     </li>
                                 </ul>
                             </li>

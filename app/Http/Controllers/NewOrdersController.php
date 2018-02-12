@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\MessageValidation;
 use App\Models\NewOrders;
 use App\Models\OrderMessages;
 use App\User;
@@ -16,7 +17,7 @@ class NewOrdersController extends Controller
     //
     public function newOrders()
     {
-        $pageTitle = 'مدیریت سفارشات جدید';
+        $pageTitle = 'مشخصات مشتریان';
         $data      = User::where('role_id',3)->with('newOrders')->get();
         return view('admin.newOrders',compact('pageTitle','data'));
     }
@@ -75,7 +76,7 @@ class NewOrdersController extends Controller
     }
 
     //
-    public function saveAdminMessage(Request $request)
+    public function saveAdminMessage(MessageValidation $request)
     {
         $message = OrderMessages::find($request->messageId);
         $message->admin_message = $request->message;
