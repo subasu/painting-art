@@ -650,59 +650,59 @@
              }
          </script>
          <!-- below script ot get brands -->
-         <script>
-                $(document).on('change','#subCategories',function () {
-                    $("[name = 'subCategories'] option:selected ").each(function () {
+         {{--<script>--}}
+                {{--$(document).on('change','#subCategories',function () {--}}
+                    {{--$("[name = 'subCategories'] option:selected ").each(function () {--}}
 
-                        var id = $(this).attr('id');
-                        var depth = $(this).attr('name');
-                        var subTitle = $(this).val();
-                        $('#subId').val(id);
-                        if(depth != 0)
-                        {
-                            getDisabledCategories(id);
-                            getBrands(id);
-                            function getBrands (id) {
-                                var option="";
-                                $.ajaxSetup({
-                                    headers: {
-                                        'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
-                                    }
-                                })
-                                $.ajax
-                                ({
-                                    cache :false,
-                                    url: "{{Url('api/v1/getBrands')}}/" + id,
-                                    dataType: "json",
-                                    type: "get",
-                                    success: function (response)
-                                    {
+                        {{--var id = $(this).attr('id');--}}
+                        {{--var depth = $(this).attr('name');--}}
+                        {{--var subTitle = $(this).val();--}}
+                        {{--$('#subId').val(id);--}}
+                        {{--if(depth != 0)--}}
+                        {{--{--}}
+                            {{--getDisabledCategories(id);--}}
+                            {{--getBrands(id);--}}
+                            {{--function getBrands (id) {--}}
+                                {{--var option="";--}}
+                                {{--$.ajaxSetup({--}}
+                                    {{--headers: {--}}
+                                        {{--'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')--}}
+                                    {{--}--}}
+                                {{--})--}}
+                                {{--$.ajax--}}
+                                {{--({--}}
+                                    {{--cache :false,--}}
+                                    {{--url: "{{Url('api/v1/getBrands')}}/" + id,--}}
+                                    {{--dataType: "json",--}}
+                                    {{--type: "get",--}}
+                                    {{--success: function (response)--}}
+                                    {{--{--}}
 
-                                        console.log(response);
-                                        $.each(response, function (key, value) {
-                                            var item = $('#brands');
-                                            item.empty();
-                                            item.append
-                                            (
-                                                option +="<option id='"+value.id+"' name='"+value.depth+"'>"+value.title+"</option>"
+                                        {{--console.log(response);--}}
+                                        {{--$.each(response, function (key, value) {--}}
+                                            {{--var item = $('#brands');--}}
+                                            {{--item.empty();--}}
+                                            {{--item.append--}}
+                                            {{--(--}}
+                                                {{--option +="<option id='"+value.id+"' name='"+value.depth+"'>"+value.title+"</option>"--}}
 
-                                            );
+                                            {{--);--}}
 
-                                        });
-                                        $('#existedBrands').css('display','block');
-                                        $('#brands').css('display','block');
-                                        $('#addBrands').css('display','block');
-                                    }
-                                });
-                            }
-                        }else
-                            {
-                                untimelyAddCategory(subTitle,id);
-                            }
-                    })
+                                        {{--});--}}
+                                        {{--$('#existedBrands').css('display','block');--}}
+                                        {{--$('#brands').css('display','block');--}}
+                                        {{--$('#addBrands').css('display','block');--}}
+                                    {{--}--}}
+                                {{--});--}}
+                            {{--}--}}
+                        {{--}else--}}
+                            {{--{--}}
+                                {{--untimelyAddCategory(subTitle,id);--}}
+                            {{--}--}}
+                    {{--})--}}
 
-                })
-        </script>
+                {{--})--}}
+        {{--</script>--}}
         <script>
             $(document).ready(function () {
                 getAllDisabledCategories();

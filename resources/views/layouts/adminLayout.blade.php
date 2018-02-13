@@ -317,6 +317,23 @@
                     <div class="nav toggle">
                         <a id="makeBodyLarg"><i class="fa fa-search-plus" data-toggle="" title="بزرگ نمایی"></i></a>
                     </div>
+                    <div class="nav toggle">
+                        {{--<a id="makeBodyLarg"><i class="fa fa-search-plus" data-toggle="" title="بزرگ نمایی"></i></a>--}}
+                    </div><div class="nav toggle">
+                        {{--<a id="makeBodyLarg"><i class="fa fa-search-plus" data-toggle="" title="بزرگ نمایی"></i></a>--}}
+                    </div>
+                    <div class="nav toggle">
+                        {{--<a id="makeBodyLarg"><i class="fa fa-search-plus" data-toggle="" title="بزرگ نمایی"></i></a>--}}
+                    </div>
+                    <div class="nav toggle">
+                        {{--<a id="makeBodyLarg"><i class="fa fa-search-plus" data-toggle="" title="بزرگ نمایی"></i></a>--}}
+                    </div>
+                    <div class="nav toggle">
+                        <a id="play"><i class="fa fa-play-circle" data-toggle="" title="پخش ویدئو آموزشی"></i></a>
+                    </div>
+                    <div class="nav toggle">
+                        <a id="pause"><i class="	fa fa-pause-circle" data-toggle="" title="توقف ویدئو آموزشی"></i></a>
+                    </div>
                     {{--<div class="" style="float: right;padding: 1% 2% 0 0 !important;">--}}
                     {{--<a id="back" class="btn btn-info">بازگشت به صفحه قبل</a>--}}
                     {{--</div>--}}
@@ -761,6 +778,14 @@
     $(document).on('click','#makeBodyLarg',function(){
         $(document.body).css('zoom','120%');
     });
+</script>
+<script>
+    $(document).on('click','#play',function () {
+        var path = window.location.pathname;
+        var absolutePath  = path.split('/');
+        var last  = absolutePath[absolutePath.length-1];
+        alert(last);
+    })
 </script>
 </body>
 </html>
