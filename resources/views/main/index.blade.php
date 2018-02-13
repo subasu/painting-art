@@ -13,7 +13,7 @@
     <!-- Loading Google Web fonts-->
     {{--<link href='http://fonts.googleapis.com/css?family=Carrois+Gothic+SC' rel='stylesheet' type='text/css'/>--}}
     {{--<link href='http://fonts.googleapis.com/css?family=Raleway:400,100,200,300,500,600,700,800,900' rel='stylesheet'--}}
-          type='text/css'>
+          {{--type='text/css'>--}}
 
     <link rel="stylesheet" href="{{URL::asset('public/main/css/bootstrap.css')}}" type="text/css"/>
     <link rel="stylesheet" href="{{URL::asset('public/main/css/bootstrap-datetimepicker.min.css')}}" type="text/css"/>
