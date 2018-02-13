@@ -77,7 +77,7 @@
                                     <li><a href="#locations" class="nav-link">شعب<span class="sub-toggle"></span></a>
                                     </li>
                                     <li><a href="#gallery" class="nav-link">گالری</a></li>
-                                    <li><a href="#reservation" class="nav-link">ورود / ثبت نام</a></li>
+                                    <li><a href="#loginRegister" class="nav-link">ورود / ثبت نام</a></li>
                                     <li><a href="#contactform" class="nav-link">تماس با ما<span
                                                     class="sub-toggle"></span></a></li>
                                 </ul>
@@ -148,7 +148,7 @@
                                                     <li><a href="#locations" class="nav-link">شعب<span
                                                                     class="sub-toggle"></span></a></li>
                                                     <li><a href="#gallery" class="nav-link">گالری</a></li>
-                                                    <li><a href="#reservation" class="nav-link">رزرو میز</a></li>
+                                                    <li><a href="#loginRegister" class="nav-link">ورود / ثبت نام</a></li>
                                                     <li><a href="#contactform" class="nav-link">تماس با ما<span
                                                                     class="sub-toggle"></span></a>
                                                     </li>
@@ -577,8 +577,8 @@
 
         <!--Reservation
         =============================-->
-        <div id="reservation" class="item">
-            <img src="{{URL::asset('public/main/img/8.jpg')}}" alt="the Paxton Gipsy Hill" class="fullBg">
+        <div id="loginRegister" class="item">
+            <img src="{{URL::asset('public/main/img/8.jpg')}}" style="width: inherit"  alt="the Paxton Gipsy Hill" class="fullBg">
             <div class="content">
 
                 <div class="content_overlay"></div>
