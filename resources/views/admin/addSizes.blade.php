@@ -15,6 +15,29 @@
             background-color: #28a745!important
         }
     </style>
+
+    <div id="myModal" class="modal fade" role="dialog" dir="rtl">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div  class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h2 id="oldTitle" class="modal-title" style="float: right; display: none;">لطفا منتظر بمانید</h2>
+                    <h2 id="newTitle" class="modal-title" style="float: right; display: none;">برای حالت انتخاب شده اندازه ای ثبت نشده!</h2>
+                    <progress id="progress" class="col-md-7 col-md-offset-2" style="direction: ltr;"></progress>
+                </div>
+                <div  id="showMessage" style="display: none;" class="modal-dialog">
+                    <h2 > میتوانید پس از ثبت سفارش با مسئول مربوطه در خصوص اندازه ها بحث و گفتگو نمائید</h2>
+                </div>
+                <div class="" >
+                    {{--<button type="button" class="btn btn-dark col-md-5 col-md-offset-1" data-dismiss="modal">بستن</button>--}}
+                </div>
+            </div>
+
+        </div>
+    </div>
+
     <div class="clearfix"></div>
     <div class="row">
         <div class="col-md-10 col-sm-6 col-xs-12 col-md-offset-1">
@@ -87,12 +110,12 @@
                                     </select>
                                 </div>
                                 <div class='col-md-2'>
-                                    <select id="width"  class='form-control col-md-12 col-sm-9 col-xs-12'>
+                                    <select id="width"  name="width" class='form-control col-md-12 col-sm-9 col-xs-12'>
 
                                     </select>
                                 </div>
                                 <div class='col-md-3'>
-                                    <select id="length" class='form-control col-md-12 col-sm-9 col-xs-12'>
+                                    <select id="length" name="length" class='form-control col-md-12 col-sm-9 col-xs-12'>
 
                                     </select>
                                 </div>
@@ -517,11 +540,11 @@
                                                 );
                                                 $('#width').append
                                                 (
-                                                    "<option>" + response[i].width + "</option>"
+                                                    "<option id='wid' name='width1'>" + response[i].width + "</option>"
                                                 );
                                                 $('#length').append
                                                 (
-                                                    "<option>" + response[i].length + "</option>"
+                                                    "<option id='len' name='length1'>" + response[i].length + "</option>"
                                                 );
                                             i++;
                                         }
@@ -584,5 +607,106 @@
                     $('#diameter').prop('disabled',false);
                 }
             }
+        </script>
+
+        <script>
+            $(function(){
+
+                $(document).on('change','#length',function(){
+                    if($('#title').val() == 'مستطیل')
+                    {
+                        $('[name = "length1"]:selected').each(function(){
+                            var len = $(this).val();
+                            $.ajax
+                            ({
+                                url      : "{{url('user/checkLength')}}",
+                                type     : "get",
+                                data     : {'len' : len},
+                                dataType : "json",
+                                success  : function(response)
+                                {
+                                    console.log(response);
+                                    if(response != 0)
+                                    {
+                                        $('#myModal').modal('show');
+                                        var length = response.data.length;
+                                        console.log(length);
+                                        $('#width').empty();
+                                        $('#width').append
+                                        (
+                                            "<option>عرض</option>"
+                                        );
+                                        var i = 0;
+                                        while(i < length)
+                                        {
+                                            $('#width').append
+                                            (
+                                                "<option>"+response.data[i]+"</option>"
+                                            );
+                                            i++;
+                                        }
+                                        setTimeout(function () {
+                                            $('#myModal').modal('hide');
+                                        },3000);
+                                    }
+                                },error  : function(error)
+                                {
+                                    console.log(error);
+                                }
+                            })
+                        })
+                    }
+                })
+
+            })
+        </script>
+        <script>
+            $(function(){
+                $(document).on('change','#width',function(){
+                    if($('#title').val() == 'مستطیل')
+                    {
+                        $('[name = "width1"]:selected').each(function(){
+                            var width = $(this).val();
+                            $.ajax
+                            ({
+                                url      : "{{url('user/checkWidth')}}",
+                                type     : "get",
+                                data     : {'width' : width},
+                                dataType : "json",
+                                success  : function(response)
+                                {
+                                    console.log(response);
+                                    if(response != 0)
+                                    {
+                                        $('#myModal').modal('show');
+                                        var length = response.data.length;
+                                        console.log(length);
+                                        $('#length').empty();
+                                        $('#length').append
+                                        (
+                                            "<option>طول</option>"
+                                        );
+                                        var i = 0;
+                                        while(i < length)
+                                        {
+                                            $('#length').append
+                                            (
+                                                "<option>"+response.data[i]+"</option>"
+                                            );
+                                            i++;
+                                        }
+                                        setTimeout(function () {
+                                            $('#myModal').modal('hide');
+                                        },3000);
+                                    }
+                                },error  : function(error)
+                                {
+                                    console.log(error);
+                                }
+                            })
+                        })
+                    }
+                })
+            })
         </script>
 @endsection

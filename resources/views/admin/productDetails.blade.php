@@ -872,7 +872,7 @@
                                     text: x,
                                     type: "info",
                                 })
-                                location.reload();
+                                setTimeout(function(){location.reload(true);},3000);
                             },
                             error: function (xhr) {
                                 console.log(xhr)
