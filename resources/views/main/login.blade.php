@@ -125,7 +125,7 @@
                                                value="{{ old('zipCode') }}" maxlength="11" name="zipCode" id="zipCode"
                                                class="form-control">
                                     </div>
-                                    <label for="grade" class="col-md-3 control-label">کد پستی</label>
+                                    <label for="zipCode" class="col-md-3 control-label">کد پستی</label>
                                 </div>
                                 <div class="form-group col-md-12">
                                     <div class="col-md-9">
