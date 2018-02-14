@@ -4,21 +4,21 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>نقاشی کوبیسم</title>
     <meta name="description" content="سایت"/>
     <meta name="keywords" content="تابلو نقاشی،کوبیسم،سایت فروش آثار هنری و نقاشی، اثر هنری کوبیسم، سبک کوبیسم"/>
     <meta name="author" content="گروه مهندسی آرتان"/>
-
-    <!-- Loading Google Web fonts-->
-    {{--<link href='http://fonts.googleapis.com/css?family=Carrois+Gothic+SC' rel='stylesheet' type='text/css'/>--}}
-    {{--<link href='http://fonts.googleapis.com/css?family=Raleway:400,100,200,300,500,600,700,800,900' rel='stylesheet'--}}
     {{--type='text/css'>--}}
     <link rel="stylesheet" href="{{URL::asset('public/main/css/bootstrap.css')}}" type="text/css"/>
     <link rel="stylesheet" href="{{URL::asset('public/main/css/bootstrap-datetimepicker.min.css')}}" type="text/css"/>
     <link rel="stylesheet" href="{{URL::asset('public/main/css/font-awesome.css')}}" type="text/css"/>
     <link rel="stylesheet" href="{{URL::asset('public/main/css/component.css')}}" type="text/css"/>
     <link rel="stylesheet" href="{{URL::asset('public/main/css/animate.min.css')}}" type="text/css"/>
+
+    <link rel="stylesheet" href="{{URL::asset('public/css/persianDatepicker-default.css')}}"/>
+    <link rel="stylesheet" type="text/css" href="{{URL::asset('public/css/sweetalert.css')}}">
     <!--Menu-->
 
     <link rel="stylesheet" href="{{URL::asset('public/main/css/menu.css')}}" type="text/css"/>
@@ -77,7 +77,7 @@
                                     <li><a href="#locations" class="nav-link">شعب<span class="sub-toggle"></span></a>
                                     </li>
                                     <li><a href="#gallery" class="nav-link">گالری</a></li>
-                                    <li><a href="#reservation" class="nav-link">ورود / ثبت نام</a></li>
+                                    <li><a href="#loginRegister" class="nav-link">ورود / ثبت نام</a></li>
                                     <li><a href="#contactform" class="nav-link">تماس با ما<span
                                                     class="sub-toggle"></span></a></li>
                                 </ul>
@@ -148,7 +148,8 @@
                                                     <li><a href="#locations" class="nav-link">شعب<span
                                                                     class="sub-toggle"></span></a></li>
                                                     <li><a href="#gallery" class="nav-link">گالری</a></li>
-                                                    <li><a href="#reservation" class="nav-link">رزرو میز</a></li>
+                                                    <li><a href="#loginRegister" class="nav-link">ورود / ثبت نام</a>
+                                                    </li>
                                                     <li><a href="#contactform" class="nav-link">تماس با ما<span
                                                                     class="sub-toggle"></span></a>
                                                     </li>
@@ -230,9 +231,10 @@
                                     <div class="col-md-6" dir="rtl">
                                         <div class="right_content">
                                             <p class="row yekan t-justify">
-                                                {{--@if(count($aboutUs))--}}
-                                                    {{--{!! $aboutUs !!}--}}
-                                                {{--@endif--}}
+                                                @if(!empty($aboutUs))
+                                                    {!! $aboutUs !!}
+                                                @endif
+
                                             </p>
                                             <p class="row yekan t-justify"></p>
                                         </div>
@@ -577,8 +579,9 @@
 
         <!--Reservation
         =============================-->
-        <div id="reservation" class="item">
-            <img src="{{URL::asset('public/main/img/8.jpg')}}" alt="the Paxton Gipsy Hill" class="fullBg">
+        <div id="loginRegister" class="item">
+            <img src="{{URL::asset('public/main/img/9.jpg')}}" alt="the Paxton Gipsy Hill" class="fullBg2">
+            {{--<div style="background-size: 800px 100px; background:no-repeat url({{URL::asset('public/main/img/8.jpg')}});"  alt="the Paxton Gipsy Hill" class="fullBg"></div>--}}
             <div class="content">
 
                 <div class="content_overlay"></div>
@@ -586,46 +589,109 @@
                     <div class="row contentscroll">
                         <div class="container">
                             <div class="col-md-6 empty">&nbsp;</div>
-
                             <div class="col-md-6 content_text">
                                 <div id="reservations">
-                                    <h1 class="yekan a-right">رزرو</h1>
-                                    <form id="reservation_form" class="reserve_form pad_top13" action="#" method="post">
-                                        <p class="yekan a-right">شما در این قسمت میتوانید قبل از مراجعه میز خود را رزرو
-                                            کنید.</p>
-                                        <h4 class="yekan a-right">انتخاب تاریخ و زمان</h4>
-
-                                        <div class="clearfix date_mar">
-                                            <div class="input-group date form_datetime" data-date=""
-                                                 data-date-format="dd MM yyyy - HH:ii p" data-link-field="dtp_input1">
-                                                <input name="dt" type="text" value="" readonly>
-                                                <span class="input-group-addon"><span
-                                                            class="glyphicon glyphicon-th"></span></span>
-                                                <span class="input-group-addon"><span
-                                                            class="glyphicon glyphicon-remove"></span></span></div>
-                                            <input type="hidden" id="dtp_input1" value=""/>
-                                        </div>
-
-                                        <h4 class="yekan a-right">اطلاعات شخص رزرو کننده</h4>
+                                    <h1 class="yekan a-right">1- ورود به پنل</h1>
+                                    <form id="reservation_form" class="reserve_form loginUserForm pad_top13" action="#" method="post">
+                                        {{csrf_field()}}
                                         <div class="clearfix reserve_form">
-                                            <input type="text" name="name"
+                                            <input type="text" name="cellphone"
                                                    class="validate['required'] textbox1 yekan a-right"
-                                                   placeholder="* نام : "
+                                                   placeholder="* تلفن همراه : "
                                                    onfocus="this.placeholder = ''"
-                                                   onBlur="this.placeholder = '* نام :'"/>
-                                            <input type="text" name="email"
+                                                   onBlur="this.placeholder = '* تلفن همراه :'"/>
+                                            <input type="text" id="password" name="password" type="password"
+                                                   class="validate['required','phone']  textbox1 yekan a-right"
+                                                   placeholder="* رمز عبور : " onFocus="this.placeholder = ''"
+                                                   onBlur="this.placeholder = '* رمز عبور :'"/>
+                                            <i class="fa fa-refresh fa-lg fa-2x captcha-reload col-md-1" height="50"
+                                               width="50"></i>
+                                            <img class="captcha col-md-4" alt="captcha.png" id="captcha-image"/>
+                                            <input type="" name="phone"
+                                                   class="validate['required']  textbox1 yekan a-right " id="captcha"
+                                                   placeholder="* کد امنیتی : " onFocus="this.placeholder = ''"
+                                                   onBlur="this.placeholder = '* کد امنیتی :'"/>
+                                            <input id="loginUser" value="ورود" name="Confirm" type="button"
+                                                   class="submitBtn yekan a-right">
+                                        </div>
+                                    </form>
+                                </div>
+                                <br>
+                                <br>
+                                <div id="reservations">
+                                    <h1 class="yekan a-right">2- ثبت نام</h1>
+                                    <form id="reservation_form" class="reserve_form registerForm pad_top13" action="#" method="post">
+                                       {{csrf_field()}}
+                                        <input type="hidden" value="user" name="frmtype">
+                                        <div class="clearfix reserve_form">
+                                            <input type="text" name="name" id="name"
+                                                   class="validate['required'] textbox1 yekan a-right"
+                                                   placeholder=" نام : "
+                                                   onfocus="this.placeholder = ''"
+                                                   onBlur="this.placeholder = ' نام :'"/>
+                                            <input type="text" name="family"  id="family"
+                                                   class="validate['required'] textbox1 yekan a-right"
+                                                   placeholder=" نام خانوادگی : "
+                                                   onfocus="this.placeholder = ''"
+                                                   onBlur="this.placeholder = ' نام خانوادگی :'"/>
+                                            <input type="text" id="password"  name="password"
+                                                   class="validate['required'] textbox1 yekan a-right"
+                                                   placeholder="* پسورد : "
+                                                   onfocus="this.placeholder = ''"
+                                                   onBlur="this.placeholder = '* پسورد :'"/>
+                                            <input type="text" name="password_confirmation" id="password-confirm"
+                                                   class="validate['required'] textbox1 yekan a-right"
+                                                   placeholder="* تکرار پسورد : "
+                                                   onfocus="this.placeholder = ''"
+                                                   onBlur="this.placeholder = '* تکرار پسورد :'"/>
+                                            <input type="text" name="email"  id="email"
                                                    class="validate['required','email']  textbox1 yekan a-right"
-                                                   placeholder="* ایمیل : " onFocus="this.placeholder = ''"
-                                                   onBlur="this.placeholder = '* ایمیل :'"/>
+                                                   placeholder=" ایمیل : " onFocus="this.placeholder = ''"
+                                                   onBlur="this.placeholder = ' ایمیل :'"/>
                                             <input type="text" name="phone"
+                                                   class="validate['required','phone']  textbox1 yekan a-right"
+                                                   placeholder="* شماره همراه : " onFocus="this.placeholder = ''"
+                                                   onBlur="this.placeholder = '* تلفن همراه :'"/>
+                                            <input type="text" name="cellphone" id="cellphone"
                                                    class="validate['required','phone']  textbox1 yekan a-right"
                                                    placeholder="* شماره تماس : " onFocus="this.placeholder = ''"
                                                    onBlur="this.placeholder = '* شماره تماس :'"/>
-                                            <textarea name="message"
+                                            <input type="text" name="birth_date" id="birth_date"
+                                                   class="validate['required']  textbox1 yekan a-right"
+                                                   placeholder="* تاریخ تولد : " onFocus="this.placeholder = ''"
+                                                   onBlur="this.placeholder = '* تاریخ تولد :'"/>
+                                            <select name="capital" id="capital"
+                                                    class="validate['required']  textbox1 yekan a-right"
+                                                    placeholder="* استان : " onFocus="this.placeholder = ''"
+                                                    onBlur="this.placeholder = '* استان :'">
+                                                <option class="align-right" value="-1">لطفا استان مورد نظر خود را انتخاب
+                                                    نمایید.
+                                                </option>
+                                                @foreach($capital as $cap)
+                                                    <option class="align-right"
+                                                            value="{{$cap->id}}">{{$cap->title}}</option>
+                                                @endforeach                                            </select>
+                                            <select name="town" id="town"
+                                                    class="validate['required']  textbox1 yekan a-right"
+                                                    placeholder=" شهرستان : " onFocus="this.placeholder = ''"
+                                                    onBlur="this.placeholder = ' شهرستان :'">
+                                            </select>
+                                            <input type="text" name="zipCode" id="zipCode"
+                                                   class="validate['required','phone']  textbox1 yekan a-right"
+                                                   placeholder=" کد پستی : " onFocus="this.placeholder = ''"
+                                                   onBlur="this.placeholder = ' کد پستی :'"/>
+                                            <textarea name="address" id="address"
                                                       class="validate['required'] messagebox1 yekan a-right"
-                                                      placeholder="* متن پیغام : " onFocus="this.placeholder = ''"
-                                                      onBlur="this.placeholder = '* متن پیغام :'"></textarea>
-                                            <input id="submitBtn" value="رزرو میز" name="Confirm" type="submit"
+                                                      placeholder=" آدرس : " onFocus="this.placeholder = ''"
+                                                      onBlur="this.placeholder = ' آدرس :'"></textarea>
+                                            <i class="fa fa-refresh fa-lg fa-2x captcha-reload col-md-1" height="50"
+                                               width="50"></i>
+                                            <img class="captcha col-md-4" alt="captcha.png" id="captcha-image"/>
+                                            <input type="" name="phone"
+                                                   class="validate['required']  textbox1 yekan a-right " id="captcha"
+                                                   placeholder="* کد امنیتی : " onFocus="this.placeholder = ''"
+                                                   onBlur="this.placeholder = '* کد امنیتی :'"/>
+                                            <input id="registerUser"  value="ثبت نام" name="Confirm" type="button"
                                                    class="submitBtn yekan a-right">
                                         </div>
                                     </form>
@@ -710,8 +776,6 @@
 <script type="text/javascript" src="{{URL::asset('public/main/js/jquery.validate.min.js')}}"></script>
 <script type="text/javascript" src="{{URL::asset('public/main/js/bootstrap-datetimepicker.min.js')}}"></script>
 <script type="text/javascript" src="{{URL::asset('public/main/js/jquery.fitvids.js')}}"></script>
-{{--<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>--}}
-
 
 <!-- Tiled Sldier -->
 <script type="text/javascript" src="{{URL::asset('public/main/js/classie.js')}}"></script>
@@ -816,5 +880,217 @@
     })
 </script>
 
+{{--logins scripts--}}
+<script>
+    $(document).ready(function () {
+        //load cities of capital in selectbox
+        var capital = $("#capital");
+        $("#capital").on("change", function () {
+            var cid = $(this).val();
+            var token = $(this).data("token");
+            $.ajax({
+                url: '{{url('town')}}' + '/' + cid,
+                type: 'get',
+                dataType: "JSON",
+                data: {
+                    "id": cid,
+                    "_method": 'get',
+                    "_token": token
+                },
+                success: function (data) {
+                    var item = $('#town');
+                    item.empty();
+                    $.each(data, function (index, value) {
+                        item.append('<option value="' + value.title + '">' + value.title + '</option>');
+                    });
+
+                },
+                error: function (response) {
+                    console.log(response.valueOf(2));
+                }
+            });
+        });
+        captcha();
+        function captcha() {
+            var token = $(this).data("token");
+            $.ajax({
+                url: '{{url('captcha')}}',
+                type: 'get',
+                dataType: "JSON",
+                data: {
+                    "_method": 'get',
+                    "_token": token
+                },
+                success: function (data) {
+                    $(".captcha").attr("src", data)
+                },
+                error: function (response) {
+                    console.log(response.valueOf(2));
+                }
+            });
+        }
+
+        $(".captcha").click(function () {
+            captcha();
+        });
+        $(".captcha-reload").click(function () {
+            captcha();
+        });
+        $("#registerUser").on('click', function () {
+            $(".registerForm").submit(function (e) {
+                e.preventDefault();
+            });
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+                }
+            });
+            var formData = new FormData($(".registerForm")[0])
+            $.ajax({
+                url: '{{url('/register')}}',
+                type: 'post',
+                cache: false,
+                data: formData,
+                dataType: 'json',
+                contentType: false,
+                processData: false,
+                success: function (response) {
+                    var y = '';
+                    if (response.data == '1') {
+                        y = 'شما با مؤفقیت ثبت نام نمودید، از بخش ورود برای استفاده از پنل خود اقدام نمائید.';
+                    }
+                    else if (response.data == '0') {
+                        y = 'متأسفانه شما ثبت نام نشدید،با بخش پشتیبانی تماس حاصل فرمائید.';
+                    }
+                    else {
+                        $.each(response, function (key, val) {
+                            y += val[0] + '\n'
+                        });
+                    }
+                    swal({
+                        title: '',
+                        text: y,
+                        type: "info",
+                        confirmButtonText: "بستن"
+                    })
+
+                },
+                error: function (response) {
+                    if (response.status == 422) {
+                        var x = response.responseJSON;
+                        var y = '';
+                        $.each(x, function (key, val) {
+                            y += val[0] + '\n';//showing only the first error.
+                        });
+                        swal({
+                            title: '',
+                            text: y,
+                            type: "warning",
+                        })
+                    }
+                    else if (response.status === 421) {
+                        swal({
+                            title: "",
+                            text: "اطلاعات شما با مؤفقیت ثبت شد، پس از تأیید شدن توسط مدیر سایت برای شما ایمیل فعال سازی ارسال خواهد شد.منتظر پیامک اطلاعیه از طرف سایت باشید.",
+                            type: "warning",
+                            confirmButtonText: "بستن"
+                        });
+                    }
+                    else {
+                        swal({
+                            title: "",
+//                                text: 'خطایی رخ داده است، لطفا با پشتیبانی تماس حاصل فرمائید',
+                            text: "اطلاعات شما با مؤفقیت ثبت شد، پس از تأیید شدن توسط مدیر سایت برای شما ایمیل فعال سازی ارسال خواهد شد.منتظر پیامک اطلاعیه از طرف سایت باشید.",
+                            type: "warning",
+                            confirmButtonText: "بستن"
+                        });
+                    }
+                }//error
+
+            })//ajax
+        });//onclick
+
+        //send login form
+        $("#loginUser").on('click', function () {
+            $(".loginUserForm").submit(function (e) {
+                e.preventDefault();
+            });
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+                }
+            });
+            var formData = new FormData($(".loginUserForm")[0])
+            $.ajax({
+                url: '{{url('/login')}}',
+                type: 'post',
+                cache: false,
+                data: formData,
+                dataType: 'json',
+                contentType: false,
+                processData: false,
+                success: function (data) {
+                    var x = '';
+                    $.each(data, function (key, val) {
+                        x += val[0] + '\n'
+                    });
+                    console.log(data.responseText)
+                    swal({
+                        title: '',
+                        text: x,
+                        type: "info",
+                        confirmButtonText: "بستن"
+                    })
+                    console.log(data);
+
+                },
+                error: function (response) {
+                    if (response.status == 422) {
+                        var x = response.responseJSON;
+                        var y = '';
+                        $.each(x, function (key, val) {
+                            y += val[0] + '\n';//showing only the first error.
+                        });
+                        console.log(x)
+                        if (x.cellphone == "اطلاعات ورودی با اطلاعات ذخیره شده مطابقت ندارد") {
+                            swal({
+                                title: '',
+                                text: x.cellphone,
+                                type: "warning",
+                            });
+                        }
+                        else {
+                            swal({
+                                title: '',
+                                text: y,
+                                type: "warning",
+                            });
+                        }
+                    }
+                    else if (response.status === 421) {
+                        swal({
+                            title: "",
+                            text: "اطلاعات شما با مؤفقیت ثبت شد، پس از تأیید شدن توسط مدیر سایت برای شما ایمیل فعال سازی ارسال خواهد شد.منتظر پیامک اطلاعیه از طرف سایت باشید.",
+                            type: "warning",
+                            confirmButtonText: "بستن"
+                        });
+                    }
+                    else if (response.status != 500) {
+                        location.href = '{{url('/panel')}}';
+                    }
+                }//error
+
+            })//ajax
+        });//onclick
+
+    })//document.ready
+
+</script>
+<script src="{{ URL::asset('public/js/persianDatepicker.js')}}"></script>
+<script src="{{url('public/js/sweetalert.min.js')}}"></script>
+{{--persianDatepicker--}}
+<script>
+    $('#birth_date').persianDatepicker();
+</script>
 </body>
 </html>

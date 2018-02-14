@@ -15,7 +15,6 @@ class UnitController extends Controller
         if (!$request->ajax()) {
             abort(403);
         } else {
-            if ($request->unitId == '') {
                 $count = count($request->unit);
                 $i = 0;
                 while ($i < $count) {
@@ -28,22 +27,6 @@ class UnitController extends Controller
                 if ($insert) {
                     return response()->json('اطلاعات با موفقیت ثبت شد');
                 }
-            } else {
-                $count = count($request->unit);
-                $i = 0;
-                while ($i < $count) {
-                    $insert = DB::table('sub_unit_counts')->insertGetId
-                    ([
-                        'title' => trim($request->unit[$i]),
-                        'unit_count_id' => $request->unitId,
-                    ]);
-                    $i++;
-                }
-                if ($insert) {
-                    return response()->json('اطلاعات با موفقیت ثبت شد');
-                }
-            }
-
         }
     }
 
