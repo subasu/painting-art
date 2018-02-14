@@ -619,18 +619,20 @@
                                 <br>
                                 <div id="reservations">
                                     <h1 class="yekan a-right">2- ثبت نام</h1>
-                                    <form id="reservation_form" class="reserve_form pad_top13" action="#" method="post">
+                                    <form id="reservation_form" class="reserve_form registerForm pad_top13" action="#" method="post">
+                                       {{csrf_field()}}
+                                        <input type="hidden" value="user" name="frmtype">
                                         <div class="clearfix reserve_form">
                                             <input type="text" name="name" id="name"
                                                    class="validate['required'] textbox1 yekan a-right"
-                                                   placeholder="* نام : "
+                                                   placeholder=" نام : "
                                                    onfocus="this.placeholder = ''"
-                                                   onBlur="this.placeholder = '* نام :'"/>
+                                                   onBlur="this.placeholder = ' نام :'"/>
                                             <input type="text" name="family"  id="family"
                                                    class="validate['required'] textbox1 yekan a-right"
-                                                   placeholder="* نام خانوادگی : "
+                                                   placeholder=" نام خانوادگی : "
                                                    onfocus="this.placeholder = ''"
-                                                   onBlur="this.placeholder = '* نام خانوادگی :'"/>
+                                                   onBlur="this.placeholder = ' نام خانوادگی :'"/>
                                             <input type="text" id="password"  name="password"
                                                    class="validate['required'] textbox1 yekan a-right"
                                                    placeholder="* پسورد : "
@@ -643,8 +645,8 @@
                                                    onBlur="this.placeholder = '* تکرار پسورد :'"/>
                                             <input type="text" name="email"  id="email"
                                                    class="validate['required','email']  textbox1 yekan a-right"
-                                                   placeholder="* ایمیل : " onFocus="this.placeholder = ''"
-                                                   onBlur="this.placeholder = '* ایمیل :'"/>
+                                                   placeholder=" ایمیل : " onFocus="this.placeholder = ''"
+                                                   onBlur="this.placeholder = ' ایمیل :'"/>
                                             <input type="text" name="phone"
                                                    class="validate['required','phone']  textbox1 yekan a-right"
                                                    placeholder="* شماره همراه : " onFocus="this.placeholder = ''"
@@ -653,7 +655,7 @@
                                                    class="validate['required','phone']  textbox1 yekan a-right"
                                                    placeholder="* شماره تماس : " onFocus="this.placeholder = ''"
                                                    onBlur="this.placeholder = '* شماره تماس :'"/>
-                                            <input type="text" name="phone"
+                                            <input type="text" name="birth_date" id="birth_date"
                                                    class="validate['required']  textbox1 yekan a-right"
                                                    placeholder="* تاریخ تولد : " onFocus="this.placeholder = ''"
                                                    onBlur="this.placeholder = '* تاریخ تولد :'"/>
@@ -670,17 +672,17 @@
                                                 @endforeach                                            </select>
                                             <select name="town" id="town"
                                                     class="validate['required']  textbox1 yekan a-right"
-                                                    placeholder="* شهرستان : " onFocus="this.placeholder = ''"
-                                                    onBlur="this.placeholder = '* شهرستان :'">
+                                                    placeholder=" شهرستان : " onFocus="this.placeholder = ''"
+                                                    onBlur="this.placeholder = ' شهرستان :'">
                                             </select>
                                             <input type="text" name="zipCode" id="zipCode"
                                                    class="validate['required','phone']  textbox1 yekan a-right"
-                                                   placeholder="* کد پستی : " onFocus="this.placeholder = ''"
-                                                   onBlur="this.placeholder = '* کد پستی :'"/>
-                                            <textarea name="birth_date" id="birth_date"
+                                                   placeholder=" کد پستی : " onFocus="this.placeholder = ''"
+                                                   onBlur="this.placeholder = ' کد پستی :'"/>
+                                            <textarea name="address" id="address"
                                                       class="validate['required'] messagebox1 yekan a-right"
-                                                      placeholder="* آدرس : " onFocus="this.placeholder = ''"
-                                                      onBlur="this.placeholder = '* آدرس :'"></textarea>
+                                                      placeholder=" آدرس : " onFocus="this.placeholder = ''"
+                                                      onBlur="this.placeholder = ' آدرس :'"></textarea>
                                             <i class="fa fa-refresh fa-lg fa-2x captcha-reload col-md-1" height="50"
                                                width="50"></i>
                                             <img class="captcha col-md-4" alt="captcha.png" id="captcha-image"/>
@@ -934,7 +936,7 @@
             captcha();
         });
         $("#registerUser").on('click', function () {
-            $("#registerForm").submit(function (e) {
+            $(".registerForm").submit(function (e) {
                 e.preventDefault();
             });
             $.ajaxSetup({
@@ -942,7 +944,7 @@
                     'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
                 }
             });
-            var formData = new FormData($("#registerForm")[0])
+            var formData = new FormData($(".registerForm")[0])
             $.ajax({
                 url: '{{url('/register')}}',
                 type: 'post',

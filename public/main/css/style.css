@@ -93,7 +93,9 @@ body {
     font-family: 'Oswald';
     color: #242424;
 }
-
+.sweet-alert{
+    font-family: 'Oswald';
+}
 iframe {
     border: 0;
     outline: 0;
@@ -169,7 +171,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 }
 
 p {
-    font-family: 'Raleway', sans-serif;
+    font-family: 'yekan', sans-serif;
     font-size: 12px;
     font-weight: 400;
     color: #919191;
