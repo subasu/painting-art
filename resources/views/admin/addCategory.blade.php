@@ -38,10 +38,10 @@
                             <div class="form-group">
                                 <a  class="btn btn-info" onclick="window.location.reload(true)">شروع دوباره</a>
                                 <div class="col-md-1 col-sm-1 col-xs-1">
-                                    <a id="addInput" class="glyphicon glyphicon-plus btn btn-success" data-toggle="" title=" افزودن زیر دسته" ></a>
+                                    <a id="addInput" class="glyphicon glyphicon-plus btn btn-success" data-toggle="" title=" افزودن فیلد " ></a>
                                 </div>
                                 <div class="col-md-1 col-sm-1 col-xs-1">
-                                    <a id="removeInput" class="glyphicon glyphicon-remove btn btn-danger" data-toggle="" title="حذف زیر دسته" ></a>
+                                    <a id="removeInput" class="glyphicon glyphicon-remove btn btn-danger" data-toggle="" title="حذف فیلد" ></a>
                                 </div>
                                 {{--<label class="control-label col-md-11 col-sm-11 col-xs-11 font-size-s" for="name">  <span--}}
                                             {{--class="required star" title="پر کردن این فیلد الزامی است">نکته:</span>شما حداکثر میتوانید تا سه سطح دسته بندی نمائید و سطح چهارم محصول شما خواهد بود.--}}
