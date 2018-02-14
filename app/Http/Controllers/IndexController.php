@@ -166,6 +166,7 @@ class IndexController extends Controller
      */
     protected function register(request $data)
     {
+        $validation='';
         if ($data['frmtype'] == "user") {
             $validation = Validator::make($data->all(), [
                     'name' => 'sometimes|nullable|max:255',
