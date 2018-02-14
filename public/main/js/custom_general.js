@@ -333,7 +333,8 @@ jQuery(document).ready(function($){
     },
     success: function(element) {
     element
-    .text('OK!').addClass('valid')
+    .text('').addClass('valid')
+    // .text('OK!').addClass('valid')
     .closest('.control-group').removeClass('error').addClass('success');
     },
 	submitHandler: function(form) {
@@ -381,7 +382,7 @@ jQuery(document).ready(function($){
     },
     success: function(element) {
     element
-    .text('OK!').addClass('valid')
+    .text('').addClass('valid')
     .closest('.control-group').removeClass('error').addClass('success');
     },
 	submitHandler: function(form) {

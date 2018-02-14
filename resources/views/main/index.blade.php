@@ -4,7 +4,8 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>نقاشی کوبیسم</title>
     <meta name="description" content="سایت"/>
     <meta name="keywords" content="تابلو نقاشی،کوبیسم،سایت فروش آثار هنری و نقاشی، اثر هنری کوبیسم، سبک کوبیسم"/>
@@ -15,6 +16,9 @@
     <link rel="stylesheet" href="{{URL::asset('public/main/css/font-awesome.css')}}" type="text/css"/>
     <link rel="stylesheet" href="{{URL::asset('public/main/css/component.css')}}" type="text/css"/>
     <link rel="stylesheet" href="{{URL::asset('public/main/css/animate.min.css')}}" type="text/css"/>
+
+    <link rel="stylesheet" href="{{URL::asset('public/css/persianDatepicker-default.css')}}"/>
+    <link rel="stylesheet" type="text/css" href="{{URL::asset('public/css/sweetalert.css')}}">
     <!--Menu-->
 
     <link rel="stylesheet" href="{{URL::asset('public/main/css/menu.css')}}" type="text/css"/>
@@ -587,17 +591,18 @@
                             <div class="col-md-6 content_text">
                                 <div id="reservations">
                                     <h1 class="yekan a-right">1- ورود به پنل</h1>
-                                    <form id="reservation_form" class="reserve_form pad_top13" action="#" method="post">
+                                    <form id="reservation_form" class="reserve_form loginUserForm pad_top13" action="#" method="post">
+                                        {{csrf_field()}}
                                         <div class="clearfix reserve_form">
-                                            <input type="text" name="name"
+                                            <input type="text" name="cellphone"
                                                    class="validate['required'] textbox1 yekan a-right"
-                                                   placeholder="* نام : "
+                                                   placeholder="* تلفن همراه : "
                                                    onfocus="this.placeholder = ''"
-                                                   onBlur="this.placeholder = '* نام :'"/>
-                                            <input type="text" id="password" type="password"
+                                                   onBlur="this.placeholder = '* تلفن همراه :'"/>
+                                            <input type="text" id="password" name="password" type="password"
                                                    class="validate['required','phone']  textbox1 yekan a-right"
-                                                   placeholder="* شماره تماس : " onFocus="this.placeholder = ''"
-                                                   onBlur="this.placeholder = '* شماره تماس :'"/>
+                                                   placeholder="* رمز عبور : " onFocus="this.placeholder = ''"
+                                                   onBlur="this.placeholder = '* رمز عبور :'"/>
                                             <i class="fa fa-refresh fa-lg fa-2x captcha-reload col-md-1" height="50"
                                                width="50"></i>
                                             <img class="captcha col-md-4" alt="captcha.png" id="captcha-image"/>
@@ -1004,7 +1009,7 @@
 
         //send login form
         $("#loginUser").on('click', function () {
-            $("#loginForm").submit(function (e) {
+            $(".loginUserForm").submit(function (e) {
                 e.preventDefault();
             });
             $.ajaxSetup({
@@ -1012,7 +1017,7 @@
                     'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
                 }
             });
-            var formData = new FormData($("#loginForm")[0])
+            var formData = new FormData($(".loginUserForm")[0])
             $.ajax({
                 url: '{{url('/login')}}',
                 type: 'post',
@@ -1079,6 +1084,7 @@
 
 </script>
 <script src="{{ URL::asset('public/js/persianDatepicker.js')}}"></script>
+<script src="{{url('public/js/sweetalert.min.js')}}"></script>
 {{--persianDatepicker--}}
 <script>
     $('#birth_date').persianDatepicker();
