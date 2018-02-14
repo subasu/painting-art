@@ -559,7 +559,7 @@
                             loadItems(responses, selectBoxId, msgOpt1, msgOpt2, valueOption2)
                         }
                         else {
-                            location.href = '{{url("admin/addCategory")}}';
+                           setTimeout(function(){location.href = '{{url("admin/addCategory")}}';},3000);
                         }
                     }
                 })
@@ -568,7 +568,7 @@
                     var id = $(this).val();
                     var depth = $(this).find("option:selected ").attr('depth');
                     if (id == 000) {
-                        location.href = '{{url("admin/addCategory")}}';
+                        setTimeout(function(){location.href = '{{url("admin/addCategory")}}';},3000);
                     }
                     else if (depth != 0) {
                         swal({
@@ -631,7 +631,7 @@
                     var id = $(this).val();
                     var depth1 = $(this).find("option:selected ").attr('depth');
                     if (id == 000) {
-                        location.href = '{{url("admin/addCategory")}}';
+                        setTimeout(function(){location.href = '{{url("admin/addCategory")}}';},3000);
                     }
                     else if (depth1 != 0) {
                         swal({
@@ -684,7 +684,7 @@
                 $('#brands').on("change", function () {
                     var id = $(this).val();
                     if (id == 000) {
-                        location.href = '{{url("admin/addCategory")}}';
+                        setTimeout(function(){location.href = '{{url("admin/addCategory")}}';},3000);
                     }
                     findTitle(id)
                 })
@@ -693,7 +693,7 @@
                     var id = $(this).val();
 
                     if (id == 0) {
-                        location.href = '{{url("admin/addUnit")}}';
+                        setTimeout(function(){location.href = '{{url("admin/addUnit")}}';},3000);
                     }
                 })
                 //check option 2 selected or not, if yes redirect to add unit //view in subunit select box
@@ -701,7 +701,7 @@
                     var id = $(this).val();
 
                     if (id == 0) {
-                        location.href = '{{url("admin/addUnit")}}';
+                        setTimeout(function(){location.href = '{{url("admin/addUnit")}}';},3000);
 
                     }
                 })
@@ -722,7 +722,7 @@
                             loadItems(responses, selectBoxId, msgOpt1, msgOpt2, valueOption2)
                         }
                         else {
-                            location.href = '{{url("admin/addUnit")}}';
+                            setTimeout(function(){location.href = '{{url("admin/addUnit")}}';},3000);
                         }
                     }
                 });
@@ -731,7 +731,7 @@
                 $('#unit').on("change", function () {
                     var id = $(this).val();
                     if (id == 0) {
-                        location.href = '{{url("admin/addUnit")}}';
+                        setTimeout(function(){location.href = '{{url("admin/addUnit")}}';},3000);
                     }
                     else {
                         $.ajax
