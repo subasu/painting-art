@@ -6,7 +6,7 @@
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="x_panel">
                 <div class="x_title">
-                    <h2> مدیریت واحدهای شمارش و زیر واحد ها</h2>
+                    <h2> مدیریت واحدهای شمارش</h2>
                     <ul class="nav navbar-right panel_toolbox">
                         <li><a class="collapse-link" data-toggle="tooltip" title="جمع کردن"><i
                                         class="fa fa-chevron-up"></i></a>
@@ -29,7 +29,6 @@
                         <tr>
                             <th style="text-align: center">ردیف</th>
                             <th style="text-align: center"> عنوان واحد شمارش</th>
-                            <th style="text-align: center">مشاهده زیر واحد</th>
                             <th style="text-align: center">وضعیت</th>
                             <th style="text-align: center;border-right: 1px solid #d6d6c2">ویرایش</th>
                         </tr>
@@ -42,12 +41,6 @@
                             <tr class="unit">
                                 <td style="font-size: 120%;">{{++$i}}</td>
                                 <td style="font-size: 120%;">{{$datum->title}}</td>
-                                @if(count($datum->subUnits) == 0)
-                                    <td style="font-size: 120%;"><a class="btn btn-default col-md-8 col-md-offset-2">فاقد زیر واحد</a></td>
-                                @endif
-                                @if(count($datum->subUnits) > 0)
-                                    <td style="font-size: 120%;"><a class="btn btn-dark col-md-8 col-md-offset-2" href="{{url('admin/subUnitManagement')}}/{{$datum->id}}"> مشاهده و ویرایش زیر واحدها </a></td>
-                                @endif
                                 @if($datum->active == 1)
                                     <td style="color: green; font-size: 150%;">فعال</td>
                                 @endif

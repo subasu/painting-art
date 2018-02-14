@@ -64,7 +64,7 @@
 
 
                                     </div>
-                                    <label class="control-label col-md-3 col-sm-4 col-xs-3" for="title"> واحدهای موجود : <span
+                                    <label class="control-label col-md-3 col-sm-4 col-xs-3" for="title"> واحدهای شمارش موجود : <span
                                                 class="star" title="پر کردن این فیلد الزامی است"></span>
                                     </label>
                                     <label id="existedSub" style="display: none; margin-top: 3%;" class="control-label col-md-3 col-sm-4 col-xs-3" for="title"> زیر واحدهای موجود : <span
@@ -133,7 +133,7 @@
                         item.empty();
                         item.append
                             (
-                                "<option selected='true' disabled='disabled'>برای اضافه کردن زیر واحد ، واحد اصلی را انتخاب کنید</option>"
+                                "<option selected='true' disabled='disabled'>واحد های شمارش موجود</option>"
                             )
                             if(value.active == 1)
                             {
@@ -329,10 +329,10 @@
                                     $.each(response,function (key,value) {
                                         var item = $('#units');
                                         item.empty();
-                                        //
+
                                         item.append
                                         (
-                                            "<option selected='true' disabled='disabled'>برای اضافه کردن زیر واحد ، واحد اصلی را انتخاب کنید</option>"
+                                            "<option selected='true' disabled='disabled'>واحد های شمارش موجود</option>"
                                         )
                                         if(value.active == 1)
                                         {
@@ -377,188 +377,6 @@
                 }
             });
         })
-    </script>
-
-
-    <!-- below script is to get sub unit count  if exist and if not guide it to make sub unit-->
-    <script>
-        $(function () {
-            $(document).on('change','#units',function () {
-
-                $("[name = 'units'] option:selected").each(function(){
-
-                    var id = $(this).attr('id');
-                    //alert(id);
-                    $('#unitId').val(id);
-                    var title = $(this).val();
-                    if(id != 0)
-                    {
-                        $.ajax
-                        ({
-                            cache: false,
-                            url: "{{Url('api/v1/getSubunits')}}/" + id,
-                            dataType: "json",
-                            type: "get",
-                            success: function (response)
-                            {
-                                console.log(response);
-                                var option = '';
-                                if(response != 0)
-                                {
-                                    $.each(response,function (key,value) {
-                                        var item = $('#subUnits');
-                                        item.empty();
-                                        //
-                                        item.append
-                                        (
-                                            "<option selected='true' disabled='disabled'>زیر واحد های موجود</option>"
-                                        );
-                                        if(value.active == 1)
-                                        {
-                                            item.append
-                                            (
-                                                option += "<option id='"+value.id+"' name='"+value.depth+"'>"+value.title+"</option>"
-                                            );
-                                        }
-                                        if(value.active == 0)
-                                        {
-                                            item.append
-                                            (
-                                                option += "<option id='"+value.id+"' name='"+value.depth+"' style='background-color: lightgray;' disabled>"+value.title+"</option>"
-                                            );
-                                        }
-
-                                    })
-                                    $('#subUnits').css('display','block');
-                                    $('#addSubUnit').css('display','block');
-                                }else
-                                    {
-                                        untimelyAddCategory(title,id);
-                                    }
-                            }
-                        });
-                    }
-                })
-            })
-        })
-    </script>
-
-
-    <script>
-        function untimelyAddCategory(title,id)
-        {
-
-            swal
-            ({
-                    title:   " آیا در نظر دارید برای واحد " +"(( "+ title +" ))"+  " زیر واحد انتخاب نمائید؟ ",
-                    text: "",
-                    type: "info",
-                    showCancelButton: true,
-                    confirmButtonColor: "	#5cb85c",
-                    cancelButtonText: "خیر",
-                    confirmButtonText: "آری",
-                    closeOnConfirm: true,
-                    closeOnCancel: true
-                },
-                function (isConfirm) {
-                    if (isConfirm) {
-
-                        if (id) {
-
-                            $.ajax
-                            ({
-                                url: "{{url('api/v1/getSubunits')}}/" + id,
-                                dataType: 'json',
-                                type: 'get',
-                                success: function (result) {
-
-                                    console.log(result);
-                                    console.log('I am result');
-                                    if (result != 0) {
-
-                                        var option = '';
-                                        $.each(result, function (key, value) {
-
-                                            $('#existed').empty();
-                                            $('#existed').append
-                                            (
-                                                "<option>زیر واحد های درج شده</option>"
-                                            )
-                                            $('#existed').append
-                                            (
-                                                option += "<option selected='true' disabled='disabled' id='" + value.id + "' name='" + value.depth + "'>" + value.title + "</option>"
-                                            );
-
-                                        });
-                                        $('#subUnits').css('display', 'block');
-                                        $('#showUnits').css('display', 'none');
-                                        $('#existed').css('display', 'block');
-                                        $('#change').css('display', 'block');
-                                        $('#addSubUnit').css('display', 'none');
-                                        $('#addMainUnit').css('display', 'none');
-                                        $('#addInput').css('display', 'block');
-                                        $('#removeInput').css('display', 'block');
-                                        $('#reg').css('display', 'block');
-                                    } else {
-                                        $('#existed').empty();
-                                        $('#existed').append
-                                        (
-                                            "<option>هنوز زیر واحدی برای این واحد در نظر گرفته نشده است!</option>"
-                                        )
-                                        //   $('#change').empty();
-                                        $('#showUnits').css('display', 'none');
-                                        $('#change').css('display', 'block');
-                                        $('#addMainUnit').css('display', 'none');
-                                        $('#reg').css('display', 'block');
-                                        $('#addInput').css('display', 'block');
-                                        $('#removeInput').css('display', 'block');
-                                        $('#addSubUnit').css('display', 'none');
-                                    }
-
-                                }
-                            })
-                        }
-
-                     else
-                         {
-                     //        $('#subUnits').css('display','none');
-                         }
-
-                        $('#change').append
-                        (
-                            '<div id="main" class="col-md-5 col-md-offset-4">' +
-                            '<input value="' + title + '" class="form-control col-md-6" disabled  style="text-align: center; font-size: 120%;">' +
-                            '<b>'
-                            + '<lable style="margin-right:-60%;" class="control-label" for="name">عنوان دسته منتخب:</lable>' +
-                            '</b>' +
-                            '</div>'
-                        );
-
-                        $('#existedDiv').css('display', 'block');
-
-                        appendToChange();
-                    }
-                    else
-                    {
-                        $('#subUnits').css('display','none');
-                        $('#addSubUnit').css('display','none');
-                    }
-                });
-        }
-    </script>
-
-    <!-- below script is to handle addSubUnit button -->
-    <script>
-        $(document).on('click','#addSubUnit',function(){
-            $("[name = 'units'] option:selected").each(function(){
-
-                var id = $(this).attr('id');
-                //alert(id);
-                $('#unitId').val(id);
-                var title = $(this).val();
-                untimelyAddCategory(title,id);
-        })
-     })
     </script>
 
 @endsection

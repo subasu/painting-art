@@ -230,7 +230,7 @@
                                     <div class="col-md-6" dir="rtl">
                                         <div class="right_content">
                                             <p class="row yekan t-justify">
-                                                @if(count($aboutUs))
+                                                @if(!empty($aboutUs))
                                                     {!! $aboutUs !!}
                                                 @endif
                                             </p>
