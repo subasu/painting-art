@@ -77,7 +77,30 @@ class IndexController extends Controller
     public function home()
     {
         $menu = $this->loadMenu();
+        //this block code add sub category to each main category collection
+        foreach ($menu as $mnu) {
+            $mnu->submenu = $submenu = Category::where([['parent_id', $mnu->id], ['active', 1]])->orderBy('depth', 'DESC')->get();
+            foreach ($submenu as $sm) {
+                $x = CategoryProduct::where([['category_id', $sm->id], ['active', 1]])->value('id');
+                if ($x > 0)
+                    $sm->hasProduct = 0;
+                else
+                    $sm->hasProduct = 0;
+                //this block code add product to each sub category collection
+                $categories = Category::find($sm->id);
+                $products = $categories->products()->get();
+                $count = count($products);
+                $i = 0;
+                while ($i < $count) {
+                    foreach ($products[$i]->scores as $product) {
+                        $product->productScore = $this->productScore($products);
+                    }
+                    $i++;
 
+                }
+                $sm->products = $products;
+            }
+        }
         $pageTitle = 'صفحه ی اصلی';
         $capital = City::where('parent_id', '=', '1')->get();
         $services = Service::where('active', '=', '1')->get();
