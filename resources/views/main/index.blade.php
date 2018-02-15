@@ -264,39 +264,339 @@
                             <div class="col-md-6 content_text">
                                 <div class="pad_top30 home3">
                                     <div class="col-md-12">
-                                        @if(count($products))
-                                            @foreach($products as $product)
-                                                @if($product->active == 1)
+                                        @if(count($menu))
+                                            @foreach($menu as $mnu)
+                                                @if($mnu->hasProduct)
                                                     <div class="row ">
                                                         <div class="menu_content clearfix">
                                                             <div class="col-md-10 text-left">
                                                                 <div class="title-splider yekan">
                                                                     <h4 class="clearfix">
-                                                                        <span class="right border_bottom">{{$product->title}}</span>
-                                                                        @foreach($product->productFlags as $flag)
-                                                                            @if($flag->active == 1)
-                                                                                <span class="left d-rtl">{{number_format($flag->price)}}
-                                                                                    تومان</span></h4>
-                                                                    @endif
-                                                                    @endforeach
-                                                                </div>
-                                                                <p class="yekan a-right">{{$product->description}}
-                                                                </p>
+                                                                        <span class="right border_bottom">{{$mnu->title}}</span>
+                                                                    </h4></div>
+
                                                             </div>
-                                                            @if(!empty($product->productImages[0]))
-                                                                <div class="col-md-2 menu_small">
-                                                                    <div class="row"><img
-                                                                                src="{{url('public/dashboard/productFiles/picture/'.$product->productImages[0]->image_src)}}"
-                                                                                class="img-responsive img_border"
-                                                                                alt=""/>
-                                                                    </div>
+                                                            <div class="col-md-2 menu_small">
+                                                                <div class="row"><img
+                                                                            src="{{url('public/dashboard/image/'.$mnu->image_src)}}"
+                                                                            class="img-responsive img_border"
+                                                                            alt=""/>
                                                                 </div>
-                                                            @endif
+                                                            </div>
+                                                            <div class="col-md-8">
+                                                                <?php $count = 1;$subCatCounts=1;?>
+                                                                @if(count($menu))
+                                                                        <?php $j = $subCatCounts;?>
+                                                                        @foreach($mnu->submenu as $submenu)
+                                                                            <div class="row ">
+                                                                                <div class="menu_content clearfix">
+                                                                                    <div class="col-md-10 text-left">
+                                                                                        <div class="title-splider yekan">
+                                                                                            <h4 class="clearfix">
+                                                                                                <span class="right border_bottom" href="#tab-{{$j++}}">{{$submenu->title}}</span>
+                                                                                                {{--@foreach($product->productFlags as $flag)--}}
+                                                                                                {{--@if($flag->active == 1)--}}
+                                                                                                {{--<span class="left d-rtl">{{number_format($flag->price)}}--}}
+                                                                                                {{--تومان</span>
+                                                                                                --}}
+                                                                                                {{--@endif--}}
+                                                                                                {{--@endforeach--}}
+                                                                                            </h4></div>
+                                                                                        {{--<p class="yekan a-right">{{$product->description}}--}}
+                                                                                        {{--</p>--}}
+                                                                                    </div>
+                                                                                    {{--@if(!empty($product->productImages[0]))--}}
+                                                                                    <div class="col-md-2 menu_small">
+                                                                                        <div class="row"><img
+                                                                                                    src="{{url('public/dashboard/image/'.$mnu->image_src)}}"
+                                                                                                    class="img-responsive img_border"
+                                                                                                    alt=""/>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    {{--@endif--}}
+                                                                                </div>
+                                                                            </div>
+                                                                        
+                                                                    @endforeach
+                                                                @endif
+                                                                {{--<div class="clearfix row">--}}
+                                                                {{--<div class="menu_content clearfix">--}}
+
+                                                                {{--<div class="col-md-10 text-left">--}}
+                                                                {{--<div class="title-splider yekan">--}}
+                                                                {{--<h4 class="clearfix"><span--}}
+                                                                {{--class="right border_bottom">کاریپف</span> <span--}}
+                                                                {{--class="left d-rtl">10,000  تومان</span></h4>--}}
+                                                                {{--</div>--}}
+                                                                {{--<p class="yekan a-right">خمیر پف دار پر شده با سالاد خیار مرغ گریل--}}
+                                                                {{--شده.</p>--}}
+                                                                {{--</div>--}}
+                                                                {{--<div class="col-md-2 menu_small">--}}
+                                                                {{--<div class="row"><img--}}
+                                                                {{--src="{{URL::asset('public/main/img/sp3.jpg')}}"--}}
+                                                                {{--class="img-responsive img_border" alt=""/></div>--}}
+                                                                {{--</div>--}}
+                                                                {{--</div>--}}
+                                                                {{--</div>--}}
+
+                                                                {{--<div class="clearfix row ">--}}
+                                                                {{--<div class="menu_content clearfix">--}}
+                                                                {{--<div class="col-md-10 text-left">--}}
+                                                                {{--<div class="title-splider yekan">--}}
+                                                                {{--<h4 class="clearfix"><span--}}
+                                                                {{--class="right border_bottom">فریتاتا</span> <span--}}
+                                                                {{--class="left d-rtl">8,000 تومان</span></h4>--}}
+                                                                {{--</div>--}}
+                                                                {{--<p class="yekan a-right">مارچوبه، آویشن تازه، پخته در یک کتری--}}
+                                                                {{--چدنی.</p>--}}
+                                                                {{--</div>--}}
+                                                                {{--<div class="col-md-2 menu_small">--}}
+                                                                {{--<div class="row"><img--}}
+                                                                {{--src="{{URL::asset('public/main/img/sp6.jpg')}}"--}}
+                                                                {{--class="img-responsive img_border" alt=""/></div>--}}
+                                                                {{--</div>--}}
+                                                                {{--</div>--}}
+                                                                {{--</div>--}}
+
+                                                                {{--<div class="row">--}}
+                                                                {{--<div class="menu_content clearfix">--}}
+                                                                {{--<div class="col-md-10 text-left">--}}
+                                                                {{--<div class="title-splider yekan">--}}
+                                                                {{--<h4 class="clearfix"><span class="right border_bottom">اسپرینگ رول</span><span--}}
+                                                                {{--class="left d-rtl">  15,000 تومان   </span></h4>--}}
+                                                                {{--</div>--}}
+                                                                {{--<p class="yekan a-right">رول سرخ شده ترد پر شده با میگو و رشته--}}
+                                                                {{--فرنگی. </p>--}}
+                                                                {{--</div>--}}
+                                                                {{--<div class="col-md-2 menu_small">--}}
+                                                                {{--<div class="row"><img--}}
+                                                                {{--src="{{URL::asset('public/main/img/sp1.jpg')}}"--}}
+                                                                {{--class="img-responsive img_border" alt=""/></div>--}}
+                                                                {{--</div>--}}
+                                                                {{--</div>--}}
+                                                                {{--</div>--}}
+
+                                                                {{--<div class="row ">--}}
+                                                                {{--<div class="menu_content clearfix">--}}
+                                                                {{--<div class="col-md-10 text-left">--}}
+                                                                {{--<div class="title-splider yekan">--}}
+                                                                {{--<h4 class="clearfix"><span--}}
+                                                                {{--class="right border_bottom">ساتای</span> <span--}}
+                                                                {{--class="left d-rtl">12,000 تومان</span></h4>--}}
+                                                                {{--</div>--}}
+                                                                {{--<p class="yekan a-right">انتخاب مرغ یا گوشت گاو خوابانده شده در--}}
+                                                                {{--گیاهان تایلندی.</p>--}}
+                                                                {{--</div>--}}
+                                                                {{--<div class="col-md-2 menu_small">--}}
+                                                                {{--<div class="row"><img--}}
+                                                                {{--src="{{URL::asset('public/main/img/sp2.jpg')}}"--}}
+                                                                {{--class="img-responsive img_border" alt=""/></div>--}}
+                                                                {{--</div>--}}
+                                                                {{--</div>--}}
+                                                                {{--</div>--}}
+
+                                                                {{--<div class="clearfix row">--}}
+                                                                {{--<div class="menu_content clearfix">--}}
+
+                                                                {{--<div class="col-md-10 text-left">--}}
+                                                                {{--<div class="title-splider yekan">--}}
+                                                                {{--<h4 class="clearfix"><span--}}
+                                                                {{--class="right border_bottom">کاریپف</span> <span--}}
+                                                                {{--class="left d-rtl">10,000  تومان</span></h4>--}}
+                                                                {{--</div>--}}
+                                                                {{--<p class="yekan a-right">خمیر پف دار پر شده با سالاد خیار مرغ گریل--}}
+                                                                {{--شده.</p>--}}
+                                                                {{--</div>--}}
+                                                                {{--<div class="col-md-2 menu_small">--}}
+                                                                {{--<div class="row"><img--}}
+                                                                {{--src="{{URL::asset('public/main/img/sp3.jpg')}}"--}}
+                                                                {{--class="img-responsive img_border" alt=""/></div>--}}
+                                                                {{--</div>--}}
+                                                                {{--</div>--}}
+                                                                {{--</div>--}}
+
+                                                                {{--<div class="clearfix row ">--}}
+                                                                {{--<div class="menu_content clearfix">--}}
+                                                                {{--<div class="col-md-10 text-left">--}}
+                                                                {{--<div class="title-splider yekan">--}}
+                                                                {{--<h4 class="clearfix"><span--}}
+                                                                {{--class="right border_bottom">فریتاتا</span> <span--}}
+                                                                {{--class="left d-rtl">8,000 تومان</span></h4>--}}
+                                                                {{--</div>--}}
+                                                                {{--<p class="yekan a-right">مارچوبه، آویشن تازه، پخته در یک کتری--}}
+                                                                {{--چدنی.</p>--}}
+                                                                {{--</div>--}}
+                                                                {{--<div class="col-md-2 menu_small">--}}
+                                                                {{--<div class="row"><img--}}
+                                                                {{--src="{{URL::asset('public/main/img/sp6.jpg')}}"--}}
+                                                                {{--class="img-responsive img_border" alt=""/></div>--}}
+                                                                {{--</div>--}}
+                                                                {{--</div>--}}
+                                                                {{--</div>--}}
+
+                                                            </div>
+
                                                         </div>
+
                                                     </div>
                                                 @endif
                                             @endforeach
                                         @endif
+                                        {{--<div class="clearfix row">--}}
+                                        {{--<div class="menu_content clearfix">--}}
+
+                                        {{--<div class="col-md-10 text-left">--}}
+                                        {{--<div class="title-splider yekan">--}}
+                                        {{--<h4 class="clearfix"><span--}}
+                                        {{--class="right border_bottom">کاریپف</span> <span--}}
+                                        {{--class="left d-rtl">10,000  تومان</span></h4>--}}
+                                        {{--</div>--}}
+                                        {{--<p class="yekan a-right">خمیر پف دار پر شده با سالاد خیار مرغ گریل--}}
+                                        {{--شده.</p>--}}
+                                        {{--</div>--}}
+                                        {{--<div class="col-md-2 menu_small">--}}
+                                        {{--<div class="row"><img--}}
+                                        {{--src="{{URL::asset('public/main/img/sp3.jpg')}}"--}}
+                                        {{--class="img-responsive img_border" alt=""/></div>--}}
+                                        {{--</div>--}}
+                                        {{--</div>--}}
+                                        {{--</div>--}}
+
+                                        {{--<div class="clearfix row ">--}}
+                                        {{--<div class="menu_content clearfix">--}}
+                                        {{--<div class="col-md-10 text-left">--}}
+                                        {{--<div class="title-splider yekan">--}}
+                                        {{--<h4 class="clearfix"><span--}}
+                                        {{--class="right border_bottom">فریتاتا</span> <span--}}
+                                        {{--class="left d-rtl">8,000 تومان</span></h4>--}}
+                                        {{--</div>--}}
+                                        {{--<p class="yekan a-right">مارچوبه، آویشن تازه، پخته در یک کتری--}}
+                                        {{--چدنی.</p>--}}
+                                        {{--</div>--}}
+                                        {{--<div class="col-md-2 menu_small">--}}
+                                        {{--<div class="row"><img--}}
+                                        {{--src="{{URL::asset('public/main/img/sp6.jpg')}}"--}}
+                                        {{--class="img-responsive img_border" alt=""/></div>--}}
+                                        {{--</div>--}}
+                                        {{--</div>--}}
+                                        {{--</div>--}}
+
+                                        {{--<div class="row">--}}
+                                        {{--<div class="menu_content clearfix">--}}
+                                        {{--<div class="col-md-10 text-left">--}}
+                                        {{--<div class="title-splider yekan">--}}
+                                        {{--<h4 class="clearfix"><span class="right border_bottom">اسپرینگ رول</span><span--}}
+                                        {{--class="left d-rtl">  15,000 تومان   </span></h4>--}}
+                                        {{--</div>--}}
+                                        {{--<p class="yekan a-right">رول سرخ شده ترد پر شده با میگو و رشته--}}
+                                        {{--فرنگی. </p>--}}
+                                        {{--</div>--}}
+                                        {{--<div class="col-md-2 menu_small">--}}
+                                        {{--<div class="row"><img--}}
+                                        {{--src="{{URL::asset('public/main/img/sp1.jpg')}}"--}}
+                                        {{--class="img-responsive img_border" alt=""/></div>--}}
+                                        {{--</div>--}}
+                                        {{--</div>--}}
+                                        {{--</div>--}}
+
+                                        {{--<div class="row ">--}}
+                                        {{--<div class="menu_content clearfix">--}}
+                                        {{--<div class="col-md-10 text-left">--}}
+                                        {{--<div class="title-splider yekan">--}}
+                                        {{--<h4 class="clearfix"><span--}}
+                                        {{--class="right border_bottom">ساتای</span> <span--}}
+                                        {{--class="left d-rtl">12,000 تومان</span></h4>--}}
+                                        {{--</div>--}}
+                                        {{--<p class="yekan a-right">انتخاب مرغ یا گوشت گاو خوابانده شده در--}}
+                                        {{--گیاهان تایلندی.</p>--}}
+                                        {{--</div>--}}
+                                        {{--<div class="col-md-2 menu_small">--}}
+                                        {{--<div class="row"><img--}}
+                                        {{--src="{{URL::asset('public/main/img/sp2.jpg')}}"--}}
+                                        {{--class="img-responsive img_border" alt=""/></div>--}}
+                                        {{--</div>--}}
+                                        {{--</div>--}}
+                                        {{--</div>--}}
+
+                                        {{--<div class="clearfix row">--}}
+                                        {{--<div class="menu_content clearfix">--}}
+
+                                        {{--<div class="col-md-10 text-left">--}}
+                                        {{--<div class="title-splider yekan">--}}
+                                        {{--<h4 class="clearfix"><span--}}
+                                        {{--class="right border_bottom">کاریپف</span> <span--}}
+                                        {{--class="left d-rtl">10,000  تومان</span></h4>--}}
+                                        {{--</div>--}}
+                                        {{--<p class="yekan a-right">خمیر پف دار پر شده با سالاد خیار مرغ گریل--}}
+                                        {{--شده.</p>--}}
+                                        {{--</div>--}}
+                                        {{--<div class="col-md-2 menu_small">--}}
+                                        {{--<div class="row"><img--}}
+                                        {{--src="{{URL::asset('public/main/img/sp3.jpg')}}"--}}
+                                        {{--class="img-responsive img_border" alt=""/></div>--}}
+                                        {{--</div>--}}
+                                        {{--</div>--}}
+                                        {{--</div>--}}
+
+                                        {{--<div class="clearfix row ">--}}
+                                        {{--<div class="menu_content clearfix">--}}
+                                        {{--<div class="col-md-10 text-left">--}}
+                                        {{--<div class="title-splider yekan">--}}
+                                        {{--<h4 class="clearfix"><span--}}
+                                        {{--class="right border_bottom">فریتاتا</span> <span--}}
+                                        {{--class="left d-rtl">8,000 تومان</span></h4>--}}
+                                        {{--</div>--}}
+                                        {{--<p class="yekan a-right">مارچوبه، آویشن تازه، پخته در یک کتری--}}
+                                        {{--چدنی.</p>--}}
+                                        {{--</div>--}}
+                                        {{--<div class="col-md-2 menu_small">--}}
+                                        {{--<div class="row"><img--}}
+                                        {{--src="{{URL::asset('public/main/img/sp6.jpg')}}"--}}
+                                        {{--class="img-responsive img_border" alt=""/></div>--}}
+                                        {{--</div>--}}
+                                        {{--</div>--}}
+                                        {{--</div>--}}
+
+                                    </div>
+                                    <div class="col-md-12">
+                                        {{--start--}}
+                                        {{--@if(count($products))--}}
+                                        {{--@foreach($products as $product)--}}
+                                        {{--@if($product->active == 1)--}}
+                                        {{--<div class="row ">--}}
+                                        {{--<div class="menu_content clearfix">--}}
+                                        {{--<div class="col-md-10 text-left">--}}
+                                        {{--<div class="title-splider yekan">--}}
+                                        {{--<h4 class="clearfix">--}}
+                                        {{--<span class="right border_bottom">{{$product->title}}</span>--}}
+                                        {{--@foreach($product->productFlags as $flag)--}}
+                                        {{--@if($flag->active == 1)--}}
+                                        {{--<span class="left d-rtl">{{number_format($flag->price)}}--}}
+                                        {{--تومان</span></h4>--}}
+                                        {{--@endif--}}
+                                        {{--@endforeach--}}
+                                        {{--</div>--}}
+                                        {{--<p class="yekan a-right">{{$product->description}}--}}
+                                        {{--</p>--}}
+                                        {{--</div>--}}
+                                        {{--@if(!empty($product->productImages[0]))--}}
+                                        {{--<div class="col-md-2 menu_small">--}}
+                                        {{--<div class="row"><img--}}
+                                        {{--src="{{url('public/dashboard/productFiles/picture/'.$product->productImages[0]->image_src)}}"--}}
+                                        {{--class="img-responsive img_border"--}}
+                                        {{--alt=""/>--}}
+                                        {{--</div>--}}
+                                        {{--</div>--}}
+                                        {{--@endif--}}
+                                        {{--</div>--}}
+                                        {{--</div>--}}
+                                        {{--@endif--}}
+                                        {{--@endforeach--}}
+                                        {{--@endif--}}
+                                        {{--end--}}
+
+
+
                                         {{--<div class="clearfix row">--}}
                                         {{--<div class="menu_content clearfix">--}}
 
@@ -591,7 +891,8 @@
                             <div class="col-md-6 content_text">
                                 <div id="reservations">
                                     <h1 class="yekan a-right">1- ورود به پنل</h1>
-                                    <form id="reservation_form" class="reserve_form loginUserForm pad_top13" action="#" method="post">
+                                    <form id="reservation_form" class="reserve_form loginUserForm pad_top13" action="#"
+                                          method="post">
                                         {{csrf_field()}}
                                         <div class="clearfix reserve_form">
                                             <input type="text" name="cellphone"
@@ -619,8 +920,9 @@
                                 <br>
                                 <div id="reservations">
                                     <h1 class="yekan a-right">2- ثبت نام</h1>
-                                    <form id="reservation_form" class="reserve_form registerForm pad_top13" action="#" method="post">
-                                       {{csrf_field()}}
+                                    <form id="reservation_form" class="reserve_form registerForm pad_top13" action="#"
+                                          method="post">
+                                        {{csrf_field()}}
                                         <input type="hidden" value="user" name="frmtype">
                                         <div class="clearfix reserve_form">
                                             <input type="text" name="name" id="name"
@@ -628,12 +930,12 @@
                                                    placeholder=" نام : "
                                                    onfocus="this.placeholder = ''"
                                                    onBlur="this.placeholder = ' نام :'"/>
-                                            <input type="text" name="family"  id="family"
+                                            <input type="text" name="family" id="family"
                                                    class="validate['required'] textbox1 yekan a-right"
                                                    placeholder=" نام خانوادگی : "
                                                    onfocus="this.placeholder = ''"
                                                    onBlur="this.placeholder = ' نام خانوادگی :'"/>
-                                            <input type="text" id="password"  name="password"
+                                            <input type="text" id="password" name="password"
                                                    class="validate['required'] textbox1 yekan a-right"
                                                    placeholder="* پسورد : "
                                                    onfocus="this.placeholder = ''"
@@ -643,7 +945,7 @@
                                                    placeholder="* تکرار پسورد : "
                                                    onfocus="this.placeholder = ''"
                                                    onBlur="this.placeholder = '* تکرار پسورد :'"/>
-                                            <input type="text" name="email"  id="email"
+                                            <input type="text" name="email" id="email"
                                                    class="validate['required','email']  textbox1 yekan a-right"
                                                    placeholder=" ایمیل : " onFocus="this.placeholder = ''"
                                                    onBlur="this.placeholder = ' ایمیل :'"/>
@@ -690,7 +992,7 @@
                                                    class="validate['required']  textbox1 yekan a-right " id="captcha"
                                                    placeholder="* کد امنیتی : " onFocus="this.placeholder = ''"
                                                    onBlur="this.placeholder = '* کد امنیتی :'"/>
-                                            <input id="registerUser"  value="ثبت نام" name="Confirm" type="button"
+                                            <input id="registerUser" value="ثبت نام" name="Confirm" type="button"
                                                    class="submitBtn yekan a-right">
                                         </div>
                                     </form>
