@@ -182,9 +182,22 @@
 
                         }
                         else {
-                            //$('#change').css('display','block');
-
-                            //appendToChange();
+                            swal({
+                                    title:   "لطفا ابتدا حالت های بوم را درج نمائید ، سپس برای درج دسته ها اقدام کنید",
+                                    text: "",
+                                    type: "info",
+                                    showCancelButton: true,
+                                    confirmButtonColor: "	#5cb85c",
+                                    cancelButtonText: "بستن",
+                                    confirmButtonText: "درج حالت ها",
+                                    closeOnConfirm: true,
+                                    closeOnCancel: true
+                                },
+                                function (isConfirm) {
+                                    if (isConfirm) {
+                                       window.location.href='addModels';
+                                    }
+                                })
                         }
                     }
                 });

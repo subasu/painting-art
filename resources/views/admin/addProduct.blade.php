@@ -375,7 +375,8 @@
                     .addClass('btn btn-danger')
                     .on('click', function () {
 //                        $('#smartwizard').smartWizard("reset");
-                        $('#productForm')[0].reset();
+                        //$('#productForm')[0].reset();
+                        window.location.reload(true);
                     });
                 $('#smartwizard').smartWizard({
                     selected: 0,
