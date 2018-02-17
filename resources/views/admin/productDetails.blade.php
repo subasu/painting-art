@@ -142,20 +142,20 @@
                                 <div class="container">
                                     <br>
                                     <div class="col-md-10 col-md-offset-1 margin-1">
-                                        <div class="col-md-7 col-sm-6 col-xs-9 col-md-offset-2">
-                                            <div class="col-md-2">
-                                                <a type="button" name="editCategory" id="editCategory"
-                                                   content="{{$products[0]->categories[0]->id}}"
-                                                   class="glyphicon glyphicon-edit btn btn-success"
-                                                   title="ویرایش "></a>
-                                            </div>
-                                            <div class="col-md-10">
-                                                <input disabled id="lastCategoryName" class="form-control col-md-12"
-                                                       value="{{$products[0]->categories[0]->title}}">
-                                                <input type="hidden" disabled id="lastCategory" name="lastCategory"
-                                                       value="">
-                                            </div>
-                                        </div>
+                                        {{--<div class="col-md-7 col-sm-6 col-xs-9 col-md-offset-2">--}}
+                                            {{--<div class="col-md-2">--}}
+                                                {{--<a type="button" name="editCategory" id="editCategory"--}}
+                                                   {{--content="{{$products[0]->categories[0]->id}}"--}}
+                                                   {{--class="glyphicon glyphicon-edit btn btn-success"--}}
+                                                   {{--title="ویرایش "></a>--}}
+                                            {{--</div>--}}
+                                            {{--<div class="col-md-10">--}}
+                                                {{--<input disabled id="lastCategoryName" class="form-control col-md-12"--}}
+                                                       {{--value="{{$products[0]->categories[0]->title}}">--}}
+                                                {{--<input type="hidden" disabled id="lastCategory" name="lastCategory"--}}
+                                                       {{--value="">--}}
+                                            {{--</div>--}}
+                                        {{--</div>--}}
                                         <label class="control-label col-md-2 col-sm-4 col-xs-3" for="title"> آخرین دسته
                                             مربوطه :
                                         </label>

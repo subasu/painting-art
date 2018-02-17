@@ -110,12 +110,12 @@
                                     </select>
                                 </div>
                                 <div class='col-md-2'>
-                                    <select id="width"  name="width" class='form-control col-md-12 col-sm-9 col-xs-12'>
+                                    <select id="width"  name="width1" class='form-control col-md-12 col-sm-9 col-xs-12'>
 
                                     </select>
                                 </div>
                                 <div class='col-md-3'>
-                                    <select id="length" name="length" class='form-control col-md-12 col-sm-9 col-xs-12'>
+                                    <select id="length" name="length1" class='form-control col-md-12 col-sm-9 col-xs-12'>
 
                                     </select>
                                 </div>
@@ -251,16 +251,16 @@
                             "<div id='child' dir='ltr'>"+
                             "<br/><br/>"+
                             "<div class='col-md-2 col-sm-9 col-xs-12'>"+
-                            "<input id='unit' class='form-control col-md-6 col-xs-6 required side' disabled name='sideways[] ' value='0' placeholder='اندازه یک ضلع' required='required' type='text'>"+
+                            "<input id='sideways' class='form-control col-md-6 col-xs-6 required side' disabled name='sideways[] ' value='0' placeholder='اندازه یک ضلع' required='required' type='text'>"+
                             "</div>"+
                             "<div class='col-md-2 col-sm-9 col-xs-12'>"+
-                            "<input id='unit' class='form-control col-md-6 col-xs-6 required circle'  placeholder='قطر'   name='diameter[]' required='required' type='text'>"+
+                            "<input id='diameter' class='form-control col-md-6 col-xs-6 required circle'  placeholder='قطر'   name='diameter[]' required='required' type='text'>"+
                             "</div>"+
                             "<div class='col-md-2 col-sm-9 col-xs-12'>"+
-                            "<input id='unit' class='form-control col-md-6 col-xs-6 required rectangle' disabled name='width[]' value='0'  placeholder='عرض' required='required' type='text'>"+
+                            "<input id='width' class='form-control col-md-6 col-xs-6 required rectangle' disabled name='width[]' value='0'  placeholder='عرض' required='required' type='text'>"+
                             "</div>"+
                             "<div class='col-md-3 col-sm-9 col-xs-12'>"+
-                            "<input id='unit' class='form-control col-md-6 col-xs-6 required rectangle' disabled name='length[]' value='0'  placeholder='طول' required='required' type='text'>"+
+                            "<input id='length' class='form-control col-md-6 col-xs-6 required rectangle' disabled name='length[]' value='0'  placeholder='طول' required='required' type='text'>"+
                             "</div>"+
                             "<label class='control-label col-md-3 col-sm-4 col-xs-3' for='name'>لیست اندازه های جدید   :"+
                             "<span class='star' title='پر کردن این فیلد الزامی است'>*</span>"+
@@ -540,11 +540,11 @@
                                                 );
                                                 $('#width').append
                                                 (
-                                                    "<option id='wid' name='width1'>" + response[i].width + "</option>"
+                                                    "<option id='wid' name='width2'>" + response[i].width + "</option>"
                                                 );
                                                 $('#length').append
                                                 (
-                                                    "<option id='len' name='length1'>" + response[i].length + "</option>"
+                                                    "<option id='len' name='length2'>" + response[i].length + "</option>"
                                                 );
                                             i++;
                                         }
@@ -615,7 +615,7 @@
                 $(document).on('change','#length',function(){
                     if($('#title').val() == 'مستطیل')
                     {
-                        $('[name = "length1"]:selected').each(function(){
+                        $('[name = "length2"]:selected').each(function(){
                             var len = $(this).val();
                             $.ajax
                             ({
@@ -665,7 +665,7 @@
                 $(document).on('change','#width',function(){
                     if($('#title').val() == 'مستطیل')
                     {
-                        $('[name = "width1"]:selected').each(function(){
+                        $('[name = "width2"]:selected').each(function(){
                             var width = $(this).val();
                             $.ajax
                             ({

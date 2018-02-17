@@ -29,14 +29,14 @@ class SizeController extends Controller
     public function addNewSize(Request $request)
     {
         $count = 0;
-        if($request->title == 'مستطیل')
+        if($request->models == 'مستطیل')
         {
             $count += count($request->length);
-        }elseif($request->title == 'مثلث' || $request->title == 'مربع')
+        }elseif($request->models == 'مثلث' || $request->title == 'مربع')
         {
             $count += count($request->sideways);
         }
-        elseif($request->title == 'دایره')
+        elseif($request->models == 'دایره')
         {
             $count += count($request->diameter);
         }
