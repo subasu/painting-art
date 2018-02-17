@@ -32,6 +32,7 @@
                             </ul>
                             <div class="clearfix"></div>
                         </div>
+                        @if(!empty($myGoogleMap))
                         <div class="x_content">
                             <div class="col-md-12" dir="rtl">
                                 <label class="control-label col-md-12" for="file">آدرس گوگل مپ سایت خود را وارد نمائید: (نکته: فقط قسمت src تگ iframe  را درج نمائید.)
@@ -51,6 +52,15 @@
                                 </div>
                             </div>
                         </div>
+                        @else
+                            <div class="col-md-8 col-md-offset-1">
+                                <h2>
+                                    لطفا ابتدا نقشه را ثبت نمائید و سپس در خصوص ویرایش آن اقدام کنید
+                                </h2>
+                            </div>
+                        @endif
+
+
                     </div>
                 </div>
             </div>

@@ -23,32 +23,50 @@
 
                 {{ csrf_field() }}
                 <div class="container">
-                    <div id="addPic">
-                        <div class="col-md-12">
-                            <div class="col-md-6 col-sm-5 col-xs-9 col-md-offset-3 margin-1">
-                                <div class="col-md-9 col-xs-12">
-                                <input class="form-control  required"
-                                       type="file" name="file[]" id="pic"/>
+                    <div class="x_panel">
+                        <div class="x_title">
+                            <h2>درج لوگو سایت</h2>
+                            <ul class="nav navbar-right panel_toolbox">
+                                <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                </li>
+                                <li><a class="close-link"><i class="fa fa-close"></i></a>
+                                </li>
+                            </ul>
+                            <div class="clearfix"></div>
+                        </div>
+                            <div id="addPic">
+                                <div class="col-md-12">
+                                    <div class="col-md-7  col-xs-9 col-md-offset-2">
+                                        <div class="col-md-9 col-xs-12">
+                                        <input class="form-control  required"
+                                               type="file" name="file[]" id="pic"/>
+                                        </div>
+                                        <label class="control-label col-md-3 col-sm-4 col-xs-2" for="file"> لوگو:<span class="star"></span>
+                                        </label>
+                                    </div>
+                                    <br/><br/><br/>
+                                    <div class="col-md-7  col-xs-9 col-md-offset-2">
+                                        <div class="col-md-9 col-xs-12">
+                                        <input class="form-control  required"
+                                               name="title" id="title"/>
+                                        </div>
+                                        <label class="control-label col-md-3 col-sm-4 col-xs-3 margin-1" for="file">عنوان سایت
+                                            :
+                                            <span class="star"></span>
+                                        </label>
+                                    </div>
                                 </div>
-                                <label class="control-label col-md-3 col-sm-4 col-xs-3 margin-1" for="file"> لوگو:<span class="star"></span>
-                                </label>
                             </div>
-                            <div class="col-md-6 col-sm-5 col-xs-9 col-md-offset-3 margin-1">
-                                <div class="col-md-9 col-xs-12">
-                                <input class="form-control  required"
-                                       name="title" id="title"/>
-                                </div>
-                                <label class="control-label col-md-3 col-sm-4 col-xs-3 margin-1" for="file">عنوان سایت
-                                    :
-                                    <span class="star"></span>
-                                </label>
-                            </div>
+
+                        <div class="col-md-10 col-md-offset-2">
+                            <button type="button" class="btn btn-dark col-md-5 col-md-offset-3" style="margin-top: 3%; margin-bottom: 3%;" id="reg"> ثبت لوگو</button>
+                        </div>
+                        <div class="col-md-2">
+
                         </div>
                     </div>
                     <br/>
-                    <div class="col-md-12">
-                        <button type="button" class="btn btn-dark col-md-6 col-md-offset-3" style="margin-top: 3%; margin-bottom: 3%;" id="reg"> ثبت لوگو</button>
-                    </div>
+
                 </div>
             </form>
         </div>

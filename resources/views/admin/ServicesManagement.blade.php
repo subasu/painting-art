@@ -6,7 +6,7 @@
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="x_panel">
                 <div class="x_title">
-                    <h2> مدیریت واحدهای شمارش و زیر واحد ها</h2>
+                    <h2>مدیریت سرویس های سایت</h2>
                     <ul class="nav navbar-right panel_toolbox">
                         <li><a class="collapse-link" data-toggle="tooltip" title="جمع کردن"><i
                                         class="fa fa-chevron-up"></i></a>
@@ -19,7 +19,7 @@
 
 
                 <a href="{{url('admin/addService')}}" id="user-send" type="button" class="col-md-3 col-md-offset-4 btn btn-info" style="font-weight: bold;">
-                                        افزودن واحد شمارش جدید                </a>
+                                        افزودن سرویس                </a>
                 {{--<div class="pull-right" style="direction: rtl"><i class="fa fa-square" style="font-size: 35px;color:#ffff80;"></i> مدیران واحد</div>--}}
                 <div class="x_content">
                     <table style="direction:rtl;text-align: center" id="example"

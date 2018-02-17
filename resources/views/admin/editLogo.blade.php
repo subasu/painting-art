@@ -19,45 +19,62 @@
     <div class="clearfix"></div>
     <div class="row">
         <div class="container">
+            @if(!empty($myLogo))
             <form class="form-horizontal form-label-left" id="addForm" enctype="multipart/form-data" style="direction: rtl !important;">
                 {{ csrf_field() }}
                 <div class="container">
-                    <div id="addPic">
-                        <div class="col-md-12">
-                            <div class="col-md-6 col-sm-5 col-xs-9 col-md-offset-3 margin-1">
-                                <img class="col-md-6 col-md-offset-3 " src="{{url('public/dashboard/Logo')}}{{'/'.$myLogo->image_src}}">
-                                <label class="control-label col-md-3 col-sm-4 col-xs-3 margin-1" for="file">لوگو فعلی
-                                    :
-                                    <span class="star"></span>
-                                </label>
-                            </div>
-                            <div class="col-md-6 col-sm-5 col-xs-9 col-md-offset-3 margin-1">
-                                <div class="col-md-9 col-xs-12">
-                                <input class="form-control  required"
-                                       type="file" name="file[]" id="pic"/>
+                    <div class="x_panel">
+                        <div class="x_title">
+                            <h2>ویرایش لوگو سایت</h2>
+                            <ul class="nav navbar-right panel_toolbox">
+                                <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                </li>
+                                <li><a class="close-link"><i class="fa fa-close"></i></a>
+                                </li>
+                            </ul>
+                            <div class="clearfix"></div>
+                            <div id="addPic">
+                                <div class="col-md-12">
+                                    <br/><br/><br/>
+                                    <div class="col-md-6 col-sm-5 col-xs-9 col-md-offset-3 margin-1">
+                                        <img class="col-md-6 col-md-offset-3 " src="{{url('public/dashboard/Logo')}}{{'/'.$myLogo->image_src}}">
+                                        <label class="control-label col-md-3 col-sm-4 col-xs-3 margin-1" for="file">لوگو فعلی
+                                            :
+                                            <span class="star"></span>
+                                        </label>
+                                    </div>
+                                    <div class="col-md-6 col-sm-5 col-xs-9 col-md-offset-3 margin-1">
+                                        <div class="col-md-9 col-xs-12">
+                                        <input class="form-control  required"
+                                               type="file" name="file[]" id="pic"/>
+                                        </div>
+                                        <label class="control-label col-md-3 col-sm-4 col-xs-3 margin-1" for="file"> لوگو:<span class="star"></span>
+                                        </label>
+                                    </div>
+                                    <div class="col-md-6 col-sm-5 col-xs-9 col-md-offset-3 margin-1">
+                                        <div class="col-md-9 col-xs-12">
+                                        <input class="form-control  required"
+                                               name="title" id="title" value="{{$myLogo->title}}"/>
+                                        </div>
+                                        <label class="control-label col-md-3 col-sm-4 col-xs-3 margin-1" for="file">عنوان لوگو
+                                            :
+                                            <span class="star"></span>
+                                        </label>
+                                    </div>
                                 </div>
-                                <label class="control-label col-md-3 col-sm-4 col-xs-3 margin-1" for="file"> لوگو:<span class="star"></span>
-                                </label>
+                                <br/>
+
                             </div>
-                            <div class="col-md-6 col-sm-5 col-xs-9 col-md-offset-3 margin-1">
-                                <div class="col-md-9 col-xs-12">
-                                <input class="form-control  required"
-                                       name="title" id="title" value="{{$myLogo->title}}"/>
-                                </div>
-                                <label class="control-label col-md-3 col-sm-4 col-xs-3 margin-1" for="file">عنوان لوگو
-                                    :
-                                    <span class="star"></span>
-                                </label>
+                            <div class="col-md-12">
+                                <button type="button" class="btn btn-dark col-md-6 col-md-offset-3" style="margin-top: 3%; margin-bottom: 3%;" id="reg"> ثبت لوگو</button>
                             </div>
                         </div>
                     </div>
-                    <br/>
-                    <div class="col-md-12">
-                        <button type="button" class="btn btn-dark col-md-6 col-md-offset-3" style="margin-top: 3%; margin-bottom: 3%;" id="reg"> ثبت لوگو</button>
-                    </div>
+
                 </div>
                 <input type="hidden" value="{{$myLogo->id}}" name="logoId">
             </form>
+            @endif
         </div>
 
         <!-- send product form -->

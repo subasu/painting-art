@@ -98,9 +98,9 @@ class AdminController extends Controller
         $services->icon = $request->icon;
         $res = $services->save();
         if ($res == 1)
-            return response()->json('سرویس شما با مؤفقیت ثبت شد');
+            return response()->json(['message' => 'سرویس شما با مؤفقیت ثبت شد' , 'code' => 'success']);
         else
-            return response()->json('متاسفانه سرویس شما ثبت نشد');
+            return response()->json(['message' => 'در ثبت اطلاعات خطایی رخ داده است ، با بخش پشتیبانی تماس بگیرید' , 'code' => 'error']);
     }
 
 //below function is related to show edit service page with service details
@@ -129,7 +129,7 @@ class AdminController extends Controller
     public function ServicesManagement()
     {
         $services = Service::all();
-        $pageTitle = 'ویرایش سرویس های سایت';
+        $pageTitle = 'مدیریت سرویس های سایت';
         return view('admin.ServicesManagement', compact('pageTitle', 'services'));
     }
 
@@ -284,10 +284,10 @@ class AdminController extends Controller
             }
             $logo->save();
             if ($logo) {
-                return response()->json(['message' => 'ویرایش با موفقیت انجام گردید', 'code' => '1']);
+                return response()->json(['message' => 'ویرایش با موفقیت انجام گردید', 'code' => 'success']);
             }
         } else {
-            return response()->json(['message' => $result, 'code' => '1']);
+            return response()->json(['message' => $result, 'code' => 'error']);
         }
     }
     public function addGoogleMap()
