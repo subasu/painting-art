@@ -26,6 +26,7 @@ class AddProduct
     {
         function addCategoryProduct($pId, $cateId)
         {
+
             $productCategory = new CategoryProduct();
             $productCategory->product_id = $pId;
             $productCategory->category_id = $cateId;
@@ -153,13 +154,14 @@ class AddProduct
             $catId = $product->categories;
         } elseif (empty($product->brands)) {
             $catId = $product->subCategories;
-        } else if (!empty($product->brands)) {
-            addCategoryProduct($lastProductId, $product->brands);
         }
+//        else if (!empty($product->brands)) {
+//            addCategoryProduct($lastProductId, $product->brands);
+//        }
         //find 'سایر' category_id
-        $subCatId = Category::where([['parent_id', $catId], ['active', 1]])->where('title', '=', 'سایر')->value('id');
-        if ($subCatId != 0 && $catId != 0) {
-            addCategoryProduct($lastProductId, $subCatId);
+//        $subCatId = Category::where([['parent_id', $catId], ['active', 1]])->where('title', '=', 'سایر')->value('id');
+        if ($catId != 0) {
+            addCategoryProduct($lastProductId, $catId);
         }
         return (true);
     }

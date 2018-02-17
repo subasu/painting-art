@@ -19,19 +19,22 @@
     <div class="clearfix"></div>
     <div class="row">
         <div class="container">
+
             <form class="form-horizontal form-label-left" id="sliderForm" enctype="multipart/form-data" style="direction: rtl !important;">
                 {{ csrf_field() }}
+
                 <div class="container">
+                    <div class="col-md-1 col-sm-1 col-xs-1 ">
+                        <a id="addInput" class="glyphicon glyphicon-plus btn btn-success"
+                           data-toggle=""
+                           title="افزودن فیلد"></a>
+                    </div>
+                    <div class="col-md-1 col-sm-1 col-xs-1">
+                        <a id="removeInput" class="glyphicon glyphicon-remove btn btn-danger" data-toggle="" title="حذف فیلد"></a>
+                    </div>
                     <div id="addPic">
-                        <div class="col-md-12 margin-1">
-                            <div class="col-md-1 col-sm-1 col-xs-1 ">
-                                <a id="addInput" class="glyphicon glyphicon-plus btn btn-success"
-                                   data-toggle=""
-                                   title="افزودن فیلد"></a>
-                            </div>
-                            {{--<div class="col-md-1 col-sm-1 col-xs-1">--}}
-                                {{--<a id="removeInput" class="glyphicon glyphicon-minus btn btn-danger" data-toggle="" title="کاستن فیلد"></a>--}}
-                            {{--</div>--}}
+                        <div id="child" class="col-md-10">
+
                             <div class="col-md-4 col-sm-6 col-xs-9 col-md-offset-1 ">
                                 <input class="form-control col-md-12 col-xs-12 required"
                                        type="file" name="file[]" id="pic"/>
@@ -49,6 +52,7 @@
                     <br/>
                     <div class="col-md-12 ">
                         <button type="button" class="btn btn-dark col-md-6 col-md-offset-3" style="margin-top: 3%; margin-bottom: 3%;" id="reg"> ثبت تصویر یا تصاویر اسلایدر</button>
+                        <input type="hidden"  id="counter" value="1">
                     </div>
                 </div>
             </form>
@@ -58,12 +62,14 @@
         <script>
             $(document).ready(function () {
                 //add input type file for add pic for product
-                var counter = 0
+
                 $('#addInput').on('click', function () {
+                    var counter = $('#counter').val();
+                    //setTimeout(function () {$(this).prop('disabled');});
                     if (counter < 10) {
                         $('#addPic').append
                         (
-                        '<div class="col-md-12 margin-1">' +
+                        '<div id="child" class="col-md-10">' +
                             '<div class="col-md-4 col-sm-6 col-xs-9 col-md-offset-2">' +
                             '<input class="form-control col-md-12 col-xs-12 required" type="file" name="file[]" id="file"/>' +
                             '</div>' +
@@ -76,6 +82,7 @@
                         '</div>'
                     );
                         counter++;
+                        $('#counter').val(counter);
                     }
                     else
                         {
@@ -162,20 +169,25 @@
             })
         </script>
         <!-- below script is related to remove input from change  -->
-        {{--<script>--}}
+        <script>
 
-            {{--$(function () {--}}
-                {{--$(document).on('click','#removeInput',function () {--}}
-                    {{--removeFromChange();--}}
-                {{--});--}}
-                {{--function removeFromChange() {--}}
-                    {{--if ($('#addPic > #child').length >= 2 )--}}
-                    {{--{--}}
-                        {{--$('#addPic > #child').last().remove();--}}
-                    {{--};--}}
+            $(function () {
+                $(document).on('click','#removeInput',function () {
+                    var counter = $('#counter').val();
+                    removeFromChange(counter);
+                });
+                function removeFromChange(counter) {
 
-                {{--}--}}
-            {{--});--}}
+                    if (counter > 1 )
+                    {
+                        $('#addPic > #child').last().remove();
+                        counter--;
+                        $('#counter').val(counter);
+                    };
 
-        {{--</script>--}}
+
+                }
+            });
+
+        </script>
 @endsection

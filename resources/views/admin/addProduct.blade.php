@@ -76,10 +76,10 @@
                         <li><a href="#step-2">اطلاعات تکمیلی محصول<br/>
                                 <small></small>
                             </a></li>
-                        <li><a href="#step-3">قیمت / تخفیف / پیک<br/>
-                                <small></small>
-                            </a></li>
-                        <li><a href="#step-4"> تصاویر / ویدئو / سایز / رنگها<br/>
+                        {{--<li><a href="#step-3">قیمت / تخفیف / پیک<br/>--}}
+                                {{--<small></small>--}}
+                            {{--</a></li>--}}
+                        <li><a href="#step-3"> تصاویر / ویدئو <br/>
                                 <small></small>
                             </a></li>
                     </ul>
@@ -158,16 +158,6 @@
                                         <span class="required star" title="پر کردن این فیلد الزامی است">*</span>
                                     </label>
                                 </div>
-                                <div class="col-md-10 col-md-offset-1 margin-1 ">
-                                    <div class="col-md-7 col-sm-6 col-xs-9 col-md-offset-2">
-                                        <select id="subunit" class="form-control col-md-7 col-xs-12"
-                                                name="sub_unit_count">
-                                        </select>
-
-                                    </div>
-                                    <label class="control-label col-md-2 col-sm-4 col-xs-3" for="subunit"> زیر واحد
-                                        شمارش:</label>
-                                </div>
                                 <div class="col-md-10 col-md-offset-1 margin-1 margin-bot-1">
                                     <div class="col-md-7 col-sm-6 col-xs-9 col-md-offset-2">
                                         <input id="price" class="form-control col-md-12 col-xs-12 pr" name="price"
@@ -182,83 +172,7 @@
                         </div>
                         <div id="step-2" class="">
                             <div class="container">
-                                <div class="col-md-10 col-md-offset-1 margin-1">
-                                    <div class="col-md-7 col-sm-6 col-xs-9 col-md-offset-2">
-                                        <input id="produce_date" class="form-control col-md-12 col-xs-12"
-                                               name="produce_date" type="text">
-                                    </div>
-                                    <label class="control-label col-md-2 col-sm-4 col-xs-3" for=""> تاریخ
-                                        تولید :
-                                        <span class="required star" title="پر کردن این فیلد الزامی است"></span>
-                                    </label>
-                                </div>
-                                <div class="col-md-10 col-md-offset-1 margin-1">
-                                    <div class="col-md-7 col-sm-6 col-xs-9 col-md-offset-2">
-                                        <input id="expire_date" class="form-control col-md-12 col-xs-12"
-                                               name="expire_date" type="text">
-                                    </div>
-                                    <label class="control-label col-md-2 col-sm-4 col-xs-3" for="expire_date"> تاریخ
-                                        انقضا :
-                                        <span class="required star" title="پر کردن این فیلد الزامی است"></span>
-                                    </label>
-                                </div>
-                                <div class="col-md-10 col-md-offset-1 margin-1">
-                                    <div class="col-md-7 col-sm-6 col-xs-9 col-md-offset-2">
-                                        <input id="produce_place" class="form-control col-md-12 col-xs-12"
-                                               name="produce_place" type="text">
-                                    </div>
-                                    <label class="control-label col-md-2 col-sm-4 col-xs-3" for="produce_place"> محل
-                                        تولید :
-                                        <span class="required star" title="پر کردن این فیلد الزامی است"></span>
-                                    </label>
-                                </div>
-                                <div class="col-md-10 col-md-offset-1 margin-1">
-                                    <div class="col-md-7 col-sm-6 col-xs-9 col-md-offset-2">
-                                        <input id="warehouse_count" class="form-control col-md-12 col-xs-12"
-                                               name="warehouse_count" type="text">
-                                    </div>
-                                    <label class="control-label col-md-2 col-sm-4 col-xs-3" for="warehouse_count"> تعداد
-                                        موجود در
-                                        انبار :
-                                        <span class="required star" title="پر کردن این فیلد الزامی است"></span>
-                                    </label>
-                                </div>
-                                <div class="col-md-10 col-md-offset-1 margin-1 ">
-                                    <div class="col-md-7 col-sm-6 col-xs-9 col-md-offset-2">
-                                        <input id="warehouse_place" class="form-control col-md-12 col-xs-12"
-                                               name="warehouse_place"
-                                               type="text">
-                                    </div>
-                                    <label class="control-label col-md-2 col-sm-4 col-xs-3" for="warehouse_place"> محل
-                                        فیزیکی در
-                                        انبار :
-                                        <span class="required star" title="پر کردن این فیلد الزامی است"></span>
-                                    </label>
-                                </div>
-                                <div class="col-md-10 col-md-offset-1 margin-1">
-                                    <div class="col-md-7 col-sm-6 col-xs-9 col-md-offset-2">
-                                        <input id="ready_time" class="form-control col-md-12 col-xs-12"
-                                               name="ready_time"
-                                               type="text">
-                                    </div>
-                                    <label class="control-label col-md-2 col-sm-4 col-xs-3" for="ready_time"> زمان آماده
-                                        شدن بر حسب ساعت :
-                                        <span class="required star" title="پر کردن این فیلد الزامی است"></span>
-                                    </label>
-                                </div>
-                                <div class="col-md-10 col-md-offset-1 margin-1 margin-bot-1">
-                                    <div class="col-md-7 col-sm-6 col-xs-9 col-md-offset-2">
-                                        <input id="barcode" class="form-control col-md-12 col-xs-12" name="barcode"
-                                               type="text">
-                                    </div>
-                                    <label class="control-label col-md-2 col-sm-4 col-xs-3" for="barcode"> بارکد :
-                                        <span class="required star" title="پر کردن این فیلد الزامی است"></span>
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="step-3" class="">
-                            <div class="container">
+
                                 <div class="col-md-10 col-md-offset-1 margin-1">
                                     <div class="col-md-7 col-sm-6 col-xs-9 col-md-offset-2">
                                         <input id="sales_price" class="form-control col-md-12 col-xs-12 pr"
@@ -329,41 +243,33 @@
                                         <span class="required star" title="پر کردن این فیلد الزامی است"></span>
                                     </label>
                                 </div>
-                                <div class="col-md-10 col-md-offset-1 margin-1 margin-bot-1">
+
+                                <div class="col-md-10 col-md-offset-1 margin-1">
                                     <div class="col-md-7 col-sm-6 col-xs-9 col-md-offset-2">
-                                        <input id="discount_volume" class="form-control col-md-12 col-xs-12 pr"
-                                               name="discount_volume"
+                                        <input id="warehouse_count" class="form-control col-md-12 col-xs-12"
+                                               name="warehouse_count" type="text">
+                                    </div>
+                                    <label class="control-label col-md-2 col-sm-4 col-xs-3" for="warehouse_count"> تعداد
+                                        موجود در
+                                        انبار :
+                                        <span class="required star" title="پر کردن این فیلد الزامی است"></span>
+                                    </label>
+                                </div>
+                                <div class="col-md-10 col-md-offset-1 margin-1">
+                                    <div class="col-md-7 col-sm-6 col-xs-9 col-md-offset-2">
+                                        <input id="ready_time" class="form-control col-md-12 col-xs-12"
+                                               name="ready_time"
                                                type="text">
                                     </div>
-                                    <label class="control-label col-md-2 col-sm-4 col-xs-3" for="discount_volume">
-                                        حجم/تعداد مشمول
-                                        تخفیف :
+                                    <label class="control-label col-md-2 col-sm-4 col-xs-3" for="ready_time"> زمان آماده
+                                        شدن بر حسب ساعت :
                                         <span class="required star" title="پر کردن این فیلد الزامی است"></span>
                                     </label>
                                 </div>
-                                <div class="col-md-10 col-md-offset-1 margin-1 margin-bot-1">
-                                    <div class="col-md-7 col-sm-6 col-xs-9 col-md-offset-2">
-                                        <input id="discount" class="form-control col-md-12 col-xs-12" name="discount"
-                                               type="number" max="99" min="1" maxlength="2">
-                                    </div>
-                                    <label class="control-label col-md-2 col-sm-4 col-xs-3" for="discount" > درصد تخفیف :
-                                        <span class="required star" title="پر کردن این فیلد الزامی است"></span>
-                                    </label>
-                                </div>
-                                <div class="col-md-10 col-md-offset-1 margin-1 margin-bot-1">
-                                    <div class="col-md-7 col-sm-6 col-xs-9 col-md-offset-2">
-                                        <input id="delivery_volume" class="form-control col-md-12 col-xs-12"
-                                               name="delivery_volume">
-                                    </div>
-                                    <label class="control-label col-md-2 col-sm-4 col-xs-3" for="delivery_volume">
-                                        حجم/تعداد مشمول
-                                        پیک رایگان :
-                                        <span class="required star" title="پر کردن این فیلد الزامی است"></span>
-                                    </label>
-                                </div>
+
                             </div>
                         </div>
-                        <div id="step-4" class="">
+                        <div id="step-3" class="">
                             <div class="container">
                                 <div id="addPic">
                                     <div class="col-md-12 margin-1">
@@ -396,26 +302,7 @@
                                         <span class="required star"></span>
                                     </label>
                                 </div>
-                                <div>
-                                    <div class="col-md-12 margin-2 ">
-                                        <div class="col-md-5 col-sm-6 col-xs-9 col-md-offset-3 margin-1 padding-right-2"
-                                             id="color">
-                                        </div>
-                                        <label class="control-label col-md-2 col-sm-4 col-xs-3" for="color">انتخاب رنگ
-                                            های محصول :
-                                        </label>
-                                    </div>
-                                </div>
-                                <div>
-                                    <div class="col-md-12 margin-2 margin-bot-1">
-                                        <div class="col-md-5 col-sm-6 col-xs-9 col-md-offset-3 margin-1 padding-right-2"
-                                             id="size">
-                                        </div>
-                                        <label class="control-label col-md-2 col-sm-4 col-xs-3" for="size">انتخاب اندازه
-                                            های محصول :
-                                        </label>
-                                    </div>
-                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -488,7 +375,8 @@
                     .addClass('btn btn-danger')
                     .on('click', function () {
 //                        $('#smartwizard').smartWizard("reset");
-                        $('#productForm')[0].reset();
+                        //$('#productForm')[0].reset();
+                        window.location.reload(true);
                     });
                 $('#smartwizard').smartWizard({
                     selected: 0,
@@ -559,7 +447,7 @@
                             loadItems(responses, selectBoxId, msgOpt1, msgOpt2, valueOption2)
                         }
                         else {
-                            location.href = '{{url("admin/addCategory")}}';
+                           setTimeout(function(){location.href = '{{url("admin/addCategory")}}';},3000);
                         }
                     }
                 })
@@ -568,7 +456,7 @@
                     var id = $(this).val();
                     var depth = $(this).find("option:selected ").attr('depth');
                     if (id == 000) {
-                        location.href = '{{url("admin/addCategory")}}';
+                        setTimeout(function(){location.href = '{{url("admin/addCategory")}}';},3000);
                     }
                     else if (depth != 0) {
                         swal({
@@ -631,7 +519,7 @@
                     var id = $(this).val();
                     var depth1 = $(this).find("option:selected ").attr('depth');
                     if (id == 000) {
-                        location.href = '{{url("admin/addCategory")}}';
+                        setTimeout(function(){location.href = '{{url("admin/addCategory")}}';},3000);
                     }
                     else if (depth1 != 0) {
                         swal({
@@ -684,7 +572,7 @@
                 $('#brands').on("change", function () {
                     var id = $(this).val();
                     if (id == 000) {
-                        location.href = '{{url("admin/addCategory")}}';
+                        setTimeout(function(){location.href = '{{url("admin/addCategory")}}';},3000);
                     }
                     findTitle(id)
                 })
@@ -693,7 +581,7 @@
                     var id = $(this).val();
 
                     if (id == 0) {
-                        location.href = '{{url("admin/addUnit")}}';
+                        setTimeout(function(){location.href = '{{url("admin/addUnit")}}';},3000);
                     }
                 })
                 //check option 2 selected or not, if yes redirect to add unit //view in subunit select box
@@ -701,7 +589,7 @@
                     var id = $(this).val();
 
                     if (id == 0) {
-                        location.href = '{{url("admin/addUnit")}}';
+                        setTimeout(function(){location.href = '{{url("admin/addUnit")}}';},3000);
 
                     }
                 })
@@ -722,7 +610,7 @@
                             loadItems(responses, selectBoxId, msgOpt1, msgOpt2, valueOption2)
                         }
                         else {
-                            location.href = '{{url("admin/addUnit")}}';
+                            setTimeout(function(){location.href = '{{url("admin/addUnit")}}';},3000);
                         }
                     }
                 });
@@ -731,7 +619,7 @@
                 $('#unit').on("change", function () {
                     var id = $(this).val();
                     if (id == 0) {
-                        location.href = '{{url("admin/addUnit")}}';
+                        setTimeout(function(){location.href = '{{url("admin/addUnit")}}';},3000);
                     }
                     else {
                         $.ajax

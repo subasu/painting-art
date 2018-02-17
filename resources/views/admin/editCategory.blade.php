@@ -44,7 +44,7 @@
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="x_panel">
                 <div class="x_title"> 
-                    <h2> مدیریت دسته بندی ها</h2>
+                    <h2>ویرایش دسته</h2>
                     <ul class="nav navbar-right panel_toolbox">
                         <li><a class="collapse-link" data-toggle="tooltip" title="جمع کردن"><i
                                         class="fa fa-chevron-up"></i></a>
@@ -69,7 +69,7 @@
                             <th style="text-align: center">عنوان دسته</th>
                             <th style="text-align: center;">سطح دسته</th>
                             <th style="text-align: center">عملیات مربوط به تصویر</th>
-                            <th style="text-align: center">ویرایش</th>
+                            <th style="text-align: center">ویرایش عنوان</th>
                             <th style="text-align: center">تغییر وضعیت</th>
                         </tr>
                         </thead>
@@ -84,12 +84,12 @@
                                     <td class="col-md-4 "><input  class="form-control" style="width: 100%;" id="title" name="title" value="{{$categoryInfo[0]->title}}"></td>
                                     <td style="font-size: 120%">{{$categoryInfo[0]->depth}}</td>
                                     <td><strong><a class="btn btn-default" id="openModal" >مشاهده و ویرایش تصویر</a></strong></td>
-                                    <td><button id="edit" type="button" class="btn btn-warning">ویرایش</button></td>
+                                    <td><button id="edit" type="button" class="btn btn-warning">ویرایش عنوان</button></td>
                                     @if($categoryInfo[0]->active == 1)
-                                        <td><a id="active" content="{{$categoryInfo[0]->active}}" name="{{$categoryInfo[0]->id}}" type="button"  data-content="غیر فعال" class="btn btn-danger" >غیر فعال</a></td>
+                                        <td><a id="active" content="{{$categoryInfo[0]->active}}" name="{{$categoryInfo[0]->id}}" type="button"  data-content="غیر فعال" class="btn btn-danger" > غیر فعال کردن </a></td>
                                     @endif
                                     @if($categoryInfo[0]->active == 0)
-                                        <td><a id="active" content="{{$categoryInfo[0]->active}}" name="{{$categoryInfo[0]->id}}" type="button"  data-content="فعال" class="btn btn-success"> فعال</a></td>
+                                        <td><a id="active" content="{{$categoryInfo[0]->active}}" name="{{$categoryInfo[0]->id}}" type="button"  data-content="فعال" class="btn btn-success">فعال کردن</a></td>
                                     @endif
                                     <input type="hidden" value="{{$categoryInfo[0]->id}}" id="id" name="id">
                                     <input type="hidden" id="token" value="{{csrf_token()}}" name="_token">

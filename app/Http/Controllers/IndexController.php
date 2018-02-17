@@ -115,6 +115,7 @@ class IndexController extends Controller
 
         }
         return view('main.index', compact('pageTitle', 'menu', 'services', 'sliders', 'logo', 'googleMap','aboutUs','products','capital'));
+
     }
 
     //show login blade :in login blade there are 2 form for login and registeration

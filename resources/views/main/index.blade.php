@@ -242,6 +242,7 @@
                                                 @if(!empty($aboutUs))
                                                     {!! $aboutUs !!}
                                                 @endif
+
                                             </p>
                                             <p class="row yekan t-justify"></p>
                                         </div>
