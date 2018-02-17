@@ -38,7 +38,7 @@
                                 <input class="form-control  required"
                                        name="title" id="title"/>
                                 </div>
-                                <label class="control-label col-md-3 col-sm-4 col-xs-3 margin-1" for="file">عنوان لوگو
+                                <label class="control-label col-md-3 col-sm-4 col-xs-3 margin-1" for="file">عنوان سایت
                                     :
                                     <span class="star"></span>
                                 </label>

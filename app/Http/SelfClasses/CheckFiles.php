@@ -26,7 +26,7 @@ class CheckFiles
         $count = count($request->file);
         if (count($request->file) > 0)
         {
-            $allowedExtensions = array('png', 'jpg');
+            $allowedExtensions = array('png', 'jpg','gif');
             $allowedSize = 10000000;
             $sentExtensions = '';
             $sentSizes = '';

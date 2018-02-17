@@ -62,7 +62,15 @@
                     <div class="row">
                         <div class="header-table col-md-12 header-menu">
                             <!--  Logo section -->
-                            <div class="brand"><a href="#home" class="nav-link yekan"> نیمکت <span> داغ </span></a>
+                            <div class="brand">
+                                <a href="#home" class="nav-link yekan">
+                                    @if(!empty($logo))
+                                        {{$logo->title}}
+                                    <img src="{{URL::asset('public/dashboard/Logo/'.$logo->image_src)}}" width="100" height="45"/>
+                                    @else
+                                        لوگو و عنوان سایت
+                                    @endif
+                                </a>
                             </div>
                             <!--  // Logo section -->
 
@@ -316,7 +324,7 @@
                                                                                     {{--@endif--}}
                                                                                 </div>
                                                                             </div>
-                                                                        
+
                                                                     @endforeach
                                                                 @endif
                                                                 {{--<div class="clearfix row">--}}

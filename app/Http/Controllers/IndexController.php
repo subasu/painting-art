@@ -93,7 +93,7 @@ class IndexController extends Controller
                 $i = 0;
                 while ($i < $count) {
                     foreach ($products[$i]->scores as $product) {
-                        $product->productScore = $this->productScore($products);
+//                        $product->productScore = $this->productScore($products);
                     }
                     $i++;
 
@@ -108,7 +108,12 @@ class IndexController extends Controller
         $logo = Logo::latest()->first();
         $googleMap = GoogleMap::latest()->first();
         $products = Product::all();
-        $aboutUs = About::latest()->first()->value('description');
+        $aboutUs = About::all();
+        if (count($aboutUs))
+        {
+            $aboutUs = About::latest()->first()->value('description');
+
+        }
         return view('main.index', compact('pageTitle', 'menu', 'services', 'sliders', 'logo', 'googleMap','aboutUs','products','capital'));
     }
 
