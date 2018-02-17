@@ -150,17 +150,16 @@ class AddProduct
          *and insert row to category_product table with latest product_id and category_id
          **/
         $catId = 0;
-        if (empty($product->subCategories)) {
+        if (empty($product->subCategories))
+        {
             $catId = $product->categories;
-        } elseif (empty($product->brands)) {
-            $catId = $product->subCategories;
+            //find 'سایر' category_id
+            $subCatId = Category::where([['parent_id', $catId], ['active', 1]])->where('title', '=', 'سایر')->value('id');
+            addCategoryProduct($lastProductId, $subCatId);
         }
-//        else if (!empty($product->brands)) {
-//            addCategoryProduct($lastProductId, $product->brands);
-//        }
-        //find 'سایر' category_id
-//        $subCatId = Category::where([['parent_id', $catId], ['active', 1]])->where('title', '=', 'سایر')->value('id');
-        if ($catId != 0) {
+        elseif (empty($product->brands))
+        {
+            $catId = $product->subCategories;
             addCategoryProduct($lastProductId, $catId);
         }
         return (true);

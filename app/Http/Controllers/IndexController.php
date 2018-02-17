@@ -164,7 +164,7 @@ class IndexController extends Controller
         for ($i = 0; $i < 200; $i++) {
             imagesetpixel($image, rand(0, 180), rand(0, 45), $pixel_color);
         }
-        $letters = "c7b8d9efhgij123kqlonmps456tauvw0zxyr";
+        $letters = "1234567890";
         $len = strlen($letters);
         $word = "";
         $font = public_path() . "/main/assets/fonts/arial.ttf";
