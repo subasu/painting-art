@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\MessageValidation;
 use App\Http\Requests\OrderRegistrationValidation;
 use App\Http\Requests\NewPasswordValidation;
+use App\Http\Requests\UserMessageValidation;
 use App\Http\SelfClasses\CheckFiles;
 use App\Http\SelfClasses\CheckUserCellphone;
 use App\Models\Basket;
@@ -452,7 +453,7 @@ class UserController extends Controller
         return view('user.addNewOrders',compact('pageTitle'));
     }
     //
-    public function saveNewOrder(MessageValidation $request)
+    public function saveNewOrder(UserMessageValidation $request)
     {
         if(!$request->ajax())
         {

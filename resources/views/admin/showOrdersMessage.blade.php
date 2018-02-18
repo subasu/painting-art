@@ -18,6 +18,9 @@
                               data-parsley-minlength-message="شما حداقل باید 20 کاراکتر وارد کنید"
                               data-parsley-validation-threshold="10"></textarea>
                 </div>
+                <div class="modal-body" style="text-align: right">
+
+                </div>
                 <div class="modal-footer">
                     <button type="button" id="sendMessage" name="sendMessage" class="btn btn-primary col-md-12">ثبت
                         پیام
@@ -25,6 +28,24 @@
                     <input type="hidden" name="messageId" id="messageId" value="">
                 </div>
                 </form>
+            </div>
+
+        </div>
+    </div>
+    <div id="imageModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" style="font-size: 20px;">&times;</button>
+                    <h4 class="modal-title" dir="rtl">تصویر ارسالی</h4>
+                </div>
+                <div class="modal-body">
+                    <img class="image" id="image"  style=" height: 350px; width: 350px; margin-left: 20%;"  src="{{url('public/dashboard/orderImages/'.$orders->file)}}">
+                </div>
+                <div class="modal-footer" >
+                    <button type="button" class="btn btn-dark col-md-6 col-md-offset-3" data-dismiss="modal">بستن</button>
+                </div>
             </div>
 
         </div>
@@ -52,11 +73,20 @@
                         <tr>
                             <th style="text-align: center">ردیف</th>
                             <th style="text-align: center">حالت بوم</th>
-                            <th style="text-align: center">طول</th>
-                            <th style="text-align: center">عرض</th>
-                            <th style="text-align: center;border-right: 1px solid #d6d6c2">قطر</th>
-                            <th style="text-align: center;border-right: 1px solid #d6d6c2">اندازه یک ضلع</th>
+                            @if($orders->shape == 'مستطیل')
+                                <th style="text-align: center">طول</th>
+                                <th style="text-align: center">عرض</th>
+                            @endif
+                            @if($orders->shape == 'دایره')
+                                <th style="text-align: center;border-right: 1px solid #d6d6c2">قطر</th>
+                            @endif
+                            @if($orders->shape == 'مثلث' || $orders->shape == 'مربع')
+                                <th style="text-align: center;border-right: 1px solid #d6d6c2">اندازه یک ضلع</th>
+                            @endif
                             <th style="text-align: center;border-right: 1px solid #d6d6c2">وضعیت سفارش</th>
+                            @if($orders->file != null)
+                                <th style="text-align: center;border-right: 1px solid #d6d6c2">مشاهده تصویر</th>
+                            @endif
                         </tr>
                         </thead>
 
@@ -64,10 +94,16 @@
                             <tr class="unit">
                                 <td style="font-size:18px;">{{1}}</td>
                                 <td style="font-size:18px;">{{$orders->shape}}</td>
-                                <td style="font-size:18px;">{{$orders->length}}</td>
-                                <td style="font-size:18px;">{{$orders->width}}</td>
-                                <td style="font-size:18px;">{{$orders->diameter}}</td>
-                                <td style="font-size:18px;">{{$orders->sideways}}</td>
+                                @if($orders->shape == 'مستطیل')
+                                    <td style="font-size:18px;">{{$orders->length}}</td>
+                                    <td style="font-size:18px;">{{$orders->width}}</td>
+                                @endif
+                                @if($orders->shape == 'دایره')
+                                    <td style="font-size:18px;">{{$orders->diameter}}</td>
+                                @endif
+                                @if($orders->shape == 'مثلث' || $orders->shape == 'مربع')
+                                    <td style="font-size:18px;">{{$orders->sideways}}</td>
+                                @endif
                                 @if($orders->orderMessages[0]->status == 0)
                                     <td style="font-size:18px;">
                                         <button class="btn btn-info col-md-10 col-md-offset-1">در حال بررسی</button>
@@ -81,6 +117,11 @@
                                 @if($orders->orderMessages[0]->status == 2)
                                     <td style="font-size:18px;">
                                         <button class="btn btn-success col-md-10 col-md-offset-1">انجام شده</button>
+                                    </td>
+                                @endif
+                                @if($orders->file != null)
+                                    <td style="font-size:18px;">
+                                        <button id="showImage" class="btn btn-dark col-md-10 col-md-offset-1">مشاهده تصویر</button>
                                     </td>
                                 @endif
                             </tr>
@@ -273,6 +314,11 @@
                     });
                 }
             })
+        })
+    </script>
+    <script>
+        $(document).on('click','#showImage',function(){
+            $('#imageModal').modal('show');
         })
     </script>
 @endsection
