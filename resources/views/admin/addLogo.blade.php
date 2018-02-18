@@ -55,15 +55,13 @@
                                             <span class="star"></span>
                                         </label>
                                     </div>
+                                    <hr class="col-md-12">
+                                    <div class="col-md-7  col-xs-9 col-md-offset-2">
+                                        <div class="col-md-9 col-xs-12">
+                                        <button type="button" class="btn btn-dark col-md-12" style="margin-top:2%;" id="reg"> ثبت لوگو</button>
+                                    </div>
                                 </div>
                             </div>
-
-                        <div class="col-md-10 col-md-offset-2">
-                            <button type="button" class="btn btn-dark col-md-5 col-md-offset-3" style="margin-top: 3%; margin-bottom: 3%;" id="reg"> ثبت لوگو</button>
-                        </div>
-                        <div class="col-md-2">
-
-                        </div>
                     </div>
                     <br/>
 

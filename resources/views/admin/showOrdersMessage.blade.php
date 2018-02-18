@@ -166,30 +166,30 @@
 
 
 
-                                <div class="col-md-12">
+                                <div class="col-md-2">
                                     <br>
                                     @if($message->admin_message == null)
                                         <button id="adminMessage" value="{{$message->id}}" content="" type="button"
-                                                class="col-md-2 btn btn-primary">پاسخ گویی به پیام
+                                                class="col-md-12 btn btn-primary">پاسخ گویی به پیام
                                         </button>
                                     @endif
                                     @if($message->admin_message != null)
                                         <button disabled id="adminMessage" value="{{$message->id}}" content="" type="button"
-                                                class="col-md-2 btn btn-info">پاسخ داده شده
+                                                class="col-md-12 btn btn-info">پاسخ داده شده
                                         </button>
                                     @endif
                                 </div>
                              @endforeach
-                                <div class="col-md-12">
+                                <div class="col-md-10">
                                     <br>
                                     @if($message->status == 0)
                                         <button id="changeStatus" value="{{$message->new_order_id}}" content="{{$message->status}}" type="button"
-                                                class="col-md-8 btn btn-info col-md-offset-3">تغییر وضعیت از <strong>در حال بررسی</strong>  به  <strong>در حال انجام</strong>
+                                                class="col-md-8 btn btn-info col-md-offset-2">تغییر وضعیت از <strong>در حال بررسی</strong>  به  <strong>در حال انجام</strong>
                                         </button>
                                     @endif
                                     @if($message->status == 1)
                                         <button  id="changeStatus" value="{{$message->new_order_id}}"  content="{{$message->status}}" type="button"
-                                                class="col-md-8 btn btn-warning col-md-offset-3">تغییر وضعیت از <strong>در حال انجام</strong>  به  <strong>انجام شده</strong>
+                                                class="col-md-8 btn btn-warning col-md-offset-2">تغییر وضعیت از <strong>در حال انجام</strong>  به  <strong>انجام شده</strong>
                                         </button>
                                     @endif
                                 </div>

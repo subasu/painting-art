@@ -1066,8 +1066,17 @@
                 cache: false,
                 dataType: 'json',
                 success: function (response) {
+                    console.log(response.products);
                     myProductsDiv.html('');
                     $.each(response.products, function (key, value) {
+                        $.each(value.productFlags, function (key, flag) {
+                            if (flag.active) {
+//                                x += '<span class="left d-rtl">' +
+                                    console.log(flag.price);
+//                                    'تومان</span>';
+                            }
+                        });
+
                         var x = '<div class="row ">' +
                             '<div class="menu_content clearfix">' +
                             '<div class="col-md-10 text-left">' +
