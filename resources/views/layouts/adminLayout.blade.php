@@ -805,30 +805,42 @@
                      data     : {'pageName' : pageName , '_token' : token},
                      success  : function(response)
                      {
+                         swal
+                         ({
+                             title: '',
+                             text: 'لطفا منتظر بمانید ، در صورتی که قبلا موردی را درج کرده باشید یا به صفحه مدیریت و یا به صفحه ویرایش منتقل خواهیدشد',
+                             type:'info',
+                             confirmButton : false
+  //                           confirmButtonText: "بستن"
+                         });
+
                          if(response.code == 'success')
                          {
-                             switch  (pageName)
-                             {
-                                 case 'addGoogleMap':
-                                     window.location.href = 'editGoogleMap';
-                                 break;
+                             setTimeout(function () {
+                                 switch  (pageName)
+                                 {
+                                     case 'addGoogleMap':
+                                         window.location.href = 'editGoogleMap';
+                                         break;
 
-                                 case 'addAboutUs':
-                                     window.location.href = 'editAboutUs';
-                                 break;
+                                     case 'addAboutUs':
+                                         window.location.href = 'editAboutUs';
+                                         break;
 
-                                 case 'addService':
-                                     window.location.href = 'ServiceManagement';
-                                 break;
+                                     case 'addService':
+                                         window.location.href = 'ServicesManagement';
+                                         break;
 
-                                 case 'addLogo':
-                                     window.location.href = 'editLogo';
-                                 break;
+                                     case 'addLogo':
+                                         window.location.href = 'editLogo';
+                                         break;
 
-                                 case 'addSlider':
-                                     window.location.href = 'sliderManagement';
-                                 break;
-                             }
+                                     case 'addSlider':
+                                         window.location.href = 'sliderManagement';
+                                         break;
+                                 }
+                             },5000);
+
                          }
                      },
                      error   : function(error)
