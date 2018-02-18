@@ -49,7 +49,7 @@ class IndexController extends Controller
         $menu = $this->loadMenu();
         $logo = Logo::latest()->first();
         $googleMap = GoogleMap::latest()->first();
-        return view('main.searchResult', compact('results', 'menu', 'logo', 'googleMap'));
+        return view('main.searchResult', compact('results', 'menu', 'lo go', 'googleMap'));
     }
 
     public function loadMenu()
@@ -79,11 +79,11 @@ class IndexController extends Controller
         $menu = $this->loadMenu();
         //this block code add sub category to each main category collection
         foreach ($menu as $mnu) {
-            $mnu->submenu = $submenu = Category::where([['parent_id', $mnu->id], ['active', 1]])->orderBy('depth', 'DESC')->get();
+            $mnu->submenu = $submenu = Category::where([['parent_id', $mnu->id], ['active', 1]])->orderBy('depth', 'DESC')->orderBy('id', 'DESC')->get();
             foreach ($submenu as $sm) {
                 $x = CategoryProduct::where([['category_id', $sm->id], ['active', 1]])->value('id');
-                if ($x > 0)
-                    $sm->hasProduct = 0;
+                if ($x)
+                    $sm->hasProduct = 1;
                 else
                     $sm->hasProduct = 0;
                 //this block code add product to each sub category collection
@@ -93,7 +93,7 @@ class IndexController extends Controller
                 $i = 0;
                 while ($i < $count) {
                     foreach ($products[$i]->scores as $product) {
-//                        $product->productScore = $this->productScore($products);
+                        $product->productScore = $this->productScore($products);
                     }
                     $i++;
 
@@ -101,6 +101,7 @@ class IndexController extends Controller
                 $sm->products = $products;
             }
         }
+//        dd($menu);
         $pageTitle = 'صفحه ی اصلی';
         $capital = City::where('parent_id', '=', '1')->get();
         $services = Service::where('active', '=', '1')->get();
@@ -269,20 +270,13 @@ class IndexController extends Controller
     }
 
 
-    //below function is to return show product blade with pagination
-    //first time show by view second time show by ajax
-    public function showProducts($id, Request $request)
+    //below function is to return products of a category
+    // show by ajax
+    public function showProducts($id)
     {
-        $menu = $menu = $this->loadMenu();
-        $pageTitle = 'لیست محصولات';
         $categories = Category::find($id);
-        $logo = Logo::latest()->first();
-        $googleMap = GoogleMap::latest()->first();
-        $products = $categories->products()->paginate(12);
-        if ($request->ajax()) {
-            return view('main.presult', compact('menu', 'pageTitle', 'categories', 'products', 'logo', 'googleMap'));
-        }
-        return view('main.showProducts', compact('menu', 'pageTitle', 'categories', 'products', 'logo', 'googleMap'));
+        $products = $categories->products()->get();
+        return response()->json(['products'=>$products]);
     }
 
     //below function is to return show product blade
