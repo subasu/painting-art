@@ -164,6 +164,9 @@
             Route::post('saveAdminMessage','NewOrdersController@saveAdminMessage');
             Route::post('changeOrderStatus','NewOrdersController@changeOrderStatus');
 
+            //page handle routes
+            Route::post('pageHandle','PageController@pageHandle');
+
         });
         //end admin panel routes
         //user panel routes

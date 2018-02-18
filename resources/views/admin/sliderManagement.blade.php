@@ -37,8 +37,8 @@
                 </div>
 
 
-                <a href="{{url('admin/addCategory')}}" id="user-send" type="button" class="col-md-2 col-md-offset-5 btn btn-info" style=" font-weight: bold;">
-                    <i class="fa fa-th-list"></i>                    افزودن دسته ی جدید                </a>
+                <a href="{{url('admin/addSlider')}}" id="user-send" type="button" class="col-md-2 col-md-offset-5 btn btn-info" style=" font-weight: bold;">
+                    <i class="fa fa-th-list"></i>                    افزودن اسلایدر                </a>
                 {{--<div class="pull-right" style="direction: rtl"><i class="fa fa-square" style="font-size: 35px;color:#ffff80;"></i> مدیران واحد</div>--}}
                 <div class="x_content">
                     <table style="direction:rtl;text-align: center" id="example"

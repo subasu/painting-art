@@ -443,7 +443,7 @@
                     */?>
                 </nav>
             </div>
-
+            <input type="hidden" id="token" value="{{csrf_token()}}">
         </div>
         <!-- /top navigation -->
         <!-- page content -->
@@ -793,6 +793,7 @@
        var path = window.location.pathname;
         var absolutePath  = path.split('/');
         var pageName  = absolutePath[absolutePath.length-1];
+        var token     = $('#token').val();
 
             if(pageName == 'addGoogleMap' || pageName == 'addAboutMap' || pageName == 'addAboutMap' || pageName == 'addService' || pageName == 'addLogo' || pageName == 'addSlider')
             {
@@ -801,10 +802,38 @@
                      url      : "{{url('admin/pageHandle')}}",
                      type     : "post",
                      dataType : "json",
-                     data     : {'pageName' : pageName},
+                     data     : {'pageName' : pageName , '_token' : token},
                      success  : function(response)
                      {
-                         
+                         if(response.code == 'success')
+                         {
+                             switch  (pageName)
+                             {
+                                 case 'addGoogleMap':
+                                     window.location.href = 'editGoogleMap';
+                                 break;
+
+                                 case 'addAboutUs':
+                                     window.location.href = 'editAboutUs';
+                                 break;
+
+                                 case 'addService':
+                                     window.location.href = 'ServiceManagement';
+                                 break;
+
+                                 case 'addLogo':
+                                     window.location.href = 'editLogo';
+                                 break;
+
+                                 case 'addSlider':
+                                     window.location.href = 'sliderManagement';
+                                 break;
+                             }
+                         }
+                     },
+                     error   : function(error)
+                     {
+                         console.log(error.status);
                      }
                  })
             }
