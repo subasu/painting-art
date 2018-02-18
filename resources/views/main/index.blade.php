@@ -66,7 +66,8 @@
                                 <a href="#home" class="nav-link yekan">
                                     @if(!empty($logo))
                                         {{$logo->title}}
-                                    <img src="{{URL::asset('public/dashboard/Logo/'.$logo->image_src)}}" width="100" height="45"/>
+                                        <img src="{{URL::asset('public/dashboard/Logo/'.$logo->image_src)}}" width="100"
+                                             height="45"/>
                                     @else
                                         لوگو و عنوان سایت
                                     @endif
@@ -144,7 +145,8 @@
                                             <div class="brand"><a href="#home" class="nav-link yekan">
                                                     @if(!empty($logo))
                                                         {{$logo->title}}
-                                                        <img src="{{URL::asset('public/dashboard/Logo/'.$logo->image_src)}}" width="100" height="45"/>
+                                                        <img src="{{URL::asset('public/dashboard/Logo/'.$logo->image_src)}}"
+                                                             width="100" height="45"/>
                                                     @else
                                                         لوگو و عنوان سایت
                                                     @endif
@@ -278,51 +280,53 @@
                                     <div class="col-md-12">
                                         @if(count($menu))
                                             @foreach($menu as $mnu)
-{{--                                                @if($mnu->hasProduct)--}}
-                                                    <div class="row ">
-                                                        <div class="menu_content clearfix">
-                                                            <div class="col-md-10 text-left">
-                                                                <div class="title-splider yekan">
-                                                                    <h4 class="clearfix">
-                                                                        <span class="right border_bottom">{{$mnu->title}}</span>
-                                                                    </h4></div>
+                                                {{--                                                @if($mnu->hasProduct)--}}
+                                                <div class="row ">
+                                                    <div class="menu_content clearfix">
+                                                        <div class="col-md-10 text-left">
+                                                            <div class="title-splider yekan">
+                                                                <h4 class="clearfix">
+                                                                    <span class="right border_bottom">{{$mnu->title}}</span>
+                                                                </h4></div>
 
+                                                        </div>
+                                                        <div class="col-md-2 menu_small">
+                                                            <div class="row"><img
+                                                                        src="{{url('public/dashboard/image/'.$mnu->image_src)}}"
+                                                                        class="img-responsive img_border"
+                                                                        alt=""/>
                                                             </div>
-                                                            <div class="col-md-2 menu_small">
-                                                                <div class="row"><img
-                                                                            src="{{url('public/dashboard/image/'.$mnu->image_src)}}"
-                                                                            class="img-responsive img_border"
-                                                                            alt=""/>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-8">
-                                                                <?php $count = 1;$subCatCounts=1;?>
-                                                                @if(count($menu))
-                                                                        <?php $j = $subCatCounts;?>
-                                                                        @foreach($mnu->submenu as $submenu)
-                                                                            <div class="row ">
-                                                                                <div class="menu_content clearfix">
-                                                                                    <div class="col-md-10 text-left">
-                                                                                        <div class="title-splider yekan">
-                                                                                            <h4 class="clearfix">
-                                                                                                <a class="right border_bottom nav-link loadProduct" href="#products" id="{{$submenu->id}}">{{$submenu->title}}</a>
-                                                                                            </h4></div>
-                                                                                    </div>
-                                                                                    <div class="col-md-2 menu_small">
-                                                                                        <div class="row">
-                                                                                        </div>
-                                                                                    </div>
+                                                        </div>
+                                                        <div class="col-md-8">
+                                                            <?php $count = 1;$subCatCounts = 1;?>
+                                                            @if(count($menu))
+                                                                <?php $j = $subCatCounts;?>
+                                                                @foreach($mnu->submenu as $submenu)
+                                                                    <div class="row ">
+                                                                        <div class="menu_content clearfix">
+                                                                            <div class="col-md-10 text-left">
+                                                                                <div class="title-splider yekan">
+                                                                                    <h4 class="clearfix">
+                                                                                        <a class="right border_bottom nav-link loadProduct"
+                                                                                           href="#products"
+                                                                                           id="{{$submenu->id}}">{{$submenu->title}}</a>
+                                                                                    </h4></div>
+                                                                            </div>
+                                                                            <div class="col-md-2 menu_small">
+                                                                                <div class="row">
                                                                                 </div>
                                                                             </div>
+                                                                        </div>
+                                                                    </div>
 
-                                                                    @endforeach
-                                                                @endif
-
-                                                            </div>
+                                                                @endforeach
+                                                            @endif
 
                                                         </div>
 
                                                     </div>
+
+                                                </div>
                                                 {{--@endif--}}
                                             @endforeach
                                         @endif
@@ -352,26 +356,34 @@
                                     <div class="col-md-12" id="myProducts">
                                         @if(count($menu))
                                             @foreach($menu as $mnu)
-{{--                                                @if($mnu->hasProduct)--}}
-                                                    <div class="row ">
-                                                        <div class="menu_content clearfix">
-                                                            <div class="col-md-10 text-left">
-                                                                <div class="title-splider yekan">
-                                                                    <h4 class="clearfix">
-                                                                        <span class="right border_bottom">{{$mnu->title}}</span>
-                                                                    </h4></div>
+                                                {{--                                                @if($mnu->hasProduct)--}}
+                                                <div class="row ">
+                                                    <div class="menu_content clearfix">
+                                                        <div class="col-md-10 text-left">
+                                                            <div class="title-splider yekan">
+                                                                <h4 class="clearfix">
+                                                                    <span class="right border_bottom">{{$mnu->title}}</span>
+                                                                    {{--@foreach($product->productFlags as $flag)--}}
+                                                                    {{--@if($flag->active == 1)--}}
+                                                                    <span class="left d-rtl">100000
+                                                                        {{--{{number_format($flag->price)}}--}}
+                                                                        تومان</span>
 
-                                                            </div>
-                                                            <div class="col-md-2 menu_small">
-                                                                <div class="row"><img
-                                                                            src="{{url('public/dashboard/image/'.$mnu->image_src)}}"
-                                                                            class="img-responsive img_border"
-                                                                            alt=""/>
-                                                                </div>
+                                                                    {{--@endif--}}
+                                                                    {{--@endforeach--}}
+                                                                </h4></div>
+
+                                                        </div>
+                                                        <div class="col-md-2 menu_small">
+                                                            <div class="row"><img
+                                                                        src="{{url('public/dashboard/image/'.$mnu->image_src)}}"
+                                                                        class="img-responsive img_border"
+                                                                        alt=""/>
                                                             </div>
                                                         </div>
-
                                                     </div>
+
+                                                </div>
                                                 {{--@endif--}}
                                             @endforeach
                                         @endif
@@ -1043,24 +1055,42 @@
 </script>
 <script>
     $(document).ready(function () {
-        var myProductsDiv=$("#myProducts");
+        var myProductsDiv = $("#myProducts");
         myProductsDiv.append('dr');
         $(".loadProduct").click(function () {
-            var id=$(this).attr('id');
+            var id = $(this).attr('id');
             $.ajax({
-               url:'{{url('showProducts')}}'+'/'+id,
-                method:'get',
-                type:'post',
-                cache:false,
-                dataType:'json',
-                success:function (response) {
-                    myProductsDiv.html();
-                    $.each(response.products,function(key,value){
-                        myProductsDiv.append(value.title);
-                        console.log(value.title)
+                url: '{{url('showProducts')}}' + '/' + id,
+                method: 'get',
+                type: 'post',
+                cache: false,
+                dataType: 'json',
+                success: function (response) {
+                    myProductsDiv.html('');
+                    $.each(response.products, function (key, value) {
+                        var x = '<div class="row ">' +
+                            '<div class="menu_content clearfix">' +
+                            '<div class="col-md-10 text-left">' +
+                            '<div class="title-splider yekan">' +
+                            '<h4 class="clearfix">' +
+                            '<span class="right border_bottom">'+value.title+'</span>' ;
+                            $.each(value.productFlags, function (key, flag) {
+                                if (flag.active == 1) {
+                                    x += '<span class="left d-rtl">' +
+                                        flag.price +
+                                        'تومان</span>';
+                                }
+                            });
+                            x+='</h4></div>' +
+                            '</div>' +
+                            '<div class="col-md-2 menu_small">' +
+                            '<div class="row"><img src="public/dashboard/image/'+value.image_src+'" class="img-responsive img_border"alt=""/>' +
+                            '</div></div></div></div>';
+                        myProductsDiv.append(x);
+                        console.log(x)
                     })
                 },
-                error:function (error) {
+                error: function (error) {
                     $("#myProducts").html(error);
                 }
             });
