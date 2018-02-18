@@ -189,7 +189,7 @@
                                     @endif
                                     @if($message->status == 1)
                                         <button  id="changeStatus" value="{{$message->new_order_id}}"  content="{{$message->status}}" type="button"
-                                                class="col-md-8 btn btn-warning col-md-offset-3">تغییر وضعیت از <strong>در حال انجام</strong><strong>  به  </strong> انجام شده
+                                                class="col-md-8 btn btn-warning col-md-offset-3">تغییر وضعیت از <strong>در حال انجام</strong>  به  <strong>انجام شده</strong>
                                         </button>
                                     @endif
                                 </div>

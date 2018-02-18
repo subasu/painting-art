@@ -787,6 +787,29 @@
         alert(last);
     })
 </script>
+
+<script>
+    $(function(){
+       var path = window.location.pathname;
+        var absolutePath  = path.split('/');
+        var pageName  = absolutePath[absolutePath.length-1];
+
+            if(pageName == 'addGoogleMap' || pageName == 'addAboutMap' || pageName == 'addAboutMap' || pageName == 'addService' || pageName == 'addLogo' || pageName == 'addSlider')
+            {
+                 $.ajax
+                 ({
+                     url      : "{{url('admin/pageHandle')}}",
+                     type     : "post",
+                     dataType : "json",
+                     data     : {'pageName' : pageName},
+                     success  : function(response)
+                     {
+                         
+                     }
+                 })
+            }
+    })
+</script>
 </body>
 </html>
 @endif

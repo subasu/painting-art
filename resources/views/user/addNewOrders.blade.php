@@ -383,14 +383,32 @@
                     },
                     error       : function(error)
                     {
-                          console.log(error);
-                        swal
-                        ({
-                            title: '',
-                            text: 'خطایی رخ داده است ، لطفا با بخش پشتیبانی تماس بگیرید',
-                            type:'warning',
-                            confirmButtonText: "بستن"
-                        });
+                        console.log(error);
+                        if(error.status === 500)
+                        {
+                            swal
+                            ({
+                                title: '',
+                                text: 'خطایی رخ داده است ، لطفا با بخش پشتیبانی تماس بگیرید',
+                                type:'warning',
+                                confirmButtonText: "بستن"
+                            });
+                        }else if(error.status === 422)
+                        {
+                            var errors = error.responseJSON;
+                            var errorsHtml = '';
+                            $.each(errors,function (key,vlaue) {
+                                errorsHtml += value[0] + '\n';
+                            })
+                            swal
+                            ({
+                                title: '',
+                                text: errorsHtml,
+                                type:'warning',
+                                confirmButtonText: "بستن"
+                            });
+                        }
+
                     }
                 });
             })

@@ -20,7 +20,7 @@
         <div class="col-md-10 col-sm-6 col-xs-12 col-md-offset-1">
             <div class="x_panel">
                 <div class="x_title">
-                    <h2> فرم ایجاد وضعیت پردخت</h2>
+                    <h2> فرم ایجاد وضعیت پرداخت</h2>
                     <ul class="nav navbar-right panel_toolbox">
                         <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                         </li>
