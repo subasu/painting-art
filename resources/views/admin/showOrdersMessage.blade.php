@@ -161,7 +161,11 @@
                                     </div>
                                 </div>
                                 @endif
+
                                 </div>
+
+
+
                                 <div class="col-md-2">
                                     <br>
                                     @if($message->admin_message == null)
@@ -175,7 +179,7 @@
                                         </button>
                                     @endif
                                 </div>
-                             @endf oreach
+                             @endforeach
                                 <div class="col-md-10">
                                     <br>
                                     @if($message->status == 0)
