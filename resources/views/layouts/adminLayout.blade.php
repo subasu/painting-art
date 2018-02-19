@@ -49,6 +49,7 @@
 
 <body class="nav-md">
 
+
 <div class="container body">
     <div class="main_container">
         <!-- page content -->
@@ -168,6 +169,26 @@
                 <br/>
 
                 <!-- sidebar menu -->
+                <div id="newModal" class="modal fade" role="dialog">
+                    <div class="modal-dialog">
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                {{--<button type="button" class="close" data-dismiss="modal" style="font-size: 20px;">&times;</button>--}}
+                                <h1 class="modal-title text-center">پیام انتظار</h1>
+                            </div>
+                            <div class="modal-body text-center">
+                                <h3 >لطفا منتظر بمانید ، در صورتی که قبلا موردی را درج کرده باشید یا به صفحه مدیریت و یا به صفحه ویرایش مربوط به همین صفحه منتقل  خواهید شد</h3>
+                            </div>
+                            {{--<div class="modal-footer" >--}}
+                                {{--<button type="button" class="btn btn-dark col-md-6 col-md-offset-3" data-dismiss="modal">بستن</button>--}}
+                                {{--</div>--}}
+                        </div>
+
+                    </div>
+                </div>
+
+
                 <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
                     <div class="menu_section" style="margin-bottom:10px;">
                         <h3 style="font-size: 16px;color:white">پروفایل</h3>
@@ -795,7 +816,7 @@
         var pageName  = absolutePath[absolutePath.length-1];
         var token     = $('#token').val();
 
-            if(pageName == 'addGoogleMap' || pageName == 'addAboutMap' || pageName == 'addAboutMap' || pageName == 'addService' || pageName == 'addLogo' || pageName == 'addSlider')
+            if(pageName == 'addGoogleMap' || pageName == 'addAboutUs'  || pageName == 'addService' || pageName == 'addLogo' || pageName == 'addSlider')
             {
                  $.ajax
                  ({
@@ -805,17 +826,11 @@
                      data     : {'pageName' : pageName , '_token' : token},
                      success  : function(response)
                      {
-                         swal
-                         ({
-                             title: '',
-                             text: 'لطفا منتظر بمانید ، در صورتی که قبلا موردی را درج کرده باشید یا به صفحه مدیریت و یا به صفحه ویرایش منتقل خواهیدشد',
-                             type:'info',
-                             confirmButton : false
-  //                           confirmButtonText: "بستن"
-                         });
+
 
                          if(response.code == 'success')
                          {
+                             $('#newModal').modal('show');
                              setTimeout(function () {
                                  switch  (pageName)
                                  {
@@ -839,7 +854,7 @@
                                          window.location.href = 'sliderManagement';
                                          break;
                                  }
-                             },5000);
+                             },6000);
 
                          }
                      },

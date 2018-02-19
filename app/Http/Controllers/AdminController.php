@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AboutUsRequest;
 use App\Http\SelfClasses\AddNewLogo;
 use App\Http\SelfClasses\AddNewSlider;
 use App\Http\SelfClasses\CheckFiles;
@@ -55,7 +56,7 @@ class AdminController extends Controller
         return view('admin.editAboutUs', compact('pageTitle', 'about'));
     }
 
-    public function addAboutUsPost(Request $request)
+    public function addAboutUsPost(AboutUsRequest $request)
     {
         $abouts = count(About::all());
         if ($abouts > 0)
@@ -64,20 +65,20 @@ class AdminController extends Controller
         $aboutUs->description = $request->description;
         $res = $aboutUs->save();
         if ($res == 1)
-            return response()->json('متن شما با مؤفقیت ثبت شد');
+            return response()->json(['message'  =>  'متن شما با مؤفقیت ثبت شد' , 'code' => 'success']);
         else
-            return response()->json('متاسفانه متن شما ثبت نشد');
+            return response()->json(['message' => 'در ثبت اطلاعات خطایی رخ داده است ، لطفا با بخش پشتیبانی تماس بگیرید' , 'code' => 'error']);
     }
 
-    public function editAboutUsPost(Request $request)
+    public function editAboutUsPost(AboutUsRequest $request)
     {
         $aboutUs = About::find($request->id);
         $aboutUs->description = $request->description;
         $res = $aboutUs->save();
         if ($res == 1)
-            return response()->json('متن شما با مؤفقیت ویرایش شد');
+            return response()->json(['message'  =>  'متن شما با مؤفقیت ویرایش شد' , 'code' => 'success']);
         else
-            return response()->json('متاسفانه متن شما ویرایش نشد');
+            return response()->json(['message' => 'در ثبت اطلاعات خطایی رخ داده است ، لطفا با بخش پشتیبانی تماس بگیرید' , 'code' => 'error']);
     }
 
     public function addService()
@@ -312,9 +313,9 @@ class AdminController extends Controller
             $add->iframe_tag = $request->iframe_tag;
             $add->save();
             if ($add)
-                return response()->json(['message' => 'گوگل مپ شما ثبت شد', 'code' => '1']);
+                return response()->json(['message' => 'گوگل مپ شما ثبت شد', 'code' => 'success']);
             else
-                return response()->json(['message' => 'خطایی رخ داده است ، با بخش پشتیبانی تماس بگیرید']);
+                return response()->json(['message' => 'خطایی رخ داده است ، با بخش پشتیبانی تماس بگیرید' , 'code' => 'error']);
         }
         return response()->json(['message' => 'وارد کردن آدرس گوگل مپ الزامی است']);
 

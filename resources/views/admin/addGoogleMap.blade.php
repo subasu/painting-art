@@ -71,11 +71,23 @@
                     dataType: "json",
                     method: "post",
                     success: function(response) {
-                        swal({
-                            title: "",
-                            text: response.message,
-                            type: "info"
-                        });
+                        if(response.code == 'success')
+                        {
+                            swal({
+                                title: "",
+                                text: response.message,
+                                type: "success"
+                            });
+                            setTimeout(function(){window.location.reload(true)},3000);
+                        }else
+                            {
+                                swal({
+                                    title: "",
+                                    text: response.message,
+                                    type: "success"
+                                });
+                            }
+
                     }, error: function(response) {
                         swal({
                             title: "",

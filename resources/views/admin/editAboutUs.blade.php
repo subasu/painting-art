@@ -159,18 +159,48 @@
                     data: {'description': editorText, 'id': id},
                     dataType: "json",
                     method: "post",
-                    success: function (response) {
-                        swal({
-                            title: "",
-                            text: response,
-                            type: "info"
-                        });
-                    }, error: function (response) {
-                        swal({
-                            title: "",
-                            text: response,
-                            type: "warning"
-                        });
+                    success: function(response) {
+                        if(response.code == 'success')
+                        {
+                            swal({
+                                title: "",
+                                text: response.message,
+                                type: "success"
+                            });
+                     //       setTimeout(function(){window.location.reload(true);},3000);
+                        }else
+                        {
+                            swal({
+                                title: "",
+                                text: response.message,
+                                type: "warning"
+                            });
+                        }
+
+                    }, error: function(error) {
+                        console.log(error);
+                        if(error.status === 500)
+                        {
+                            swal({
+                                title: "",
+                                text: 'خطایی رخ داده است ، لطفا با بخش پشتیبانی تماس بگیرید',
+                                type: "warning"
+                            });
+                        }
+                        else if(error.status === 422)
+                        {
+                            var errors = error.responseJSON;
+                            var errorsHtml = '';
+                            $.each(errors,function (key , value) {
+                                errorsHtml += value[0] + '\n';
+                            })
+                            swal({
+                                title: "",
+                                text: errorsHtml,
+                                type: "warning"
+                            });
+                        }
+
                     }
                 });
             });
