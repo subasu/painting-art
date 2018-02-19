@@ -49,6 +49,34 @@
 </section>
 <div id="menutop"></div>
 
+<div id="detail-prod" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="productGrid">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">×</span></button>
+                <h4 class="modal-title" id="productGrid">Product name</h4>
+            </div>
+            <div class="modal-body">
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <img src="http://placehold.it/350x350" class="img-responsive" alt="a">
+                    </div>
+                    <div class="col-md-8">
+
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" data-dismiss="modal" class="btn btn-primary">Close</button>
+
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 <!--Wrapper 
 =============================-->
 <div id="wrapper">
@@ -355,9 +383,11 @@
                                 <div class="pad_top30 home3">
                                     <div class="col-md-12" id="myProducts">
                                         <p class="yekan a-right">
-ابتدا دسته ی مورد نظر را انتخاب نمایید                                    <br/><br><a class="button nav-link yekan" href="#category">محصولات</a>
+                                            ابتدا دسته ی مورد نظر را انتخاب نمایید <br/><br><a
+                                                    class="button nav-link yekan" href="#category">محصولات</a>
                                         </p>
                                     </div>
+
                                     <div class="col-md-12">
                                     </div>
                                 </div>
@@ -1024,7 +1054,17 @@
 
 </script>
 <script>
+    function showProductDetail(id) {
+        var modalBody = $('.modal-body');
+//            var id = $(this).attr('id');
+        modalBody.html(id);
+        console.log('1212122111111');
+    }
     $(document).ready(function () {
+        function formatNumber(num) {
+            return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")
+        }
+
         var myProductsDiv = $("#myProducts");
         $(".loadProduct").click(function () {
             var id = $(this).attr('id');
@@ -1039,26 +1079,28 @@
                     $.each(response.products, function (key, value) {
                         var x = '<div class="row ">' +
                             '<div class="menu_content clearfix">' +
-                            '<div class="col-md-10 text-left">' +
+                            '<button type="button" class="btn btn-primary fa fa-folder-open col-md-1 btn-product-detail" onclick="showProductDetail('+value.id+')" id="' + value.id + '" data-toggle="modal" data-target="#detail-prod"></button>' +
+                            '<div class="col-md-8 text-left">' +
                             '<div class="title-splider yekan">' +
                             '<h4 class="clearfix">' +
-                            '<span class="right border_bottom">'+value.title+'</span>' ;
-                            $.each(value.product_flags, function (key, flag) {
-                                if (flag.active >0) {
-                                    x += '<span class="left d-rtl">' +
-                                        flag.price +
-                                        'تومان</span>';
-                                }
-                            });
-                            x+='</h4></div>' +
+                            '<span class="right border_bottom">' + value.title + '</span>';
+                        $.each(value.product_flags, function (key, flag) {
+                            if (flag.active > 0) {
+                                x += '<span class="left d-rtl">' +
+                                    formatNumber(flag.price) +
+                                    'تومان</span>';
+                            }
+                        });
+                        x += '</h4></div>' +
                             '</div>' +
                             '<div class="col-md-2 menu_small">' +
-                            '<div class="row">' ;
-                            $.each(value.product_images, function (key, img) {
-                                x+='<img src="public/dashboard/productFiles/picture/'+img.image_src+'" class="img-responsive img_border"alt=""/>' +
-                                    '</div></div></div></div>';;
-                            });
-                            myProductsDiv.append(x);
+                            '<div class="row">';
+                        $.each(value.product_images, function (key, img) {
+                            x += '<img src="public/dashboard/productFiles/picture/' + img.image_src + '" class="img-responsive img_border"alt=""/>';
+                        });
+                        x += '</div></div>' +
+                            '</div></div>';
+                        myProductsDiv.append(x);
                     });//end each
                 },
                 error: function (error) {
@@ -1066,7 +1108,13 @@
                 }
             });
 
-        })
+        });
+
+
+
+        $(".btn-product-detail").on("click", function () {
+
+        });
     })
 </script>
 <script src="{{ URL::asset('public/js/persianDatepicker.js')}}"></script>
