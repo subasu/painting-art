@@ -271,11 +271,26 @@ class IndexController extends Controller
 
 
     //below function is to return products of a category
-    // show by ajax
+    // show products by ajax
     public function showProducts($id)
     {
         $categories = Category::find($id);
         $products = $categories->products()->get();
+        $i=count($products);
+        while ($i>0)
+        {$i--;
+        foreach($products[$i]->productFlags as $flag)
+        {
+            if($flag->active==1)
+            {
+                $products->flag=$flag->price;
+            }
+        }
+        foreach($products[$i]->productImages as $img)
+        {
+            $products->img=$img->image_src;
+        }
+        }
         return response()->json(['products'=>$products]);
     }
 
