@@ -354,39 +354,9 @@
                             <div class="col-md-6 content_text">
                                 <div class="pad_top30 home3">
                                     <div class="col-md-12" id="myProducts">
-                                        @if(count($menu))
-                                            @foreach($menu as $mnu)
-                                                {{--                                                @if($mnu->hasProduct)--}}
-                                                <div class="row ">
-                                                    <div class="menu_content clearfix">
-                                                        <div class="col-md-10 text-left">
-                                                            <div class="title-splider yekan">
-                                                                <h4 class="clearfix">
-                                                                    <span class="right border_bottom">{{$mnu->title}}</span>
-                                                                    {{--@foreach($product->productFlags as $flag)--}}
-                                                                    {{--@if($flag->active == 1)--}}
-                                                                    <span class="left d-rtl">100000
-                                                                        {{--{{number_format($flag->price)}}--}}
-                                                                        تومان</span>
-
-                                                                    {{--@endif--}}
-                                                                    {{--@endforeach--}}
-                                                                </h4></div>
-
-                                                        </div>
-                                                        <div class="col-md-2 menu_small">
-                                                            <div class="row"><img
-                                                                        src="{{url('public/dashboard/image/'.$mnu->image_src)}}"
-                                                                        class="img-responsive img_border"
-                                                                        alt=""/>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                </div>
-                                                {{--@endif--}}
-                                            @endforeach
-                                        @endif
+                                        <p class="yekan a-right">
+ابتدا دسته ی مورد نظر را انتخاب نمایید                                    <br/><br><a class="button nav-link yekan" href="#category">محصولات</a>
+                                        </p>
                                     </div>
                                     <div class="col-md-12">
                                     </div>
@@ -1056,7 +1026,6 @@
 <script>
     $(document).ready(function () {
         var myProductsDiv = $("#myProducts");
-        myProductsDiv.append('dr');
         $(".loadProduct").click(function () {
             var id = $(this).attr('id');
             $.ajax({
@@ -1066,25 +1035,16 @@
                 cache: false,
                 dataType: 'json',
                 success: function (response) {
-                    console.log(response.products);
                     myProductsDiv.html('');
                     $.each(response.products, function (key, value) {
-                        $.each(value.productFlags, function (key, flag) {
-                            if (flag.active) {
-//                                x += '<span class="left d-rtl">' +
-                                    console.log(flag.price);
-//                                    'تومان</span>';
-                            }
-                        });
-
                         var x = '<div class="row ">' +
                             '<div class="menu_content clearfix">' +
                             '<div class="col-md-10 text-left">' +
                             '<div class="title-splider yekan">' +
                             '<h4 class="clearfix">' +
                             '<span class="right border_bottom">'+value.title+'</span>' ;
-                            $.each(value.productFlags, function (key, flag) {
-                                if (flag.active == 1) {
+                            $.each(value.product_flags, function (key, flag) {
+                                if (flag.active >0) {
                                     x += '<span class="left d-rtl">' +
                                         flag.price +
                                         'تومان</span>';
@@ -1093,11 +1053,13 @@
                             x+='</h4></div>' +
                             '</div>' +
                             '<div class="col-md-2 menu_small">' +
-                            '<div class="row"><img src="public/dashboard/image/'+value.image_src+'" class="img-responsive img_border"alt=""/>' +
-                            '</div></div></div></div>';
-                        myProductsDiv.append(x);
-                        console.log(x)
-                    })
+                            '<div class="row">' ;
+                            $.each(value.product_images, function (key, img) {
+                                x+='<img src="public/dashboard/productFiles/picture/'+img.image_src+'" class="img-responsive img_border"alt=""/>' +
+                                    '</div></div></div></div>';;
+                            });
+                            myProductsDiv.append(x);
+                    });//end each
                 },
                 error: function (error) {
                     $("#myProducts").html(error);
