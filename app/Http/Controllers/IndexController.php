@@ -304,9 +304,12 @@ class IndexController extends Controller
         $subcatId = Category::where('id', '=', $brand)->value('parent_id');
         $subcat = \App\Models\Category::where('id', '=', $subcatId)->value('title');
         $cat = Category::where('id', '=', $subcat)->value('title');
-        $googleMap = GoogleMap::latest()->first();
-        $logo = Logo::latest()->first();
-        return view('main.productDetail', compact('menu', 'pageTitle', 'product', 'cat', 'subcat', 'logo', 'googleMap'));
+        foreach($product->productImages as $img)
+        {
+            $product->image_src=$img->image_src;
+        }
+        return response()->json(['product'=>$product]);
+//        return view('main.productDetail', compact('menu', 'pageTitle', 'product', 'cat', 'subcat', 'logo', 'googleMap'));
     }
 
 

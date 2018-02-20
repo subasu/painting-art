@@ -53,22 +53,12 @@
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                <button type="button" class="close" data-dismiss="modal" aria-label="بستن"><span
                             aria-hidden="true">×</span></button>
-                <h4 class="modal-title" id="productGrid">Product name</h4>
+                <h4 class="modal-title" id="productGrid">{{--//load by ajax--}}</h4>
             </div>
             <div class="modal-body">
-
-                <div class="row">
-                    <div class="col-md-4">
-                        <img src="http://placehold.it/350x350" class="img-responsive" alt="a">
-                    </div>
-                    <div class="col-md-8">
-
-                    </div>
-                </div>
-
-
+{{--//load by ajax--}}
             </div>
             <div class="modal-footer">
                 <button type="button" data-dismiss="modal" class="btn btn-primary">Close</button>
@@ -1056,9 +1046,28 @@
 <script>
     function showProductDetail(id) {
         var modalBody = $('.modal-body');
-//            var id = $(this).attr('id');
-        modalBody.html(id);
-        console.log('1212122111111');
+        $.ajax({
+            url: "{{url('productDetail')}}" + "/" + id,
+            type: 'get',
+            cache: false,
+            dataType: 'json',
+            success: function (response) {
+                console.log(response.product);
+                x = '<div class="row">' +
+                        '<div class="col-md-4">' +
+                        '<img src="public/dashboard/productFiles/picture/' + response.product.image_src + '" class="img-responsive" alt="a">' +
+                        '</div>' +
+                        '<div class="col-md-8">' +response.product.description+
+                        '</div>' +
+                        '</div>';
+                modalBody.append(x)
+                $('.modal-title').html(response.product.title)
+//                each(response.product, function (key, value) {
+//
+//
+//                });
+            }
+        });
     }
     $(document).ready(function () {
         function formatNumber(num) {
@@ -1070,8 +1079,7 @@
             var id = $(this).attr('id');
             $.ajax({
                 url: '{{url('showProducts')}}' + '/' + id,
-                method: 'get',
-                type: 'post',
+                type: 'get',
                 cache: false,
                 dataType: 'json',
                 success: function (response) {
