@@ -43,7 +43,7 @@
                                 <td >{{++$i}}</td>
                                 <td><i class="glyphicon {{$datum->icon}} fa-2x"></i></td>
                                 <td>{{$datum->title}}</td>
-                                <td>{!!  $datum->description!!}</td>
+                                <td class="col-md-5">{!!  $datum->description!!}</td>
                                 @if($datum->active == 1)
                                     <td class="text-success fa-1x">فعال</td>
                                 @endif
