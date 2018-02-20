@@ -1060,7 +1060,7 @@
                         '<div class="col-md-8">' +response.product.description+
                         '</div>' +
                         '</div>';
-                modalBody.append(x)
+                modalBody.html(x)
                 $('.modal-title').html(response.product.title)
 //                each(response.product, function (key, value) {
 //
