@@ -84,7 +84,7 @@
                                 swal({
                                     title: "",
                                     text: response.message,
-                                    type: "success"
+                                    type: "warning"
                                 });
                             }
 

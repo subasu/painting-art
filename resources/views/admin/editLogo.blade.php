@@ -66,7 +66,7 @@
 
                             </div>
                             <div class="col-md-12">
-                                <button type="button" class="btn btn-dark col-md-6 col-md-offset-3" style="margin-top: 3%; margin-bottom: 3%;" id="reg"> ثبت لوگو</button>
+                                <button type="button" class="btn btn-dark col-md-6 col-md-offset-3" style="margin-top: 3%; margin-bottom: 3%;" id="reg"> ویرایش لوگو</button>
                             </div>
                         </div>
                     </div>

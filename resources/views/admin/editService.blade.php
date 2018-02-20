@@ -61,8 +61,8 @@
                                 </td>
                                 <td class="col-md-2"><input class="form-control" style="width: 100%;" id="title"
                                                             name="title" value="{{$service->title}}"></td>
-                                <td class="col-md-2"><input class="form-control" style="width: 100%;" id="description"
-                                                            name="description" value="{{$service->description}}"></td>
+                                <td class="col-md-2"><textarea class="form-control" style="width: 100%;" id="description"
+                                                               name="description" >{{$service->description}}</textarea></td>
                                 <td>
                                     <button id="edit" type="button" class="btn btn-warning col-md-9 col-md-offset-1">
                                         ویرایش

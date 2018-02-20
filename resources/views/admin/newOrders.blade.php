@@ -23,10 +23,10 @@
                         <thead>
                         <tr>
                             <th style="text-align: center">ردیف</th>
-                            <th style="text-align: center">نام خریدار</th>
-                            <th style="text-align: center">شماره همراه خریدار</th>
-                            <th style="text-align: center">استان محل سکونت</th>
-                            <th style="text-align: center;border-right: 1px solid #d6d6c2">مشاهده سفارشات</th>
+                            <th style="text-align: center">نام مشتری</th>
+                            <th style="text-align: center">شماره همراه مشتری</th>
+                            <th style="text-align: center">استان محل سکونت مشتری</th>
+                            <th style="text-align: center;border-right: 1px solid #d6d6c2">مشاهده سفارشات مشتری</th>
                         </tr>
                         </thead>
 

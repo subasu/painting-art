@@ -254,11 +254,11 @@
                             <li><a><i class="fa fa-photo"></i>مدیریت اسلایدشو و لوگو سایت<span
                                             class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu" style="display: none">
-                                    <li><a href="{{url('admin/addSlider')}}">درج اسلایدشو تصاویر</a>
+                                    <li><a href="{{url('admin/addSlider')}}">درج تصاویر اسلایدشو </a>
                                     </li>
-                                    <li><a href="{{url('admin/sliderManagement')}}">ویرایش و مدیریت تصویر اسلایدشو</a>
+                                    <li><a href="{{url('admin/sliderManagement')}}">ویرایش و مدیریت تصاویر اسلایدشو</a>
                                     </li>
-                                    <li><a href="{{url('admin/addLogo')}}">درج لوگو سایت تصاویر</a>
+                                    <li><a href="{{url('admin/addLogo')}}">درج لوگو سایت </a>
                                     </li>
                                     <li><a href="{{url('admin/editLogo')}}">ویرایش و مدیریت لوگوی سایت</a>
                                     </li>
@@ -816,7 +816,7 @@
         var pageName  = absolutePath[absolutePath.length-1];
         var token     = $('#token').val();
 
-            if(pageName == 'addGoogleMap' || pageName == 'addAboutUs'  || pageName == 'addService' || pageName == 'addLogo' || pageName == 'addSlider')
+            if(pageName == 'addGoogleMap' || pageName == 'addAboutUs'  ||  pageName == 'addLogo' || pageName == 'addSlider')
             {
                  $.ajax
                  ({
@@ -842,9 +842,9 @@
                                          window.location.href = 'editAboutUs';
                                          break;
 
-                                     case 'addService':
-                                         window.location.href = 'ServicesManagement';
-                                         break;
+//                                     case 'addService':
+//                                         window.location.href = 'ServicesManagement';
+//                                         break;
 
                                      case 'addLogo':
                                          window.location.href = 'editLogo';

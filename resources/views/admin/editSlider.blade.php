@@ -69,7 +69,7 @@
                             <th style="text-align: center">عنوان دسته</th>
                             <th style="text-align: center">عملیات مربوط به تصویر</th>
                             <th style="text-align: center">ویرایش</th>
-                            <th style="text-align: center">تغییر وضعیت</th>
+                            {{--<th style="text-align: center">تغییر وضعیت</th>--}}
                         </tr>
                         </thead>
 
@@ -82,13 +82,13 @@
                                 <td style="font-size: 120%">{{++$i}}</td>
                                 <td class="col-md-4 "><input  class="form-control" style="width: 100%;" id="title" name="title" value="{{$slider->title}}"></td>
                                 <td><strong><a class="btn btn-default" id="openModal" >مشاهده و ویرایش تصویر</a></strong></td>
-                                <td><button id="edit" type="button" class="btn btn-warning">ویرایش</button></td>
-                                @if($slider->active == 1)
-                                    <td><a id="active" content="{{$slider->active}}" name="{{$slider->id}}" type="button"  data-content="غیر فعال" class="btn btn-danger" >غیر فعال</a></td>
-                                @endif
-                                @if($slider->active == 0)
-                                    <td><a id="active" content="{{$slider->active}}" name="{{$slider->id}}" type="button"  data-content="فعال" class="btn btn-success"> فعال</a></td>
-                                @endif
+                                <td><button id="edit" type="button" class="btn btn-warning"> ویرایش عنوان</button></td>
+                                {{--@if($slider->active == 1)--}}
+                                    {{--<td><a id="active" content="{{$slider->active}}" name="{{$slider->id}}" type="button"  data-content="غیر فعال" class="btn btn-danger" >غیر فعال</a></td>--}}
+                                {{--@endif--}}
+                                {{--@if($slider->active == 0)--}}
+                                    {{--<td><a id="active" content="{{$slider->active}}" name="{{$slider->id}}" type="button"  data-content="فعال" class="btn btn-success"> فعال</a></td>--}}
+                                {{--@endif--}}
                                 <input type="hidden" value="{{$slider->id}}" id="id" name="id">
                                 <input type="hidden" id="token" value="{{csrf_token()}}" name="_token">
                             </tr>
