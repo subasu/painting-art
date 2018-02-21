@@ -297,16 +297,21 @@ class IndexController extends Controller
     //below function is to return show product blade
     public function productDetail($id)
     {
-        $menu = $menu = $this->loadMenu();
         $product = Product::find($id);
-        $pageTitle = Product::where('id', '=', $id)->value('title');
         $brand = $product->categories[0]->id;
         $subcatId = Category::where('id', '=', $brand)->value('parent_id');
         $subcat = \App\Models\Category::where('id', '=', $subcatId)->value('title');
         $cat = Category::where('id', '=', $subcat)->value('title');
-        $googleMap = GoogleMap::latest()->first();
-        $logo = Logo::latest()->first();
-        return view('main.productDetail', compact('menu', 'pageTitle', 'product', 'cat', 'subcat', 'logo', 'googleMap'));
+        foreach($product->productImages as $img)
+        {
+            $product->image_src=$img->image_src;
+        }
+        foreach($product->productFlags as $flag)
+        {
+            if($flag->active == 1)
+            $product->price=$flag->price;
+        }
+        return response()->json(['product'=>$product]);
     }
 
 
