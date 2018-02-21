@@ -49,7 +49,7 @@
 </section>
 <div id="menutop"></div>
 
-<div id="detail-prod" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="productGrid">
+<div id="detail-prod" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="productGrid" dir="rtl">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -58,11 +58,10 @@
                 <h4 class="modal-title" id="productGrid">{{--//load by ajax--}}</h4>
             </div>
             <div class="modal-body">
-{{--//load by ajax--}}
+                {{--//load by ajax--}}
             </div>
             <div class="modal-footer">
-                <button type="button" data-dismiss="modal" class="btn btn-primary">Close</button>
-
+                <button type="button" data-dismiss="modal" class="btn btn-primary">بستن</button>
             </div>
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
@@ -101,12 +100,13 @@
                                     <li><a href="#about" class="nav-link">درباره ما</a></li>
                                     <li><a href="#category" class="nav-link">محصولات<span class="sub-toggle"></span></a>
                                     </li>
-                                    <li><a href="#locations" class="nav-link">شعب<span class="sub-toggle"></span></a>
+                                    <li><a href="#locations" class="nav-link">سبد خرید<span
+                                                    class="sub-toggle"></span></a>
                                     </li>
                                     <li><a href="#gallery" class="nav-link">گالری</a></li>
                                     <li><a href="#loginRegister" class="nav-link">ورود / ثبت نام</a></li>
-                                    <li><a href="#contactform" class="nav-link">تماس با ما<span
-                                                    class="sub-toggle"></span></a></li>
+                                    {{--<li><a href="#contactform" class="nav-link">تماس با ما<span--}}
+                                    {{--class="sub-toggle"></span></a></li>--}}
                                 </ul>
                             </nav>
                             <!--  // Sub Page Menu section -->
@@ -180,14 +180,14 @@
                                                     <li><a href="#about" class="nav-link">درباره ما</a></li>
                                                     <li><a href="#category" class="nav-link">محصولات<span
                                                                     class="sub-toggle"></span></a></li>
-                                                    <li><a href="#locations" class="nav-link">شعب<span
+                                                    <li><a href="#locations" class="nav-link">سبد خرید<span
                                                                     class="sub-toggle"></span></a></li>
                                                     <li><a href="#gallery" class="nav-link">گالری</a></li>
                                                     <li><a href="#loginRegister" class="nav-link">ورود / ثبت نام</a>
                                                     </li>
-                                                    <li><a href="#contactform" class="nav-link">تماس با ما<span
-                                                                    class="sub-toggle"></span></a>
-                                                    </li>
+                                                    {{--<li><a href="#contactform" class="nav-link">تماس با ما<span--}}
+                                                    {{--class="sub-toggle"></span></a>--}}
+                                                    {{--</li>--}}
                                                 </ul>
                                             </nav>
                                             <!--  // Home Page Menu section -->
@@ -403,7 +403,7 @@
                             <div class="col-md-6 empty">&nbsp;</div>
                             <div class="col-md-6 content_text">
                                 <div class="clearfix">
-                                    <h1 class="yekan a-right">شعب</h1>
+                                    <h1 class="yekan a-right">سبد خرید</h1>
                                     <p class="pad_top13 yekan a-right">بعضی از شعبه های ما با بیش از 20 سال سابقه آماده
                                         پذیرایی از شما عزیزان هستند. </p> <br/>
 
@@ -512,13 +512,12 @@
                 >
                     <div class="cycle-overlay"></div>
 
-                    <img src="{{URL::asset('public/main/img/2.jpg')}}" data-cycle-desc="عالی ترین کیفیت" class="fullBg"
+                    <img src="{{URL::asset('public/main/img/7.jpg')}}" data-cycle-desc="خلق آثار خاص و منحصر به فرد"
+                         class="fullBg"
                          alt="">
-                    <img src="{{URL::asset('public/main/img/4.jpg')}}" data-cycle-desc="مناسب ترین قیمت" class="fullBg"
+                    <img src="{{URL::asset('public/main/img/6.jpg')}}" data-cycle-desc="عالی ترین کیفیت" class="fullBg"
                          alt="">
-                    <img src="{{URL::asset('public/main/img/5.jpg')}}" data-cycle-desc="غذاهای لذیذ" class="fullBg"
-                         alt="">
-                    <img src="{{URL::asset('public/main/img/7.jpg')}}" data-cycle-desc="بهترین طعم" class="fullBg"
+                    <img src="{{URL::asset('public/main/img/1.jpg')}}" data-cycle-desc="خلاقیت و زیبایی" class="fullBg"
                          alt="">
                 </div>
                 <div id="galheading" class="clearfix"><h1 class="yekan">گالری</h1></div>
@@ -666,57 +665,57 @@
         <!-- Contact Form
         =============================-->
 
-        <div id="contactform" class="item">
-            <img src="{{URL::asset('public/main/img/map.jpg')}}" alt="the Paxton Gipsy Hill" class="fullBg">
-            <div class="content">
+    {{--<div id="contactform" class="item">--}}
+    {{--<img src="{{URL::asset('public/main/img/map.jpg')}}" alt="the Paxton Gipsy Hill" class="fullBg">--}}
+    {{--<div class="content">--}}
 
-                <div class="content_overlay"></div>
-                <div class="content_inner">
-                    <div class="row contentscroll">
-                        <div class="container">
-                            <div class="col-md-6 empty">
-                                @if(!empty($googleMap))
-                                    <iframe height="500" class="col-md-12" src="{{$googleMap->iframe_tag}}"
-                                            frameborder="0" style="border:0" allowfullscreen></iframe>
-                                @endif
-                            </div>
+    {{--<div class="content_overlay"></div>--}}
+    {{--<div class="content_inner">--}}
+    {{--<div class="row contentscroll">--}}
+    {{--<div class="container">--}}
+    {{--<div class="col-md-6 empty">--}}
+    {{--@if(!empty($googleMap))--}}
+    {{--<iframe height="500" class="col-md-12" src="{{$googleMap->iframe_tag}}"--}}
+    {{--frameborder="0" style="border:0" allowfullscreen></iframe>--}}
+    {{--@endif--}}
+    {{--</div>--}}
 
-                            <div class="col-md-6 content_text">
-                                <div id="contactforms">
-                                    <h1 class="yekan a-right">تماس با ما</h1>
-                                    <form id="contact_form" class="cont_form pad_top13" action="#" method="post">
+    {{--<div class="col-md-6 content_text">--}}
+    {{--<div id="contactforms">--}}
+    {{--<h1 class="yekan a-right">تماس با ما</h1>--}}
+    {{--<form id="contact_form" class="cont_form pad_top13" action="#" method="post">--}}
 
-                                        <div class="clearfix cont_form pad_top20">
-                                            <input type="text" name="name"
-                                                   class="validate['required'] textbox1 yekan a-right"
-                                                   placeholder="* نام : "
-                                                   onfocus="this.placeholder = ''"
-                                                   onBlur="this.placeholder = '* Name :'"/>
-                                            <input type="text" name="email"
-                                                   class="validate['required','email']  textbox1 yekan a-right"
-                                                   placeholder="* ایمیل : " onFocus="this.placeholder = ''"
-                                                   onBlur="this.placeholder = '* ایمیل :'"/>
-                                            <input type="text" name="phone"
-                                                   class="validate['required','phone']  textbox1 yekan a-right"
-                                                   placeholder="* شماره تماس : " onFocus="this.placeholder = ''"
-                                                   onBlur="this.placeholder = '* شماره تماس :'"/>
-                                            <textarea name="message"
-                                                      class="validate['required'] messagebox1 yekan a-right"
-                                                      placeholder="* متن پیغام : " onFocus="this.placeholder = ''"
-                                                      onBlur="this.placeholder = '* متن پیغام  :'"></textarea>
-                                            <input id="submitBtn" value="ارسال پیغام" name="Confirm" type="submit"
-                                                   class="submitBtn yekan a-right">
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+    {{--<div class="clearfix cont_form pad_top20">--}}
+    {{--<input type="text" name="name"--}}
+    {{--class="validate['required'] textbox1 yekan a-right"--}}
+    {{--placeholder="* نام : "--}}
+    {{--onfocus="this.placeholder = ''"--}}
+    {{--onBlur="this.placeholder = '* Name :'"/>--}}
+    {{--<input type="text" name="email"--}}
+    {{--class="validate['required','email']  textbox1 yekan a-right"--}}
+    {{--placeholder="* ایمیل : " onFocus="this.placeholder = ''"--}}
+    {{--onBlur="this.placeholder = '* ایمیل :'"/>--}}
+    {{--<input type="text" name="phone"--}}
+    {{--class="validate['required','phone']  textbox1 yekan a-right"--}}
+    {{--placeholder="* شماره تماس : " onFocus="this.placeholder = ''"--}}
+    {{--onBlur="this.placeholder = '* شماره تماس :'"/>--}}
+    {{--<textarea name="message"--}}
+    {{--class="validate['required'] messagebox1 yekan a-right"--}}
+    {{--placeholder="* متن پیغام : " onFocus="this.placeholder = ''"--}}
+    {{--onBlur="this.placeholder = '* متن پیغام  :'"></textarea>--}}
+    {{--<input id="submitBtn" value="ارسال پیغام" name="Confirm" type="submit"--}}
+    {{--class="submitBtn yekan a-right">--}}
+    {{--</div>--}}
+    {{--</form>--}}
+    {{--</div>--}}
+    {{--</div>--}}
+    {{--</div>--}}
+    {{--</div>--}}
+    {{--</div>--}}
+    {{--</div>--}}
+    {{--</div>--}}
 
-        <!-- // Contact Form
+    <!-- // Contact Form
         =============================-->
 
 
@@ -1054,12 +1053,17 @@
             success: function (response) {
                 console.log(response.product);
                 x = '<div class="row">' +
-                        '<div class="col-md-4">' +
-                        '<img src="public/dashboard/productFiles/picture/' + response.product.image_src + '" class="img-responsive" alt="a">' +
-                        '</div>' +
-                        '<div class="col-md-8">' +response.product.description+
-                        '</div>' +
-                        '</div>';
+                    '<div class="col-md-6">' +
+                    '<img src="public/dashboard/productFiles/picture/' + response.product.image_src + '" class="img-responsive" alt="a">' +
+                    '</div><br>' +
+                    '<div class="col-md-5">' + response.product.description + "<br>" + response.product.price+
+                    '<span>تومان</span><div class="add-to-cart">' +
+                    '<button class="button  nav-link yekan pull-left" content="'+response.product.price+'" id="addToBasket" name="'+response.product.id+'">' +
+                    '<span></span>افزودن به سبدخرید' +
+                    '</button>' +
+                    '</div>' +
+                    '</div>' +
+                    '</div>';
                 modalBody.html(x)
                 $('.modal-title').html(response.product.title)
 //                each(response.product, function (key, value) {
@@ -1087,7 +1091,7 @@
                     $.each(response.products, function (key, value) {
                         var x = '<div class="row ">' +
                             '<div class="menu_content clearfix">' +
-                            '<button type="button" class="btn btn-primary fa fa-folder-open col-md-1 btn-product-detail" onclick="showProductDetail('+value.id+')" id="' + value.id + '" data-toggle="modal" data-target="#detail-prod"></button>' +
+                            '<button type="button" class="btn btn-primary fa fa-folder-open col-md-1 btn-product-detail" onclick="showProductDetail(' + value.id + ')" id="' + value.id + '" data-toggle="modal" data-target="#detail-prod"></button>' +
                             '<div class="col-md-8 text-left">' +
                             '<div class="title-splider yekan">' +
                             '<h4 class="clearfix">' +
@@ -1119,10 +1123,64 @@
         });
 
 
-
         $(".btn-product-detail").on("click", function () {
 
         });
+    })
+</script>
+<!-- below script is related to add to basket -->
+
+<script>
+    $(document).on('click','#addToBasket',function () {
+
+        var productFlag = $(this).attr('content');
+        var  productId = $(this).attr('name');
+        var token      = $('#token').val();
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        $.ajax
+        ({
+            url      : "{{url('user/addToBasket')}}",
+            type     : "post",
+            data     : {'productId' : productId , '_token' : token , 'productFlag' : productFlag},
+            dataType : "json",
+            success  : function(response)
+            {
+                console.log(response);
+                if(response.code == 1)
+                {
+                    var myStack = {"dir1":"down", "dir2":"right", "push":"top"};
+                    new PNotify({
+                        title: response.message,
+                        text: "",
+                        addclass: "stack-custom",
+                        type:"success",
+                        stack: myStack
+                    })
+                    basketCountNotify();
+                    basketTotalPrice();
+                    basketContent();
+                }else
+                {
+                    var myStack = {"dir1":"down", "dir2":"right", "push":"top"};
+                    new PNotify({
+                        title: response.message,
+                        text: '',
+                        addclass: "stack-custom",
+                        type:"success",
+                        stack: myStack
+                    })
+                }
+
+            },error  : function(error)
+            {
+                console.log(error);
+                alert('خطایی رخ داده است')
+            }
+        })
     })
 </script>
 <script src="{{ URL::asset('public/js/persianDatepicker.js')}}"></script>
