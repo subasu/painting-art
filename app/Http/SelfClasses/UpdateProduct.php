@@ -129,12 +129,13 @@ class UpdateProduct
 
         //this block code save and upload picture array of product in product_Images table
         $countPic = count($product->file);
+      //  print($countPic);
         if ($countPic>0) {
             for ($i = 0; $i < $countPic; $i++) {
                 $productPicture = new ProductImage();
                 $productPicture->product_id = $lastProductId;
                 $imageExtension = $product->file[$i]->getClientOriginalExtension();
-                $imageName=microtime();
+                $imageName=microtime(true);
                 $productPicture->image_src = $imageName.'.'.$imageExtension;
                 $product->file[$i]->move('public/dashboard/productFiles/picture/', $imageName.'.'.$imageExtension);
                 $productPicture->active = 1;

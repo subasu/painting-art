@@ -355,117 +355,15 @@
                     <div class="nav toggle">
                         <a id="pause"><i class="	fa fa-pause-circle" data-toggle="" title="توقف ویدئو آموزشی"></i></a>
                     </div>
-                    {{--<div class="" style="float: right;padding: 1% 2% 0 0 !important;">--}}
-                    {{--<a id="back" class="btn btn-info">بازگشت به صفحه قبل</a>--}}
-                    {{--</div>--}}
 
-                    <?php /*
-                    <ul class="nav navbar-nav navbar-right">
-                        <li class="">
-                            <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown"
-                                   aria-expanded="false">
-                                <img src="{{url('public/dashboard/images/img.png')}}" alt="">
-                                <span class=" fa fa-angle-down"></span>
-                                </a>
-                            <ul class="dropdown-menu dropdown-usermenu animated fadeInDown pull-right">
-                                <li><a href="javascript:;"> مشخصات کاربری من</a>
-                                </li>
-                                <li>
-                                    <a href="javascript:;">راهنما</a>
-                                </li>
-                                <li>
-                                    <a href="javascript:;">
-                                        <span class="badge bg-red pull-right">50%</span>
-                                        <span>تنظیمات</span>
-                                        </a>
-                                </li>
-                                <li><a href="{{url('/logout')}}"><i class="fa fa-sign-out pull-right"></i> خروج</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li role="presentation" class="dropdown">
-                            <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown"
-                                   aria-expanded="false">
-                                <i class="fa fa-envelope-o"></i>
-                                <span class="badge bg-green">6</span>
-                                </a>
-                            <ul id="menu1" class="dropdown-menu list-unstyled msg_list animated fadeInDown" role="menu">
-                                <li>
-                                    <a>
-                                        <span class="image">
-                    <img src="{{URL::asset('public/dashboard/images/img.png')}}"
-                             alt="Profile Image"/>
-                    </span>
-                                        <span>
-                    <span>John Smith</span>
-                    <span class="time">3 mins ago</span>
-                    </span>
-                                        <span class="message">
-                    Film festivals used to be do-or-die moments for movie makers. They were where...
-                    </span>
-                                        </a>
-                                </li>
-                                <li>
-                                    <a>
-                                        <span class="image">
-                    <img src="{{URL::asset('public/dashboard/images/img.png')}}"
-                             alt="Profile Image"/>
-                    </span>
-                                        <span>
-                    <span>John Smith</span>
-                    <span class="time">3 mins ago</span>
-                    </span>
-                                        <span class="message">
-                    Film festivals used to be do-or-die moments for movie makers. They were where...
-                    </span>
-                                        </a>
-                                </li>
-                                <li>
-                                    <a>
-                                        <span class="image">
-                    <img src="{{URL::asset('public/dashboard/images/img.png')}}"
-                             alt="Profile Image"/>
-                    </span>
-                                        <span>
-                    <span>John Smith</span>
-                    <span class="time">3 mins ago</span>
-                    </span>
-                                        <span class="message">
-                    Film festivals used to be do-or-die moments for movie makers. They were where...
-                    </span>
-                                        </a>
-                                </li>
-                                <li>
-                                    <a>
-                                        <span class="image">
-                    <img src="{{URL::asset('public/dashboard/images/img.png')}}"
-                             alt="Profile Image"/>
-                    </span>
-                                        <span>
-                    <span>John Smith</span>
-                    <span class="time">3 mins ago</span>
-                    </span>
-                                        <span class="message">
-                    Film festivals used to be do-or-die moments for movie makers. They were where...
-                    </span>
-                                        </a>
-                                </li>
-                                <li>
-                                    <div class="text-center">
-                                        <a href="inbox.html">
-                                            <strong>See All Alerts</strong>
-                                            <i class="fa fa-angle-right"></i>
-                                            </a>
-                                    </div>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                    */?>
+
+
                 </nav>
             </div>
             <input type="hidden" id="token" value="{{csrf_token()}}">
+
         </div>
+
         <!-- /top navigation -->
         <!-- page content -->
         <div class="right_col" role="main">
@@ -473,6 +371,15 @@
             <!-- /top tiles -->
             @yield('content')
         </div>
+        {{--<br/><br/><br/><br/>--}}
+        {{--<div align="center" dir="rtl">--}}
+            {{--<h1 class="col-md-10 col-md-offset-4">درود خدمت شما کاربر گرامی </h1>--}}
+            {{--<br/><br/><br/><br/>--}}
+            {{--<h3 class="col-md-10 col-md-offset-1 text-justify text-right">در صورت مواجه شدن با هرگونه مشکل در خصوص عملکرد پنل مدیریت و یا مواجه شدن مشکل در خصوص کار با پنل مدیریت میتوانید با شماره تلفن درج شده در زیر که مربوط به  بخش پشتیبانی شرکت مهندسی آرتان است ، تماس بگیرید</h3>--}}
+            {{--<br/><br/><br/><br/>--}}
+            {{--<h3 class="col-md-10 col-md-offset-1 text-right">شماره تلفن تماس :  03133376496 </h3>--}}
+        {{--</div>--}}
+
         <!-- footer content -->
         <footer>
             <div class="copyright-info">
