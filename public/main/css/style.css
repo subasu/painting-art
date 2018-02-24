@@ -93,6 +93,9 @@ body {
     font-family: 'Oswald';
     color: #242424;
 }
+.ui-pnotify-title{
+    font-family: 'yekan' !important;
+}
 .sweet-alert{
     font-family: 'Oswald';
 }

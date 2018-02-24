@@ -17,7 +17,7 @@
     <link rel="stylesheet" type="text/css" href="{{url('public/main/assets/css/responsive.css')}}"/>
     <link rel="stylesheet" href="{{URL::asset('public/css/persianDatepicker-default.css')}}"/>
     <link rel="stylesheet" type="text/css" href="{{URL::asset('public/css/sweetalert.css')}}">
-    <link href="{{URL::asset('public/css/pnotify.custom.min.css')}}" media="all" rel="stylesheet" type="text/css" />
+    <link href="{{URL::asset('pnotify.custom.css')}}" media="all" rel="stylesheet" type="text/css" />
     <title>@if(!empty($pageTitle)){{$pageTitle}}@endif</title>
 </head>
 <body class="home">

@@ -35,6 +35,8 @@
           href="{{URL::asset('public/main/assets/images/apple_touch_icon_72x72.html')}}"/>
     <link rel="apple-touch-icon" sizes="114x114"
           href="{{URL::asset('public/main/assets/images/apple_touch_icon_114x114.html')}}"/>
+    {{--pnotify--}}
+    <link href="{{URL::asset('pnotify.custom.css')}}" media="all" rel="stylesheet" type="text/css"/>
 
     <script src="{{URL::asset('public/main/js/jquery-1.11.1.min.js')}}"></script>
     <script src="{{URL::asset('public/main/js/jquery-ui.min.js')}}"></script>
@@ -100,7 +102,7 @@
                                     <li><a href="#about" class="nav-link">درباره ما</a></li>
                                     <li><a href="#category" class="nav-link">محصولات<span class="sub-toggle"></span></a>
                                     </li>
-                                    <li><a href="#locations" class="nav-link">سبد خرید<span
+                                    <li><a href="#shopCart" class="shopCart nav-link">سبد خرید<span
                                                     class="sub-toggle"></span></a>
                                     </li>
                                     <li><a href="#gallery" class="nav-link">گالری</a></li>
@@ -180,7 +182,7 @@
                                                     <li><a href="#about" class="nav-link">درباره ما</a></li>
                                                     <li><a href="#category" class="nav-link">محصولات<span
                                                                     class="sub-toggle"></span></a></li>
-                                                    <li><a href="#locations" class="nav-link">سبد خرید<span
+                                                    <li><a href="#shopCart" class="nav-link shopCart">سبد خرید<span
                                                                     class="sub-toggle"></span></a></li>
                                                     <li><a href="#gallery" class="nav-link">گالری</a></li>
                                                     <li><a href="#loginRegister" class="nav-link">ورود / ثبت نام</a>
@@ -390,9 +392,9 @@
         <!-- // products with image small
         =============================-->
 
-        <!-- Locations
+        <!-- shopCart
         =============================-->
-        <div id="locations" class="item">
+        <div id="shopCart" class="item">
             <img src="{{URL::asset('public/main/img/map.jpg')}}" alt="the Paxton Gipsy Hill" class="fullBg">
             <div class="content">
 
@@ -408,32 +410,6 @@
                                         پذیرایی از شما عزیزان هستند. </p> <br/>
 
                                     <div class="clearfix content_space">
-                                        <div class="clearfix location_content">
-                                            <div class="row col-md-5 location-btns">
-                                                <div class="location map-link"><a class="button  nav-link yekan"
-                                                                                  href="#contact">نقشه</a></div>
-                                                <div class="location"><a class="button  nav-link yekan"
-                                                                         href="#reservation">رزرو میز</a></div>
-                                            </div>
-
-                                            <div class="row col-md-7">
-                                                <div class="location-address-wrap">
-                                                    <h3 class="border_bottom yekan a-right"><i
-                                                                class="fa fa-map-marker"></i> تهران</h3>
-                                                    <div class="clearfix location-street a-right yekan">زعفرانیه خیابان
-                                                        مقدس اردبیلی<br/>خیابان کیهان پلاک 13
-                                                    </div>
-                                                    <div class="clearfix location-phone a-right yekan"><i
-                                                                class="fa fa-phone"></i>2223 7889 021 <br/><i
-                                                                class="fa fa-phone"></i>2223 5689 021
-                                                    </div>
-                                                    <div class="clearfix location-cateringlink a-right yekan">ظرفیت
-                                                        پذیرایی 70 نفر , جای پارک مناسب .
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                        </div>
                                         <div class="clearfix location_content content_space">
                                             <div class="row col-md-5 location-btns">
                                                 <div class="location map-link"><a class="button  nav-link yekan"
@@ -441,48 +417,23 @@
                                                 <div class="location"><a class="button  nav-link yekan"
                                                                          href="#reservation">رزرو میز</a></div>
                                             </div>
-
-                                            <div class="row col-md-7">
-                                                <div class="location-address-wrap">
-                                                    <h3 class="border_bottom yekan a-right"><i
-                                                                class="fa fa-map-marker"></i> بابل</h3>
-                                                    <div class="clearfix location-street a-right yekan">خیابان باغ فردوس<br/>پلاک
-                                                        13
-                                                    </div>
-                                                    <div class="clearfix location-phone a-right yekan"><i
-                                                                class="fa fa-phone"></i>1234567 0111 <br/><i
-                                                                class="fa fa-phone"></i>7654321 0111
-                                                    </div>
-                                                    <div class="clearfix location-cateringlink a-right yekan">ظرفیت
-                                                        پذیرایی 20 نفر , جای پارک مناسب .
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="clearfix location_content content_space">
-                                            <div class="row col-md-5 location-btns">
-                                                <div class="location map-link"><a class="button  nav-link yekan"
-                                                                                  href="#contact">نقشه</a></div>
-                                                <div class="location"><a class="button  nav-link yekan"
-                                                                         href="#reservation">رزرو میز</a></div>
-                                            </div>
-
-                                            <div class="row col-md-7">
-                                                <div class="location-address-wrap">
-                                                    <h3 class="border_bottom yekan a-right"><i
-                                                                class="fa fa-map-marker"></i> شیراز</h3>
-                                                    <div class="clearfix location-street a-right yekan">خیابان
-                                                        ستارخان<br/>پلاک 13
-                                                    </div>
-                                                    <div class="clearfix location-phone a-right yekan"><i
-                                                                class="fa fa-phone"></i>3629 4426 071 <br/><i
-                                                                class="fa fa-phone"></i>3629 4445 071
-                                                    </div>
-                                                    <div class="clearfix location-cateringlink a-right yekan">ظرفیت
-                                                        پذیرایی 40 نفر , جای پارک مناسب .
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            <div id="cartContent"></div>
+                                            {{--<div class="row col-md-7">--}}
+                                            {{--<div class="location-address-wrap">--}}
+                                            {{--<h3 class="border_bottom yekan a-right"><i--}}
+                                            {{--class="fa fa-map-marker"></i> بابل</h3>--}}
+                                            {{--<div class="clearfix location-street a-right yekan">خیابان باغ فردوس<br/>پلاک--}}
+                                            {{--13--}}
+                                            {{--</div>--}}
+                                            {{--<div class="clearfix location-phone a-right yekan"><i--}}
+                                            {{--class="fa fa-phone"></i>1234567 0111 <br/><i--}}
+                                            {{--class="fa fa-phone"></i>7654321 0111--}}
+                                            {{--</div>--}}
+                                            {{--<div class="clearfix location-cateringlink a-right yekan">ظرفیت--}}
+                                            {{--پذیرایی 20 نفر , جای پارک مناسب .--}}
+                                            {{--</div>--}}
+                                            {{--</div>--}}
+                                            {{--</div>--}}
                                         </div>
                                     </div>
                                 </div>
@@ -492,7 +443,7 @@
                 </div>
             </div>
         </div>
-        <!-- // Locations
+        <!-- // shopCart
         =============================-->
 
         <!--Gallery
@@ -760,6 +711,44 @@
 
 <script type="text/javascript" src="{{URL::asset('public/main/settings/settings/settings.js')}}"></script>
 <script type="text/javascript" src="{{URL::asset('public/main/settings/settings/jscolor.js')}}"></script>
+<script type="text/javascript" src="{{URL::asset('public/js/pnotify.custom.min.js')}}"></script>
+<script>
+    $(document).ready(function () {
+        $(".shopCart").click(function () {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+                }
+            });
+            $.ajax({
+                dataType: "json",
+                url: "{{url('order/basketDetail')}}",
+                cash: false,
+                type: "get",
+                success: function (response) {
+                    var cartContent=$('#cartContent');
+                    cartContent.html();
+                    $.each(response.baskets.products, function (key, value) {
+                        x = '<div class="row col-md-7">' +
+                            '<div class="location-address-wrap">' +
+                            '<h3 class="border_bottom yekan a-right"><i class="fa fa-map-marker"></i>'+ value.title+'</h3>' +
+                            '<div class="clearfix location-street a-right yekan">' + value.title + '</div>' +
+                            '<div class="clearfix location-phone a-right yekan"><i class="fa fa-phone"></i>1234567 0111 <br/>' +
+                            '<i class="fa fa-phone"></i>' + value.title + '</div>' +
+                            '<div class="clearfix location-cateringlink a-right yekan">' + 'value.title' +
+                            '</div>' +
+                            '</div>' +
+                            '</div>';
+                        cartContent.append(x);
+                    });
+                    alert(response);
+
+                }
+            })
+
+        });
+    });
+</script>
 <script>
     $(document).ready(function () {
         $(".mainMenu").each(function () {
@@ -825,7 +814,6 @@
                         });
                     }
                 })
-                //$(".submenu").show(100);
             });
             $(this).mouseleave(function () {
                 var item = $(".mainMenu>ul");
@@ -1042,6 +1030,12 @@
     })//document.ready
 
 </script>
+<!--formatNumber -->
+<script>
+    function formatNumber(num) {
+        return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")
+    }
+</script>
 <script>
     function showProductDetail(id) {
         var modalBody = $('.modal-body');
@@ -1056,9 +1050,9 @@
                     '<div class="col-md-6">' +
                     '<img src="public/dashboard/productFiles/picture/' + response.product.image_src + '" class="img-responsive" alt="a">' +
                     '</div><br>' +
-                    '<div class="col-md-5">' + response.product.description + "<br>" + response.product.price+
+                    '<div class="col-md-5">' + response.product.description + "<br>" + formatNumber(response.product.price) +
                     '<span>تومان</span><div class="add-to-cart">' +
-                    '<button class="button  nav-link yekan pull-left" content="'+response.product.price+'" id="addToBasket" name="'+response.product.id+'">' +
+                    '<button class="button  nav-link yekan pull-left" content="' + response.product.price + '" id="addToBasket" name="' + response.product.id + '">' +
                     '<span></span>افزودن به سبدخرید' +
                     '</button>' +
                     '</div>' +
@@ -1074,9 +1068,6 @@
         });
     }
     $(document).ready(function () {
-        function formatNumber(num) {
-            return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")
-        }
 
         var myProductsDiv = $("#myProducts");
         $(".loadProduct").click(function () {
@@ -1131,11 +1122,11 @@
 <!-- below script is related to add to basket -->
 
 <script>
-    $(document).on('click','#addToBasket',function () {
+    $(document).on('click', '#addToBasket', function () {
 
         var productFlag = $(this).attr('content');
-        var  productId = $(this).attr('name');
-        var token      = $('#token').val();
+        var productId = $(this).attr('name');
+        var token = $('#token').val();
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -1143,40 +1134,36 @@
         });
         $.ajax
         ({
-            url      : "{{url('user/addToBasket')}}",
-            type     : "post",
-            data     : {'productId' : productId , '_token' : token , 'productFlag' : productFlag},
-            dataType : "json",
-            success  : function(response)
-            {
+            url: "{{url('user/addToBasket')}}",
+            type: "post",
+            data: {'productId': productId, '_token': token, 'productFlag': productFlag},
+            dataType: "json",
+            success: function (response) {
                 console.log(response);
-                if(response.code == 1)
-                {
-                    var myStack = {"dir1":"down", "dir2":"right", "push":"top"};
+                if (response.code == 1) {
+                    var myStack = {"dir1": "down", "dir2": "right", "push": "top"};
                     new PNotify({
                         title: response.message,
                         text: "",
                         addclass: "stack-custom",
-                        type:"success",
+                        type: "success",
                         stack: myStack
                     })
                     basketCountNotify();
                     basketTotalPrice();
                     basketContent();
-                }else
-                {
-                    var myStack = {"dir1":"down", "dir2":"right", "push":"top"};
+                } else {
+                    var myStack = {"dir1": "down", "dir2": "right", "push": "top"};
                     new PNotify({
                         title: response.message,
                         text: '',
                         addclass: "stack-custom",
-                        type:"success",
+                        type: "success",
                         stack: myStack
                     })
                 }
 
-            },error  : function(error)
-            {
+            }, error: function (error) {
                 console.log(error);
                 alert('خطایی رخ داده است')
             }
@@ -1185,6 +1172,7 @@
 </script>
 <script src="{{ URL::asset('public/js/persianDatepicker.js')}}"></script>
 <script src="{{url('public/js/sweetalert.min.js')}}"></script>
+
 {{--persianDatepicker--}}
 <script>
     $('#birth_date').persianDatepicker();
