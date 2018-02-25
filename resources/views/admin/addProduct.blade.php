@@ -291,7 +291,7 @@
                                 <div class="col-md-10 ">
                                     <hr>
                                 </div>
-                                <div class="col-md-12">
+                                <div class="col-md-12 margin-bot-1">
                                     <div class="col-md-5 col-sm-6 col-xs-9 col-md-offset-3">
                                         <input class="form-control col-md-12 col-xs-12"
                                                type="file" name="video_src" id="video_src"/>
@@ -302,7 +302,39 @@
                                         <span class="required star"></span>
                                     </label>
                                 </div>
+                                <div class="col-md-12 col-md-offset-1 margin-1">
+                                    <div class="col-md-5 col-sm-6 col-xs-9 col-md-offset-2">
+                                        <select id="productModel" class="form-control col-md-7 col-xs-12" name="productModel">
+                                        </select>
+                                    </div>
+                                    <label class="control-label col-md-2 col-sm-4 col-xs-3" for="productModel"> انتخاب حالت محصول :
+                                    </label>
+                                </div>
+                                <div class="col-md-12 col-md-offset-1 margin-1 margin-bot-1">
+                                <div class="col-md-5 col-md-offset-2" id="change1" >
+                                    <div class='col-md-3'>
+                                        <select id="sideways" class='form-control col-md-12 col-sm-9 col-xs-12'>
+                                        </select>
+                                    </div>
+                                    <div class='col-md-3'>
+                                        <select id="diameter" class='form-control col-md-12 col-sm-9 col-xs-12'>
 
+                                        </select>
+                                    </div>
+                                    <div class='col-md-3'>
+                                        <select id="width"  name="width1" class='form-control col-md-12 col-sm-9 col-xs-12'>
+
+                                        </select>
+                                    </div>
+                                    <div class='col-md-3'>
+                                        <select id="length" name="length1" class='form-control col-md-12 col-sm-9 col-xs-12'>
+
+                                        </select>
+                                    </div>
+                                </div>
+                                    <label class='control-label col-md-2 col-sm-4 col-xs-3' for='name'>اندازه های از پیش درج شده:
+                                    </label>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -567,7 +599,7 @@
                         $('#brands').empty();
                         findTitle(id, 'method2')
                     }
-                })
+                });
                 //check option 2 selected or not, if yes redirect to addCategory view
                 $('#brands').on("change", function () {
                     var id = $(this).val();
@@ -575,7 +607,7 @@
                         setTimeout(function(){location.href = '{{url("admin/addCategory")}}';},3000);
                     }
                     findTitle(id)
-                })
+                });
                 //check option 2 selected or not, if yes redirect to add unit view//in main unit select box
                 $('#unit').on("change", function () {
                     var id = $(this).val();
@@ -583,7 +615,7 @@
                     if (id == 0) {
                         setTimeout(function(){location.href = '{{url("admin/addUnit")}}';},3000);
                     }
-                })
+                });
                 //check option 2 selected or not, if yes redirect to add unit //view in subunit select box
                 $('#subunit').on("change", function () {
                     var id = $(this).val();
@@ -592,7 +624,7 @@
                         setTimeout(function(){location.href = '{{url("admin/addUnit")}}';},3000);
 
                     }
-                })
+                });
                 //load MainUnitsCount if there is no category in table redirect addCategory
                 $.ajax({
                     cache: false,
@@ -633,6 +665,50 @@
                                 var selectBoxId = '#subunit';
                                 var msgOpt1 = "لطفا زیر واحد شمارش مورد نظر خود را انتخاب نمایید";
                                 var msgOpt2 = "اگر زیر واحد شمارش مورد نظر در این لیست وجود ندارد این گزینه انتخاب نمایید";
+                                var valueOption2 = 0;
+                                loadItems(responses, selectBoxId, msgOpt1, msgOpt2, valueOption2)
+                            }
+                        });
+                    }
+                });
+                //load product Models if there is no product Model in table redirect addModels
+                $.ajax({
+                    cache: false,
+                    url: "{{Url('api/v1/getModels')}}",
+                    dataType: "json",
+                    type: "get",
+                    success: function (response) {
+                        console.log(response);
+                        if (response != 0) {
+                            var responses = response;
+                            var selectBoxId = '#productModel';
+                            var msgOpt1 = "لطفا حالت مورد نظر خود را انتخاب نمایید";
+                            var msgOpt2 = "اگر حالت مورد نظر در این لیست وجود ندارد این گزینه انتخاب نمایید";
+                            var valueOption2 = 0000;
+                            loadItems(responses, selectBoxId, msgOpt1, msgOpt2, valueOption2)
+                        }
+                        else {
+                            setTimeout(function(){location.href = '{{url("admin/addModels")}}';},3000);
+                        }
+                    }
+                });
+                $('#productModel').on("change", function () {
+                    var id = $(this).val();
+                    if (id == 0) {
+                        setTimeout(function(){location.href = '{{url("admin/addUnit")}}';},3000);
+                    }
+                    else {
+                        $.ajax
+                        ({
+                            cache: false,
+                            url: "{{Url('api/v1/getSiezs')}}/" + id,
+                            dataType: "json",
+                            type: "get",
+                            success: function (response) {
+                                var responses = response;
+                                var selectBoxId = '#subunit';
+                                var msgOpt1 = "لطفا اندازه مورد نظر خود را انتخاب نمایید";
+                                var msgOpt2 = "اگر اندازه مورد نظر در این لیست وجود ندارد این گزینه انتخاب نمایید";
                                 var valueOption2 = 0;
                                 loadItems(responses, selectBoxId, msgOpt1, msgOpt2, valueOption2)
                             }
@@ -720,7 +796,7 @@
                     })
                 }
 
-                appendItem("#color", "color", "{{url('api/v1/getColors')}}");
+                appendItem("#color", "color", "{{url('api/v1/getModels')}}");
                 appendItem("#size", "size", "{{url('api/v1/getSizes')}}");
             });
         </script>

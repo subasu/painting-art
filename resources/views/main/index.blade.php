@@ -1126,7 +1126,7 @@
                 cartContent.html('');
                 $.each(response.baskets.products, function (key, value) {
                     x = '<div class="row margin-b-8"><div class="row col-md-5 location-btns">'+
-                        '<div class="location map-link"><a class="button" href="#"><i class="fa fa-times"></i></a></div>'+
+                        '<div class="location map-link"><a class="button removeItem"><i class="fa fa-times "></i></a></div>'+
                         '<div class="location"><a class="button addToCount" content="'+value.id+'" name="'+value.basket_id+'"><i class="fa fa-arrow-up"></i></a></div>'+
                         '<div class="location"><a class="button subFromCount" content="'+value.id+'" name="'+value.basket_id+'"><i class="fa fa-arrow-down"></i></a></div>'+
                         '</div>'+
@@ -1257,7 +1257,7 @@
 </script>
 <!-- below script is related to remove basket items inj order page -->
 <script>
-    $(document).on('click','#removeItem',function(){
+    $(document).on('click','.removeItem',function(){
         var price      = $(this).attr('data-target');
         var orderTotal = $('#orderTotal').attr('content');
         var productId  = $(this).attr('name');
