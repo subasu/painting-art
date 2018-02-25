@@ -79,6 +79,7 @@ class IndexController extends Controller
         $menu = $this->loadMenu();
         //this block code add sub category to each main category collection
         foreach ($menu as $mnu) {
+            $counter=0;
             $mnu->submenu = $submenu = Category::where([['parent_id', $mnu->id], ['active', 1]])->orderBy('depth', 'DESC')->orderBy('id', 'DESC')->get();
             foreach ($submenu as $sm) {
                 $x = CategoryProduct::where([['category_id', $sm->id], ['active', 1]])->value('id');
@@ -90,16 +91,11 @@ class IndexController extends Controller
                 $categories = Category::find($sm->id);
                 $products = $categories->products()->get();
                 $count = count($products);
-                $i = 0;
-                while ($i < $count) {
-                    foreach ($products[$i]->scores as $product) {
-                        $product->productScore = $this->productScore($products);
-                    }
-                    $i++;
-
-                }
                 $sm->products = $products;
+                $sm->count = $count;
+                $counter+=$count;
             }
+            $mnu->countCat=$counter;
         }
 //        dd($menu);
         $pageTitle = 'صفحه ی اصلی';

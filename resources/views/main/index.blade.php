@@ -29,12 +29,7 @@
 
     <!-- settings-panel Demo Purpose css -->
     <link type="text/css" rel="stylesheet" href="{{URL::asset('public/main/settings/settings.css')}}"/>
-    <link rel="shortcut icon" href="{{URL::asset('public/main/assets/images/favicon.html')}}"/>
-    <link rel="apple-touch-icon" href="{{URL::asset('public/main/assets/images/apple_touch_icon.html')}}"/>
-    <link rel="apple-touch-icon" sizes="72x72"
-          href="{{URL::asset('public/main/assets/images/apple_touch_icon_72x72.html')}}"/>
-    <link rel="apple-touch-icon" sizes="114x114"
-          href="{{URL::asset('public/main/assets/images/apple_touch_icon_114x114.html')}}"/>
+    <link rel="shortcut icon" href="{{URL::asset('')}}"/>
     {{--pnotify--}}
     <link href="{{URL::asset('public/css/pnotify.custom.css')}}" media="all" rel="stylesheet" type="text/css"/>
     {{--<link href="https://cdnjs.cloudflare.com/ajax/libs/pnotify/3.2.1/pnotify.css" media="all" rel="stylesheet" type="text/css"/>--}}
@@ -148,7 +143,7 @@
                         @endif
                         <div class="call yekan">
                             <div class="home_address yekan">
-                                تهران - زعفرانیه - خیابان مقدس اردبیلی - خیابان کیهان - پلاک 13
+آدرس گالری شما
                             </div>
                             <i class="fa fa-phone"></i>&nbsp;&nbsp;+98 21 22 22 22 22
                         </div>
@@ -229,39 +224,7 @@
                             <div class="col-md-6 content_text">
                                 <h1 class="yekan a-right">درباره ما</h1>
                                 <div class="clearfix pad_top13">
-                                    <div class="col-md-6">
-
-                                        {{--<div class="sub_title">--}}
-                                        {{--<h4 class="yekan a-right">ساعات سرویس دهی:</h4>--}}
-                                        {{--</div>--}}
-
-                                        {{--<div class="hour_table">--}}
-                                        {{--<table dir="rtl">--}}
-                                        {{--<tr>--}}
-                                        {{--<td class="days">شنبه - چهارشنبه</td>--}}
-                                        {{--<td>11 صبح الی 11 شب</td>--}}
-                                        {{--</tr>--}}
-                                        {{--<tr>--}}
-                                        {{--<td class="days">پنجشنبه</td>--}}
-                                        {{--<td>9 صبح الی 12 شب</td>--}}
-                                        {{--</tr>--}}
-                                        {{--<tr>--}}
-                                        {{--<td class="days">جمعه</td>--}}
-                                        {{--<td>8 صبح الی 12 شب</td>--}}
-                                        {{--</tr>--}}
-                                        {{--</table>--}}
-                                        {{--</div>--}}
-                                        <div class="sub_title">
-                                            <h4 class="yekan a-right">میز خود را رزرو کنید:</h4>
-                                        </div>
-
-                                        <p class="yekan a-right">
-                                            با رزرو کردن میز به صورت آنلاین از تخفیف ویژه ما بهره مند شوید
-                                            <br/><br><a class="button nav-link yekan" href="#category">محصولات</a>
-                                        </p>
-
-                                    </div>
-                                    <div class="col-md-6" dir="rtl">
+                                    <div class="col-md-12" dir="rtl">
                                         <div class="right_content">
                                             <p class="row yekan t-justify">
                                                 @if(!empty($aboutUs))
@@ -289,7 +252,6 @@
         <div id="category" class="item">
             <img src="{{URL::asset('public/main/img/10.jpg')}}" alt="سایت هنری" class="fullBg">
             <div class="content">
-
                 <div class="content_overlay"></div>
                 <div class="content_inner">
                     <div class="row contentscroll">
@@ -300,7 +262,7 @@
                                     <div class="col-md-12">
                                         @if(count($menu))
                                             @foreach($menu as $mnu)
-                                                {{--                                                @if($mnu->hasProduct)--}}
+                                                @if($mnu->countCat>0)
                                                 <div class="row ">
                                                     <div class="menu_content clearfix">
                                                         <div class="col-md-10 text-left">
@@ -318,11 +280,11 @@
                                                             </div>
                                                         </div>
                                                         <div class="col-md-8">
-                                                            <?php $count = 1;$subCatCounts = 1;?>
+
                                                             @if(count($menu))
-                                                                <?php $j = $subCatCounts;?>
                                                                 @foreach($mnu->submenu as $submenu)
-                                                                    <div class="row ">
+                                                                        @if($submenu->count>0)
+                                                                        <div class="row ">
                                                                         <div class="menu_content clearfix">
                                                                             <div class="col-md-10 text-left">
                                                                                 <div class="title-splider yekan">
@@ -338,7 +300,7 @@
                                                                             </div>
                                                                         </div>
                                                                     </div>
-
+                                                                    @endif
                                                                 @endforeach
                                                             @endif
 
@@ -347,7 +309,7 @@
                                                     </div>
 
                                                 </div>
-                                                {{--@endif--}}
+                                                @endif
                                             @endforeach
                                         @endif
                                     </div>
@@ -374,10 +336,11 @@
                             <div class="col-md-6 content_text">
                                 <div class="pad_top30 home3">
                                     <div class="col-md-12" id="myProducts">
-                                        <p class="yekan a-right">
+                                        <h4 class="yekan a-right">
                                             ابتدا دسته ی مورد نظر را انتخاب نمایید <br/><br><a
-                                                    class="button nav-link yekan" href="#category">محصولات</a>
-                                        </p>
+                                                    class="button nav-link yekan" href="#category"> انتخاب دسته <i class="fa fa-arrow-left"></i>
+                                            </a>
+                                        </h4>
                                     </div>
 
                                     <div class="col-md-12">
@@ -405,29 +368,11 @@
                             <div class="col-md-6 empty">&nbsp;</div>
                             <div class="col-md-6 content_text">
                                 <div class="clearfix">
-                                    <h1 class="yekan a-right">سبد خرید</h1>
-                                    <p class="pad_top13 yekan a-right">بعضی از شعبه های ما با بیش از 20 سال سابقه آماده
-                                        پذیرایی از شما عزیزان هستند. </p> <br/>
-
+                                    <h1 class="yekan a-right"> سبد خرید شما</h1>
                                     <div class="clearfix content_space">
                                         <div class="clearfix location_content content_space">
                                             <div id="cartContent" class="col-md-12"></div>
-                                            {{--<div class="row col-md-7">--}}
-                                            {{--<div class="location-address-wrap">--}}
-                                            {{--<h3 class="border_bottom yekan a-right"><i--}}
-                                            {{--class="fa fa-map-marker"></i> بابل</h3>--}}
-                                            {{--<div class="clearfix location-street a-right yekan">خیابان باغ فردوس<br/>پلاک--}}
-                                            {{--13--}}
-                                            {{--</div>--}}
-                                            {{--<div class="clearfix location-phone a-right yekan"><i--}}
-                                            {{--class="fa fa-phone"></i>1234567 0111 <br/><i--}}
-                                            {{--class="fa fa-phone"></i>7654321 0111--}}
-                                            {{--</div>--}}
-                                            {{--<div class="clearfix location-cateringlink a-right yekan">ظرفیت--}}
-                                            {{--پذیرایی 20 نفر , جای پارک مناسب .--}}
-                                            {{--</div>--}}
-                                            {{--</div>--}}
-                                            {{--</div>--}}
+                                            {{-- filled by ajax --}}
                                         </div>
                                     </div>
                                 </div>
@@ -551,12 +496,12 @@
                                                    onBlur="this.placeholder = ' ایمیل :'"/>
                                             <input type="text" name="phone"
                                                    class="validate['required','phone']  textbox1 yekan a-right"
-                                                   placeholder="* شماره همراه : " onFocus="this.placeholder = ''"
-                                                   onBlur="this.placeholder = '* تلفن همراه :'"/>
+                                                   placeholder="* شماره موبایل : " onFocus="this.placeholder = ''"
+                                                   onBlur="this.placeholder = '* تلفن موبایل :'"/>
                                             <input type="text" name="cellphone" id="cellphone"
                                                    class="validate['required','phone']  textbox1 yekan a-right"
-                                                   placeholder="* شماره تماس : " onFocus="this.placeholder = ''"
-                                                   onBlur="this.placeholder = '* شماره تماس :'"/>
+                                                   placeholder="* شماره تلفن : " onFocus="this.placeholder = ''"
+                                                   onBlur="this.placeholder = '* شماره تلفن :'"/>
                                             <input type="text" name="birth_date" id="birth_date"
                                                    class="validate['required']  textbox1 yekan a-right"
                                                    placeholder="* تاریخ تولد : " onFocus="this.placeholder = ''"
@@ -588,7 +533,7 @@
                                             <i class="fa fa-refresh fa-lg fa-2x captcha-reload col-md-1" height="50"
                                                width="50"></i>
                                             <img class="captcha col-md-4" alt="captcha.png" id="captcha-image"/>
-                                            <input type="" name="phone"
+                                            <input type="" name="captcha"
                                                    class="validate['required']  textbox1 yekan a-right " id="captcha"
                                                    placeholder="* کد امنیتی : " onFocus="this.placeholder = ''"
                                                    onBlur="this.placeholder = '* کد امنیتی :'"/>
@@ -1036,11 +981,11 @@
 
                     '<a class="left carousel-control" href="#myCarousel" data-slide="prev">'+
                     '<span class="glyphicon glyphicon-chevron-left"></span>'+
-                    '<span class="sr-only">Previous</span>'+
+                    '<span class="sr-only">قبلی</span>'+
                     '</a>'+
                     '<a class="right carousel-control" href="#myCarousel" data-slide="next">'+
                     '<span class="glyphicon glyphicon-chevron-right"></span>'+
-                    '<span class="sr-only">Next</span>'+
+                    '<span class="sr-only">بعدی</span>'+
                     '</a>'+
                     '</div>'+
 
@@ -1049,7 +994,7 @@
                     '<div class="col-md-5">' + response.product.description + "<br>" + formatNumber(response.product.price) +
                     '<span>تومان</span><div class="add-to-cart">' +
                     '<button class="button  nav-link yekan pull-left" content="' + response.product.price + '" id="addToBasket" name="' + response.product.id + '">' +
-                    '<span></span>افزودن به سبدخرید' +
+                    '<span></span>افزودن به سبد خرید' +
                     '</button>' +
                     '</div>' +
                     '</div>' +
@@ -1074,7 +1019,7 @@
                     $.each(response.products, function (key, value) {
                         var x = '<div class="row ">' +
                             '<div class="menu_content clearfix">' +
-                            '<button type="button" class="btn btn-primary fa fa-folder-open col-md-1 btn-product-detail" onclick="showProductDetail(' + value.id + ')" id="' + value.id + '" data-toggle="modal" data-target="#detail-prod"></button>' +
+                            '<button type="button"  class="default-background-color btn btn-danger fa fa-folder-open col-md-1 btn-product-detail" onclick="showProductDetail(' + value.id + ')" id="' + value.id + '" data-toggle="modal" data-target="#detail-prod"></button>' +
                             '<div class="col-md-8 text-left">' +
                             '<div class="title-splider yekan">' +
                             '<h4 class="clearfix">' +
@@ -1164,45 +1109,199 @@
     })
 </script>
 <script>
+    function loadShopCart()
+    {
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+            }
+        });
+        $.ajax({
+            dataType: "json",
+            url: "{{url('order/basketDetail')}}",
+            cash: false,
+            type: "get",
+            success: function (response) {
+                var cartContent=$('#cartContent');
+                cartContent.html('');
+                $.each(response.baskets.products, function (key, value) {
+                    x = '<div class="row margin-b-8"><div class="row col-md-5 location-btns">'+
+                        '<div class="location map-link"><a class="button" href="#"><i class="fa fa-times"></i></a></div>'+
+                        '<div class="location"><a class="button addToCount" content="'+value.id+'" name="'+value.basket_id+'"><i class="fa fa-arrow-up"></i></a></div>'+
+                        '<div class="location"><a class="button subFromCount" content="'+value.id+'" name="'+value.basket_id+'"><i class="fa fa-arrow-down"></i></a></div>'+
+                        '</div>'+
+                        '<div class="row col-md-7">' +
+                        '<div class="location-address-wrap">' +
+                        '<h3 class="border_bottom yekan a-right"><b class="">نام محصول :</b>'+ value.title+'</h3>' +
+                        '<div class="clearfix location-street a-right yekan"><b class="">توضیحات  :</b>' + value.description + '</div>' +
+                        '<div class="clearfix location-phone a-right yekan"><b class="">قیمت اصلی :</b>'+formatNumber(value.price)+' <br/>' +
+                        '<b class="">تعداد :</b>' + formatNumber(value.count) + '</div>' +
+                        '<div class="clearfix location-cateringlink a-right yekan"><b class="">جمع کل  :</b>' + formatNumber(value.sum) +
+                        '</div>' +
+                        '</div>' +
+                        '</div><br>' +
+                        '</div>';
+                    cartContent.append(x);
+                });
+            }
+        })
+    }
     $(document).ready(function () {
         $(".shopCart").click(function () {
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
-                }
-            });
-            $.ajax({
-                dataType: "json",
-                url: "{{url('order/basketDetail')}}",
-                cash: false,
-                type: "get",
-                success: function (response) {
-                    var cartContent=$('#cartContent');
-                    cartContent.html();
-                    $.each(response.baskets.products, function (key, value) {
-                        x = '<div class="row margin-b-8"><div class="row col-md-5 location-btns">'+
-                            '<div class="location map-link"><a class="button" href="#"><i class="fa fa-times"></i></a></div>'+
-                            '<div class="location"><a class="button" href="#"><i class="fa fa-arrow-up"></i></a></div>'+
-                            '<div class="location"><a class="button" href="#"><i class="fa fa-arrow-down"></i></a></div>'+
-                            '</div>'+
-                            '<div class="row col-md-7">' +
-                            '<div class="location-address-wrap">' +
-                            '<h3 class="border_bottom yekan a-right"><b class="">نام محصول :</b>'+ value.title+'</h3>' +
-                            '<div class="clearfix location-street a-right yekan"><b class="">توضیحات  :</b>' + value.description + '</div>' +
-                            '<div class="clearfix location-phone a-right yekan"><b class="">قیمت اصلی :</b>'+formatNumber(value.price)+' <br/>' +
-                            '<b class="">تعداد :</b>' + formatNumber(value.count) + '</div>' +
-                            '<div class="clearfix location-cateringlink a-right yekan"><b class="">جمع کل  :</b>' + formatNumber(value.sum) +
-                            '</div>' +
-                            '</div>' +
-                            '</div><br>' +
-                            '</div>';
-                        cartContent.append(x);
-                        cartContent.append(x);
+            loadShopCart();//when menu clicked
+        });
+        loadShopCart();//when site loaded
+    });
+</script>
+<!-- below script is related to handle subFromCount  -->
+<script>
+    $('.subFromCount').each(function(){
+        $(this).click(function(){
+        alert();
+            var productId  = $(this).attr('content');
+            var basketId   = $(this).attr('name');
+            var token      = $('#token').val();
+            var count      = $(this).closest('td').find('input.input-sm').val();
+            var unitPrice  = $(this).closest('td').prev('td').attr('content');
+            var td         = $(this);
+            $(td).css('pointer-events','none');
+            $(td).css('color','#adaaaa');
+            if(count == 1)
+            {
+                swal({
+                    title: "",
+                    text: 'در صورتی که می خواهید کالایی را از سبد خرید حذف کنید می بایست دکمه حذف را بزنید',
+                    type: "warning",
+                    confirmButtonText: "بستن"
+                });
+                setTimeout(function () {
+                    $(td).css('pointer-events','');
+                },5000);
+                return false;
+            }else
+            {
+                $.ajax
+                ({
+                    url      : "{{url('user/addOrSubCount')}}",
+                    type     : "post",
+                    data     :  {'_token' : token , 'productId' : productId , 'basketId' : basketId , 'parameter' : 'subFromCount'},
+                    context  : td,
+                    dataType : "json",
+                    success  : function(response)
+                    {
+
+                        if(response.code == 1)
+                        {
+
+                            $(td).closest('td').find('input.input-sm').val(--count);
+                            var newCount = $(td).closest('td').find('input.input-sm').val();
+                            var sum = unitPrice * newCount;
+                            $(td).closest('td').next('td').text(formatNumber(sum) + 'تومان');
+                            basketTotalPrice();
+                            setTimeout(function () {
+                                $(td).css('pointer-events','');
+                                $(td).css('color','#666');
+                            },5000);
+
+                        }
+                    },error  : function(error)
+                    {
+                        console.log(error);
+                    }
+                });
+            }
+        })
+    })
+
+</script>
+
+<!-- below script is related to remove item from basket -->
+<script>
+    $(document).on('click','#removeFromBasket',function(){
+        var productId = $(this).attr('name');
+        var basketId  = $(this).attr('content');
+        var token     = $('#token').val();
+        $.ajax
+        ({
+            url      : "{{url('user/removeItemFromBasket')}}",
+            type     : "post",
+            data     : {'productId' : productId , 'basketId' : basketId , '_token' : token},
+            dataType : "json",
+            success   : function(response)
+            {
+                if(response.code == 1)
+                {
+                    swal({
+                        title: "",
+                        text: response.message,
+                        type: "success",
+                        confirmButtonText: "بستن"
+                    });
+                    setTimeout(function(){
+                        window.location.reload(true);
+                    },5000);
+
+                }else
+                {
+                    swal({
+                        title: "",
+                        text: response.message,
+                        type: "warning",
+                        confirmButtonText: "بستن"
                     });
                 }
-            })
+            }
 
-        });
+        })
+    })
+</script>
+<!-- below script is related to remove basket items inj order page -->
+<script>
+    $(document).on('click','#removeItem',function(){
+        var price      = $(this).attr('data-target');
+        var orderTotal = $('#orderTotal').attr('content');
+        var productId  = $(this).attr('name');
+        var basketId   = $(this).attr('content');
+        var token     = $('#token').val();
+        var DOM       = $('#orderTable');
+        var td        = $(this);
+        $.ajax
+        ({
+            url       : "{{url('user/removeItemFromBasket')}}",
+            type      : "post",
+            data      : {'productId' : productId , 'basketId' : basketId , '_token' : token},
+            dataType  : "json",
+            context   : {'DOM' : DOM  ,'td' : td},
+            success   : function(response)
+            {
+                if(response.code == 1)
+                {
+                    swal({
+                        title: "",
+                        text: response.message,
+                        type: "success",
+                        confirmButtonText: "بستن"
+                    });
+                    $('#orderTotal').text(formatNumber(orderTotal - price) +  'تومان'  );
+                    $(td).parentsUntil(DOM,'tr').remove();
+                    basketCountNotify();
+                    basketTotalPrice();
+                    basketContent();
+                    if(response.count == 0)
+                        window.history.back();
+
+                }else
+                {
+                    swal({
+                        title: "",
+                        text: response.message,
+                        type: "warning",
+                        confirmButtonText: "بستن"
+                    });
+                }
+            }
+
+        })
     });
 </script>
 <script src="{{ URL::asset('public/js/persianDatepicker.js')}}"></script>
