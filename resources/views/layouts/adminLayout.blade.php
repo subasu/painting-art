@@ -363,7 +363,10 @@
             <input type="hidden" id="token" value="{{csrf_token()}}">
 
         </div>
-
+        <video  class="col-md-12"  style=" display: none;"
+                 id="video1" name="video_src">
+            <source id="playingVideo1" src="">
+        </video>
         <!-- /top navigation -->
         <!-- page content -->
         <div class="right_col" role="main">
@@ -708,12 +711,27 @@
     });
 </script>
 <script>
-    $(document).on('click','#play',function () {
+    $(document).ready(function(){
         var path = window.location.pathname;
         var absolutePath  = path.split('/');
-        var last  = absolutePath[absolutePath.length-1];
-        alert(last);
+        var urlName  = absolutePath[absolutePath.length-1];
+        $('#playingVideo1').attr('src','localhost:81/art/public/dashboard/trainingVideo/'+urlName+'.mp4');
+        //alert(last);
+      //  play();
     })
+
+//    }.on('click','#play',function () {
+
+    //}
+</script>
+<script>
+    $(document).on('click','#play',function(){
+        var video1 = document.getElementById('video1');
+        $('#video1').css('display','block');
+        video1.play();
+    })
+
+
 </script>
 
 <script>
