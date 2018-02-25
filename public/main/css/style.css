@@ -93,6 +93,15 @@ body {
     font-family: 'Oswald';
     color: #242424;
 }
+.margin-b-8{
+    margin-bottom: 8%;
+}
+.slider-size{
+    width: 100% !important;
+}
+.ui-pnotify-title{
+    font-family: 'yekan' !important;
+}
 .sweet-alert{
     font-family: 'Oswald';
 }

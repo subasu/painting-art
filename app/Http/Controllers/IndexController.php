@@ -318,15 +318,10 @@ class IndexController extends Controller
     //below function is related to return order view
     public function order($parameter)
     {
-        $menu = $menu = $this->loadMenu();
-        $googleMap = GoogleMap::latest()->first();
-        $logo = Logo::latest()->first();
-        //$categories  = Category::find($id);
         if (isset($_COOKIE['addToBasket'])) {
 
             switch ($parameter) {
                 case 'basketDetail':
-                    $pageTitle = 'لیست سفارشات';
                     $basketId = Basket::where([['cookie', $_COOKIE['addToBasket']], ['payment', 0]])->value('id');
                     if ($basketId) {
                         $baskets = Basket::find($basketId);
@@ -338,11 +333,10 @@ class IndexController extends Controller
                             $total += $basket->sum;
                             $basket->basket_id = $basket->pivot->basket_id;
                         }
-                        return view('main.order', compact('menu', 'pageTitle', 'baskets', 'total', 'logo', 'googleMap'));
-                    } else {
-                        return Redirect::back();
+                        return response()->json(['baskets'=>$baskets,'total'=>$total]);
                     }
-
+                    else
+                        return response()->json($_COOKIE['addToBasket']);
                     break;
 
                 case 'orderDetail':

@@ -35,7 +35,9 @@
           href="{{URL::asset('public/main/assets/images/apple_touch_icon_72x72.html')}}"/>
     <link rel="apple-touch-icon" sizes="114x114"
           href="{{URL::asset('public/main/assets/images/apple_touch_icon_114x114.html')}}"/>
-
+    {{--pnotify--}}
+    <link href="{{URL::asset('public/css/pnotify.custom.css')}}" media="all" rel="stylesheet" type="text/css"/>
+    {{--<link href="https://cdnjs.cloudflare.com/ajax/libs/pnotify/3.2.1/pnotify.css" media="all" rel="stylesheet" type="text/css"/>--}}
     <script src="{{URL::asset('public/main/js/jquery-1.11.1.min.js')}}"></script>
     <script src="{{URL::asset('public/main/js/jquery-ui.min.js')}}"></script>
 
@@ -100,7 +102,7 @@
                                     <li><a href="#about" class="nav-link">درباره ما</a></li>
                                     <li><a href="#category" class="nav-link">محصولات<span class="sub-toggle"></span></a>
                                     </li>
-                                    <li><a href="#locations" class="nav-link">سبد خرید<span
+                                    <li><a href="#shopCart" class="shopCart nav-link">سبد خرید<span
                                                     class="sub-toggle"></span></a>
                                     </li>
                                     <li><a href="#gallery" class="nav-link">گالری</a></li>
@@ -180,7 +182,7 @@
                                                     <li><a href="#about" class="nav-link">درباره ما</a></li>
                                                     <li><a href="#category" class="nav-link">محصولات<span
                                                                     class="sub-toggle"></span></a></li>
-                                                    <li><a href="#locations" class="nav-link">سبد خرید<span
+                                                    <li><a href="#shopCart" class="nav-link shopCart">سبد خرید<span
                                                                     class="sub-toggle"></span></a></li>
                                                     <li><a href="#gallery" class="nav-link">گالری</a></li>
                                                     <li><a href="#loginRegister" class="nav-link">ورود / ثبت نام</a>
@@ -390,9 +392,9 @@
         <!-- // products with image small
         =============================-->
 
-        <!-- Locations
+        <!-- shopCart
         =============================-->
-        <div id="locations" class="item">
+        <div id="shopCart" class="item">
             <img src="{{URL::asset('public/main/img/map.jpg')}}" alt="the Paxton Gipsy Hill" class="fullBg">
             <div class="content">
 
@@ -408,81 +410,24 @@
                                         پذیرایی از شما عزیزان هستند. </p> <br/>
 
                                     <div class="clearfix content_space">
-                                        <div class="clearfix location_content">
-                                            <div class="row col-md-5 location-btns">
-                                                <div class="location map-link"><a class="button  nav-link yekan"
-                                                                                  href="#contact">نقشه</a></div>
-                                                <div class="location"><a class="button  nav-link yekan"
-                                                                         href="#reservation">رزرو میز</a></div>
-                                            </div>
-
-                                            <div class="row col-md-7">
-                                                <div class="location-address-wrap">
-                                                    <h3 class="border_bottom yekan a-right"><i
-                                                                class="fa fa-map-marker"></i> تهران</h3>
-                                                    <div class="clearfix location-street a-right yekan">زعفرانیه خیابان
-                                                        مقدس اردبیلی<br/>خیابان کیهان پلاک 13
-                                                    </div>
-                                                    <div class="clearfix location-phone a-right yekan"><i
-                                                                class="fa fa-phone"></i>2223 7889 021 <br/><i
-                                                                class="fa fa-phone"></i>2223 5689 021
-                                                    </div>
-                                                    <div class="clearfix location-cateringlink a-right yekan">ظرفیت
-                                                        پذیرایی 70 نفر , جای پارک مناسب .
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                        </div>
                                         <div class="clearfix location_content content_space">
-                                            <div class="row col-md-5 location-btns">
-                                                <div class="location map-link"><a class="button  nav-link yekan"
-                                                                                  href="#contact">نقشه</a></div>
-                                                <div class="location"><a class="button  nav-link yekan"
-                                                                         href="#reservation">رزرو میز</a></div>
-                                            </div>
-
-                                            <div class="row col-md-7">
-                                                <div class="location-address-wrap">
-                                                    <h3 class="border_bottom yekan a-right"><i
-                                                                class="fa fa-map-marker"></i> بابل</h3>
-                                                    <div class="clearfix location-street a-right yekan">خیابان باغ فردوس<br/>پلاک
-                                                        13
-                                                    </div>
-                                                    <div class="clearfix location-phone a-right yekan"><i
-                                                                class="fa fa-phone"></i>1234567 0111 <br/><i
-                                                                class="fa fa-phone"></i>7654321 0111
-                                                    </div>
-                                                    <div class="clearfix location-cateringlink a-right yekan">ظرفیت
-                                                        پذیرایی 20 نفر , جای پارک مناسب .
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="clearfix location_content content_space">
-                                            <div class="row col-md-5 location-btns">
-                                                <div class="location map-link"><a class="button  nav-link yekan"
-                                                                                  href="#contact">نقشه</a></div>
-                                                <div class="location"><a class="button  nav-link yekan"
-                                                                         href="#reservation">رزرو میز</a></div>
-                                            </div>
-
-                                            <div class="row col-md-7">
-                                                <div class="location-address-wrap">
-                                                    <h3 class="border_bottom yekan a-right"><i
-                                                                class="fa fa-map-marker"></i> شیراز</h3>
-                                                    <div class="clearfix location-street a-right yekan">خیابان
-                                                        ستارخان<br/>پلاک 13
-                                                    </div>
-                                                    <div class="clearfix location-phone a-right yekan"><i
-                                                                class="fa fa-phone"></i>3629 4426 071 <br/><i
-                                                                class="fa fa-phone"></i>3629 4445 071
-                                                    </div>
-                                                    <div class="clearfix location-cateringlink a-right yekan">ظرفیت
-                                                        پذیرایی 40 نفر , جای پارک مناسب .
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            <div id="cartContent" class="col-md-12"></div>
+                                            {{--<div class="row col-md-7">--}}
+                                            {{--<div class="location-address-wrap">--}}
+                                            {{--<h3 class="border_bottom yekan a-right"><i--}}
+                                            {{--class="fa fa-map-marker"></i> بابل</h3>--}}
+                                            {{--<div class="clearfix location-street a-right yekan">خیابان باغ فردوس<br/>پلاک--}}
+                                            {{--13--}}
+                                            {{--</div>--}}
+                                            {{--<div class="clearfix location-phone a-right yekan"><i--}}
+                                            {{--class="fa fa-phone"></i>1234567 0111 <br/><i--}}
+                                            {{--class="fa fa-phone"></i>7654321 0111--}}
+                                            {{--</div>--}}
+                                            {{--<div class="clearfix location-cateringlink a-right yekan">ظرفیت--}}
+                                            {{--پذیرایی 20 نفر , جای پارک مناسب .--}}
+                                            {{--</div>--}}
+                                            {{--</div>--}}
+                                            {{--</div>--}}
                                         </div>
                                     </div>
                                 </div>
@@ -492,7 +437,7 @@
                 </div>
             </div>
         </div>
-        <!-- // Locations
+        <!-- // shopCart
         =============================-->
 
         <!--Gallery
@@ -760,6 +705,9 @@
 
 <script type="text/javascript" src="{{URL::asset('public/main/settings/settings/settings.js')}}"></script>
 <script type="text/javascript" src="{{URL::asset('public/main/settings/settings/jscolor.js')}}"></script>
+{{--<script type="text/javascript" src="{{URL::asset('public/js/pnotify.custom.min.js')}}"></script>--}}
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pnotify/3.2.1/pnotify.js"></script>
+{{--show categorie and subCategories in product menu--}}
 <script>
     $(document).ready(function () {
         $(".mainMenu").each(function () {
@@ -825,7 +773,6 @@
                         });
                     }
                 })
-                //$(".submenu").show(100);
             });
             $(this).mouseleave(function () {
                 var item = $(".mainMenu>ul");
@@ -1042,6 +989,13 @@
     })//document.ready
 
 </script>
+<!--formatNumber -->
+<script>
+    function formatNumber(num) {
+        return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")
+    }
+</script>
+{{--show product detail in modal--}}
 <script>
     function showProductDetail(id) {
         var modalBody = $('.modal-body');
@@ -1051,14 +1005,50 @@
             cache: false,
             dataType: 'json',
             success: function (response) {
-                console.log(response.product);
+                console.log(response);
+                var x='';
                 x = '<div class="row">' +
                     '<div class="col-md-6">' +
-                    '<img src="public/dashboard/productFiles/picture/' + response.product.image_src + '" class="img-responsive" alt="a">' +
+
+                    '<div id="myCarousel" class="carousel slide" data-ride="carousel"> '+                   <!-- Indicators -->
+                    '<ol class="carousel-indicators">';
+                     $.each(response.product.product_images, function (key, value) {
+                         if(key==0)
+                            x+='<li data-target="#myCarousel" data-slide-to="0" class="active"></li>';
+                         else
+                             x+='<li data-target="#myCarousel" data-slide-to="'+key+'"></li>';
+                });
+//                    '<li data-target="#myCarousel" data-slide-to="2"></li>'+
+                    x+='</ol>'+
+                    '<div class="carousel-inner">';
+                $.each(response.product.product_images, function (key, value) {
+                    if(key==0)
+                        x+='<div class="item active slider-size">'+
+                            '<img src="public/dashboard/productFiles/picture/' + value.image_src + '" alt="" class="img-responsive">'+
+                            '</div>';
+                    else
+                        x+='<div class="item slider-size">'+
+                            '<img src="public/dashboard/productFiles/picture/' + value.image_src + '" alt="" class="img-responsive">'+
+                            '</div>';
+
+                });
+                    x+='</div>'+
+
+                    '<a class="left carousel-control" href="#myCarousel" data-slide="prev">'+
+                    '<span class="glyphicon glyphicon-chevron-left"></span>'+
+                    '<span class="sr-only">Previous</span>'+
+                    '</a>'+
+                    '<a class="right carousel-control" href="#myCarousel" data-slide="next">'+
+                    '<span class="glyphicon glyphicon-chevron-right"></span>'+
+                    '<span class="sr-only">Next</span>'+
+                    '</a>'+
+                    '</div>'+
+
+//                    '<img src="public/dashboard/productFiles/picture/' + response.product.image_src + '"  alt="a">' +
                     '</div><br>' +
-                    '<div class="col-md-5">' + response.product.description + "<br>" + response.product.price+
+                    '<div class="col-md-5">' + response.product.description + "<br>" + formatNumber(response.product.price) +
                     '<span>تومان</span><div class="add-to-cart">' +
-                    '<button class="button  nav-link yekan pull-left" content="'+response.product.price+'" id="addToBasket" name="'+response.product.id+'">' +
+                    '<button class="button  nav-link yekan pull-left" content="' + response.product.price + '" id="addToBasket" name="' + response.product.id + '">' +
                     '<span></span>افزودن به سبدخرید' +
                     '</button>' +
                     '</div>' +
@@ -1066,17 +1056,10 @@
                     '</div>';
                 modalBody.html(x)
                 $('.modal-title').html(response.product.title)
-//                each(response.product, function (key, value) {
-//
-//
-//                });
             }
         });
     }
     $(document).ready(function () {
-        function formatNumber(num) {
-            return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")
-        }
 
         var myProductsDiv = $("#myProducts");
         $(".loadProduct").click(function () {
@@ -1108,6 +1091,7 @@
                             '<div class="col-md-2 menu_small">' +
                             '<div class="row">';
                         $.each(value.product_images, function (key, img) {
+                            if(key==0)
                             x += '<img src="public/dashboard/productFiles/picture/' + img.image_src + '" class="img-responsive img_border"alt=""/>';
                         });
                         x += '</div></div>' +
@@ -1131,11 +1115,11 @@
 <!-- below script is related to add to basket -->
 
 <script>
-    $(document).on('click','#addToBasket',function () {
+    $(document).on('click', '#addToBasket', function () {
 
         var productFlag = $(this).attr('content');
-        var  productId = $(this).attr('name');
-        var token      = $('#token').val();
+        var productId = $(this).attr('name');
+        var token = $('#token').val();
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -1143,48 +1127,87 @@
         });
         $.ajax
         ({
-            url      : "{{url('user/addToBasket')}}",
-            type     : "post",
-            data     : {'productId' : productId , '_token' : token , 'productFlag' : productFlag},
-            dataType : "json",
-            success  : function(response)
-            {
+            url: "{{url('user/addToBasket')}}",
+            type: "post",
+            data: {'productId': productId, '_token': token, 'productFlag': productFlag},
+            dataType: "json",
+            success: function (response) {
                 console.log(response);
-                if(response.code == 1)
-                {
-                    var myStack = {"dir1":"down", "dir2":"right", "push":"top"};
+                if (response.code == 1) {
+                    var myStack = {"dir1": "down", "dir2": "right", "push": "top"};
                     new PNotify({
                         title: response.message,
                         text: "",
                         addclass: "stack-custom",
-                        type:"success",
+                        type: "success",
                         stack: myStack
                     })
-                    basketCountNotify();
-                    basketTotalPrice();
-                    basketContent();
-                }else
-                {
-                    var myStack = {"dir1":"down", "dir2":"right", "push":"top"};
+//                    basketCountNotify();
+//                    basketTotalPrice();
+//                    basketContent();
+                } else {
+                    var myStack = {"dir1": "down", "dir2": "right", "push": "top"};
                     new PNotify({
                         title: response.message,
                         text: '',
                         addclass: "stack-custom",
-                        type:"success",
+                        type: "success",
                         stack: myStack
                     })
                 }
 
-            },error  : function(error)
-            {
+            }, error: function (error) {
                 console.log(error);
                 alert('خطایی رخ داده است')
             }
         })
     })
 </script>
+<script>
+    $(document).ready(function () {
+        $(".shopCart").click(function () {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+                }
+            });
+            $.ajax({
+                dataType: "json",
+                url: "{{url('order/basketDetail')}}",
+                cash: false,
+                type: "get",
+                success: function (response) {
+                    var cartContent=$('#cartContent');
+                    cartContent.html();
+                    $.each(response.baskets.products, function (key, value) {
+                        x = '<div class="row margin-b-8"><div class="row col-md-5 location-btns">'+
+                            '<div class="location map-link"><a class="button" href="#"><i class="fa fa-times"></i></a></div>'+
+                            '<div class="location"><a class="button" href="#"><i class="fa fa-arrow-up"></i></a></div>'+
+                            '<div class="location"><a class="button" href="#"><i class="fa fa-arrow-down"></i></a></div>'+
+                            '</div>'+
+                            '<div class="row col-md-7">' +
+                            '<div class="location-address-wrap">' +
+                            '<h3 class="border_bottom yekan a-right"><b class="">نام محصول :</b>'+ value.title+'</h3>' +
+                            '<div class="clearfix location-street a-right yekan"><b class="">توضیحات  :</b>' + value.description + '</div>' +
+                            '<div class="clearfix location-phone a-right yekan"><b class="">قیمت اصلی :</b>'+formatNumber(value.price)+' <br/>' +
+                            '<b class="">تعداد :</b>' + formatNumber(value.count) + '</div>' +
+                            '<div class="clearfix location-cateringlink a-right yekan"><b class="">جمع کل  :</b>' + formatNumber(value.sum) +
+                            '</div>' +
+                            '</div>' +
+                            '</div><br>' +
+                            '</div>';
+                        cartContent.append(x);
+                        cartContent.append(x);
+                    });
+                }
+            })
+
+        });
+    });
+</script>
 <script src="{{ URL::asset('public/js/persianDatepicker.js')}}"></script>
 <script src="{{url('public/js/sweetalert.min.js')}}"></script>
+
 {{--persianDatepicker--}}
 <script>
     $('#birth_date').persianDatepicker();
