@@ -93,6 +93,9 @@ body {
     font-family: 'Oswald';
     color: #242424;
 }
+.default-background-color{
+background-color: rgba(243,42,42,0.95);
+}
 .margin-b-8{
     margin-bottom: 8%;
 }
