@@ -32,9 +32,6 @@ Route::group(['prefix' => '/v1'], function () {
     Route::get('getMainUnits','CommonController@getMainUnits');
     Route::post('getSubunitsBySubUnitTitle','CommonController@getSubunitsBySubUnitTitle');
 
-    //color routes
-    Route::get('getColors','CommonController@getColors');
-
     //size routes
     Route::get('getSizes/{id}','CommonController@getSizes');
 
