@@ -9,9 +9,12 @@ use App\Http\SelfClasses\CheckProduct;
 use App\Http\SelfClasses\CheckUpdateProduct;
 use App\Http\SelfClasses\NotToBeRepeated;
 use App\Http\SelfClasses\UpdateProduct;
+use App\Models\Modol;
 use App\Models\Product;
 use App\Models\ProductImage;
+use App\Models\Size;
 use Hekmatinasser\Verta\Verta;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -103,6 +106,20 @@ class ProductController extends Controller
         if (count($products) > 0) {
             $products[0]->produceDate = $this->toPersian($products[0]->produce_date);
             $products[0]->expireDate = $this->toPersian($products[0]->expire_date);
+            foreach ($products as $pr) {
+                $pr->modelName = Modol::find($pr->productSizes->model_id)->title;
+                $productSize = Size::find($pr->productSizes->size_id);
+                if ($productSize->width !="") {
+                    $pr->sizeName = $productSize->width . ' در ' . $productSize->length;
+                }
+                elseif ($productSize->diameter !="") {
+                    $pr->sizeName =  ' قطر ' . $productSize->diameter;
+                }
+                elseif ($productSize->sideways !="") {
+                    $pr->sizeName =  ' ضلع ' . $productSize->sideways;
+                }
+
+            }
             return view('admin.productDetails', compact('products', 'pageTitle'));
         } else {
             return view('errors.403');

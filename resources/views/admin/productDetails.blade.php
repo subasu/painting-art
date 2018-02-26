@@ -754,9 +754,9 @@
                                                    content="{{$products[0]->id}}"
                                                    title="ویرایش "></a>
                                             </div>
-                                            <div class="col-md-5 col-sm-6 col-xs-9">
-                                                <select id="productModel" disabled class="form-control col-md-7 col-xs-12" name="productModel">
-                                                    {{--<option>{{$products[0]->productSizes }}</option>--}}
+                                            <div class="col-md-5 col-sm-6 col-xs-9" id="productModel_parent">
+                                                <select id="editable" disabled class="form-control col-md-7 col-xs-12 editable" name="productModel">
+                                                    <option value="{{$products[0]->productSizes->model_id}}">{{$products[0]->modelName }}</option>
                                                 </select>
                                             </div>
                                             <label class="control-label col-md-2 col-sm-4 col-xs-3" for="productModel">
@@ -773,14 +773,11 @@
                                                    title="ویرایش "></a>
                                             </div>
                                             <div class="col-md-5 col-sm-6 col-xs-9">
-                                                <select id="productSizes"  class="form-control col-md-7 col-xs-12"
+                                                <select id="editable"  class="form-control col-md-7 col-xs-12 editable"
                                                         name="productSizes" disabled id="editable">
-                                                    {{--<option>--}}
-{{--                                                        {{$products[0]->productSizes->sizes[0]->width}}--}}
-                                                        {{--در--}}
-{{--                                                        {{$products[0]->productSizes->sizes[0]->length}}--}}
-
-                                                    {{--</option>--}}
+                                                    <option>
+                                                        {{$products[0]->sizeName}}
+                                                    </option>
                                                 </select>
                                             </div>
                                             <label class="control-label col-md-2 col-sm-4 col-xs-3" for="productSizes">
@@ -987,15 +984,45 @@
                             $(".currentPrice2").show();
                         }
                         else if (editable.attr('name') == 'productModel') {
-                            $("#unit_count_parent").empty();
-                            $("#unit_count_parent").append(
-                                '<select id="editable"' +
-                                'class="form-control col-md-7 col-xs-12 editable my_units" name="unit_count" value="{{$products[0]->unit_count}}">' +
-                                '<option value="{{$products[0]->unit_count}}">{{$products[0]->unit_count}}</option></select>');
-                            loadUnits();
+                            //load product Models if there is no product Model in table redirect addModels
+                            $.ajax({
+                                cache: false,
+                                url: "{{Url('api/v1/getModels')}}",
+                                dataType: "json",
+                                type: "get",
+                                success: function (response) {
+                                    if (response != 0) {
+                                        var responses = response;
+                                        var selectBoxId = '[name="productModel"]';
+                                        var msgOpt1 = "لطفا حالت مورد نظر خود را انتخاب نمایید";
+                                        var msgOpt2 = "اگر حالت مورد نظر در این لیست وجود ندارد این گزینه انتخاب نمایید";
+                                        var valueOption2 = 0000;
+                                        loadItems(responses, selectBoxId, msgOpt1, msgOpt2, valueOption2);
+                                        $('[name="productSizes"]').prop('disabled', false);
+                                    }
+                                    else {
+                                        setTimeout(function(){location.href = '{{url("admin/addModels")}}';},1500);
+                                    }
+                                }
+                            });
                         }
-                        else if (editable.attr('name') == 'sizes') {
-                            appendItem("[name='sizes']", "size", "{{url('api/v1/getSizes')}}");
+                        else if (editable.attr('name') == 'productSizes') {
+                            var id=$('[name="productModel"]').val();
+                            $.ajax
+                            ({
+                                cache: false,
+                                url: "{{Url('api/v1/getSizes')}}/" + id,
+                                dataType: "json",
+                                type: "get",
+                                success: function (response) {
+                                    var responses = response;
+                                    var selectBoxId = '[name="productSizes"]';
+                                    var msgOpt1 = "لطفا اندازه مورد نظر خود را انتخاب نمایید";
+                                    var msgOpt2 = "اگر اندازه مورد نظر در این لیست وجود ندارد این گزینه انتخاب نمایید";
+                                    var valueOption2 = 0;
+                                    loadSizes(responses, selectBoxId, msgOpt1, msgOpt2, valueOption2)
+                                }
+                            });
                         }
                     })
                 })
@@ -1029,7 +1056,6 @@
                                         type: 'get',
                                         dataType: "json",
                                         success: function (response) {
-                                            console.log(response)
                                             if (response == true) {
                                                 $(showPic).css('display', 'none');
                                                 var newFile = $(DOM).find('.newFile');
@@ -1083,35 +1109,15 @@
             })
         </script>
         <script>
-            //load product Models if there is no product Model in table redirect addModels
-            $.ajax({
-                cache: false,
-                url: "{{Url('api/v1/getModels')}}",
-                dataType: "json",
-                type: "get",
-                success: function (response) {
-                    console.log(response);
-                    if (response != 0) {
-                        var responses = response;
-                        var selectBoxId = '#productModel';
-                        var msgOpt1 = "لطفا حالت مورد نظر خود را انتخاب نمایید";
-                        var msgOpt2 = "اگر حالت مورد نظر در این لیست وجود ندارد این گزینه انتخاب نمایید";
-                        var valueOption2 = 0000;
-                        loadItems(responses, selectBoxId, msgOpt1, msgOpt2, valueOption2)
-                    }
-                    else {
-                        setTimeout(function(){location.href = '{{url("admin/addModels")}}';},1500);
-                    }
-                }
-            });
-            $('#productSizes').on("change", function () {
+            $('[name="productSizes"]').on("change", function () {
                 var id = $(this).val();
                 if (id == 0) {
                     setTimeout(function(){location.href = '{{url("admin/addSizes")}}';},1500);
                 }
             });
-            $('#productModel').on("change", function () {
+            $('[name="productModel"]').on("change", function () {
                 var id = $(this).val();
+                console.log(id)
                 if (id == 0) {
                     setTimeout(function(){location.href = '{{url("admin/addModels")}}';},1500);
                 }
@@ -1124,7 +1130,7 @@
                         type: "get",
                         success: function (response) {
                             var responses = response;
-                            var selectBoxId = '#productSizes';
+                            var selectBoxId = '[name="productSizes"]';
                             var msgOpt1 = "لطفا اندازه مورد نظر خود را انتخاب نمایید";
                             var msgOpt2 = "اگر اندازه مورد نظر در این لیست وجود ندارد این گزینه انتخاب نمایید";
                             var valueOption2 = 0;
@@ -1139,7 +1145,6 @@
                 item.empty();
                 item.append("<option selected='true' disabled='disabled'>" + msgOption1 + "</option>");
                 item.append("<option value='" + valueOption2 + "'>" + msgOption2 + "</option>");
-                console.log(responses);
                 $.each(responses, function (key, value) {
                     if(value.sideways!="")
                         item.append
