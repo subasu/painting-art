@@ -50,7 +50,7 @@ class Product extends Model
     //relation of product and product_size
     public function productSizes()
     {
-        return $this->hasMany('App\Models\ProductSize','product_id');
+        return $this->hasOne('App\Models\ProductSize','product_id');
     }
 
     //relation of products and unit_count
@@ -72,9 +72,9 @@ class Product extends Model
     }
 
     //relation of product and colors
-    public function colors()
+    public function modol()
     {
-        return $this->belongsToMany('App\Models\Color');
+        return $this->belongsToMany('App\Models\Modol');
     }
 
     //relation of product and size

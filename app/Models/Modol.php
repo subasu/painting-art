@@ -12,4 +12,8 @@ class Modol extends Model
     {
         return $this->hasMany('App\Models\Size','model_id');
     }
+    public function productSize()
+    {
+        return $this->belongsTo('App\Models\ProductSize','model_id');
+    }
 }

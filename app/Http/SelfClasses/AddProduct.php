@@ -162,6 +162,16 @@ class AddProduct
             $catId = $product->subCategories;
             addCategoryProduct($lastProductId, $catId);
         }
+        //save model and model Size product in product size table
+        if(!empty($product->productModel) && !empty($product->productSizes))
+        {
+            $productModel = new productSize();
+            $productModel->product_id = $lastProductId;
+            $productModel->size_id = $product->productSizes;
+            $productModel->model_id = $product->productModel;
+            $productModel->active = 1;
+            $productModel->save();
+        }
         return (true);
     }
 

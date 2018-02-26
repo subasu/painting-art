@@ -184,6 +184,17 @@ class UpdateProduct
             }
             updateCategoryProduct($lastProductId, $subCatId);
         }
+        //save model and model Size product in product size table
+        if(!empty($product->productModel) && !empty($product->productSizes))
+        {
+            $productId = CategoryProduct::where('product_id', '=', $pId)->value('id');
+            $update = productSize::find($productId);
+            $update->product_id = $lastProductId;
+            $update->size_id = $product->productSizes;
+            $update->model_id = $product->productModel;
+            $update->active = 1;
+            $update->save();
+        }
         return (true);
     }
 //below function is related to convert jalali date to Miladi date
