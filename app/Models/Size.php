@@ -16,4 +16,8 @@ class Size extends Model
     {
         return $this->belongsToMany('App\Models\Modol');
     }
+    public function productSize()
+    {
+        return $this->belongsTo('App\Models\ProductSize');
+    }
 }

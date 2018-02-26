@@ -311,28 +311,12 @@
                                     </label>
                                 </div>
                                 <div class="col-md-12 col-md-offset-1 margin-1 margin-bot-1">
-                                <div class="col-md-5 col-md-offset-2" id="change1" >
-                                    <div class='col-md-3'>
-                                        <select id="sideways" class='form-control col-md-12 col-sm-9 col-xs-12'>
+                                    <div class="col-md-5 col-sm-6 col-xs-9 col-md-offset-2">
+                                        <select id="productSizes" class="form-control col-md-7 col-xs-12" name="productSizes">
+                                            <option disabled="" >ابتدا حالت مورد نظر را انتخاب نمائید</option>
                                         </select>
                                     </div>
-                                    <div class='col-md-3'>
-                                        <select id="diameter" class='form-control col-md-12 col-sm-9 col-xs-12'>
-
-                                        </select>
-                                    </div>
-                                    <div class='col-md-3'>
-                                        <select id="width"  name="width1" class='form-control col-md-12 col-sm-9 col-xs-12'>
-
-                                        </select>
-                                    </div>
-                                    <div class='col-md-3'>
-                                        <select id="length" name="length1" class='form-control col-md-12 col-sm-9 col-xs-12'>
-
-                                        </select>
-                                    </div>
-                                </div>
-                                    <label class='control-label col-md-2 col-sm-4 col-xs-3' for='name'>اندازه های از پیش درج شده:
+                                    <label class="control-label col-md-2 col-sm-4 col-xs-3" for="productSizes"> انتخاب اندازه :
                                     </label>
                                 </div>
                             </div>
@@ -688,33 +672,58 @@
                             loadItems(responses, selectBoxId, msgOpt1, msgOpt2, valueOption2)
                         }
                         else {
-                            setTimeout(function(){location.href = '{{url("admin/addModels")}}';},3000);
+                            setTimeout(function(){location.href = '{{url("admin/addModels")}}';},1500);
                         }
                     }
                 });
+                $('#productSizes').on("change", function () {
+                    var id = $(this).val();
+                    if (id == 0) {
+                        setTimeout(function(){location.href = '{{url("admin/addSizes")}}';},1500);
+                    }
+                    });
                 $('#productModel').on("change", function () {
                     var id = $(this).val();
                     if (id == 0) {
-                        setTimeout(function(){location.href = '{{url("admin/addUnit")}}';},3000);
+                        setTimeout(function(){location.href = '{{url("admin/addModels")}}';},1500);
                     }
                     else {
                         $.ajax
                         ({
                             cache: false,
-                            url: "{{Url('api/v1/getSiezs')}}/" + id,
+                            url: "{{Url('api/v1/getSizes')}}/" + id,
                             dataType: "json",
                             type: "get",
                             success: function (response) {
                                 var responses = response;
-                                var selectBoxId = '#subunit';
+                                var selectBoxId = '#productSizes';
                                 var msgOpt1 = "لطفا اندازه مورد نظر خود را انتخاب نمایید";
                                 var msgOpt2 = "اگر اندازه مورد نظر در این لیست وجود ندارد این گزینه انتخاب نمایید";
                                 var valueOption2 = 0;
-                                loadItems(responses, selectBoxId, msgOpt1, msgOpt2, valueOption2)
+                                loadSizes(responses, selectBoxId, msgOpt1, msgOpt2, valueOption2)
                             }
                         });
                     }
                 });
+                //load sizes in select box
+                function loadSizes(responses, selectBoxId, msgOption1, msgOption2, valueOption2) {
+                    var item = $(selectBoxId);
+                    item.empty();
+                    item.append("<option selected='true' disabled='disabled'>" + msgOption1 + "</option>");
+                    item.append("<option value='" + valueOption2 + "'>" + msgOption2 + "</option>");
+                    console.log(responses);
+                    $.each(responses, function (key, value) {
+                        if(value.sideways!="")
+                        item.append
+                        ("<option value='" + value.id + "' > ضلع " + value.sideways + "</option>");
+                        else if(value.width!="")
+                        item.append
+                        ("<option value='" + value.id + "' >" + value.width +" در "+ value.length + "</option>");
+                        else if(value.diameter!="")
+                        item.append
+                        ("<option value='" + value.id + "' > قطر " + value.diameter + "</option>");
+                    });
+                }
                 //load item in select box
                 function loadItems(responses, selectBoxId, msgOption1, msgOption2, valueOption2) {
                     var item = $(selectBoxId);

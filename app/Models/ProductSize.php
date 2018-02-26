@@ -12,4 +12,12 @@ class ProductSize extends Model
     {
         return $this->belongsTo('App\Models\Product');
     }
+    public function sizes()
+    {
+        return $this->hasMany('App\Models\Size','size_id');
+    }
+    public function modols()
+    {
+        return $this->hasMany('App\Models\Modol','model_id');
+    }
 }

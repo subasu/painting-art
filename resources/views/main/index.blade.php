@@ -1108,6 +1108,8 @@
         })
     })
 </script>
+<<<<<<< HEAD
+=======
 <script>
     function loadShopCart()
     {
@@ -1153,11 +1155,12 @@
         loadShopCart();//when site loaded
     });
 </script>
+>>>>>>> f8b952799ae0938e05a69893d018bf5a8c1006ad
 <!-- below script is related to handle subFromCount  -->
 <script>
     $('.subFromCount').each(function(){
-        $(this).click(function(){
-        alert();
+        $(this).on('click',function(){
+            alert("111111");
             var productId  = $(this).attr('content');
             var basketId   = $(this).attr('name');
             var token      = $('#token').val();
@@ -1214,6 +1217,52 @@
     })
 
 </script>
+<script>
+    function loadShopCart()
+    {
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+            }
+        });
+        $.ajax({
+            dataType: "json",
+            url: "{{url('order/basketDetail')}}",
+            cash: false,
+            type: "get",
+            success: function (response) {
+                var cartContent=$('#cartContent');
+                cartContent.html('');
+                $.each(response.baskets.products, function (key, value) {
+                    x = '<div class="row margin-b-8"><div class="row col-md-5 location-btns">'+
+                        '<div class="location map-link"><a class="button" href="#"><i class="fa fa-times"></i></a></div>'+
+                        '<div class="location"><a class="button addToCount" content="'+value.id+'" name="'+value.basket_id+'"><i class="fa fa-arrow-up"></i></a></div>'+
+                        '<div class="location"><a class="button subFromCount" content="'+value.id+'" name="'+value.basket_id+'"><i class="fa fa-arrow-down"></i></a></div>'+
+                        '</div>'+
+                        '<div class="row col-md-7">' +
+                        '<div class="location-address-wrap">' +
+                        '<h3 class="border_bottom yekan a-right"><b class="">نام محصول :</b>'+ value.title+'</h3>' +
+                        '<div class="clearfix location-street a-right yekan"><b class="">توضیحات  :</b>' + value.description + '</div>' +
+                        '<div class="clearfix location-phone a-right yekan"><b class="">قیمت اصلی :</b>'+formatNumber(value.price)+' <br/>' +
+                        '<b class="">تعداد :</b>' + formatNumber(value.count) + '</div>' +
+                        '<div class="clearfix location-cateringlink a-right yekan"><b class="">جمع کل  :</b>' + formatNumber(value.sum) +
+                        '</div>' +
+                        '</div>' +
+                        '</div><br>' +
+                        '</div>';
+                    cartContent.append(x);
+                });
+            }
+        })
+    }
+    $(document).ready(function () {
+        $(".shopCart").click(function () {
+            loadShopCart();//when menu clicked
+        });
+        loadShopCart();//when site loaded
+    });
+</script>
+
 
 <!-- below script is related to remove item from basket -->
 <script>

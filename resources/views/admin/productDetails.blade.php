@@ -137,7 +137,7 @@
                     @if(!empty($products))
                         <input type="hidden" value="{{$products[0]->id}}" name="id"/>
                         <div>
-                            <div id="step-1" class="">
+                            <div id="step-4" class="">
                                 <br>
                                 <div class="container">
                                     <br>
@@ -234,34 +234,6 @@
                                             </div>
                                             <label class="control-label col-md-2 col-sm-4 col-xs-3" for="unit"> واحد
                                                 شمارش :
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-10 col-md-offset-1 margin-1">
-                                        <div id="grandparent">
-                                            <div class="col-md-7 col-sm-6 col-xs-9 col-md-offset-2">
-                                                <div class="col-md-2">
-                                                    <a type="button" name="edit" id="edit"
-                                                       class="glyphicon glyphicon-edit btn btn-success edit"
-                                                       title="ویرایش "></a>
-                                                </div>
-                                                <div class="col-md-10" id="sub_unit_count_parent">
-                                                    @if($products[0]->sub_unit_count != null)
-                                                        <input disabled id="editable"
-                                                               class="form-control col-md-7 col-xs-12 editable"
-                                                               name="sub_unit_count"
-                                                               value="{{$products[0]->sub_unit_count}}"/>
-
-                                                    @endif
-                                                    @if($products[0]->sub_unit_count == null)
-                                                        <select disabled id="editable"
-                                                                class="form-control col-md-7 col-xs-12 editable"
-                                                                name="sub_unit_count"></select>
-                                                    @endif
-                                                </div>
-                                            </div>
-                                            <label class="control-label col-md-2 col-sm-4 col-xs-3" for="subunit"> زیر
-                                                واحد شمارش :
                                             </label>
                                         </div>
                                     </div>
@@ -676,7 +648,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div id="step-4" class="">
+                            <div id="step-1" class="">
                                 <div class="container">
                                     <div id="addPic" class="grandparent">
                                         @php $picCount = count($products[0]->productImages); @endphp
@@ -735,25 +707,30 @@
                                         <div class="col-md-10 margin-bot-1 parent">
                                             <div class="col-md-2 col-md-offset-3">
                                                 <a type="button" name="editVideo" id="editVideo"
-                                                   class="glyphicon glyphicon-edit btn btn-success edit" content="{{$products[0]->id}}"
+                                                   class="glyphicon glyphicon-edit btn btn-success edit"
+                                                   content="{{$products[0]->id}}"
                                                    title="ویرایش "></a>
-                                                <a type="button"  id="playVideo"
-                                                   class="glyphicon glyphicon-play btn btn-success" content="{{$products[0]->id}}"
+                                                <a type="button" id="playVideo"
+                                                   class="glyphicon glyphicon-play btn btn-success"
+                                                   content="{{$products[0]->id}}"
                                                    title="پخش ویدئو "></a>
-                                                <a type="button"  id="pauseVideo"
-                                                   class="glyphicon glyphicon-pause btn btn-success edit" content="{{$products[0]->id}}"
+                                                <a type="button" id="pauseVideo"
+                                                   class="glyphicon glyphicon-pause btn btn-success edit"
+                                                   content="{{$products[0]->id}}"
                                                    title="توقف پخش ویدئو " style="display: none;"></a>
 
                                             </div>
                                             <div class="col-md-5 col-sm-6 col-xs-9 " id="videoContent">
                                                 @if($products[0]->video_src != null)
-                                                    <video   class="video" style="width: 200px; height: 200px;"
+                                                    <video class="video" style="width: 200px; height: 200px;"
                                                            id="video" name="video_src">
-                                                        <source id="playingVideo" src="{{url('public/dashboard/productFiles/video')}}/{{$products[0]->video_src}}">
+                                                        <source id="playingVideo"
+                                                                src="{{url('public/dashboard/productFiles/video')}}/{{$products[0]->video_src}}">
                                                     </video>
                                                     <input
-                                                           class="form-control col-md-7 col-xs-12 editable"
-                                                           id="newVideo" src="" name="video_src" type="file" style="display: none;">
+                                                            class="form-control col-md-7 col-xs-12 editable"
+                                                            id="newVideo" src="" name="video_src" type="file"
+                                                            style="display: none;">
                                                 @endif
                                                 @if($products[0]->video_src == null)
                                                     <input disabled="disabled"
@@ -769,64 +746,49 @@
                                             </label>
                                         </div>
                                     </div>
-                                    {{--<div class="grandparent" id="grandparent">--}}
-                                        {{--<div class="col-md-10 margin-bot-1 parent">--}}
-                                            {{--<div class="col-md-2 col-md-offset-3">--}}
-                                                {{--<a type="button" name="edit" id="edit"--}}
-                                                   {{--class="glyphicon glyphicon-edit btn btn-success edit"--}}
-                                                   {{--title="ویرایش "></a>--}}
-                                            {{--</div>--}}
+                                    <div class="grandparent" id="grandparent">
+                                        <div class="col-md-10 margin-bot-1 parent">
+                                            <div class="col-md-2 col-md-offset-3">
+                                                <a type="button" name="edit" id="edit"
+                                                   class="glyphicon glyphicon-edit btn btn-success edit"
+                                                   content="{{$products[0]->id}}"
+                                                   title="ویرایش "></a>
+                                            </div>
+                                            <div class="col-md-5 col-sm-6 col-xs-9">
+                                                <select id="productModel" disabled class="form-control col-md-7 col-xs-12" name="productModel">
+                                                    {{--<option>{{$products[0]->productSizes }}</option>--}}
+                                                </select>
+                                            </div>
+                                            <label class="control-label col-md-2 col-sm-4 col-xs-3" for="productModel">
+                                                انتخاب حالت محصول :
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="grandparent" id="grandparent">
+                                        <div class="col-md-10 margin-bot-1 parent">
+                                            <div class="col-md-2 col-md-offset-3">
+                                                <a type="button" name="edit" id="edit"
+                                                   class="glyphicon glyphicon-edit btn btn-success edit"
+                                                   content="{{$products[0]->id}}"
+                                                   title="ویرایش "></a>
+                                            </div>
+                                            <div class="col-md-5 col-sm-6 col-xs-9">
+                                                <select id="productSizes"  class="form-control col-md-7 col-xs-12"
+                                                        name="productSizes" disabled id="editable">
+                                                    {{--<option>--}}
+{{--                                                        {{$products[0]->productSizes->sizes[0]->width}}--}}
+                                                        {{--در--}}
+{{--                                                        {{$products[0]->productSizes->sizes[0]->length}}--}}
 
-                                            {{--<div class="col-md-5 col-sm-6 col-xs-9 editable" name="colors"--}}
-                                                 {{--id="editable">--}}
-                                                {{--@foreach($products[0]->colors as $color)--}}
-                                                    {{--<div class="col-md-4 col-sm-6 col-xs-3 float-right">--}}
-                                                        {{--<label class="myLabel">--}}
-                                                            {{--<input class="form-control myColor" disabled="disabled"--}}
-                                                                   {{--checked type="checkbox"--}}
-                                                                   {{--name="color[]" value="{{$color->title}}"/>--}}
-                                                            {{--{{$color->title}}--}}
-                                                        {{--</label></div>--}}
-                                                {{--@endforeach--}}
-                                            {{--</div>--}}
-                                            {{--<label class="control-label col-md-2 col-sm-4 col-xs-3" for="color">انتخاب--}}
-                                                {{--رنگهای محصول :--}}
-                                            {{--</label>--}}
-                                        {{--</div>--}}
-                                    {{--</div>--}}
-                                    {{--<div class="grandparent" id="grandparent">--}}
-                                        {{--<div class="col-md-10 margin-bot-1 parent">--}}
-                                            {{--<div class="col-md-2 col-md-offset-3">--}}
-                                                {{--<a type="button" name="edit" id="edit"--}}
-                                                   {{--class="glyphicon glyphicon-edit btn btn-success edit"--}}
-                                                   {{--title="ویرایش "></a>--}}
-                                            {{--</div>--}}
+                                                    {{--</option>--}}
+                                                </select>
+                                            </div>
+                                            <label class="control-label col-md-2 col-sm-4 col-xs-3" for="productSizes">
+                                                انتخاب اندازه :
+                                            </label>
+                                        </div>
+                                    </div>
 
-                                            {{--<div class="col-md-5 col-sm-6 col-xs-9 editable" name="sizes" id="editable">--}}
-                                                {{--@foreach($products[0]->sizes as $size)--}}
-                                                    {{--<div class="col-md-4 col-sm-6 col-xs-3 float-right">--}}
-                                                        {{--<label class="myLabel">--}}
-                                                            {{--<input class="form-control myColor" disabled="disabled"--}}
-                                                                   {{--checked type="checkbox"--}}
-                                                                   {{--name="size[]" value="{{$size->title}}"/>--}}
-                                                            {{--{{$size->title}}--}}
-                                                        {{--</label></div>--}}
-                                                {{--@endforeach--}}
-                                            {{--</div>--}}
-                                            {{--<label class="control-label col-md-2 col-sm-4 col-xs-3" for="size">انتخاب--}}
-                                                {{--اندازه--}}
-                                                {{--های محصول :--}}
-                                            {{--</label>--}}
-                                        {{--</div>--}}
-                                    {{--</div>--}}
-                                    {{--<div>--}}
-                                    {{--<div class="col-md-12 margin-2 margin-bot-1">--}}
-                                    {{--<div class="col-md-5 col-sm-6 col-xs-9 col-md-offset-3 margin-1 padding-right-2"--}}
-                                    {{--id="size">--}}
-                                    {{--</div>--}}
-
-                                    {{--</div>--}}
-                                    {{--</div>--}}
                                 </div>
                             </div>
                         </div>
@@ -872,7 +834,9 @@
                                     text: x,
                                     type: "info",
                                 })
-                                setTimeout(function(){location.reload(true);},3000);
+                                setTimeout(function () {
+                                    location.reload(true);
+                                }, 3000);
                             },
                             error: function (xhr) {
                                 console.log(xhr)
@@ -1022,8 +986,13 @@
                             $(".currentPrice1").remove();
                             $(".currentPrice2").show();
                         }
-                        else if (editable.attr('name') == 'colors') {
-                            appendItem("[name='colors']", "color", "{{url('api/v1/getColors')}}");
+                        else if (editable.attr('name') == 'productModel') {
+                            $("#unit_count_parent").empty();
+                            $("#unit_count_parent").append(
+                                '<select id="editable"' +
+                                'class="form-control col-md-7 col-xs-12 editable my_units" name="unit_count" value="{{$products[0]->unit_count}}">' +
+                                '<option value="{{$products[0]->unit_count}}">{{$products[0]->unit_count}}</option></select>');
+                            loadUnits();
                         }
                         else if (editable.attr('name') == 'sizes') {
                             appendItem("[name='sizes']", "size", "{{url('api/v1/getSizes')}}");
@@ -1056,7 +1025,7 @@
                                 if (isConfirm) {
                                     //load all subCategory in select box in addProductForm
                                     $.ajax({
-                                        url: "{{url('admin/deleteProductPicture')}}/"+imageId,
+                                        url: "{{url('admin/deleteProductPicture')}}/" + imageId,
                                         type: 'get',
                                         dataType: "json",
                                         success: function (response) {
@@ -1114,6 +1083,75 @@
             })
         </script>
         <script>
+            //load product Models if there is no product Model in table redirect addModels
+            $.ajax({
+                cache: false,
+                url: "{{Url('api/v1/getModels')}}",
+                dataType: "json",
+                type: "get",
+                success: function (response) {
+                    console.log(response);
+                    if (response != 0) {
+                        var responses = response;
+                        var selectBoxId = '#productModel';
+                        var msgOpt1 = "لطفا حالت مورد نظر خود را انتخاب نمایید";
+                        var msgOpt2 = "اگر حالت مورد نظر در این لیست وجود ندارد این گزینه انتخاب نمایید";
+                        var valueOption2 = 0000;
+                        loadItems(responses, selectBoxId, msgOpt1, msgOpt2, valueOption2)
+                    }
+                    else {
+                        setTimeout(function(){location.href = '{{url("admin/addModels")}}';},1500);
+                    }
+                }
+            });
+            $('#productSizes').on("change", function () {
+                var id = $(this).val();
+                if (id == 0) {
+                    setTimeout(function(){location.href = '{{url("admin/addSizes")}}';},1500);
+                }
+            });
+            $('#productModel').on("change", function () {
+                var id = $(this).val();
+                if (id == 0) {
+                    setTimeout(function(){location.href = '{{url("admin/addModels")}}';},1500);
+                }
+                else {
+                    $.ajax
+                    ({
+                        cache: false,
+                        url: "{{Url('api/v1/getSizes')}}/" + id,
+                        dataType: "json",
+                        type: "get",
+                        success: function (response) {
+                            var responses = response;
+                            var selectBoxId = '#productSizes';
+                            var msgOpt1 = "لطفا اندازه مورد نظر خود را انتخاب نمایید";
+                            var msgOpt2 = "اگر اندازه مورد نظر در این لیست وجود ندارد این گزینه انتخاب نمایید";
+                            var valueOption2 = 0;
+                            loadSizes(responses, selectBoxId, msgOpt1, msgOpt2, valueOption2)
+                        }
+                    });
+                }
+            });
+            //load sizes in select box
+            function loadSizes(responses, selectBoxId, msgOption1, msgOption2, valueOption2) {
+                var item = $(selectBoxId);
+                item.empty();
+                item.append("<option selected='true' disabled='disabled'>" + msgOption1 + "</option>");
+                item.append("<option value='" + valueOption2 + "'>" + msgOption2 + "</option>");
+                console.log(responses);
+                $.each(responses, function (key, value) {
+                    if(value.sideways!="")
+                        item.append
+                        ("<option value='" + value.id + "' > ضلع " + value.sideways + "</option>");
+                    else if(value.width!="")
+                        item.append
+                        ("<option value='" + value.id + "' >" + value.width +" در "+ value.length + "</option>");
+                    else if(value.diameter!="")
+                        item.append
+                        ("<option value='" + value.id + "' > قطر " + value.diameter + "</option>");
+                });
+            }
             //9-load item in select box
             function loadItems(responses, selectBoxId, msgOption1, msgOption2, valueOption2) {
                 var item = $(selectBoxId);
@@ -1323,76 +1361,70 @@
             loadUnits();
         </script>
         <script>
-            $(document).on('click','#editVideo',function(){
-               // var DOM       = $(this).parentsUntil('#grandparent');
+            $(document).on('click', '#editVideo', function () {
+                // var DOM       = $(this).parentsUntil('#grandparent');
                 var productId = $(this).attr('content');
-                var editable  = $('#videoContent');
-                var me        = $(this);
-                if(editable.children().length > 0)
-                {
+                var editable = $('#videoContent');
+                var me = $(this);
+                if (editable.children().length > 0) {
                     swal({
-                        title: '',
-                        text: 'قبل از ویرایش فیلم محصول ابتدا باید آن را حذف نمائید  ، آیا مایل به انجام این کار هستید؟',
-                        type: "warning",
-                        showCancelButton: true,
-                        confirmButtonColor: "  #5cb85c",
-                        cancelButtonText: "خیر",
-                        confirmButtonText: "آری",
-                        closeOnConfirm: true,
-                        closeOnCancel: true
-                    },
+                            title: '',
+                            text: 'قبل از ویرایش فیلم محصول ابتدا باید آن را حذف نمائید  ، آیا مایل به انجام این کار هستید؟',
+                            type: "warning",
+                            showCancelButton: true,
+                            confirmButtonColor: "  #5cb85c",
+                            cancelButtonText: "خیر",
+                            confirmButtonText: "آری",
+                            closeOnConfirm: true,
+                            closeOnCancel: true
+                        },
                         function (isConfirm) {
                             if (isConfirm) {
                                 $.ajax
                                 ({
-                                    url      : "{{url('admin/deleteVideo')}}",
-                                    type     : "get",
-                                    dataType : "json",
-                                    data     : {'productId' : productId },
-                                    context  : {'me' : me},
-                                    success  : function(response)
-                                    {
-                                        if(response.message == 'success')
-                                        {
-                                           $('#video').css('display','none');
-                                           $('#newVideo').css('display','block');
-                                           $(me).attr('id','edit');
-                                           $(me).attr('name','edit');
-                                        }else
-                                            {
-                                                swal({
-                                                    title: '',
-                                                    text: 'خطایی رخ داده است ، با بخش پشتیبانی تماس بگیرید',
-                                                    type: "warning",
-                                                })
-                                            }
-                                    },error  : function(error)
-                                    {
+                                    url: "{{url('admin/deleteVideo')}}",
+                                    type: "get",
+                                    dataType: "json",
+                                    data: {'productId': productId},
+                                    context: {'me': me},
+                                    success: function (response) {
+                                        if (response.message == 'success') {
+                                            $('#video').css('display', 'none');
+                                            $('#newVideo').css('display', 'block');
+                                            $(me).attr('id', 'edit');
+                                            $(me).attr('name', 'edit');
+                                        } else {
+                                            swal({
+                                                title: '',
+                                                text: 'خطایی رخ داده است ، با بخش پشتیبانی تماس بگیرید',
+                                                type: "warning",
+                                            })
+                                        }
+                                    }, error: function (error) {
                                         console.log(error);
                                     }
                                 })
                             }
                         }
-                );
-                }else
-                    {
+                    );
+                } else {
 
-                    }
+                }
             })
         </script>
+
         <script>
-            $(document).on('click','#playVideo',function(){
+            $(document).on('click', '#playVideo', function () {
 
                 var video = document.getElementById('video');
-                if(video != null)
-                {
+                if (video != null) {
                     video.play();
                     $(this).hide();
                     $('#pauseVideo').show();
                 }
 
             })
-            $(document).on('click','#pauseVideo',function(){
+            $(document).on('click', '#pauseVideo', function () {
                 $(this).hide();
                 $('#playVideo').show();
                 var video = document.getElementById('video');
