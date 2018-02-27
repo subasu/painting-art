@@ -414,19 +414,19 @@
                                                 <div class="page-content checkout-page">
 
                                                     <div class="clearfix reserve_form">
-                                                        <input type="text" name="cellphone"
+                                                        <input type="text" maxlength="11" name="userCellphone" id="userCellphone"
                                                                class="validate['required'] textbox1 yekan a-right"
                                                                placeholder="* تلفن همراه : "
                                                                onfocus="this.placeholder = ''"
                                                                onBlur="this.placeholder = '* تلفن همراه :'"/>
-                                                        <input type="text" id="password" name="password" type="password"
+                                                        <input type="text"  name="userCoordination" id="userCoordination"
                                                                class="validate['required','phone']  textbox1 yekan a-right"
                                                                placeholder="* رمز عبور : " onFocus="this.placeholder = ''"
                                                                onBlur="this.placeholder = '* آدرس :'"/>
 
                                                     </div>
                                                     <div class="clearfix reserve_form margin-b-8">
-                                                        <textarea name="address" id="address"
+                                                        <textarea name="comments" id="comments"
                                                                   class="validate['required'] messagebox1 yekan a-right"
                                                                   placeholder=" آدرس : " onFocus="this.placeholder = ''"
                                                                   onBlur="this.placeholder = ' توضیحات مشتری :'"></textarea>
@@ -535,7 +535,7 @@
                                                    placeholder="* تلفن همراه : "
                                                    onfocus="this.placeholder = ''"
                                                    onBlur="this.placeholder = '* تلفن همراه :'"/>
-                                            <input type="text" id="password" name="password" type="password"
+                                            <input id="password" name="password" type="password"
                                                    class="validate['required','phone']  textbox1 yekan a-right"
                                                    placeholder="* رمز عبور : " onFocus="this.placeholder = ''"
                                                    onBlur="this.placeholder = '* رمز عبور :'"/>
@@ -977,8 +977,6 @@
                         type: "info",
                         confirmButtonText: "بستن"
                     })
-                    console.log(data);
-
                 },
                 error: function (response) {
                     if (response.status == 422) {
