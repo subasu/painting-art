@@ -1231,8 +1231,9 @@ Home Page
     background: rgba(243, 42, 42, 0.95);
     color: #fff;
     border-style: none;
-    font-family: 'Carrois Gothic SC', sans-serif;
     font-size: 13px;
+    font-family: 'yekan' !important;
+
     padding: 10px 20px;
     margin-top: 10px;
     display: inline-block;
