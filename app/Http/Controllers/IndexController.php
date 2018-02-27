@@ -9,10 +9,12 @@ use App\Models\CategoryProduct;
 use App\Models\City;
 use App\Models\GoogleMap;
 use App\Models\Logo;
+use App\Models\Modol;
 use App\Models\PaymentType;
 use App\Models\Product;
 use App\Models\Role;
 use App\Models\Service;
+use App\Models\Size;
 use App\Models\Slider;
 use App\User;
 use Illuminate\Http\Request;
@@ -302,11 +304,31 @@ class IndexController extends Controller
         {
             $product->image_src=$img->image_src;
         }
-        foreach($product->productFlags as $flag)
-        {
-            if($flag->active == 1)
-            $product->price=$flag->price;
+        foreach($product->productFlags as $flag) {
+            if ($flag->active == 1)
+                $product->price = $flag->price;
         }
+        $sizeName='';
+        $modelName='';
+        if(!empty($product->productSizes))
+        {
+            foreach ($product->productSizes as $pr)
+            {
+                $modelName = Modol::find($product->productSizes->model_id)->title;
+                $productSize = Size::find($product->productSizes->size_id);
+                if ($productSize->width !="") {
+                    $sizeName = $productSize->width . ' در ' . $productSize->length;
+                }
+                elseif ($productSize->diameter !="") {
+                    $sizeName =  ' قطر ' . $productSize->diameter;
+                }
+                elseif ($productSize->sideways !="") {
+                    $sizeName =  ' ضلع ' . $productSize->sideways;
+                }
+            }
+        }
+        $product->sizeName=$sizeName;
+        $product->modelName=$modelName;
         return response()->json(['product'=>$product]);
     }
 

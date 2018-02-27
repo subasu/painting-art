@@ -187,7 +187,7 @@ class UpdateProduct
         //save model and model Size product in product size table
         if(!empty($product->productModel) && !empty($product->productSizes))
         {
-            $productId = CategoryProduct::where('product_id', '=', $pId)->value('id');
+            $productId = productSize::where('product_id', '=', $lastProductId)->value('id');
             $update = productSize::find($productId);
             $update->product_id = $lastProductId;
             $update->size_id = $product->productSizes;

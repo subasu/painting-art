@@ -118,7 +118,7 @@
         <!--Home Page
         =============================-->
         <div id="home" class="item">
-            <img src="{{URL::asset('public/main/img/2.jpg')}}" alt="رستوران نیمکت داغ" class="fullBg">
+            <img src="{{URL::asset('public/main/img/2.jpg')}}" alt="گالری هنری" class="fullBg">
             <div class="clearfix">
                 <div class="header_details">
                     <div class="container">
@@ -214,7 +214,7 @@
         <!--About us
         =============================-->
         <div id="about" class="item" style="background-color:#999999;">
-            <img src="{{URL::asset('public/main/img/12.jpg')}}" alt="رستوران نیمکت داغ" class="fullBg">
+            <img src="{{URL::asset('public/main/img/12.jpg')}}" alt="گالری هنری نقاشی" class="fullBg">
             <div class="content">
                 <div class="content_overlay"></div>
                 <div class="content_inner">
@@ -250,7 +250,7 @@
         <!--Menu with image small
         =============================-->
         <div id="category" class="item">
-            <img src="{{URL::asset('public/main/img/10.jpg')}}" alt="سایت هنری" class="fullBg">
+            <img src="{{URL::asset('public/main/img/10.jpg')}}" alt="گالری هنری نقاشی " class="fullBg">
             <div class="content">
                 <div class="content_overlay"></div>
                 <div class="content_inner">
@@ -953,18 +953,17 @@
                 console.log(response);
                 var x='';
                 x = '<div class="row">' +
-                    '<div class="col-md-6">' +
-
-                    '<div id="myCarousel" class="carousel slide" data-ride="carousel"> '+                   <!-- Indicators -->
-                    '<ol class="carousel-indicators">';
-                     $.each(response.product.product_images, function (key, value) {
-                         if(key==0)
-                            x+='<li data-target="#myCarousel" data-slide-to="0" class="active"></li>';
-                         else
-                             x+='<li data-target="#myCarousel" data-slide-to="'+key+'"></li>';
-                });
-//                    '<li data-target="#myCarousel" data-slide-to="2"></li>'+
-                    x+='</ol>'+
+                    '<div class="col-md-5 col-md-offset-1">' +
+                    '<div id="myCarousel" class="carousel slide" data-ride="carousel"> ' +
+                    <!-- Indicators -->
+//                    '<ol class="carousel-indicators">';
+//                     $.each(response.product.product_images, function (key, value) {
+//                         if(key==0)
+//                            x+='<li data-target="#myCarousel" data-slide-to="0" class="active"></li>';
+//                         else
+//                             x+='<li data-target="#myCarousel" data-slide-to="'+key+'"></li>';
+//                });
+//                    x+='</ol>'+
                     '<div class="carousel-inner">';
                 $.each(response.product.product_images, function (key, value) {
                     if(key==0)
@@ -988,11 +987,10 @@
                     '<span class="sr-only">بعدی</span>'+
                     '</a>'+
                     '</div>'+
-
-//                    '<img src="public/dashboard/productFiles/picture/' + response.product.image_src + '"  alt="a">' +
                     '</div><br>' +
-                    '<div class="col-md-5">' + response.product.description + "<br>" + formatNumber(response.product.price) +
-                    '<span>تومان</span><div class="add-to-cart">' +
+                    '<div class="col-md-5"> شرح اثر : ' + response.product.description + "<br>قیمت اثر : " + formatNumber(response.product.price) +
+                        '<span>تومان</span><br>اندازه و حالت بوم : ' + response.product.modelName + ' - ' + response.product.sizeName +
+                    '<div class="add-to-cart">' +
                     '<button class="button  nav-link yekan pull-left" content="' + response.product.price + '" id="addToBasket" name="' + response.product.id + '">' +
                     '<span></span>افزودن به سبد خرید' +
                     '</button>' +
@@ -1042,7 +1040,10 @@
                         x += '</div></div>' +
                             '</div></div>';
                         myProductsDiv.append(x);
+
                     });//end each
+                    myProductsDiv.append('<a class="button nav-link yekan" href="#category"> انتخاب دسته <i class="fa fa-arrow-left"></i></a>');
+
                 },
                 error: function (error) {
                     $("#myProducts").html(error);
