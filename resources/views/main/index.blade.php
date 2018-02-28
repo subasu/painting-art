@@ -5,7 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="csrf-token" id="token" content="{{ csrf_token() }}">
     <title>نقاشی کوبیسم</title>
     <meta name="description" content="سایت"/>
     <meta name="keywords" content="تابلو نقاشی،کوبیسم،سایت فروش آثار هنری و نقاشی، اثر هنری کوبیسم، سبک کوبیسم"/>
@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="{{URL::asset('public/main/css/animate.min.css')}}" type="text/css"/>
 
     <link rel="stylesheet" href="{{URL::asset('public/css/persianDatepicker-default.css')}}"/>
-    <link rel="stylesheet" type="text/css" href="{{URL::asset('public/css/sweetalert.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{URL::asset('public/css/sweetalert-site.css')}}">
     <!--Menu-->
 
     <link rel="stylesheet" href="{{URL::asset('public/main/css/menu.css')}}" type="text/css"/>
@@ -97,7 +97,7 @@
                                     <li><a href="#about" class="nav-link">درباره ما</a></li>
                                     <li><a href="#category" class="nav-link">محصولات<span class="sub-toggle"></span></a>
                                     </li>
-                                    <li dir="rtl"><a href="#shopCart" class="shopCart nav-link">سبد خرید<span
+                                    <li dir="rtl"><a href="#shopCart" class="shopCart nav-link">سبد خرید <span
                                                     class="sub-toggle"></span><b>[</b><b id="basketCount"> </b><b>]</b></a>
                                     </li>
                                     <li><a href="#gallery" class="nav-link">گالری</a></li>
@@ -341,7 +341,7 @@
                                     <div class="col-md-12" id="myProducts">
                                         <h4 class="yekan a-right">
                                             ابتدا دسته ی مورد نظر را انتخاب نمایید <br/><br><a
-                                                    class="button nav-link yekan" href="#category"> انتخاب دسته <i
+                                                    class="button nav-link yekan" href="#category "> انتخاب دسته <i
                                                         class="fa fa-arrow-left"></i>
                                             </a>
                                         </h4>
@@ -357,40 +357,6 @@
             </div>
         </div>
         <!-- // products with image small
-        =============================-->
-
-        <!-- shopCart
-        =============================-->
-        <div id="shopCart" class="item">
-            <img src="{{URL::asset('public/main/img/map.jpg')}}" alt="the Paxton Gipsy Hill" class="fullBg">
-            <div class="content">
-
-                <div class="content_overlay"></div>
-                <div class="content_inner">
-                    <div class="row contentscroll">
-                        <div class="container">
-                            <div class="col-md-6 empty">&nbsp;</div>
-                            <div class="col-md-6 content_text">
-                                <div class="clearfix">
-                                    <h1 class="yekan a-right">سبد خرید شما
-                                         <a class="button nav-link yekan pull-left" id="showOrders" href="#orders"> ثبت سفارشات سبد خرید <i
-                                                    class="fa fa-arrow-left"></i>
-                                        </a></h1>
-                                    <div class="clearfix content_space">
-                                        <div class="clearfix location_content content_space">
-                                            <div id="cartContent" class="col-md-12"></div>
-                                            {{-- filled by ajax --}}
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- // shopCart
         =============================-->
         <!-- orders
         =============================-->
@@ -414,14 +380,16 @@
                                                 <div class="page-content checkout-page">
 
                                                     <div class="clearfix reserve_form">
-                                                        <input type="text" maxlength="11" name="userCellphone" id="userCellphone"
+                                                        <input type="text" maxlength="11" name="userCellphone"
+                                                               id="userCellphone"
                                                                class="validate['required'] textbox1 yekan a-right"
                                                                placeholder="* تلفن همراه : "
                                                                onfocus="this.placeholder = ''"
                                                                onBlur="this.placeholder = '* تلفن همراه :'"/>
-                                                        <input type="text"  name="userCoordination" id="userCoordination"
+                                                        <input type="text" name="userCoordination" id="userCoordination"
                                                                class="validate['required','phone']  textbox1 yekan a-right"
-                                                               placeholder="* رمز عبور : " onFocus="this.placeholder = ''"
+                                                               placeholder="* رمز عبور : "
+                                                               onFocus="this.placeholder = ''"
                                                                onBlur="this.placeholder = '* آدرس :'"/>
 
                                                     </div>
@@ -433,36 +401,37 @@
                                                     </div>
                                                     <div id="orderContent" class="col-md-12"></div>
                                                     <div class="box-border" style="border-color: #0a0a0a;">
-{{--                                                        @if(!empty($baskets))--}}
-                                                            <table id="orderTable" class="table table-bordered table-responsive cart_summary rtl">
-                                                                <tr>
-                                                                    <td colspan="5"> جمع کل قیمت ها (تومان)</td>
-{{--                                                                    <td colspan="5" >{{number_format($total)}}</td>--}}
-                                                                    {{--<input type="hidden" name="totalPrice" value="{{$total}}">--}}
-                                                                </tr>
-                                                                <tr>
-                                                                    <td colspan="5">مجموع تخفیف ها (تومان)</td>
-{{--                                                                    <td colspan="5" >{{number_format($basket->sumOfDiscount)}}</td>--}}
-                                                                    {{--<input type="hidden" name="discountPrice" value="{{$basket->sumOfDiscount}}">--}}
-                                                                </tr>
-                                                                <tr>
-                                                                    <td colspan="5">مجموع هزینه های پست (تومان)</td>
-{{--                                                                    <td colspan="5" >{{number_format($totalPostPrice)}}</td>--}}
-                                                                    {{--<input type="hidden" name="postPrice" value="{{$totalPostPrice}}">--}}
-                                                                </tr>
-                                                                <tr>
-                                                                    <td colspan="5">قیمت نهایی (تومان)</td>
-                                                                    {{--<td colspan="5" >{{number_format($finalPrice)}}</td>--}}
-{{--                                                                    <input type="hidden" name="factorPrice" value="{{$finalPrice}}">--}}
-                                                                </tr>
+                                                        <table id="orderTable"
+                                                               class="table table-bordered table-responsive cart_summary rtl">
+                                                            <tr>
+                                                                <td colspan="5"> جمع کل قیمت ها (تومان)</td>
+                                                                <td colspan="5" id="totalPrice"></td>
+                                                                <input type="hidden" name="totalPrice" value="">
+                                                            </tr>
+                                                            <tr>
+                                                                <td colspan="5">مجموع تخفیف ها (تومان)</td>
+                                                                <td colspan="5" id="discountPrice"></td>
+                                                                <input type="hidden" name="discountPrice" value="">
+                                                            </tr>
+                                                            <tr>
+                                                                <td colspan="5">مجموع هزینه های پست (تومان)</td>
+                                                                <td colspan="5" id="postPrice"></td>
+                                                                <input type="hidden" name="postPrice" value="">
+                                                            </tr>
+                                                            <tr>
+                                                                <td colspan="5">قیمت نهایی (تومان)</td>
+                                                                <td colspan="5" id="factorPrice"></td>
+                                                                <input type="hidden" name="factorPrice" value="">
+                                                            </tr>
 
-                                                            </table>
-                                                        {{--@endif--}}
-                                                        <button type="button" class="col-md-6 button pull-right" style="margin-right: 25%;" id="orderRegistration">ثبت سفارش</button>
+                                                        </table>
+                                                        <button type="button" class="col-md-6 button pull-right"
+                                                                style="margin-right: 25%;" id="orderRegistration">ثبت
+                                                            سفارش
+                                                        </button>
                                                     </div>
                                                 </div>
                                             </form>
-
                                         </div>
                                     </div>
                                 </div>
@@ -474,6 +443,43 @@
         </div>
         <!-- // orders
         =============================-->
+        <!-- shopCart
+        =============================-->
+        <div id="shopCart" class="item">
+            <img src="{{URL::asset('public/main/img/map.jpg')}}" alt="the Paxton Gipsy Hill" class="fullBg">
+            <div class="content">
+
+                <div class="content_overlay"></div>
+                <div class="content_inner">
+                    <div class="row contentscroll">
+                        <div class="container">
+                            <div class="col-md-6 empty">&nbsp;</div>
+                            <div class="col-md-6 content_text">
+                                <div class="clearfix">
+                                    <h1 class="yekan a-right" dir="rtl"> سبد خرید شما:
+                                        <a class="button nav-link yekan pull-left" id="showOrders" href="#orders"> ثبت
+                                            سفارشات سبد خرید <i
+                                                    class="fa fa-arrow-left"></i>
+                                        </a></h1>
+                                    <h2><span>مجموع: </span><span id="orderTotal">0</span><span> تومان </span></h2>
+
+                                    <div class="clearfix content_space">
+                                        <div class="clearfix location_content content_space">
+                                            <div id="cartContent" class="col-md-12"></div>
+                                            {{-- filled by ajax --}}
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- // shopCart
+        =============================-->
+
 
         <!--Gallery
         =============================-->
@@ -535,19 +541,20 @@
                                                    placeholder="* تلفن همراه : "
                                                    onfocus="this.placeholder = ''"
                                                    onBlur="this.placeholder = '* تلفن همراه :'"/>
-                                            <input id="password" name="password" type="password"
+                                            <input name="password" type="password"
                                                    class="validate['required','phone']  textbox1 yekan a-right"
                                                    placeholder="* رمز عبور : " onFocus="this.placeholder = ''"
                                                    onBlur="this.placeholder = '* رمز عبور :'"/>
-                                            <i class="fa fa-refresh fa-lg fa-2x captcha-reload col-md-1" height="50"
-                                               width="50"></i>
-                                            <img class="captcha col-md-4" alt="captcha.png" id="captcha-image"/>
-                                            <input type="" name="phone"
-                                                   class="validate['required']  textbox1 yekan a-right " id="captcha"
-                                                   placeholder="* کد امنیتی : " onFocus="this.placeholder = ''"
-                                                   onBlur="this.placeholder = '* کد امنیتی :'"/>
-                                            <input id="loginUser" value="ورود" name="Confirm" type="button"
-                                                   class="submitBtn yekan a-right">
+                                            <div class="margin-top-2">
+                                                <i class="fa fa-refresh fa-lg fa-2x captcha-reload col-md-1" height="50"
+                                                   width="50"></i>
+                                                <img class="captcha col-md-4" alt="captcha.png" id="captcha-image"/>
+                                                <input name="phone" id="captcha"
+                                                       class="validate['required']  textbox1 yekan a-right"
+                                                       placeholder="* کد امنیتی : " onFocus="this.placeholder = ''"
+                                                       onBlur="this.placeholder = '* کد امنیتی :'"/>
+                                                <input id="loginUser" value="ورود" name="Confirm" type="button"
+                                                       class="submitBtn yekan a-right"></div>
                                         </div>
                                     </form>
                                 </div>
@@ -1144,46 +1151,43 @@
 </script>
 <!-- below script is related to add to basket and basket count -->
 <script>
-    basketCountNotify();basketTotalPrice();
+    basketCountNotify();
+    basketTotalPrice();
     //below function is related to get total price
-    function basketTotalPrice()
-    {
+    function basketTotalPrice() {
         var token = $('#token').val();
         $.ajax
         ({
-            url         : "{{url('user/getBasketTotalPrice')}}",
-            type        : "get",
-            dataType    : "json",
-            data        : {'_token' : token},
-            success     : function(response)
-            {
-                console.log(response);
-                $('.total').text(formatNumber(response) + ' ' + 'تومان'  );
-                $('#orderTotal').text(formatNumber(response) + ' ' + 'تومان'  );
+            url: "{{url('user/getBasketTotalPrice')}}",
+            type: "get",
+            dataType: "json",
+            data: {'_token': token},
+            success: function (response) {
+                $('.total').text(formatNumber(response));
+                if(response>0)
+                $('#orderTotal').text(formatNumber(response));
+                else
+                $('#orderTotal').text(0);
             },
-            error       : function (error) {
+            error: function (error) {
                 console.log(error);
             }
 
         });
     }
     //below function is related to get basket count
-    function basketCountNotify()
-    {
+    function basketCountNotify() {
         var token = $('#token').val();
         $.ajax
         ({
-            url         : "{{url('user/getBasketCountNotify')}}",
-            type        : "get",
-            dataType    : "json",
-            data        : {'_token' : token},
-            success     : function(response)
-
-            {
+            url: "{{url('user/getBasketCountNotify')}}",
+            type: "get",
+            dataType: "json",
+            data: {'_token': token},
+            success: function (response) {
                 $('#basketCount').text(response);
-//                handlePayButton(response);
             },
-            error       : function (error) {
+            error: function (error) {
                 console.log(error);
             }
 
@@ -1194,6 +1198,13 @@
         var productFlag = $(this).attr('content');
         var productId = $(this).attr('name');
         var token = $('#token').val();
+        var orderTotal = $('#orderTotal');
+        var orderTotalPrice = orderTotal.text();
+        orderTotalPrice = orderTotalPrice.replace(',', '');
+        orderTotalPrice = orderTotalPrice.replace(',', '');
+        orderTotalPrice = orderTotalPrice.replace(',', '');
+        orderTotalPrice = orderTotalPrice.replace(',', '');
+        orderTotal.text(parseInt(productFlag) + parseInt(orderTotalPrice));
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -1214,8 +1225,9 @@
                         addclass: "stack-custom",
                         type: "success",
                         stack: myStack
-                    })
+                    });
                     basketCountNotify();
+                    loadShopCart('#orderContent');//when site loaded
                 } else {
                     var myStack = {"dir1": "down", "dir2": "right", "push": "top"};
                     new PNotify({
@@ -1256,28 +1268,26 @@
                 var cartContent = $(id);
                 cartContent.html('');
                 $.each(response.baskets.products, function (key, value) {
-console.log(response.baskets.products);
-                    if(id=='#cartContent')
-                    {
-                        var x = '<div class="row margin-b-8">'+
-                        '<div class="row col-md-5 location-btns">' +
-                        '<div class="location map-link"><a class="button removeItem"><i class="fa fa-times "></i></a></div>' +
-                        '<div class="location"><a class="button addToCount" content="' + value.id + '" name="' + value.basket_id + '"><i class="fa fa-arrow-up"></i></a></div>' +
-                        '<div class="location subFromCo unt" id="subFromCount"><a class="button " content="' + value.id + '" name="' + value.basket_id + '"><i class="fa fa-arrow-down"></i></a></div>' +
-                        '</div>' + '<div class="row col-md-7">' +
-                        '<div class="location-address-wrap">' +
-                        '<h3 class="border_bottom yekan a-right"><b class="">نام محصول :</b>' + value.title + '</h3>' +
-                        '<div class="clearfix location-street a-right yekan"><b class="">توضیحات  :</b>' + value.description + '</div>' +
-                        '<div class="clearfix location-phone a-right yekan"><b class="">قیمت اصلی :</b>' + formatNumber(value.price) + ' تومان<br/>' +
-                        '<b class="">تعداد :</b>' + value.count + '</div>' +
-                        '<div class="clearfix location-cateringlink a-right yekan"><b class="">جمع کل  :</b>' + formatNumber(value.sum) +
-                        ' تومان </div>' +
-                        '</div>' +
-                        '</div><br>' +
-                        '</div>';
+                    if (id == '#cartContent') {
+                        var x = '<div class="row margin-b-8 basketItem-' + value.id + '">' +
+                            '<div class="row col-md-5 location-btns">' +
+                            '<div class="location map-link"><a class="button removeItem" onclick="removeBasketItem(' + value.id + ',' + value.basket_id + ',' + value.price * value.count + ')"><i class="fa fa-times "></i></a></div>' +
+                            '<div class="location"><a class="button addToCount" onclick="addToProductCount(' + value.id + ',' + value.basket_id + ',' + value.price + ')"><i class="fa fa-arrow-up"></i></a></div>' +
+                            '<div class="location subFromCo unt" id="subFromCount"><a class="button " onclick="subFromProductCount(' + value.id + ',' + value.basket_id + ',' + value.price + ')"><i class="fa fa-arrow-down"></i></a></div>' +
+                            '</div>' + '<div class="row col-md-7">' +
+                            '<div class="location-address-wrap">' +
+                            '<h3 class="border_bottom yekan a-right"><b class="">نام محصول :</b>' + value.title + '</h3>' +
+                            '<div class="clearfix location-street a-right yekan"><b class="">توضیحات  :</b>' + value.description + '</div>' +
+                            '<div class="clearfix location-phone a-right yekan"><b class="">قیمت اصلی :</b>' + formatNumber(value.price) + ' تومان<br/>' +
+                            '<b class="">تعداد :</b><b class="totalProductCount-' + value.id + '">' + value.count + '</b></div>' +
+                            '<div class="clearfix location-cateringlink a-right yekan"><b >جمع کل  :</b><b class="totalProductPrice-' + value.id + '">' + formatNumber(value.sum) +
+                            '</b> تومان </div>' +
+                            '</div>' +
+                            '</div><br>' +
+                            '</div>';
                     }
-                    else{
-                        var x='<div class="col-md-6 pull-right">' +
+                    else {
+                        var x = '<div class="col-md-6 pull-right">' +
                             '<div class="location-address-wrap">' +
                             '<h3 class="border_bottom yekan a-right"><b class="">نام محصول :</b>' + value.title + '</h3>' +
                             '<div class="clearfix location-street a-right yekan"><b class="">توضیحات  :</b>' + value.description + '</div>' +
@@ -1286,88 +1296,113 @@ console.log(response.baskets.products);
                             '<div class="clearfix location-cateringlink a-right yekan"><b class="">جمع کل  :</b>' + formatNumber(value.sum) +
                             ' تومان </div>' +
                             '</div>' +
-                            '</div>' ;
+                            '</div>';
                     }
                     cartContent.append(x);
                 });
             }
-        })
+        });
+//        if (id === '#orderContent') {
+            $.ajax({
+                dataType: "json",
+                url: "{{url('order')}}"+'/'+'orderDetail',
+                cashe: false,
+                type: "get",
+                success: function (response) {
+                    console.log('1'+response)
+                    $('.factorPrice').text();
+                    $('.discountPrice').text();
+                    $('.totalPrice').text();
+                    $('.postPrice').text();
+                }
+            });
+//        }
+//        else {
+//            console.log('1jj')
+//        }
+
     }
-    $(document).ready(function () {
-        $(".shopCart").click(function () {
-            loadShopCart('#cartContent');//when menu clicked
-        });
-        $(".showOrders").click(function () {
-            loadShopCart('#orderContent');//when menu clicked
-        });
-        loadShopCart('#cartContent');//when site loaded
-        loadShopCart('#orderContent');//when site loaded
+    //    $(document).ready(function () {
+    $(".shopCart").click(function () {
+        loadShopCart('#cartContent');//when menu clicked
     });
+    $(".showOrders").click(function () {
+        loadShopCart('#orderContent');//when menu clicked
+    });
+    loadShopCart('#cartContent');//when site loaded
+    loadShopCart('#orderContent');//when site loaded
+    //    });
 </script>
 <!-- below script is related to handle subFromCount  -->
 <script>
     //$('.subFromCount').each(function () {
-        $('.subFromCount').on('click', function () {
-            alert("111111");
-            var productId = $(this).attr('content');
-            var basketId = $(this).attr('name');
-            var token = $('#token').val();
-            var count = $(this).closest('td').find('input.input-sm').val();
-            var unitPrice = $(this).closest('td').prev('td').attr('content');
-            var td = $(this);
-            $(td).css('pointer-events', 'none');
-            $(td).css('color', '#adaaaa');
-            if (count == 1) {
-                swal({
-                    title: "",
-                    text: 'در صورتی که می خواهید کالایی را از سبد خرید حذف کنید می بایست دکمه حذف را بزنید',
-                    type: "warning",
-                    confirmButtonText: "بستن"
-                });
-                setTimeout(function () {
-                    $(td).css('pointer-events', '');
-                }, 5000);
-                return false;
-            } else {
-                $.ajax
-                ({
-                    url: "{{url('user/addOrSubCount')}}",
-                    type: "post",
-                    data: {'_token': token, 'productId': productId, 'basketId': basketId, 'parameter': 'subFromCount'},
-                    context: td,
-                    dataType: "json",
-                    success: function (response) {
+    {{--$('.subFromCount').on('click', function () {--}}
+    {{--alert("111111");--}}
+    {{--var productId = $(this).attr('content');--}}
+    {{--var basketId = $(this).attr('name');--}}
+    {{--var token = $('#token').val();--}}
+    {{--var count = $(this).closest('td').find('input.input-sm').val();--}}
+    {{--var unitPrice = $(this).closest('td').prev('td').attr('content');--}}
+    {{--var td = $(this);--}}
+    {{--$(td).css('pointer-events', 'none');--}}
+    {{--$(td).css('color', '#adaaaa');--}}
+    {{--if (count == 1) {--}}
+    {{--swal({--}}
+    {{--title: "",--}}
+    {{--text: 'در صورتی که می خواهید کالایی را از سبد خرید حذف کنید می بایست دکمه حذف را بزنید',--}}
+    {{--type: "warning",--}}
+    {{--confirmButtonText: "بستن"--}}
+    {{--});--}}
+    {{--setTimeout(function () {--}}
+    {{--$(td).css('pointer-events', '');--}}
+    {{--}, 5000);--}}
+    {{--return false;--}}
+    {{--} else {--}}
+    {{--$.ajax--}}
+    {{--({--}}
+    {{--url: "{{url('user/addOrSubCount')}}",--}}
+    {{--type: "post",--}}
+    {{--data: {'_token': token, 'productId': productId, 'basketId': basketId, 'parameter': 'subFromCount'},--}}
+    {{--context: td,--}}
+    {{--dataType: "json",--}}
+    {{--success: function (response) {--}}
 
-                        if (response.code == 1) {
+    {{--if (response.code == 1) {--}}
 
-                            $(td).closest('td').find('input.input-sm').val(--count);
-                            var newCount = $(td).closest('td').find('input.input-sm').val();
-                            var sum = unitPrice * newCount;
-                            $(td).closest('td').next('td').text(formatNumber(sum) + 'تومان');
-                            basketTotalPrice();
-                            setTimeout(function () {
-                                $(td).css('pointer-events', '');
-                                $(td).css('color', '#666');
-                            }, 5000);
+    {{--$(td).closest('td').find('input.input-sm').val(--count);--}}
+    {{--var newCount = $(td).closest('td').find('input.input-sm').val();--}}
+    {{--var sum = unitPrice * newCount;--}}
+    {{--$(td).closest('td').next('td').text(formatNumber(sum) + 'تومان');--}}
+    {{--basketTotalPrice();--}}
+    {{--setTimeout(function () {--}}
+    {{--$(td).css('pointer-events', '');--}}
+    {{--$(td).css('color', '#666');--}}
+    {{--}, 5000);--}}
 
-                        }
-                    }, error: function (error) {
-                        console.log(error);
-                    }
-                });
-            }
-        })
+    {{--}--}}
+    {{--}, error: function (error) {--}}
+    {{--console.log(error);--}}
+    {{--}--}}
+    {{--});--}}
+    {{--}--}}
+    {{--})--}}
     //})
 
 </script>
 <!-- below script is related to remove item from basket -->
 <script>
-    $(document).on('click', '.removeItem', function () {
-        var productId = $(this).attr('name');
-        var basketId = $(this).attr('content');
-         $.ajaxSetup({
+    // removeBasketItem and update shop cart and total price
+    // called by onclick
+    function removeBasketItem(productId, basketId, price) {
+        var orderTotal = $('#orderTotal');
+        var orderTotalPrice = orderTotal.text();
+        orderTotalPrice = orderTotalPrice.replace(',', '');
+        orderTotalPrice = orderTotalPrice.replace(',', '');
+        orderTotalPrice = orderTotalPrice.replace(',', '');
+        orderTotalPrice = orderTotalPrice.replace(',', '');
+        $.ajaxSetup({
             headers: {
-                'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
         $.ajax
@@ -1384,9 +1419,153 @@ console.log(response.baskets.products);
                         type: "success",
                         confirmButtonText: "بستن"
                     });
-                    setTimeout(function () {
-                        window.location.reload(true);
-                    }, 5000);
+                    var t=formatNumber(orderTotalPrice - price)
+                    if(t<0)
+                    $('#orderTotal').text('0');
+                    else
+                    $('#orderTotal').text(t);
+                    $('.basketItem-' + productId).remove();
+                    basketCountNotify();
+
+                } else {
+                    swal({
+                        title: "",
+                        text: response.message,
+                        type: "warning",
+                        confirmButtonText: "بستن"
+                    });
+                }
+            }
+
+        });
+    }
+    //    sub from Product Count in basket cart and update essential tag ...total prices and count
+    //    called by onclick
+    function subFromProductCount(productId, basketId,price) {
+        var orderTotal = $('#orderTotal');
+        var orderTotalPrice = orderTotal.text();
+        orderTotalPrice = orderTotalPrice.replace(',', '');
+        orderTotalPrice = orderTotalPrice.replace(',', '');
+        orderTotalPrice = orderTotalPrice.replace(',', '');
+        orderTotalPrice = orderTotalPrice.replace(',', '');
+        var totalCountTag=$('.totalProductCount-' + productId);
+        var totalCount=totalCountTag.text();
+        var totalPriceTag=$('.totalProductPrice-' + productId);
+        var totalPrice=totalPriceTag.text();
+        totalPrice = totalPrice.replace(',', '');
+        totalPrice = totalPrice.replace(',', '');
+        totalPrice = totalPrice.replace(',', '');
+        totalPrice = totalPrice.replace(',', '');
+        if (totalCount == 1) {
+            swal({
+                title: "",
+                text: 'در صورتی که می خواهید کالایی را از سبد خرید حذف کنید می بایست دکمه حذف را بزنید',
+                type: "warning",
+                confirmButtonText: "بستن"
+            });
+            return false;
+        } else {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $.ajax
+            ({
+                url: "{{url('user/addOrSubCount')}}",
+                type: "post",
+                data: { 'productId': productId, 'basketId': basketId, 'parameter': 'subFromCount'},
+                dataType: "json",
+                success: function (response) {
+
+                    if (response.code == 1) {
+                        totalPriceTag.text(formatNumber(totalPrice - price));
+                        $('#orderTotal').text(formatNumber(orderTotalPrice - price));
+                        totalCountTag.text(totalCount-1);
+                    }
+                }, error: function (error) {
+                    console.log(error);
+                }
+            });
+        }
+    }
+//    add To Product Count in basket cart and update essential tag ...total prices and count
+//    called by onclick
+
+    function addToProductCount(productId, basketId,price) {
+        var orderTotal = $('#orderTotal');
+        var orderTotalPrice = orderTotal.text();
+        orderTotalPrice = orderTotalPrice.replace(',', '');
+        orderTotalPrice = orderTotalPrice.replace(',', '');
+        orderTotalPrice = orderTotalPrice.replace(',', '');
+        orderTotalPrice = orderTotalPrice.replace(',', '');
+        var totalCountTag=$('.totalProductCount-' + productId);
+        var totalCount=totalCountTag.text();
+        var totalPriceTag=$('.totalProductPrice-' + productId);
+        var totalPrice=totalPriceTag.text();
+        totalPrice = totalPrice.replace(',', '');
+        totalPrice = totalPrice.replace(',', '');
+        totalPrice = totalPrice.replace(',', '');
+        totalPrice = totalPrice.replace(',', '');
+         {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $.ajax
+            ({
+                url: "{{url('user/addOrSubCount')}}",
+                type: "post",
+                data: { 'productId': productId, 'basketId': basketId, 'parameter': 'addToCount'},
+                dataType: "json",
+                success: function (response) {
+
+                    if (response.code == 1) {
+                        totalPriceTag.text(formatNumber(parseInt(totalPrice) + parseInt(price)));
+                        $('#orderTotal').text(formatNumber(parseInt(orderTotalPrice) + parseInt(price)));
+                        totalCountTag.text(parseInt(totalCount)+1);
+                    }
+                }, error: function (error) {
+                    console.log(error);
+                }
+            });
+        }
+    }
+
+</script>
+<!-- below script is related to remove basket items inj order page -->
+<script>
+    $(document).on('click', '.removeItems', function () {
+        var price = $(this).attr('data-target');
+        var orderTotal = $('#orderTotal').attr('content');
+        var productId = $(this).attr('name');
+        var basketId = $(this).attr('content');
+        var token = $('#token').val();
+        var DOM = $('#orderTable');
+        var td = $(this);
+        $.ajax
+        ({
+            url: "{{url('user/removeItemFromBaskets')}}",
+            type: "post",
+            data: {'productId': productId, 'basketId': basketId, '_token': token},
+            dataType: "json",
+            context: {'DOM': DOM, 'td': td},
+            success: function (response) {
+                if (response.code == 1) {
+                    swal({
+                        title: "",
+                        text: response.message,
+                        type: "success",
+                        confirmButtonText: "بستن"
+                    });
+                    $('#orderTotal').text(formatNumber(orderTotal - price) + 'تومان');
+                    $(td).parentsUntil(DOM, 'tr').remove();
+                    basketCountNotify();
+                    basketTotalPrice();
+                    basketContent();
+                    if (response.count == 0)
+                        window.history.back();
 
                 } else {
                     swal({
@@ -1399,54 +1578,8 @@ console.log(response.baskets.products);
             }
 
         })
-    })
+    });
 </script>
-<!-- below script is related to remove basket items inj order page -->
-{{--<script>--}}
-    {{--$(document).on('click', '.removeItem', function () {--}}
-        {{--var price = $(this).attr('data-target');--}}
-        {{--var orderTotal = $('#orderTotal').attr('content');--}}
-        {{--var productId = $(this).attr('name');--}}
-        {{--var basketId = $(this).attr('content');--}}
-        {{--var token = $('#token').val();--}}
-        {{--var DOM = $('#orderTable');--}}
-        {{--var td = $(this);--}}
-        {{--$.ajax--}}
-        {{--({--}}
-            {{--url: "{{url('user/removeItemFromBasket')}}",--}}
-            {{--type: "post",--}}
-            {{--data: {'productId': productId, 'basketId': basketId, '_token': token},--}}
-            {{--dataType: "json",--}}
-            {{--context: {'DOM': DOM, 'td': td},--}}
-            {{--success: function (response) {--}}
-                {{--if (response.code == 1) {--}}
-                    {{--swal({--}}
-                        {{--title: "",--}}
-                        {{--text: response.message,--}}
-                        {{--type: "success",--}}
-                        {{--confirmButtonText: "بستن"--}}
-                    {{--});--}}
-                    {{--$('#orderTotal').text(formatNumber(orderTotal - price) + 'تومان');--}}
-                    {{--$(td).parentsUntil(DOM, 'tr').remove();--}}
-                    {{--basketCountNotify();--}}
-                    {{--basketTotalPrice();--}}
-                    {{--basketContent();--}}
-                    {{--if (response.count == 0)--}}
-                        {{--window.history.back();--}}
-
-                {{--} else {--}}
-                    {{--swal({--}}
-                        {{--title: "",--}}
-                        {{--text: response.message,--}}
-                        {{--type: "warning",--}}
-                        {{--confirmButtonText: "بستن"--}}
-                    {{--});--}}
-                {{--}--}}
-            {{--}--}}
-
-        {{--})--}}
-    {{--});--}}
-{{--</script>--}}
 <script src="{{ URL::asset('public/js/persianDatepicker.js')}}"></script>
 <script src="{{url('public/js/sweetalert.min.js')}}"></script>
 

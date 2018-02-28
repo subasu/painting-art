@@ -446,7 +446,7 @@
                     }
                     else {
                     }
-                })
+                });
                 //load all main category in select box in addProductForm
                 $.ajax({
                     cache: false,
@@ -466,7 +466,7 @@
                            setTimeout(function(){location.href = '{{url("admin/addCategory")}}';},3000);
                         }
                     }
-                })
+                });
                 //load subCategories after ask do you want load it's sub Categories or no then load product title related selected category
                 $('#categories').on("change", function () {
                     var id = $(this).val();

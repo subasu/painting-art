@@ -102,6 +102,9 @@ background-color: rgba(243,42,42,0.95);
 .slider-size{
     width: 100% !important;
 }
+table {
+    font-family: 'yekan' !important;
+}
 .ui-pnotify-title{
     font-family: 'yekan' !important;
 }
@@ -1261,6 +1264,9 @@ Home Page
     padding-bottom: 5px;
 }
 
+.margin-top-2{
+    margin-top:2% !important;
+}
 .title-splider {
     width: 100%;
     padding-bottom: 0px;
