@@ -386,17 +386,15 @@
                                                                placeholder="* تلفن همراه : "
                                                                onfocus="this.placeholder = ''"
                                                                onBlur="this.placeholder = '* تلفن همراه :'"/>
-                                                        <input type="text" name="userCoordination" id="userCoordination"
-                                                               class="validate['required','phone']  textbox1 yekan a-right"
-                                                               placeholder="* رمز عبور : "
-                                                               onFocus="this.placeholder = ''"
-                                                               onBlur="this.placeholder = '* آدرس :'"/>
-
+                                                        <textarea name="userCoordination" id="userCoordination"
+                                                                  class="validate['required'] messagebox1 yekan a-right"
+                                                                  placeholder="  آدرس : " onFocus="this.placeholder = ''"
+                                                                  onBlur="this.placeholder = ' آدرس :'"></textarea>
                                                     </div>
                                                     <div class="clearfix reserve_form margin-b-8">
                                                         <textarea name="comments" id="comments"
                                                                   class="validate['required'] messagebox1 yekan a-right"
-                                                                  placeholder=" آدرس : " onFocus="this.placeholder = ''"
+                                                                  placeholder="  توضیحات مشتری : " onFocus="this.placeholder = ''"
                                                                   onBlur="this.placeholder = ' توضیحات مشتری :'"></textarea>
                                                     </div>
                                                     <div id="orderContent" class="col-md-12"></div>
@@ -421,7 +419,8 @@
                                                             <tr>
                                                                 <td colspan="5">قیمت نهایی (تومان)</td>
                                                                 <td colspan="5" id="factorPrice"></td>
-                                                                <input type="hidden" name="factorPrice" value="">
+                                                                <input type="hidden"  name="factorPrice" value="">
+                                                                <input type="hidden"  name="basketId" value="">
                                                             </tr>
 
                                                         </table>
@@ -1309,11 +1308,15 @@
                 cashe: false,
                 type: "get",
                 success: function (response) {
-                    console.log('1'+response)
-                    $('.factorPrice').text();
-                    $('.discountPrice').text();
-                    $('.totalPrice').text();
-                    $('.postPrice').text();
+                    $('#factorPrice').text(formatNumber(response.finalPrice));
+                    $('#discountPrice').text(formatNumber(response.totalDiscount));
+                    $('#totalPrice').text(formatNumber(response.total));
+                    $('#postPrice').text(formatNumber(response.totalPostPrice));
+                    $('[name="factorPrice"]').val(response.finalPrice);
+                    $('[name="discountPrice"]').val(response.totalDiscount);
+                    $('[name="totalPrice"]').val(response.total);
+                    $('[name="postPrice"]').val(response.totalPostPrice);
+                    $('[name="basketId"]').val(response.basketId);
                 }
             });
 //        }
@@ -1534,51 +1537,99 @@
     }
 
 </script>
-<!-- below script is related to remove basket items inj order page -->
+
+<!-- below script is related to add order in data base -->
 <script>
-    $(document).on('click', '.removeItems', function () {
-        var price = $(this).attr('data-target');
-        var orderTotal = $('#orderTotal').attr('content');
-        var productId = $(this).attr('name');
-        var basketId = $(this).attr('content');
-        var token = $('#token').val();
-        var DOM = $('#orderTable');
-        var td = $(this);
+    $(document).on('click','#orderRegistration',function () {
+        var formData = $('#orderDetailForm').serialize();
+        var userCellphone    = $('#userCellphone').val();
+        var userCoordination = $('#userCoordination').val();
         $.ajax
         ({
-            url: "{{url('user/removeItemFromBaskets')}}",
-            type: "post",
-            data: {'productId': productId, 'basketId': basketId, '_token': token},
-            dataType: "json",
-            context: {'DOM': DOM, 'td': td},
-            success: function (response) {
-                if (response.code == 1) {
-                    swal({
+            url         : "{{url('user/orderRegistration')}}",
+            type        : "post",
+            data        : formData,
+            dataType    : 'JSON',
+            beforeSend  : function()
+            {
+                if(userCellphone == '' || userCellphone == null)
+                {
+                    $('#userCellphone').focus();
+                    $('#userCellphone').css('border-color','red');
+                    return false;
+                }
+                if(userCoordination == '' || userCoordination == null)
+                {
+                    $('#userCoordination').focus();
+                    $('#userCoordination').css('border-color','red');
+                    return false;
+                }
+
+            },
+            success : function(response)
+            {
+                console.log(response);
+                if(response.code == 1)
+                {
+                    swal
+                    ({
                         title: "",
-                        text: response.message,
+                        text: response.message +'\n' + response.userPassword,
                         type: "success",
                         confirmButtonText: "بستن"
                     });
-                    $('#orderTotal').text(formatNumber(orderTotal - price) + 'تومان');
-                    $(td).parentsUntil(DOM, 'tr').remove();
-                    basketCountNotify();
-                    basketTotalPrice();
-                    basketContent();
-                    if (response.count == 0)
-                        window.history.back();
-
-                } else {
-                    swal({
+                    setTimeout(function(){
+                        window.location.href = '../login';
+                    },15000);
+                }else
+                {
+                    swal
+                    ({
                         title: "",
                         text: response.message,
                         type: "warning",
                         confirmButtonText: "بستن"
                     });
                 }
-            }
+            },
+            error   : function(error)
+            {
+                if(error.status === 500)
+                {
+                    console.log(error);
+                    swal
+                    ({
+                        title: "",
+                        text: "خطایی رخ داده است ، با بخش پشتیبانی تماس بگیرید",
+                        type: "warning",
+                        confirmButtonText: "بستن"
+                    });
+                }
+                if (error.status === 422) {
 
+                    var errors = error.responseJSON; //this will get the errors response data.
+
+                    var errorsHtml = '';
+
+                    $.each(errors, function (key, value) {
+                        errorsHtml += value[0] + '\n'; //showing only the first error.
+                    });
+                    //errorsHtml += errorsHtml;
+
+                    swal({
+                        title: "",
+                        text: errorsHtml,
+                        type: "warning",
+                        confirmButtonText: "بستن"
+                    });
+                }
+            }
+        });
+        $("[name='search_select']").change(function () {
+            console.log($(this).val())
+            $("#form_search").attr('action','{{url('search')}}/'+$(this).val())
         })
-    });
+    })
 </script>
 <script src="{{ URL::asset('public/js/persianDatepicker.js')}}"></script>
 <script src="{{url('public/js/sweetalert.min.js')}}"></script>

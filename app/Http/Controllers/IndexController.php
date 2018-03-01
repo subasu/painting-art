@@ -370,21 +370,25 @@ class IndexController extends Controller
                         foreach ($baskets->products as $basket) {
                             $basket->count = $basket->pivot->count;
                             $basket->price = $basket->pivot->product_price;
-                            $basket->sum = $basket->pivot->count * $basket->pivot->product_price;
-                            $total += $basket->sum;
-                            $basket->basket_id = $basket->pivot->basket_id;
-                            $totalPostPrice += $basket->post_price;
-                            $basket->product_id = $basket->pivot->product_id;
+                            $basket->sum = $basket->count * $basket->price;
                             if ($basket->discount_volume != null) {
-                                $totalDiscount += $basket->discount_volume;
-                                if ($totalDiscount > 0) {
-                                    $basket->sumOfDiscount = ($total * $totalDiscount) / 100;
-                                }
+                                $basket->sumOfDiscount = ($basket->sum * $basket->discount_volume) / 100;
                             }
+                            $basket->basket_id = $basket->pivot->basket_id;
+                            $basket->product_id = $basket->pivot->product_id;
+                            $totalDiscount+=$basket->sumOfDiscount;
+                            $totalPostPrice += $basket->post_price;
+                            $total+=$basket->sum;
+//                            if ($basket->discount_volume != null) {
+//                                $totalDiscount += $basket->discount_volume;
+//                                if ($totalDiscount > 0) {
+//                                    $basket->sumOfDiscount = ($total * $totalDiscount) / 100;
+//                                }
+//                            }
 
                         }
-                        $finalPrice += ($total + $totalPostPrice) - $basket->sumOfDiscount;
-                        return response()->json(['baskets'=>$baskets,'total'=>$total,'totalPostPrice'=>$totalPostPrice,'finalPrice'=>$finalPrice]);
+                        $finalPrice += ($total + $totalPostPrice) - $totalDiscount;
+                        return response()->json(['baskets'=>$baskets,'total'=>$total,'totalPostPrice'=>$totalPostPrice,'finalPrice'=>$finalPrice,'totalDiscount'=>$totalDiscount,'basketId'=>$basketId,]);
 //                        return view('main.orderDetail', compact('menu', 'pageTitle', 'baskets', 'total', , 'finalPrice', 'paymentTypes', 'logo', 'googleMap'));
                     } else {
                         return response()->json('errors.403');
