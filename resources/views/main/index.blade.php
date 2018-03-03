@@ -1191,6 +1191,7 @@
                 }
             },
             error: function (error) {
+                $('#showOrders').css('display','none');
                 console.log(error);
             }
 
