@@ -1185,7 +1185,7 @@
             data: {'_token': token},
             success: function (response) {
                 $('#basketCount').text(response);
-                if(response == 0)
+                if(response == 0 || response == '')
                 {
                     $('#showOrders').css('display','none');
                 }
