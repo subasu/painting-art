@@ -449,7 +449,7 @@ jQuery(document).ready(function($){
 		
 				function map_canvas_loaded() {
 				var latlng = new google.maps.LatLng(Longitude,Latitude);
-				
+
 				// setting styles here 
 				var styles = [
 					{
@@ -528,7 +528,7 @@ jQuery(document).ready(function($){
 				 });
 				}
 				window.onload = function() {
-				 map_canvas_loaded();
+				// map_canvas_loaded();
 				};
 			/* End */
 			
