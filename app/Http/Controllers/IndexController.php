@@ -336,11 +336,11 @@ class IndexController extends Controller
     //below function is related to return order view
     public function order($parameter)
     {
-        if (isset($_COOKIE['addToBasket'])) {
+        if (isset($_COOKIE['addToArtBasket'])) {
 
             switch ($parameter) {
                 case 'basketDetail':
-                    $basketId = Basket::where([['cookie', $_COOKIE['addToBasket']], ['payment', 0]])->value('id');
+                    $basketId = Basket::where([['cookie', $_COOKIE['addToArtBasket']], ['payment', 0]])->value('id');
                     if ($basketId) {
                         $baskets = Basket::find($basketId);
                         $total = 0;
@@ -354,13 +354,13 @@ class IndexController extends Controller
                         return response()->json(['baskets'=>$baskets,'total'=>$total]);
                     }
                     else
-                        return response()->json($_COOKIE['addToBasket']);
+                        return response()->json($_COOKIE['addToArtBasket']);
                     break;
 
                 case 'orderDetail':
                     $pageTitle = 'جزئیات سفارش';
                     $paymentTypes = PaymentType::where('active', 1)->get();
-                    $basketId = Basket::where([['cookie', $_COOKIE['addToBasket']], ['payment', 0]])->value('id');
+                    $basketId = Basket::where([['cookie', $_COOKIE['addToArtBasket']], ['payment', 0]])->value('id');
                     $baskets = Basket::find($basketId);
                     $total = 0;
                     $totalDiscount = 0;
