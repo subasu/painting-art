@@ -126,6 +126,9 @@ a:hover, a:focus, a:active {
 .btn-product-detail{
     margin-top: 7%;
     margin-right: 7%;
+    font-family: 'yekan' !important;
+    font-size: small;
+    padding-left: 1%;
 }
 
 .yekan {
@@ -1236,7 +1239,6 @@ Home Page
     border-style: none;
     font-size: 13px;
     font-family: 'yekan' !important;
-
     padding: 10px 20px;
     margin-top: 10px;
     display: inline-block;

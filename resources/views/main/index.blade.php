@@ -758,8 +758,8 @@
 
 <script type="text/javascript" src="{{URL::asset('public/main/settings/settings/settings.js')}}"></script>
 <script type="text/javascript" src="{{URL::asset('public/main/settings/settings/jscolor.js')}}"></script>
-{{--<script type="text/javascript" src="{{URL::asset('public/js/pnotify.custom.min.js')}}"></script>--}}
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pnotify/3.2.1/pnotify.js"></script>
+<script type="text/javascript" src="{{URL::asset('public/js/pnotify_3.2.1.min.js')}}"></script>
+{{--<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pnotify/3.2.1/pnotify.js"></script>--}}
 {{--show categorie and subCategories in product menu--}}
 <script>
     $(document).ready(function () {
@@ -1121,7 +1121,7 @@
                     $.each(response.products, function (key, value) {
                         var x = '<div class="row ">' +
                             '<div class="menu_content clearfix">' +
-                            '<button type="button"  class="default-background-color btn btn-danger fa fa-folder-open col-md-1 btn-product-detail" onclick="showProductDetail(' + value.id + ')" id="' + value.id + '" data-toggle="modal" data-target="#detail-prod"></button>' +
+                            '<button type="button"  class="default-background-color btn btn-danger col-md-1 btn-product-detail" onclick="showProductDetail(' + value.id + ')" id="' + value.id + '" data-toggle="modal" data-target="#detail-prod">جزئیات</button>' +
                             '<div class="col-md-8 text-left">' +
                             '<div class="title-splider yekan">' +
                             '<h4 class="clearfix">' +
@@ -1222,7 +1222,7 @@
         orderTotalPrice = orderTotalPrice.replace(',', '');
         orderTotalPrice = orderTotalPrice.replace(',', '');
         orderTotalPrice = orderTotalPrice.replace(',', '');
-        orderTotal.text(parseInt(productFlag) + parseInt(orderTotalPrice));
+        orderTotal.text(formatNumber(parseInt(productFlag) + parseInt(orderTotalPrice)));
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -1283,7 +1283,6 @@
             cash: false,
             type: "get",
             success: function (response) {
-                alert(response)
                 if(response!=0) {
                     var cartContent = $(id);
                     cartContent.html('');
