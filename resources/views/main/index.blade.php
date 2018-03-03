@@ -849,7 +849,7 @@
 
                 },
                 error: function (response) {
-                    console.log(response.valueOf(2));
+                   // console.log(response.valueOf(2));
                 }
             });
         });
@@ -868,7 +868,7 @@
                     $(".captcha").attr("src", data)
                 },
                 error: function (response) {
-                    console.log(response.valueOf(2));
+                   // console .log(response.valueOf(2));
                 }
             });
         }
@@ -1169,7 +1169,7 @@
                 $('#orderTotal').text(0);
             },
             error: function (error) {
-                console.log(error);
+               // console.log(error);
             }
 
         });
@@ -1191,8 +1191,8 @@
                 }
             },
             error: function (error) {
+            //console.log(error);
                 $('#showOrders').css('display','none');
-                console.log(error);
             }
 
         });
@@ -1244,7 +1244,7 @@
                 }
 
             }, error: function (error) {
-                console.log(error);
+                //console.log(error);
                 swal({
                     title: "",
                     text: 'خطایی رخ داده است',
@@ -1492,7 +1492,7 @@
                         totalCountTag.text(totalCount-1);
                     }
                 }, error: function (error) {
-                    console.log(error);
+                   // console.log(error);
                 }
             });
         }
@@ -1535,7 +1535,7 @@
                         totalCountTag.text(parseInt(totalCount)+1);
                     }
                 }, error: function (error) {
-                    console.log(error);
+                   // console.log(error);
                 }
             });
         }
