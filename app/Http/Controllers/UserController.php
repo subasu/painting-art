@@ -110,21 +110,33 @@ class UserController extends Controller
     //below function is related to get basket count
     public function getBasketCountNotify()
     {
-        $basketId = DB::table('baskets')->where([['cookie', $_COOKIE['addToArtBasket']], ['payment', 0]])->value('id');
-        $count = DB::table('basket_product')->where('basket_id', $basketId)->count();
-        return response()->json($count);
+        if(isset($_COOKIE['addToArtBasket']))
+        {
+            $basketId = DB::table('baskets')->where([['cookie', $_COOKIE['addToArtBasket']], ['payment', 0]])->value('id');
+            $count = DB::table('basket_product')->where('basket_id', $basketId)->count();
+            return response()->json($count);
+        }else
+            {
+                return response()->json(0);
+            }
+
     }
 
     //below function is related to get basket total price
     public function getBasketTotalPrice()
     {
-        $basketId = DB::table('baskets')->where([['cookie', $_COOKIE['addToArtBasket']], ['payment', 0]])->value('id');
-        $baskets = DB::table('basket_product')->where('basket_id', $basketId)->get();
-        $totalPrice = '';
-        foreach ($baskets as $basket) {
-            $totalPrice += $basket->count * $basket->product_price;
-        }
-        return response()->json($totalPrice);
+        if(isset($_COOKIE['addToArtBasket'])) {
+            $basketId = DB::table('baskets')->where([['cookie', $_COOKIE['addToArtBasket']], ['payment', 0]])->value('id');
+            $baskets = DB::table('basket_product')->where('basket_id', $basketId)->get();
+            $totalPrice = '';
+            foreach ($baskets as $basket) {
+                $totalPrice += $basket->count * $basket->product_price;
+            }
+            return response()->json($totalPrice);
+        }else
+            {
+                return response()->json(0);
+            }
     }
 
     //below function is related to get basket content
