@@ -401,6 +401,18 @@
                                                     <div class="box-border" style="border-color: #0a0a0a;">
                                                         <table id="orderTable"
                                                                class="table table-bordered table-responsive cart_summary rtl">
+                                                            <thead>
+                                                            <tr>
+                                                                <th class="text-center cart_product">عنوان محصول</th>
+                                                                <th class="text-center"> توضیحات</th>
+                                                                <th class="text-center">قیمت واحد</th>
+                                                                <th class="text-center" align="center">تعداد/مقدار</th>
+                                                                <th class="text-center">جمع کل (تومان)</th>
+                                                                <th class="text-center">تخفیف محصول (درصد)</th>
+                                                                <th class="text-center">هزینه ی پست (تومان)</th>
+
+                                                            </tr>
+                                                            </thead>
                                                             <tr>
                                                                 <td colspan="5"> جمع کل قیمت ها (تومان)</td>
                                                                 <td colspan="5" id="totalPrice"></td>
@@ -531,7 +543,7 @@
                             <div class="col-md-6 content_text">
                                 <div id="reservations">
                                     <h1 class="yekan a-right">1- ورود به پنل</h1>
-                                    <form id="reservation_form" class="reserve_form loginUserForm pad_top13" action="#"
+                                    <form id="login_form" class="reserve_form loginUserForm pad_top13" action="#"
                                           method="post">
                                         {{csrf_field()}}
                                         <div class="clearfix reserve_form">
@@ -548,7 +560,7 @@
                                                 <i class="fa fa-refresh fa-lg fa-2x captcha-reload col-md-1" height="50"
                                                    width="50"></i>
                                                 <img class="captcha col-md-4" alt="captcha.png" id="captcha-image"/>
-                                                <input name="phone" id="captcha"
+                                                <input name="phone" id="captcha1"
                                                        class="validate['required']  textbox1 yekan a-right"
                                                        placeholder="* کد امنیتی : " onFocus="this.placeholder = ''"
                                                        onBlur="this.placeholder = '* کد امنیتی :'"/>
@@ -629,7 +641,7 @@
                                             <i class="fa fa-refresh fa-lg fa-2x captcha-reload col-md-1" height="50"
                                                width="50"></i>
                                             <img class="captcha col-md-4" alt="captcha.png" id="captcha-image"/>
-                                            <input type="" name="captcha"
+                                            <input name="captcha"
                                                    class="validate['required']  textbox1 yekan a-right " id="captcha"
                                                    placeholder="* کد امنیتی : " onFocus="this.placeholder = ''"
                                                    onBlur="this.placeholder = '* کد امنیتی :'"/>
@@ -765,53 +777,55 @@
                         "_token": token
                     },
                     success: function (response) {
-                        var item = $(".submenu");
-                        item.empty();
-                        var x = 1;
-                        $.each(response.submenu, function (key, value) {
-                            if (value.hasProduct == 1) {
-                                if (value.catImg != null && x == 1) {
-                                    item.append('<li class="block-container col-md-3 col-xs-12 float-xs-none" style="float: right">' +
-                                        '<ul class="block">' +
-                                        '<li class="img_container">' +
-                                        '<img src="{{url('public/dashboard/image')}}/' + value.catImg + '" alt="' + value.title + '" title="' + value.title + '" >' +
-                                        '</li>' +
-                                        '</ul></li>')
-                                }
-                                x = 0;
-                                var len = value.brands.length;
-                                if (len != 0 || value.title == 'سایر') {
-                                    if (value.title == 'سایر') {
-                                        var temp = '<li class="block-container col-md-3 col-xs-12 float-xs-none" style="float: right">' +
+                        if(response!=0) {
+                            var item = $(".submenu");
+                            item.empty();
+                            var x = 1;
+                            $.each(response.submenu, function (key, value) {
+                                if (value.hasProduct == 1) {
+                                    if (value.catImg != null && x == 1) {
+                                        item.append('<li class="block-container col-md-3 col-xs-12 float-xs-none" style="float: right">' +
                                             '<ul class="block">' +
-                                            '<li class="link_container group_header">' +
-                                            '<a href="#">سایر محصولات</a>' +
-                                            '</li>';
-                                        temp += '<li class="link_container" id="' + value.id + '">' +
-                                            '<a href="{{url('showProducts')}}' + "/" + value.id + '">مشاهده ی سایر محصولات</a>' +
-                                            '</li>';
-                                        temp += '</ul>' + '</li>';
-                                        item.append(temp)
+                                            '<li class="img_container">' +
+                                            '<img src="{{url('public/dashboard/image')}}/' + value.catImg + '" alt="' + value.title + '" title="' + value.title + '" >' +
+                                            '</li>' +
+                                            '</ul></li>')
                                     }
-                                    else {
-                                        var temp = '<li class="block-container col-md-3 col-xs-12 float-xs-none" style="float: right">' +
-                                            '<ul class="block">' +
-                                            '<li class="link_container group_header">' +
-                                            '<a href="#">' + value.title + '</a>' +
-                                            '</li>';
-                                        $.each(value.brands, function (key, value) {
-                                            temp += '<li class="link_container" id="' + value.id + '">' +
-                                                '<a href="{{url('showProducts')}}' + "/" + value.id + ' ">' + value.title + '</a>' +
+                                    x = 0;
+                                    var len = value.brands.length;
+                                    if (len != 0 || value.title == 'سایر') {
+                                        if (value.title == 'سایر') {
+                                            var temp = '<li class="block-container col-md-3 col-xs-12 float-xs-none" style="float: right">' +
+                                                '<ul class="block">' +
+                                                '<li class="link_container group_header">' +
+                                                '<a href="#">سایر محصولات</a>' +
                                                 '</li>';
-                                        });
-                                        temp += '</ul>' + '</li>'
-                                        item.append(temp)
+                                            temp += '<li class="link_container" id="' + value.id + '">' +
+                                                '<a href="{{url('showProducts')}}' + "/" + value.id + '">مشاهده ی سایر محصولات</a>' +
+                                                '</li>';
+                                            temp += '</ul>' + '</li>';
+                                            item.append(temp)
+                                        }
+                                        else {
+                                            var temp = '<li class="block-container col-md-3 col-xs-12 float-xs-none" style="float: right">' +
+                                                '<ul class="block">' +
+                                                '<li class="link_container group_header">' +
+                                                '<a href="#">' + value.title + '</a>' +
+                                                '</li>';
+                                            $.each(value.brands, function (key, value) {
+                                                temp += '<li class="link_container" id="' + value.id + '">' +
+                                                    '<a href="{{url('showProducts')}}' + "/" + value.id + ' ">' + value.title + '</a>' +
+                                                    '</li>';
+                                            });
+                                            temp += '</ul>' + '</li>'
+                                            item.append(temp)
+                                        }
+
                                     }
-
                                 }
-                            }
 
-                        });
+                            });
+                        }
                     }
                 })
             });
@@ -1269,65 +1283,66 @@
             cash: false,
             type: "get",
             success: function (response) {
-                var cartContent = $(id);
-                cartContent.html('');
-                $.each(response.baskets.products, function (key, value) {
-                    if (id == '#cartContent') {
-                        var x = '<div class="row margin-b-8 basketItem-' + value.id + '">' +
-                            '<div class="row col-md-5 location-btns">' +
-                            '<div class="location map-link"><a class="button removeItem" onclick="removeBasketItem(' + value.id + ',' + value.basket_id + ',' + value.price * value.count + ')"><i class="fa fa-times "></i></a></div>' +
-                            '<div class="location"><a class="button addToCount" onclick="addToProductCount(' + value.id + ',' + value.basket_id + ',' + value.price + ')"><i class="fa fa-arrow-up"></i></a></div>' +
-                            '<div class="location subFromCo unt" id="subFromCount"><a class="button " onclick="subFromProductCount(' + value.id + ',' + value.basket_id + ',' + value.price + ')"><i class="fa fa-arrow-down"></i></a></div>' +
-                            '</div>' + '<div class="row col-md-7">' +
-                            '<div class="location-address-wrap">' +
-                            '<h3 class="border_bottom yekan a-right"><b class="">نام محصول :</b>' + value.title + '</h3>' +
-                            '<div class="clearfix location-street a-right yekan"><b class="">توضیحات  :</b>' + value.description + '</div>' +
-                            '<div class="clearfix location-phone a-right yekan"><b class="">قیمت اصلی :</b>' + formatNumber(value.price) + ' تومان<br/>' +
-                            '<b class="">تعداد :</b><b class="totalProductCount-' + value.id + '">' + value.count + '</b></div>' +
-                            '<div class="clearfix location-cateringlink a-right yekan"><b >جمع کل  :</b><b class="totalProductPrice-' + value.id + '">' + formatNumber(value.sum) +
-                            '</b> تومان </div>' +
-                            '</div>' +
-                            '</div><br>' +
-                            '</div>';
-                    }
-                    else {
-                        var x = '<div class="col-md-6 pull-right">' +
-                            '<div class="location-address-wrap">' +
-                            '<h3 class="border_bottom yekan a-right"><b class="">نام محصول :</b>' + value.title + '</h3>' +
-                            '<div class="clearfix location-street a-right yekan"><b class="">توضیحات  :</b>' + value.description + '</div>' +
-                            '<div class="clearfix location-phone a-right yekan"><b class="">قیمت اصلی :</b>' + formatNumber(value.price) + ' تومان<br/>' +
-                            '<b class="">تعداد :</b>' + value.count + '</div>' +
-                            '<div class="clearfix location-cateringlink a-right yekan"><b class="">جمع کل  :</b>' + formatNumber(value.sum) +
-                            ' تومان </div>' +
-                            '</div>' +
-                            '</div>';
-                    }
-                    cartContent.append(x);
-                });
+                alert(response)
+                if(response!=0) {
+                    var cartContent = $(id);
+                    cartContent.html('');
+                    $.each(response.baskets.products, function (key, value) {
+                        if (id == '#cartContent') {
+                            var x = '<div class="row margin-b-8 basketItem-' + value.id + '">' +
+                                '<div class="row col-md-5 location-btns">' +
+                                '<div class="location map-link"><a class="button removeItem" onclick="removeBasketItem(' + value.id + ',' + value.basket_id + ',' + value.price * value.count + ')"><i class="fa fa-times "></i></a></div>' +
+                                '<div class="location"><a class="button addToCount" onclick="addToProductCount(' + value.id + ',' + value.basket_id + ',' + value.price + ')"><i class="fa fa-arrow-up"></i></a></div>' +
+                                '<div class="location subFromCo unt" id="subFromCount"><a class="button " onclick="subFromProductCount(' + value.id + ',' + value.basket_id + ',' + value.price + ')"><i class="fa fa-arrow-down"></i></a></div>' +
+                                '</div>' + '<div class="row col-md-7">' +
+                                '<div class="location-address-wrap">' +
+                                '<h3 class="border_bottom yekan a-right"><b class="">نام محصول :</b>' + value.title + '</h3>' +
+                                '<div class="clearfix location-street a-right yekan"><b class="">توضیحات  :</b>' + value.description + '</div>' +
+                                '<div class="clearfix location-phone a-right yekan"><b class="">قیمت اصلی :</b>' + formatNumber(value.price) + ' تومان<br/>' +
+                                '<b class="">تعداد :</b><b class="totalProductCount-' + value.id + '">' + value.count + '</b></div>' +
+                                '<div class="clearfix location-cateringlink a-right yekan"><b >جمع کل  :</b><b class="totalProductPrice-' + value.id + '">' + formatNumber(value.sum) +
+                                '</b> تومان </div>' +
+                                '</div>' +
+                                '</div><br>' +
+                                '</div>';
+                        }
+                        else {
+                            var x = '<div class="col-md-6 pull-right">' +
+                                '<div class="location-address-wrap">' +
+                                '<h3 class="border_bottom yekan a-right"><b class="">نام محصول :</b>' + value.title + '</h3>' +
+                                '<div class="clearfix location-street a-right yekan"><b class="">توضیحات  :</b>' + value.description + '</div>' +
+                                '<div class="clearfix location-phone a-right yekan"><b class="">قیمت اصلی :</b>' + formatNumber(value.price) + ' تومان<br/>' +
+                                '<b class="">تعداد :</b>' + value.count + '</div>' +
+                                '<div class="clearfix location-cateringlink a-right yekan"><b class="">جمع کل  :</b>' + formatNumber(value.sum) +
+                                ' تومان </div>' +
+                                '</div>' +
+                                '</div>';
+                        }
+                        cartContent.append(x);
+                    });
+                }
             }
         });
-//        if (id === '#orderContent') {
+
             $.ajax({
                 dataType: "json",
                 url: "{{url('order')}}"+'/'+'orderDetail',
                 cashe: false,
                 type: "get",
                 success: function (response) {
-                    $('#factorPrice').text(formatNumber(response.finalPrice));
-                    $('#discountPrice').text(formatNumber(response.totalDiscount));
-                    $('#totalPrice').text(formatNumber(response.total));
-                    $('#postPrice').text(formatNumber(response.totalPostPrice));
-                    $('[name="factorPrice"]').val(response.finalPrice);
-                    $('[name="discountPrice"]').val(response.totalDiscount);
-                    $('[name="totalPrice"]').val(response.total);
-                    $('[name="postPrice"]').val(response.totalPostPrice);
-                    $('[name="basketId"]').val(response.basketId);
+                    if(response!=0) {
+                        $('#factorPrice').text(formatNumber(response.finalPrice));
+                        $('#discountPrice').text(formatNumber(response.totalDiscount));
+                        $('#totalPrice').text(formatNumber(response.total));
+                        $('#postPrice').text(formatNumber(response.totalPostPrice));
+                        $('[name="factorPrice"]').val(response.finalPrice);
+                        $('[name="discountPrice"]').val(response.totalDiscount);
+                        $('[name="totalPrice"]').val(response.total);
+                        $('[name="postPrice"]').val(response.totalPostPrice);
+                        $('[name="basketId"]').val(response.basketId);
+                    }
                 }
             });
-//        }
-//        else {
-//            console.log('1jj')
-//        }
 
     }
     //    $(document).ready(function () {
@@ -1573,7 +1588,7 @@
             },
             success : function(response)
             {
-                console.log(response);
+                ///console.log(response);
                 if(response.code == 1)
                 {
                     swal

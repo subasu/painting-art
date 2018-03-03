@@ -1784,7 +1784,7 @@ input:valid, input:in-range {
     margin-bottom: 0px;
 }
 
-#reservation_form .input-group-addon {
+#reservation_form .input-group-addon,#login_form .input-group-addon {
     background-color: rgba(0, 0, 0, 0.1);
     border: 1px solid transparent;
 }
@@ -1853,12 +1853,12 @@ input:valid, input:in-range {
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(243, 42, 42, 0.8);
 }
 
-#reservation_form {
+#reservation_form,#login_form {
     display: block;
     width: 100%;
 }
 
-#reservation_form input {
+#reservation_form input,#login_form input {
     width: 100%;
     height: 48px;
     line-height: 45px;
@@ -1887,8 +1887,21 @@ input:valid, input:in-range {
     float: right;
     margin-right: 0;
 }
+#captcha1 {
+    width: 56% !important;
+    height: 48px;
+    line-height: 45px;
+    padding-left: 10px;
+    font-size: 16px;
+    color: #85807e;
+    background-color: rgba(0, 0, 0, 0.1);
+    border: transparent;
+    border-radius: 3px;
+    float: right;
+    margin-right: 0;
+}
 
-#reservation_form select {
+#reservation_form select,#login_form select {
     width: 100%;
     height: 48px;
     line-height: 45px;
@@ -1900,14 +1913,17 @@ input:valid, input:in-range {
     border-radius: 3px;
     margin-bottom:10px;
 }
-#reservation_form option{
+#reservation_form option,#login_form option{
     color: #777673 !important;
 }
-#reservation_form input[type="text"], #reservation_form textarea {
+#reservation_form input[type="text"],
+#reservation_form textarea,
+#login_form input[type="text"],
+#login_form textarea {
     font-family: 'Raleway', sans-serif;
 }
 
-#reservation_form textarea {
+#reservation_form textarea , #login_form textarea {
     width: 100%;
     padding: 8px;
     height: 145px;
@@ -1919,7 +1935,7 @@ input:valid, input:in-range {
     border-radius: 3px;
 }
 
-#reservation_form .submitBtn {
+#reservation_form .submitBtn,#login_form .submitBtn {
     font-family: 'Carrois Gothic SC', sans-serif;
     border-style: none;
     font-size: 13px;
@@ -1938,22 +1954,22 @@ input:valid, input:in-range {
     background-color: #f32a2a;
 }
 
-#reservation_form .submitBtn:hover {
+#reservation_form .submitBtn:hover,#login_form .submitBtn:hover {
     color: #ffffff;
     background-color: #727272;
 }
 
-#reservation_form .submitBtn:focus {
+#reservation_form .submitBtn:focus,#login_form .submitBtn:focus {
     box-shadow: none;
 }
 
-#reservation_form label {
+#reservation_form label,#login_form label {
     float: left;
     padding-top: 10px;
     margin: 0px 0px 0px 0px;
 }
 
-#reservation_form label.error {
+#reservation_form label.error , #login_form label.error {
     color: #ff0000;
     position: relative;
     text-align: left;
