@@ -388,7 +388,7 @@ class IndexController extends Controller
 
                         }
                         $finalPrice += ($total + $totalPostPrice) - $totalDiscount;
-                        return response()->json(['baskets'=>$baskets,'total'=>$total,'totalPostPrice'=>$totalPostPrice,'finalPrice'=>$finalPrice,'totalDiscount'=>$totalDiscount,'basketId'=>$basketId,]);
+                        return response()->json([' '=>$baskets,'total'=>$total,'totalPostPrice'=>$totalPostPrice,'finalPrice'=>$finalPrice,'totalDiscount'=>$totalDiscount,'basketId'=>$basketId,]);
 //                        return view('main.orderDetail', compact('menu', 'pageTitle', 'baskets', 'total', , 'finalPrice', 'paymentTypes', 'logo', 'googleMap'));
                     } else {
                         return response()->json('errors.403');
