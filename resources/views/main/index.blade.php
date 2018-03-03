@@ -1185,6 +1185,10 @@
             data: {'_token': token},
             success: function (response) {
                 $('#basketCount').text(response);
+                if(response == 0)
+                {
+                    $('#showOrders').css('display','none');
+                }
             },
             error: function (error) {
                 console.log(error);
@@ -1631,6 +1635,13 @@
         })
     })
 </script>
+{{--<script>--}}
+    {{--$(function(){--}}
+        {{--var basketCount = $('#basketCount').text();--}}
+        {{--alert(basketCount);--}}
+        {{--$('#showOrders').css('display','none');--}}
+    {{--})--}}
+{{--</script>--}}
 <script src="{{ URL::asset('public/js/persianDatepicker.js')}}"></script>
 <script src="{{url('public/js/sweetalert.min.js')}}"></script>
 
