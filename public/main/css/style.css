@@ -2572,7 +2572,10 @@ Button
     padding: 0px;
     position: relative;
 }
-
+.modal-content{
+    max-height:420px;
+    min-height:305px;
+}
 #lightbox .modal-dialog {
     display: table;
     margin: 0 auto;
