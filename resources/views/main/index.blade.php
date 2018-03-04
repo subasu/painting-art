@@ -397,7 +397,7 @@
                                                                   placeholder="  توضیحات مشتری : " onFocus="this.placeholder = ''"
                                                                   onBlur="this.placeholder = ' توضیحات مشتری :'"></textarea>
                                                     </div>
-                                                    <div id="orderContent" class="col-md-12"></div>
+                                                    <div  class="col-md-12"></div>
                                                     <div class="box-border" style="border-color: #0a0a0a;">
                                                         <table id="orderTable"
                                                                class="table table-bordered table-responsive cart_summary rtl">
@@ -413,6 +413,8 @@
 
                                                             </tr>
                                                             </thead>
+                                                            <tbody id="orderContent">
+                                                            </tbody>
                                                             <tr>
                                                                 <td colspan="5"> جمع کل قیمت ها (تومان)</td>
                                                                 <td colspan="5" id="totalPrice"></td>
@@ -1146,8 +1148,7 @@
                         myProductsDiv.append(x);
 
                     });//end each
-                    myProductsDiv.append('<a class="button nav-link yekan" href="#category"> انتخاب دسته <i class="fa fa-arrow-left"></i></a>');
-
+                    myProductsDiv.append('<div class="row"><a class="button nav-link yekan" href="#category"> انتخاب دسته <i class="fa fa-arrow-left"></i></a></div>');
                 },
                 error: function (error) {
                     $("#myProducts").html(error);
@@ -1306,16 +1307,37 @@
                                 '</div>';
                         }
                         else {
-                            var x = '<div class="col-md-6 pull-right">' +
-                                '<div class="location-address-wrap">' +
-                                '<h3 class="border_bottom yekan a-right"><b class="">نام محصول :</b>' + value.title + '</h3>' +
-                                '<div class="clearfix location-street a-right yekan"><b class="">توضیحات  :</b>' + value.description + '</div>' +
-                                '<div class="clearfix location-phone a-right yekan"><b class="">قیمت اصلی :</b>' + formatNumber(value.price) + ' تومان<br/>' +
-                                '<b class="">تعداد :</b>' + value.count + '</div>' +
-                                '<div class="clearfix location-cateringlink a-right yekan"><b class="">جمع کل  :</b>' + formatNumber(value.sum) +
-                                ' تومان </div>' +
-                                '</div>' +
-                                '</div>';
+                            var x = '<tr class="text-center">'+
+                                '<td class="cart_product">'+value.title+'</td>'+
+                                '<td class="cart_description">'+value.description+
+//                                '<textarea class="form-control" disabled="">'+value.description+'</textarea>'+
+                                '</td>' +
+                                '<td id="unitPrice" content="'+value.price+'">'+formatNumber(value.price)+'</td>'+
+                                '<td class="qty">'+value.count+
+//                                '<input disabled="disabled" class="form-control input-sm" id="count" name="count" type="text" value="'+value.count+'">'+
+//                                '<input disabled="disabled" class="form-control input-sm" id="count" name="count" type="text" value="'+value.count+'">'+
+                                '</td>'+
+                                '<td id="oldSum" content="'+value.sum+'">'+formatNumber(value.sum)+'</td>'+
+                                '<td class="col-md-2">';
+                                if(value.discount_volume != null)
+                                    x+=value.discount_volume;
+                                if(value.discount_volume == null)
+                                x+= 'تخفیف ندارد';
+                                x+='</td><td class="col-md-2">'+formatNumber(value.post_price)+'</td>'+
+                                '<input type="hidden" name="basketId" value="'+value.basketId+'">'+
+                                '<input type="hidden" name="productId[]" value="'+value.products.id+'">'+
+                                '</tr>' ;
+//
+//                                '<div class="col-md-6 pull-right">' +
+//                                '<div class="location-address-wrap">' +
+//                                '<h3 class="border_bottom yekan a-right"><b class="">نام محصول :</b>' + value.title + '</h3>' +
+//                                '<div class="clearfix location-street a-right yekan"><b class="">توضیحات  :</b>' + value.description + '</div>' +
+//                                '<div class="clearfix location-phone a-right yekan"><b class="">قیمت اصلی :</b>' + formatNumber(value.price) + ' تومان<br/>' +
+//                                '<b class="">تعداد :</b>' + value.count + '</div>' +
+//                                '<div class="clearfix location-cateringlink a-right yekan"><b class="">جمع کل  :</b>' + formatNumber(value.sum) +
+//                                ' تومان </div>' +
+//                                '</div>' +
+//                                '</div>';
                         }
                         cartContent.append(x);
                     });
