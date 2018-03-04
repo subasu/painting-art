@@ -3,6 +3,12 @@
 <html lang="en">
 
 <head>
+    <style>
+        .margin
+        {
+            margin-left: 20%;
+        }
+    </style>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <!-- Site Meta Info -->
     <meta charset="utf-8">
@@ -48,6 +54,7 @@
 
 
 <body class="nav-md">
+
 
 
 <div class="container body">
@@ -167,6 +174,32 @@
                 <!-- /menu profile quick info -->
 
                 <br/>
+                <!-- Modal -->
+                <div id="myModal" class="modal fade" role="dialog" dir="rtl" style="width : 700px; height: 700px; margin-left: 20%;">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h2 class="modal-title">مشاهده فیلم آموزشی</h2>
+                            </div>
+                            <div class="modal-body">
+                                <video class="video"
+                                       id="video" name="video_src">
+                                    <source id="playingVideo"
+                                            src="{{url('public/dashboard/trainingVideos/panel.mp4')}}">
+                                </video>
+                            </div>
+                            <div class="modal-footer" >
+                                <div class="nav toggle">
+                                    <a id="playVideo"><i class="fa fa-play-circle margin" data-toggle="" title="پخش ویدئو آموزشی"></i></a>
+                                </div>
+                                <div class="nav toggle">
+                                    <a id="pauseVideo"><i class="fa fa-pause-circle margin" data-toggle="" title="توقف ویدئو آموزشی"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
                 <!-- sidebar menu -->
                 <div id="newModal" class="modal fade" role="dialog">
@@ -333,31 +366,19 @@
                         <a id="menu_toggle"><i class="fa fa-bars"></i></a>
                     </div>
                     <div class="nav toggle">
-                        <a id="makeBodySmall"><i class="fa fa-search-minus" data-toggle="" title="کوچک نمایی"></i></a>
                     </div>
                     <div class="nav toggle">
-                        <a id="makeBodyLarg"><i class="fa fa-search-plus" data-toggle="" title="بزرگ نمایی"></i></a>
-                    </div>
-                    <div class="nav toggle">
-                        {{--<a id="makeBodyLarg"><i class="fa fa-search-plus" data-toggle="" title="بزرگ نمایی"></i></a>--}}
-                    </div><div class="nav toggle">
-                        {{--<a id="makeBodyLarg"><i class="fa fa-search-plus" data-toggle="" title="بزرگ نمایی"></i></a>--}}
-                    </div>
-                    <div class="nav toggle">
-                        {{--<a id="makeBodyLarg"><i class="fa fa-search-plus" data-toggle="" title="بزرگ نمایی"></i></a>--}}
-                    </div>
-                    <div class="nav toggle">
-                        {{--<a id="makeBodyLarg"><i class="fa fa-search-plus" data-toggle="" title="بزرگ نمایی"></i></a>--}}
-                    </div>
-                    <div class="nav toggle">
-                        <a id="play"><i class="fa fa-play-circle" data-toggle="" title="پخش ویدئو آموزشی"></i></a>
-                    </div>
-                    <div class="nav toggle">
-                        <a id="pause"><i class="	fa fa-pause-circle" data-toggle="" title="توقف ویدئو آموزشی"></i></a>
-                    </div>
 
+                    </div>
+                    <div class="nav toggle">
 
+                    </div>
+                    <div class="nav toggle">
 
+                    </div>
+                    <div class="nav toggle">
+                        <a id="videoModal"><button class="btn btn-dark col-md-offset-12" data-toggle="" title="">پخش ویدئو آموزشی</button></a>
+                    </div>
                 </nav>
             </div>
             <input type="hidden" id="token" value="{{csrf_token()}}">
@@ -711,27 +732,32 @@
     });
 </script>
 <script>
-    $(document).ready(function(){
-        var path = window.location.pathname;
-        var absolutePath  = path.split('/');
-        var urlName  = absolutePath[absolutePath.length-1];
-        $('#playingVideo1').attr('src','localhost:81/art/public/dashboard/trainingVideo/'+urlName+'.mp4');
-        //alert(last);
-      //  play();
+
+    $(document).on('click', '#playVideo', function () {
+
+        var video = document.getElementById('video');
+        if (video != null) {
+            video.play();
+            $(this).hide();
+            $('#pauseVideo').show();
+        }
+
+    })
+    $(document).on('click', '#pauseVideo', function () {
+        $(this).hide();
+        $('#playVideo').show();
+        var video = document.getElementById('video');
+        video.pause();
     })
 
-//    }.on('click','#play',function () {
-
-    //}
 </script>
 <script>
-    $(document).on('click','#play',function(){
-        var video1 = document.getElementById('video1');
-        $('#video1').css('display','block');
-        video1.play();
+    $(document).on('click','#videoModal',function(){
+        $('#myModal').modal('show');
+//        var video1 = document.getElementById('video1');
+//        $('#video1').css('display','block');
+//        video1.play();
     })
-
-
 </script>
 
 <script>
