@@ -115,25 +115,17 @@
             <div class="clearfix">
                 <div class="header_details">
                     <div class="container">
-                        @if(count($services)>0)
-                            <div class="header_icons accura-header-block accura-hidden-2xs">
-                                <ul class="accura-social-icons accura-stacked accura-jump accura-full-height accura-bordered accura-small accura-colored-bg clearFix">
-                                    @foreach($services as $service)
-                                        <li id="1" title="{{$service->title}}"><a href="#"
-                                                                                  class="accura-social-icon-facebook circle"><i
-                                                        class="glyphicon {{$service->icon}} fa-3x"></i></a></li>
-                                        {{--<li id="2"><a href="#" class="accura-social-icon-twitter circle"><i--}}
-                                        {{--class="fa fa-twitter"></i></a></li>--}}
-                                        {{--<li id="3"><a href="#" class="accura-social-icon-gplus circle"><i--}}
-                                        {{--class="fa fa-google-plus"></i></a></li>--}}
-                                        {{--<li id="4"><a href="#" class="accura-social-icon-pinterest circle"><i--}}
-                                        {{--class="fa fa-pinterest"></i></a></li>--}}
-                                        {{--<li id="5"><a href="#" class="accura-social-icon-linkedin circle"><i--}}
-                                        {{--class="fa fa-linkedin"></i></a></li>--}}
-                                    @endforeach
-                                </ul>
-                            </div>
-                        @endif
+                        {{--@if(count($services)>0)--}}
+                            {{--<div class="header_icons accura-header-block accura-hidden-2xs">--}}
+                                {{--<ul class="accura-social-icons accura-stacked accura-jump accura-full-height accura-bordered accura-small accura-colored-bg clearFix">--}}
+                                    {{--@foreach($services as $service)--}}
+                                        {{--<li id="1" title="{{$service->title}}"><a href="#"--}}
+                                                                                  {{--class="accura-social-icon-facebook circle"><i--}}
+                                                        {{--class="glyphicon {{$service->icon}} fa-3x"></i></a></li>--}}
+                                    {{--@endforeach--}}
+                                {{--</ul>--}}
+                            {{--</div>--}}
+                        {{--@endif--}}
                         <div class="call yekan">
                             <div class="home_address yekan" dir="rtl">
                                 <i class="fa fa-map-marker"></i> آدرس گالری شما
@@ -232,6 +224,22 @@
                                         </div>
 
                                     </div>
+                                    <h1 class="yekan a-right">سرویس های ما</h1>
+
+                                @if(count($services)>0)
+                                        <div class="" dir="rtl">
+                                            <div class="row">
+                                                @foreach($services as $service)
+                                                    <div class="col-md-12" title="{{$service->title}}"><a class="accura-social-icon-facebook"><i
+                                                                    class="glyphicon {{$service->icon}} fa-3x"></i></a><a class="col-md-12">{{$service->description}}</a></div>
+                                                @endforeach
+
+                                            </div>
+                                            {{--<ul class="accura-social-icons accura-stacked accura-jump accura-full-height accura-bordered accura-small accura-colored-bg clearFix">--}}
+
+                                            {{--</ul>--}}
+                                        </div>
+                                    @endif
 
                                 </div>
                             </div>
