@@ -822,7 +822,20 @@
        $(document).on('click','#showVideo',function(){
            var path = window.location.pathname;
            var absolutePath  = path.split('/');
+           var len = absolutePath.length;
            var pageName  = absolutePath[absolutePath.length-1];
+
+           if(len > 4)
+           {
+               swal({
+                   title: "",
+                   text: "فیلم آموزشی این صفحه انتهای فیلم آموزشی صفحه قبل میباشد",
+                   type: "info",
+                   confirmButtonText: "بستن"
+               });
+               return false;
+           }
+
            if(pageName == 'panel')
            {
                window.location.href = 'admin/videoHandler/'+pageName;
