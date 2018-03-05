@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -16,17 +15,14 @@
     <link rel="stylesheet" href="{{URL::asset('public/main/css/font-awesome.css')}}" type="text/css"/>
     <link rel="stylesheet" href="{{URL::asset('public/main/css/component.css')}}" type="text/css"/>
     <link rel="stylesheet" href="{{URL::asset('public/main/css/animate.min.css')}}" type="text/css"/>
-
     <link rel="stylesheet" href="{{URL::asset('public/css/persianDatepicker-default.css')}}"/>
     <link rel="stylesheet" type="text/css" href="{{URL::asset('public/css/sweetalert-site.css')}}">
     <!--Menu-->
-
     <link rel="stylesheet" href="{{URL::asset('public/main/css/menu.css')}}" type="text/css"/>
     <link rel="stylesheet" href="{{URL::asset('public/main/css/style.css')}}" type="text/css"/>
     <link rel="stylesheet" href="{{URL::asset('public/main/css/cycleslider.css')}}">
     <link rel="stylesheet" href="{{URL::asset('public/main/css/slicknav.css')}}">
     <link rel="stylesheet" href="{{URL::asset('public/main/css/colors/color1.css')}}" id="color" type="text/css"/>
-
     <!-- settings-panel Demo Purpose css -->
     <link type="text/css" rel="stylesheet" href="{{URL::asset('public/main/settings/settings.css')}}"/>
     <link rel="shortcut icon" href="{{URL::asset('')}}"/>
@@ -35,9 +31,7 @@
     {{--<link href="https://cdnjs.cloudflare.com/ajax/libs/pnotify/3.2.1/pnotify.css" media="all" rel="stylesheet" type="text/css"/>--}}
     <script src="{{URL::asset('public/main/js/jquery-1.11.1.min.js')}}"></script>
     <script src="{{URL::asset('public/main/js/jquery-ui.min.js')}}"></script>
-
     <script type="text/javascript" src="{{URL::asset('public/main/js/modernizr.custom.js')}}"></script>
-
 </head>
 <body>
 <!--PRELOADER-->
@@ -45,7 +39,6 @@
     <div id="circle"></div>
 </section>
 <div id="menutop"></div>
-
 <div id="detail-prod" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="productGrid" dir="rtl">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content" >

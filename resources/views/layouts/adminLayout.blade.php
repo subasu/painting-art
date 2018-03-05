@@ -1,7 +1,6 @@
 @if(Auth::user()->role_id!=1)
         <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <style>
         .margin
@@ -30,18 +29,15 @@
     <link href="{{ URL::asset('public/dashboard/css/mystyle.css')}}" rel="stylesheet">
     <!-- Custom styling plus plugins -->
     <link href="{{ URL::asset('public/dashboard/css/custom.css')}}" rel="stylesheet">
-    <link rel="stylesheet" type="text/css"
-          href="{{ URL::asset('public/dashboard/css/maps/jquery-jvectormap-2.0.3.css')}}"/>
+    <link rel="stylesheet" type="text/css" href="{{ URL::asset('public/dashboard/css/maps/jquery-jvectormap-2.0.3.css')}}"/>
     <link href="{{ URL::asset('public/dashboard/css/icheck/flat/green.css')}}" rel="stylesheet"/>
     <link href="{{ URL::asset('public/dashboard/css/floatexamples.css')}}" rel="stylesheet" type="text/css"/>
-
     <script src="{{ URL::asset('public/js/jquery.min.js')}}"></script>
 {{--<link href="fontawesome-iconpicker.min.css" rel="stylesheet">
 --}}
     <!--[if lt IE 9]>
     <script src="../assets/js/ie8-responsive-file-warning.js"></script>
     <![endif]-->
-
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
