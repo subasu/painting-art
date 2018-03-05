@@ -1324,8 +1324,8 @@
                                 if(value.discount_volume == null)
                                 x+= 'تخفیف ندارد';
                                 x+='</td><td class="col-md-2">'+formatNumber(value.post_price)+'</td>'+
-                                '<input type="hidden" name="basketId" value="'+value.basketId+'">'+
-                                '<input type="hidden" name="productId[]" value="'+value.products.id+'">'+
+                                '<input type="hidden" name="basketId" value="'+value.basket_id+'">'+
+                                '<input type="hidden" name="productId[]" value="'+value.id+'">'+
                                 '</tr>' ;
 //
 //                                '<div class="col-md-6 pull-right">' +
@@ -1619,9 +1619,9 @@
                         type: "success",
                         confirmButtonText: "بستن"
                     });
-                    setTimeout(function(){
-                        window.location.href = '../login';
-                    },15000);
+//                    setTimeout(function(){
+//                        window.location.href = '../login';
+//                    },15000);
                 }else
                 {
                     swal
