@@ -337,4 +337,10 @@ class AdminController extends Controller
         return response()->json(['message' => 'وارد کردن آدرس گوگل مپ الزامی است']);
 
     }
+
+    public function videoHandler($parameter)
+    {
+        return view('admin.videoHandler',compact('parameter'));
+    }
+
 }

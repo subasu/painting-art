@@ -167,6 +167,10 @@
             //page handle routes
             Route::post('pageHandle','PageController@pageHandle');
 
+            //video handler
+            Route::get('videoHandler/{parameter}','AdminController@videoHandler');
+//            Route::get('showVideo/{pageName}',['as' => 'showVideo' , 'uses' => 'AdminController@showVideo']);
+
         });
         //end admin panel routes
         //user panel routes

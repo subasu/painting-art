@@ -377,7 +377,7 @@
 
                     </div>
                     <div class="nav toggle">
-                        <a id="videoModal"><button class="btn btn-dark col-md-offset-12" data-toggle="" title="">پخش ویدئو آموزشی</button></a>
+                        <a id="showVideo"><button class="btn btn-dark col-md-offset-12" data-toggle="" title="">پخش ویدئو آموزشی</button></a>
                     </div>
                 </nav>
             </div>
@@ -752,12 +752,12 @@
 
 </script>
 <script>
-    $(document).on('click','#videoModal',function(){
-        $('#myModal').modal('show');
-//        var video1 = document.getElementById('video1');
-//        $('#video1').css('display','block');
-//        video1.play();
-    })
+//    $(document).on('click','#videoModal',function(){
+//        $('#myModal').modal('show');
+////        var video1 = document.getElementById('video1');
+////        $('#video1').css('display','block');
+////        video1.play();
+//    })
 </script>
 
 <script>
@@ -817,6 +817,23 @@
             }
     })
 </script>
+
+<script>
+       $(document).on('click','#showVideo',function(){
+           var path = window.location.pathname;
+           var absolutePath  = path.split('/');
+           var pageName  = absolutePath[absolutePath.length-1];
+           if(pageName == 'panel')
+           {
+               window.location.href = 'admin/videoHandler/'+pageName;
+           }else
+               {
+                   window.location.href = 'videoHandler/'+pageName;
+               }
+
+       })
+</script>
+
 </body>
 </html>
 @endif
