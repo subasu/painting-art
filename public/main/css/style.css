@@ -1234,7 +1234,6 @@ Home Page
 }
 
 .button {
-    background: rgba(243, 42, 42, 0.95);
     color: #fff;
     border-style: none;
     font-size: 13px;
@@ -2405,7 +2404,7 @@ Button
 .spmenu {
     width: 150px;
     height: 60px;
-    background: rgba(243, 42, 42, 0.95);
+    background: rgba(141, 39, 0, 0.95);
     color: #fff;
     position: absolute;
     text-align: center;

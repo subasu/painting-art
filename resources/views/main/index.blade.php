@@ -41,7 +41,7 @@
 <div id="menutop"></div>
 <div id="detail-prod" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="productGrid" dir="rtl">
     <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content" >
+        <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close " data-dismiss="modal" aria-label="بستن"><span
                             aria-hidden="true">×</span></button>
@@ -116,16 +116,27 @@
                 <div class="header_details">
                     <div class="container">
                         {{--@if(count($services)>0)--}}
-                            {{--<div class="header_icons accura-header-block accura-hidden-2xs">--}}
-                                {{--<ul class="accura-social-icons accura-stacked accura-jump accura-full-height accura-bordered accura-small accura-colored-bg clearFix">--}}
-                                    {{--@foreach($services as $service)--}}
-                                        {{--<li id="1" title="{{$service->title}}"><a href="#"--}}
-                                                                                  {{--class="accura-social-icon-facebook circle"><i--}}
-                                                        {{--class="glyphicon {{$service->icon}} fa-3x"></i></a></li>--}}
-                                    {{--@endforeach--}}
-                                {{--</ul>--}}
-                            {{--</div>--}}
+                        {{--<div class="header_icons accura-header-block accura-hidden-2xs">--}}
+                        {{--<ul class="accura-social-icons accura-stacked accura-jump accura-full-height accura-bordered accura-small accura-colored-bg clearFix">--}}
+                        {{--@foreach($services as $service)--}}
+                        {{--<li id="1" title="{{$service->title}}"><a href="#"--}}
+                        {{--class="accura-social-icon-facebook circle"><i--}}
+                        {{--class="glyphicon {{$service->icon}} fa-3x"></i></a></li>--}}
+                        {{--@endforeach--}}
+                        {{--</ul>--}}
+                        {{--</div>--}}
                         {{--@endif--}}
+
+                        <div class="header_icons accura-header-block accura-hidden-2xs">
+                            <ul class="accura-social-icons accura-stacked accura-jump accura-full-height accura-bordered accura-small accura-colored-bg clearFix">
+                                <li id="1" title="کانال تلگرام">
+                                    <a href="#" class="accura-social-icon-facebook circle"><i
+                                                class="fa fa-paper-plane fa-3x"></i></a></li>
+                                <li id="1" title="کانال اینستاگرام">
+                                    <a href="#" class="accura-social-icon-facebook circle"><i
+                                                class="fa fa-instagram fa-3x"></i></a></li>
+                            </ul>
+                        </div>
                         <div class="call yekan">
                             <div class="home_address yekan" dir="rtl">
                                 <i class="fa fa-map-marker"></i> آدرس گالری شما
@@ -226,12 +237,14 @@
                                     </div>
                                     <h1 class="yekan a-right">سرویس های ما</h1>
 
-                                @if(count($services)>0)
+                                    @if(count($services)>0)
                                         <div class="" dir="rtl">
                                             <div class="row">
                                                 @foreach($services as $service)
-                                                    <div class="col-md-12" title="{{$service->title}}"><a class="accura-social-icon-facebook"><i
-                                                                    class="glyphicon {{$service->icon}} fa-3x"></i></a><a class="col-md-12">{{$service->description}}</a></div>
+                                                    <div class="col-md-12" title="{{$service->title}}"><a
+                                                                class="accura-social-icon-facebook"><i
+                                                                    class="glyphicon {{$service->icon}} fa-3x"></i></a><a
+                                                                class="col-md-12">{{$service->description}}</a></div>
                                                 @endforeach
 
                                             </div>
@@ -389,16 +402,18 @@
                                                                onBlur="this.placeholder = '* تلفن همراه :'"/>
                                                         <textarea name="userCoordination" id="userCoordination"
                                                                   class="validate['required'] messagebox1 yekan a-right"
-                                                                  placeholder="  آدرس : " onFocus="this.placeholder = ''"
+                                                                  placeholder="  آدرس : "
+                                                                  onFocus="this.placeholder = ''"
                                                                   onBlur="this.placeholder = ' آدرس :'"></textarea>
                                                     </div>
                                                     <div class="clearfix reserve_form margin-b-8">
                                                         <textarea name="comments" id="comments"
                                                                   class="validate['required'] messagebox1 yekan a-right"
-                                                                  placeholder="  توضیحات مشتری : " onFocus="this.placeholder = ''"
+                                                                  placeholder="  توضیحات مشتری : "
+                                                                  onFocus="this.placeholder = ''"
                                                                   onBlur="this.placeholder = ' توضیحات مشتری :'"></textarea>
                                                     </div>
-                                                    <div  class="col-md-12"></div>
+                                                    <div class="col-md-12"></div>
                                                     <div class="box-border" style="border-color: #0a0a0a;">
                                                         <table id="orderTable"
                                                                class="table table-bordered table-responsive cart_summary rtl">
@@ -434,8 +449,8 @@
                                                             <tr>
                                                                 <td colspan="5">قیمت نهایی (تومان)</td>
                                                                 <td colspan="5" id="factorPrice"></td>
-                                                                <input type="hidden"  name="factorPrice" value="">
-                                                                <input type="hidden"  name="basketId" value="">
+                                                                <input type="hidden" name="factorPrice" value="">
+                                                                <input type="hidden" name="basketId" value="">
                                                             </tr>
 
                                                         </table>
@@ -523,6 +538,57 @@
                     <div class="next"><i class="fa fa-angle-right"></i></div>
                 </div>
             </div>
+        </div>
+        <!-- // Gallery Ends
+        =============================-->
+        <!--Gallery2
+        =============================-->
+        <div id="gallery1" class="item">
+
+            <br>
+            <br>
+            <br>
+            <div class="row" id="showpic">
+                <div class="col-md-1"></div>
+                <div class="col-md-10" id="amazingslider-wrapper-1"
+                     style="display:block;position:relative;margin:0px auto 98px;">
+                    <div id="amazingslider-1" class="col-md-12" style="display:block;position:relative;margin:0 auto;">
+                        <ul class="amazingslider-slides" style="display:none;">
+                            <li><img src="{{URL::asset('public/main/img/7.jpg')}}"
+                                     data-cycle-desc="خلق آثار خاص و منحصر به فرد"
+                                     class="fullBg picx"
+                                     alt=""></li>
+                            <li><img src="{{URL::asset('public/main/img/6.jpg')}}" data-cycle-desc="عالی ترین کیفیت"
+                                     class="fullBg"
+                                     class="picx"></li>
+                            <li><img src="{{URL::asset('public/main/img/1.jpg')}}" data-cycle-desc="خلاقیت و زیبایی"
+                                     class="fullBg"
+                                     class="picx"></li>
+                        </ul>
+                        <ul class="amazingslider-thumbnails" style="display:none;">
+                            <li><img src="{{URL::asset('public/main/img/7.jpg')}}" style="width:40px;height:36px;"
+                                     data-cycle-desc="خلق آثار خاص و منحصر به فرد"
+                                     class="fullBg picx"
+                                     alt=""></li>
+                            <li><img src="{{URL::asset('public/main/img/6.jpg')}}" style="width:40px;height:36px;" data-cycle-desc="عالی ترین کیفیت"
+                                     class="fullBg"
+                                     class="picx"></li>
+                            <li><img src="{{URL::asset('public/main/img/1.jpg')}}" style="width:40px;height:36px;" data-cycle-desc="خلاقیت و زیبایی"
+                                     class="fullBg"
+                                     class="picx"></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-1"></div>
+            </div>
+            <script>
+                $('#zoom').elevateZoom({
+                    zoomType: "inner",
+                    cursor: "crosshair",
+                    zoomWindowFadeIn: 500,
+                    zoomWindowFadeOut: 750
+                });
+            </script>
         </div>
         <!-- // Gallery Ends
         =============================-->
@@ -775,7 +841,7 @@
                         "_token": token
                     },
                     success: function (response) {
-                        if(response!=0) {
+                        if (response != 0) {
                             var item = $(".submenu");
                             item.empty();
                             var x = 1;
@@ -861,7 +927,7 @@
 
                 },
                 error: function (response) {
-                   // console.log(response.valueOf(2));
+                    // console.log(response.valueOf(2));
                 }
             });
         });
@@ -880,7 +946,7 @@
                     $(".captcha").attr("src", data)
                 },
                 error: function (response) {
-                   // console .log(response.valueOf(2));
+                    // console .log(response.valueOf(2));
                 }
             });
         }
@@ -1174,13 +1240,13 @@
             data: {'_token': token},
             success: function (response) {
                 $('.total').text(formatNumber(response));
-                if(response>0)
-                $('#orderTotal').text(formatNumber(response));
+                if (response > 0)
+                    $('#orderTotal').text(formatNumber(response));
                 else
-                $('#orderTotal').text(0);
+                    $('#orderTotal').text(0);
             },
             error: function (error) {
-               // console.log(error);
+                // console.log(error);
             }
 
         });
@@ -1196,14 +1262,13 @@
             data: {'_token': token},
             success: function (response) {
                 $('#basketCount').text(response);
-                if(response == 0 || response == '')
-                {
-                    $('#showOrders').css('display','none');
+                if (response == 0 || response == '') {
+                    $('#showOrders').css('display', 'none');
                 }
             },
             error: function (error) {
-            //console.log(error);
-                $('#showOrders').css('display','none');
+                //console.log(error);
+                $('#showOrders').css('display', 'none');
             }
 
         });
@@ -1280,7 +1345,7 @@
             cash: false,
             type: "get",
             success: function (response) {
-                if(response!=0) {
+                if (response != 0) {
                     var cartContent = $(id);
                     cartContent.html('');
                     $.each(response.baskets.products, function (key, value) {
@@ -1303,26 +1368,26 @@
                                 '</div>';
                         }
                         else {
-                            var x = '<tr class="text-center">'+
-                                '<td class="cart_product">'+value.title+'</td>'+
-                                '<td class="cart_description">'+value.description+
+                            var x = '<tr class="text-center">' +
+                                '<td class="cart_product">' + value.title + '</td>' +
+                                '<td class="cart_description">' + value.description +
 //                                '<textarea class="form-control" disabled="">'+value.description+'</textarea>'+
                                 '</td>' +
-                                '<td id="unitPrice" content="'+value.price+'">'+formatNumber(value.price)+'</td>'+
-                                '<td class="qty">'+value.count+
+                                '<td id="unitPrice" content="' + value.price + '">' + formatNumber(value.price) + '</td>' +
+                                '<td class="qty">' + value.count +
 //                                '<input disabled="disabled" class="form-control input-sm" id="count" name="count" type="text" value="'+value.count+'">'+
 //                                '<input disabled="disabled" class="form-control input-sm" id="count" name="count" type="text" value="'+value.count+'">'+
-                                '</td>'+
-                                '<td id="oldSum" content="'+value.sum+'">'+formatNumber(value.sum)+'</td>'+
+                                '</td>' +
+                                '<td id="oldSum" content="' + value.sum + '">' + formatNumber(value.sum) + '</td>' +
                                 '<td class="col-md-2">';
-                                if(value.discount_volume != null)
-                                    x+=value.discount_volume;
-                                if(value.discount_volume == null)
-                                x+= 'تخفیف ندارد';
-                                x+='</td><td class="col-md-2">'+formatNumber(value.post_price)+'</td>'+
-                                '<input type="hidden" name="basketId" value="'+value.basket_id+'">'+
-                                '<input type="hidden" name="productId[]" value="'+value.id+'">'+
-                                '</tr>' ;
+                            if (value.discount_volume != null)
+                                x += value.discount_volume;
+                            if (value.discount_volume == null)
+                                x += 'تخفیف ندارد';
+                            x += '</td><td class="col-md-2">' + formatNumber(value.post_price) + '</td>' +
+                                '<input type="hidden" name="basketId" value="' + value.basket_id + '">' +
+                                '<input type="hidden" name="productId[]" value="' + value.id + '">' +
+                                '</tr>';
 //
 //                                '<div class="col-md-6 pull-right">' +
 //                                '<div class="location-address-wrap">' +
@@ -1341,25 +1406,25 @@
             }
         });
 
-            $.ajax({
-                dataType: "json",
-                url: "{{url('order')}}"+'/'+'orderDetail',
-                cashe: false,
-                type: "get",
-                success: function (response) {
-                    if(response!=0) {
-                        $('#factorPrice').text(formatNumber(response.finalPrice));
-                        $('#discountPrice').text(formatNumber(response.totalDiscount));
-                        $('#totalPrice').text(formatNumber(response.total));
-                        $('#postPrice').text(formatNumber(response.totalPostPrice));
-                        $('[name="factorPrice"]').val(response.finalPrice);
-                        $('[name="discountPrice"]').val(response.totalDiscount);
-                        $('[name="totalPrice"]').val(response.total);
-                        $('[name="postPrice"]').val(response.totalPostPrice);
-                        $('[name="basketId"]').val(response.basketId);
-                    }
+        $.ajax({
+            dataType: "json",
+            url: "{{url('order')}}" + '/' + 'orderDetail',
+            cashe: false,
+            type: "get",
+            success: function (response) {
+                if (response != 0) {
+                    $('#factorPrice').text(formatNumber(response.finalPrice));
+                    $('#discountPrice').text(formatNumber(response.totalDiscount));
+                    $('#totalPrice').text(formatNumber(response.total));
+                    $('#postPrice').text(formatNumber(response.totalPostPrice));
+                    $('[name="factorPrice"]').val(response.finalPrice);
+                    $('[name="discountPrice"]').val(response.totalDiscount);
+                    $('[name="totalPrice"]').val(response.total);
+                    $('[name="postPrice"]').val(response.totalPostPrice);
+                    $('[name="basketId"]').val(response.basketId);
                 }
-            });
+            }
+        });
 
     }
     //    $(document).ready(function () {
@@ -1459,11 +1524,11 @@
                         type: "success",
                         confirmButtonText: "بستن"
                     });
-                    var t=formatNumber(orderTotalPrice - price)
-                    if(t<0)
-                    $('#orderTotal').text('0');
+                    var t = formatNumber(orderTotalPrice - price)
+                    if (t < 0)
+                        $('#orderTotal').text('0');
                     else
-                    $('#orderTotal').text(t);
+                        $('#orderTotal').text(t);
                     $('.basketItem-' + productId).remove();
                     basketCountNotify();
 
@@ -1481,17 +1546,17 @@
     }
     //    sub from Product Count in basket cart and update essential tag ...total prices and count
     //    called by onclick
-    function subFromProductCount(productId, basketId,price) {
+    function subFromProductCount(productId, basketId, price) {
         var orderTotal = $('#orderTotal');
         var orderTotalPrice = orderTotal.text();
         orderTotalPrice = orderTotalPrice.replace(',', '');
         orderTotalPrice = orderTotalPrice.replace(',', '');
         orderTotalPrice = orderTotalPrice.replace(',', '');
         orderTotalPrice = orderTotalPrice.replace(',', '');
-        var totalCountTag=$('.totalProductCount-' + productId);
-        var totalCount=totalCountTag.text();
-        var totalPriceTag=$('.totalProductPrice-' + productId);
-        var totalPrice=totalPriceTag.text();
+        var totalCountTag = $('.totalProductCount-' + productId);
+        var totalCount = totalCountTag.text();
+        var totalPriceTag = $('.totalProductPrice-' + productId);
+        var totalPrice = totalPriceTag.text();
         totalPrice = totalPrice.replace(',', '');
         totalPrice = totalPrice.replace(',', '');
         totalPrice = totalPrice.replace(',', '');
@@ -1514,40 +1579,40 @@
             ({
                 url: "{{url('user/addOrSubCount')}}",
                 type: "post",
-                data: { 'productId': productId, 'basketId': basketId, 'parameter': 'subFromCount'},
+                data: {'productId': productId, 'basketId': basketId, 'parameter': 'subFromCount'},
                 dataType: "json",
                 success: function (response) {
 
                     if (response.code == 1) {
                         totalPriceTag.text(formatNumber(totalPrice - price));
                         $('#orderTotal').text(formatNumber(orderTotalPrice - price));
-                        totalCountTag.text(totalCount-1);
+                        totalCountTag.text(totalCount - 1);
                     }
                 }, error: function (error) {
-                   // console.log(error);
+                    // console.log(error);
                 }
             });
         }
     }
-//    add To Product Count in basket cart and update essential tag ...total prices and count
-//    called by onclick
+    //    add To Product Count in basket cart and update essential tag ...total prices and count
+    //    called by onclick
 
-    function addToProductCount(productId, basketId,price) {
+    function addToProductCount(productId, basketId, price) {
         var orderTotal = $('#orderTotal');
         var orderTotalPrice = orderTotal.text();
         orderTotalPrice = orderTotalPrice.replace(',', '');
         orderTotalPrice = orderTotalPrice.replace(',', '');
         orderTotalPrice = orderTotalPrice.replace(',', '');
         orderTotalPrice = orderTotalPrice.replace(',', '');
-        var totalCountTag=$('.totalProductCount-' + productId);
-        var totalCount=totalCountTag.text();
-        var totalPriceTag=$('.totalProductPrice-' + productId);
-        var totalPrice=totalPriceTag.text();
+        var totalCountTag = $('.totalProductCount-' + productId);
+        var totalCount = totalCountTag.text();
+        var totalPriceTag = $('.totalProductPrice-' + productId);
+        var totalPrice = totalPriceTag.text();
         totalPrice = totalPrice.replace(',', '');
         totalPrice = totalPrice.replace(',', '');
         totalPrice = totalPrice.replace(',', '');
         totalPrice = totalPrice.replace(',', '');
-         {
+        {
             $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -1557,17 +1622,17 @@
             ({
                 url: "{{url('user/addOrSubCount')}}",
                 type: "post",
-                data: { 'productId': productId, 'basketId': basketId, 'parameter': 'addToCount'},
+                data: {'productId': productId, 'basketId': basketId, 'parameter': 'addToCount'},
                 dataType: "json",
                 success: function (response) {
 
                     if (response.code == 1) {
                         totalPriceTag.text(formatNumber(parseInt(totalPrice) + parseInt(price)));
                         $('#orderTotal').text(formatNumber(parseInt(orderTotalPrice) + parseInt(price)));
-                        totalCountTag.text(parseInt(totalCount)+1);
+                        totalCountTag.text(parseInt(totalCount) + 1);
                     }
                 }, error: function (error) {
-                   // console.log(error);
+                    // console.log(error);
                 }
             });
         }
@@ -1577,49 +1642,43 @@
 
 <!-- below script is related to add order in data base -->
 <script>
-    $(document).on('click','#orderRegistration',function () {
+    $(document).on('click', '#orderRegistration', function () {
         var formData = $('#orderDetailForm').serialize();
-        var userCellphone    = $('#userCellphone').val();
+        var userCellphone = $('#userCellphone').val();
         var userCoordination = $('#userCoordination').val();
         $.ajax
         ({
-            url         : "{{url('user/orderRegistration')}}",
-            type        : "post",
-            data        : formData,
-            dataType    : 'JSON',
-            beforeSend  : function()
-            {
-                if(userCellphone == '' || userCellphone == null)
-                {
+            url: "{{url('user/orderRegistration')}}",
+            type: "post",
+            data: formData,
+            dataType: 'JSON',
+            beforeSend: function () {
+                if (userCellphone == '' || userCellphone == null) {
                     $('#userCellphone').focus();
-                    $('#userCellphone').css('border-color','red');
+                    $('#userCellphone').css('border-color', 'red');
                     return false;
                 }
-                if(userCoordination == '' || userCoordination == null)
-                {
+                if (userCoordination == '' || userCoordination == null) {
                     $('#userCoordination').focus();
-                    $('#userCoordination').css('border-color','red');
+                    $('#userCoordination').css('border-color', 'red');
                     return false;
                 }
 
             },
-            success : function(response)
-            {
+            success: function (response) {
                 ///console.log(response);
-                if(response.code == 1)
-                {
+                if (response.code == 1) {
                     swal
                     ({
                         title: "",
-                        text: response.message +'\n' + response.userPassword,
+                        text: response.message + '\n' + response.userPassword,
                         type: "success",
                         confirmButtonText: "بستن"
                     });
 //                    setTimeout(function(){
 //                        window.location.href = '../login';
 //                    },15000);
-                }else
-                {
+                } else {
                     swal
                     ({
                         title: "",
@@ -1629,10 +1688,8 @@
                     });
                 }
             },
-            error   : function(error)
-            {
-                if(error.status === 500)
-                {
+            error: function (error) {
+                if (error.status === 500) {
                     console.log(error);
                     swal
                     ({
@@ -1664,16 +1721,16 @@
         });
         $("[name='search_select']").change(function () {
             console.log($(this).val())
-            $("#form_search").attr('action','{{url('search')}}/'+$(this).val())
+            $("#form_search").attr('action', '{{url('search')}}/' + $(this).val())
         })
     })
 </script>
 {{--<script>--}}
-    {{--$(function(){--}}
-        {{--var basketCount = $('#basketCount').text();--}}
-        {{--alert(basketCount);--}}
-        {{--$('#showOrders').css('display','none');--}}
-    {{--})--}}
+{{--$(function(){--}}
+{{--var basketCount = $('#basketCount').text();--}}
+{{--alert(basketCount);--}}
+{{--$('#showOrders').css('display','none');--}}
+{{--})--}}
 {{--</script>--}}
 <script src="{{ URL::asset('public/js/persianDatepicker.js')}}"></script>
 <script src="{{url('public/js/sweetalert.min.js')}}"></script>
