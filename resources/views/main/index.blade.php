@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="{{URL::asset('public/main/css/style.css')}}" type="text/css"/>
     <link rel="stylesheet" href="{{URL::asset('public/main/css/cycleslider.css')}}">
     <link rel="stylesheet" href="{{URL::asset('public/main/css/slicknav.css')}}">
-    <link rel="stylesheet" href="{{URL::asset('public/main/css/colors/color1.css')}}" id="color" type="text/css"/>
+    <link rel="stylesheet" href="{{URL::asset('public/main/css/colors/color7.css')}}" id="color" type="text/css"/>
     <!-- settings-panel Demo Purpose css -->
     <link type="text/css" rel="stylesheet" href="{{URL::asset('public/main/settings/settings.css')}}"/>
     <link rel="shortcut icon" href="{{URL::asset('')}}"/>
@@ -493,11 +493,8 @@
         </div>
         <!-- // shopCart
         =============================-->
-
-
         <!--Gallery
         =============================-->
-
         <div id="gallery" class="item">
             <div id="slides" class="clearfix">
                 <div class="cycle-slideshow"
@@ -527,10 +524,8 @@
                 </div>
             </div>
         </div>
-
         <!-- // Gallery Ends
         =============================-->
-
         <!--Reservation
         =============================-->
         <div id="loginRegister" class="item">
