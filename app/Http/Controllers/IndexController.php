@@ -206,8 +206,8 @@ class IndexController extends Controller
                     'telephone' => 'sometimes|nullable|numeric|size:11',
                     'cellphone' => 'required|numeric|min:11|unique:users',
                     'birth_date' => 'sometimes|nullable|min:8|max:10',
-                    'capital' => 'required',
-                    'town' => 'required',
+                    'capital' => 'sometimes|nullable',
+                    'town' => 'sometimes|nullable',
                     'zipCode' => 'sometimes|nullable|numeric|min:10',
                     'captcha' => 'required|in:' . session()->get('captcha')
                 ]
@@ -253,8 +253,8 @@ class IndexController extends Controller
             'cellphone' => $data['cellphone'],
             'birth_date' => $data['birth_date'],
             'address' => $data['address'],
-            'capital_city_id' => $capital,
-            'town_city_id' => $data['town'],
+//            'capital_city_id' => $capital,
+//            'town_city_id' => $data['town'],
             'telephone' => $data['telephone'],
             'role_id' => $role_id,
             'zipCode' => $data['zipCode'],

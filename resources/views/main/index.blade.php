@@ -576,16 +576,20 @@
                                         {{csrf_field()}}
                                         <input type="hidden" value="user" name="frmtype">
                                         <div class="clearfix reserve_form">
-                                            <input type="text" name="name" id="name"
-                                                   class="validate['required'] textbox1 yekan a-right"
-                                                   placeholder=" نام : "
-                                                   onfocus="this.placeholder = ''"
-                                                   onBlur="this.placeholder = ' نام :'"/>
-                                            <input type="text" name="family" id="family"
-                                                   class="validate['required'] textbox1 yekan a-right"
-                                                   placeholder=" نام خانوادگی : "
-                                                   onfocus="this.placeholder = ''"
-                                                   onBlur="this.placeholder = ' نام خانوادگی :'"/>
+                                            {{--<input type="text" name="name" id="name"--}}
+                                                   {{--class="validate['required'] textbox1 yekan a-right"--}}
+                                                   {{--placeholder=" نام : "--}}
+                                                   {{--onfocus="this.placeholder = ''"--}}
+                                                   {{--onBlur="this.placeholder = ' نام :'"/>--}}
+                                            {{--<input type="text" name="family" id="family"--}}
+                                                   {{--class="validate['required'] textbox1 yekan a-right"--}}
+                                                   {{--placeholder=" نام خانوادگی : "--}}
+                                                   {{--onfocus="this.placeholder = ''"--}}
+                                                   {{--onBlur="this.placeholder = ' نام خانوادگی :'"/>--}}
+                                            <input type="text" name="cellphone" id="cellphone"
+                                                   class="validate['required','phone']  textbox1 yekan a-right"
+                                                   placeholder="* تلفن همراه : " onFocus="this.placeholder = ''"
+                                                   onBlur="this.placeholder = '* شماره تلفن :'"/>
                                             <input type="text" id="password" name="password"
                                                    class="validate['required'] textbox1 yekan a-right"
                                                    placeholder="* پسورد : "
@@ -596,46 +600,43 @@
                                                    placeholder="* تکرار پسورد : "
                                                    onfocus="this.placeholder = ''"
                                                    onBlur="this.placeholder = '* تکرار پسورد :'"/>
-                                            <input type="text" name="email" id="email"
-                                                   class="validate['required','email']  textbox1 yekan a-right"
-                                                   placeholder=" ایمیل : " onFocus="this.placeholder = ''"
-                                                   onBlur="this.placeholder = ' ایمیل :'"/>
-                                            <input type="text" name="phone"
-                                                   class="validate['required','phone']  textbox1 yekan a-right"
-                                                   placeholder="* شماره موبایل : " onFocus="this.placeholder = ''"
-                                                   onBlur="this.placeholder = '* تلفن موبایل :'"/>
-                                            <input type="text" name="cellphone" id="cellphone"
-                                                   class="validate['required','phone']  textbox1 yekan a-right"
-                                                   placeholder="* شماره تلفن : " onFocus="this.placeholder = ''"
-                                                   onBlur="this.placeholder = '* شماره تلفن :'"/>
-                                            <input type="text" name="birth_date" id="birth_date"
-                                                   class="validate['required']  textbox1 yekan a-right"
-                                                   placeholder="* تاریخ تولد : " onFocus="this.placeholder = ''"
-                                                   onBlur="this.placeholder = '* تاریخ تولد :'"/>
-                                            <select name="capital" id="capital"
-                                                    class="validate['required']  textbox1 yekan a-right"
-                                                    placeholder="* استان : " onFocus="this.placeholder = ''"
-                                                    onBlur="this.placeholder = '* استان :'">
-                                                <option class="align-right" value="-1">لطفا استان مورد نظر خود را انتخاب
-                                                    نمایید.
-                                                </option>
-                                                @foreach($capital as $cap)
-                                                    <option class="align-right"
-                                                            value="{{$cap->id}}">{{$cap->title}}</option>
-                                                @endforeach                                            </select>
-                                            <select name="town" id="town"
-                                                    class="validate['required']  textbox1 yekan a-right"
-                                                    placeholder=" شهرستان : " onFocus="this.placeholder = ''"
-                                                    onBlur="this.placeholder = ' شهرستان :'">
-                                            </select>
-                                            <input type="text" name="zipCode" id="zipCode"
-                                                   class="validate['required','phone']  textbox1 yekan a-right"
-                                                   placeholder=" کد پستی : " onFocus="this.placeholder = ''"
-                                                   onBlur="this.placeholder = ' کد پستی :'"/>
-                                            <textarea name="address" id="address"
-                                                      class="validate['required'] messagebox1 yekan a-right"
-                                                      placeholder=" آدرس : " onFocus="this.placeholder = ''"
-                                                      onBlur="this.placeholder = ' آدرس :'"></textarea>
+                                            {{--<input type="text" name="email" id="email"--}}
+                                                   {{--class="validate['required','email']  textbox1 yekan a-right"--}}
+                                                   {{--placeholder=" ایمیل : " onFocus="this.placeholder = ''"--}}
+                                                   {{--onBlur="this.placeholder = ' ایمیل :'"/>--}}
+                                            {{--<input type="text" name="phone"--}}
+                                                   {{--class="validate['required','phone']  textbox1 yekan a-right"--}}
+                                                   {{--placeholder="* شماره موبایل : " onFocus="this.placeholder = ''"--}}
+                                                   {{--onBlur="this.placeholder = '* تلفن موبایل :'"/>--}}
+                                           {{----}}
+                                            {{--<input type="text" name="birth_date" id="birth_date"--}}
+                                                   {{--class="validate['required']  textbox1 yekan a-right"--}}
+                                                   {{--placeholder="* تاریخ تولد : " onFocus="this.placeholder = ''"--}}
+                                                   {{--onBlur="this.placeholder = '* تاریخ تولد :'"/>--}}
+                                            {{--<select name="capital" id="capital"--}}
+                                                    {{--class="validate['required']  textbox1 yekan a-right"--}}
+                                                    {{--placeholder="* استان : " onFocus="this.placeholder = ''"--}}
+                                                    {{--onBlur="this.placeholder = '* استان :'">--}}
+                                                {{--<option class="align-right" value="-1">لطفا استان مورد نظر خود را انتخاب--}}
+                                                    {{--نمایید.--}}
+                                                {{--</option>--}}
+                                                {{--@foreach($capital as $cap)--}}
+                                                    {{--<option class="align-right"--}}
+                                                            {{--value="{{$cap->id}}">{{$cap->title}}</option>--}}
+                                                {{--@endforeach                                            </select>--}}
+                                            {{--<select name="town" id="town"--}}
+                                                    {{--class="validate['required']  textbox1 yekan a-right"--}}
+                                                    {{--placeholder=" شهرستان : " onFocus="this.placeholder = ''"--}}
+                                                    {{--onBlur="this.placeholder = ' شهرستان :'">--}}
+                                            {{--</select>--}}
+                                            {{--<input type="text" name="zipCode" id="zipCode"--}}
+                                                   {{--class="validate['required','phone']  textbox1 yekan a-right"--}}
+                                                   {{--placeholder=" کد پستی : " onFocus="this.placeholder = ''"--}}
+                                                   {{--onBlur="this.placeholder = ' کد پستی :'"/>--}}
+                                            {{--<textarea name="address" id="address"--}}
+                                                      {{--class="validate['required'] messagebox1 yekan a-right"--}}
+                                                      {{--placeholder=" آدرس : " onFocus="this.placeholder = ''"--}}
+                                                      {{--onBlur="this.placeholder = ' آدرس :'"></textarea>--}}
                                             <i class="fa fa-refresh fa-lg fa-2x captcha-reload col-md-1" height="50"
                                                width="50"></i>
                                             <img class="captcha col-md-4" alt="captcha.png" id="captcha-image"/>
@@ -943,23 +944,23 @@
                             type: "warning",
                         })
                     }
-                    else if (response.status === 421) {
-                        swal({
-                            title: "",
-                            text: "اطلاعات شما با مؤفقیت ثبت شد، پس از تأیید شدن توسط مدیر سایت برای شما ایمیل فعال سازی ارسال خواهد شد.منتظر پیامک اطلاعیه از طرف سایت باشید.",
-                            type: "warning",
-                            confirmButtonText: "بستن"
-                        });
-                    }
-                    else {
-                        swal({
-                            title: "",
-//                                text: 'خطایی رخ داده است، لطفا با پشتیبانی تماس حاصل فرمائید',
-                            text: "اطلاعات شما با مؤفقیت ثبت شد، پس از تأیید شدن توسط مدیر سایت برای شما ایمیل فعال سازی ارسال خواهد شد.منتظر پیامک اطلاعیه از طرف سایت باشید.",
-                            type: "warning",
-                            confirmButtonText: "بستن"
-                        });
-                    }
+//                    else if (response.status === 421) {
+//                        swal({
+//                            title: "",
+//                            text: "اطلاعات شما با مؤفقیت ثبت شد، پس از تأیید شدن توسط مدیر سایت برای شما ایمیل فعال سازی ارسال خواهد شد.منتظر پیامک اطلاعیه از طرف سایت باشید.",
+//                            type: "warning",
+//                            confirmButtonText: "بستن"
+//                        });
+//                    }
+//                    else {
+//                        swal({
+//                            title: "",
+////                                text: 'خطایی رخ داده است، لطفا با پشتیبانی تماس حاصل فرمائید',
+//                            text: "اطلاعات شما با مؤفقیت ثبت شد، پس از تأیید شدن توسط مدیر سایت برای شما ایمیل فعال سازی ارسال خواهد شد.منتظر پیامک اطلاعیه از طرف سایت باشید.",
+//                            type: "warning",
+//                            confirmButtonText: "بستن"
+//                        });
+//                    }
                 }//error
 
             })//ajax
