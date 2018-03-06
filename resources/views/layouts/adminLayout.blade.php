@@ -170,7 +170,7 @@
                 <!-- /menu profile quick info -->
 
                 <br/>
-                
+
 
                 <!-- sidebar menu -->
                 <div id="newModal" class="modal fade" role="dialog">
