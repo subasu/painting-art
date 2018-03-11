@@ -1,4 +1,4 @@
-unitCountManagement.blade.php@extends('layouts.adminLayout')
+@extends('layouts.adminLayout')
 @section('content')
 
     <div class="clearfix"></div>
@@ -6,7 +6,7 @@ unitCountManagement.blade.php@extends('layouts.adminLayout')
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="x_panel">
                 <div class="x_title">
-                    <h2> مدیریت واحدهای شمارش</h2>
+                    <h2> مدیریت دسته بندی های گالری</h2>
                     <ul class="nav navbar-right panel_toolbox">
                         <li><a class="collapse-link" data-toggle="tooltip" title="جمع کردن"><i
                                         class="fa fa-chevron-up"></i></a>
@@ -18,8 +18,8 @@ unitCountManagement.blade.php@extends('layouts.adminLayout')
                 </div>
 
 
-                <a href="{{url('admin/addUnit')}}" id="user-send" type="button" class="col-md-3 col-md-offset-4 btn btn-info" style="font-weight: bold;">
-                                        افزودن واحد شمارش جدید                </a>
+                <a href="{{url('admin/addGalleryCategory')}}" id="user-send" type="button" class="col-md-3 col-md-offset-4 btn btn-info" style="font-weight: bold;">
+                                        افزودن دسته بندی های جدید                </a>
                 {{--<div class="pull-right" style="direction: rtl"><i class="fa fa-square" style="font-size: 35px;color:#ffff80;"></i> مدیران واحد</div>--}}
                 <div class="x_content">
                     <table style="direction:rtl;text-align: center" id="example"
@@ -28,7 +28,7 @@ unitCountManagement.blade.php@extends('layouts.adminLayout')
                         <thead>
                         <tr>
                             <th style="text-align: center">ردیف</th>
-                            <th style="text-align: center"> عنوان واحد شمارش</th>
+                            <th style="text-align: center">عنوان </th>
                             <th style="text-align: center">وضعیت</th>
                             <th style="text-align: center;border-right: 1px solid #d6d6c2">ویرایش</th>
                         </tr>
@@ -47,7 +47,7 @@ unitCountManagement.blade.php@extends('layouts.adminLayout')
                                 @if($datum->active == 0)
                                     <td style="color:red; font-size : 150%;">غیر فعال</td>
                                 @endif
-                                <td style="font-size: 120%;"><a class="btn btn-warning col-md-8 col-md-offset-2"  href="{{url('admin/editUnitCount')}}/{{$datum->id}}">ویرایش</a></td>
+                                <td style="font-size: 120%;"><a class="btn btn-warning col-md-8 col-md-offset-2"  href="{{url('admin/editGalleryCategory')}}/{{$datum->id}}">ویرایش</a></td>
                             </tr>
                             {{--@endif--}}
                         @endforeach
