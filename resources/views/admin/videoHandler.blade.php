@@ -31,10 +31,8 @@
             </div>
         </div>
             <div class="col-md-12">
-                <video class="video"
-                       id="video" name="video_src">
-                    <source id="playingVideo"
-                            src="{{url('public/dashboard/trainingVideos/'.$parameter.'.mp4')}}">
+                <video class="video" controls id="video" name="video_src">
+                    <source id="playingVideo" src="{{url('public/dashboard/trainingVideos/'.$parameter.'.mp4')}}">
                 </video>
             </div>
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\CategoryProduct;
 use App\Models\Color;
+use App\Models\GalleryCategory;
 use App\Models\Modol;
 use App\Models\PaymentType;
 use App\Models\Product;
@@ -21,6 +22,16 @@ class CommonController extends Controller
     public function getMainCategories()
     {
         $mainCategories = Category::where([['parent_id', null], ['active', 1]])->get();
+        if (count($mainCategories) > 0) {
+            return response()->json($mainCategories);
+        } else {
+            return response()->json(0);
+        }
+    }
+    //below function is to get Gallery categories from database
+    public function getGalleryCategories()
+    {
+        $mainCategories = GalleryCategory::where('active','=' ,1)->get();
         if (count($mainCategories) > 0) {
             return response()->json($mainCategories);
         } else {

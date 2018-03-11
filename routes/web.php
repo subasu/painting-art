@@ -74,6 +74,13 @@
             Route::post('editUnitCountTitle', 'UnitController@editUnitCountTitle');
             Route::post('enableOrDisableUnitCount', 'UnitController@enableOrDisableUnitCount');
             Route::post('enableOrDisableSubUnitCount', 'UnitController@enableOrDisableSubUnitCount');
+            //GalleryCategory
+            Route::get('addGalleryCategory', 'AdminController@addGalleryCategory');//show add Gallery Category view
+            Route::get('GalleryCategoryManagement', 'AdminController@GalleryCategoryManagement');//show view of all  Gallery Categories
+            Route::post('addNewGalleryCategory', 'AdminController@addNewGalleryCategory');//show view of all Gallery Categories
+            Route::get('editGalleryCategory/{id}', 'AdminController@editGalleryCategory');
+            Route::post('editGalleryCategoryTitle', 'AdminController@editGalleryCategoryTitle');
+            Route::post('enableOrDisableGalleryCategory', 'AdminController@enableOrDisableGalleryCategory');
             //product
             Route::get('addProduct', 'ProductController@addProduct');//show add product view
             Route::get('productsManagement', 'ProductController@productsManagement');//show view of all product's details
@@ -127,6 +134,14 @@
             Route::post('editSliderPicture', 'AdminController@editSliderPicture');//this route is related to edit sliders picture
             Route::post('editSliderTitle', 'AdminController@editSliderTitle');//this route is related ti edit sliders title
             Route::post('enableOrDisableSlider', 'AdminController@enableOrDisableSlider');//this route is related to make sliders enable or disable
+             //gallery
+            Route::get('addGallery', 'AdminController@addGallery');
+            Route::post('addNewGallery', 'AdminController@addNewGallery');
+            Route::get('GalleryManagement','AdminController@GalleryManagement');
+            Route::get('editGallery/{id}','AdminController@editGallery');
+            Route::post('editGalleryPicture', 'AdminController@editGalleryPicture');//this route is related to edit Gallery picture
+            Route::post('editGalleryTitle', 'AdminController@editGalleryTitle');//this route is related ti edit Gallery title
+            Route::post('enableOrDisableGallery', 'AdminController@enableOrDisableGallery');//this route is related to make Gallery enable or disable
             //AboutUs
             Route::get('addAboutUs', 'AdminController@addAboutUs');
             Route::post('addAboutUsPost', 'AdminController@addAboutUsPost');

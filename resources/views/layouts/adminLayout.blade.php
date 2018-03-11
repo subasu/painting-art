@@ -33,8 +33,7 @@
     <link href="{{ URL::asset('public/dashboard/css/icheck/flat/green.css')}}" rel="stylesheet"/>
     <link href="{{ URL::asset('public/dashboard/css/floatexamples.css')}}" rel="stylesheet" type="text/css"/>
     <script src="{{ URL::asset('public/js/jquery.min.js')}}"></script>
-{{--<link href="fontawesome-iconpicker.min.css" rel="stylesheet">
---}}
+{{--<link href="fontawesome-iconpicker.min.css" rel="stylesheet">--}}
     <!--[if lt IE 9]>
     <script src="../assets/js/ie8-responsive-file-warning.js"></script>
     <![endif]-->
@@ -47,12 +46,7 @@
             font-family: "Yekan" !important;
         }</style>
 </head>
-
-
 <body class="nav-md">
-
-
-
 <div class="container body">
     <div class="main_container">
         <!-- page content -->
@@ -64,7 +58,6 @@
                     <br>
                     <h2><a href="{{url('/')}}">بازگشت به صفحه اصلی</a>
                     </h2>
-
                 </div>
             </div>
         </div>
@@ -93,28 +86,23 @@
 <meta name="csrf-token" content="{{ csrf_token() }}">
 <title>@if(!empty($pageTitle)){{$pageTitle}}@endif</title>
 <link rel="short icon" href="{{URL::asset('public/main/assets/img/logo.png')}}"/>
-
 <!-- Bootstrap core CSS -->
-
 <link href="{{ URL::asset('public/dashboard/css/bootstrap.min.css')}}" rel="stylesheet">
 <link href="{{ URL::asset('public/dashboard/fonts/css/font-awesome.min.css')}}" rel="stylesheet">
 <link href="{{ URL::asset('public/dashboard/css/animate.min.css')}}" rel="stylesheet">
 {{--My Style Code--}}
 <link href="{{ URL::asset('public/dashboard/css/mystyle.css')}}" rel="stylesheet">
-
 <!-- Custom styling plus plugins -->
 <link href="{{ URL::asset('public/dashboard/css/custom.css')}}" rel="stylesheet">
 <link rel="stylesheet" type="text/css"
       href="{{ URL::asset('public/dashboard/css/maps/jquery-jvectormap-2.0.3.css')}}"/>
 <link href="{{ URL::asset('public/dashboard/css/icheck/flat/green.css')}}" rel="stylesheet"/>
 <link href="{{ URL::asset('public/dashboard/css/floatexamples.css')}}" rel="stylesheet" type="text/css"/>
-
 <!-- editor -->
 <link href="http://netdna.bootstrapcdn.com/font-awesome/3.0.2/css/font-awesome.css" rel="stylesheet">
 <link href="{{URL::asset('public/dashboard/css/editor/external/google-code-prettify/prettify.css')}}"
       rel="stylesheet">
 <link href="{{URL::asset('public/dashboard/css/editor/index.css')}}" rel="stylesheet">
-
 <!--Data table-->
 <link href="{{ URL::asset('public/dashboard/js/datatables/jquery.dataTables.min.css')}}" rel="stylesheet"
       type="text/css"/>
@@ -126,21 +114,14 @@
       type="text/css"/>
 <link href="{{ URL::asset('public/dashboard/js/datatables/scroller.bootstrap.min.css')}}" rel="stylesheet"
       type="text/css"/>
-
-
-<!--End Data table-->
-
+<!--end Data table-->
 <link rel="stylesheet" type="text/css" href="{{URL::asset('public/css/sweetalert.css')}}">
-
 <!-- Include a polyfill for ES6 Promises (optional) for IE11 and Android browser -->
-
 <script src="{{ URL::asset('public/dashboard/js/jquery.min.js')}}"></script>
 <script src="{{ URL::asset('public/dashboard/js/nprogress.js')}}"></script>
-
 <!--[if lt IE 9]>
 <script src="../assets/js/ie8-responsive-file-warning.js"></script>
 <![endif]-->
-
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
@@ -291,6 +272,22 @@
                                     <li><a href="{{url('admin/addGoogleMap')}}">درج نقشه گوگل</a>
                                     </li>
                                     <li><a href="{{url('admin/editGoogleMap')}}">ویرایش و مدیریت نقشه گوگل</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li><a><i class="fa fa-map-marker"></i>مدیریت تصاویر گالری<span class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu" style="display: none">
+                                    <li><a href="{{url('admin/addGallery')}}">درج تصاویر گالری</a>
+                                    </li>
+                                    <li><a href="{{url('admin/GalleryManagement')}}">ویرایش و مدیریت تصاویر گالری</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li><a><i class="fa fa-map-marker"></i>دسته بندی گالری تصاویر<span class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu" style="display: none">
+                                    <li><a href="{{url('admin/addGalleryCategory')}}">درج دسته بندی گالری تصاویر</a>
+                                    </li>
+                                    <li><a href="{{url('admin/GalleryCategoryManagement')}}">ویرایش و مدیریت دسته بندی گالری</a>
                                     </li>
                                 </ul>
                             </li>

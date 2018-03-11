@@ -32,6 +32,11 @@
     <script src="{{URL::asset('public/main/js/jquery-1.11.1.min.js')}}"></script>
     <script src="{{URL::asset('public/main/js/jquery-ui.min.js')}}"></script>
     <script type="text/javascript" src="{{URL::asset('public/main/js/modernizr.custom.js')}}"></script>
+{{--    <script src="{{URL::asset('public/main/sliderengine/jquery.js')}}"></script>--}}
+
+    <script src="{{URL::asset('public/main/sliderengine/amazingslider.js')}}"></script>
+    <link rel="stylesheet" type="text/css" href="{{URL::asset('public/main/sliderengine/amazingslider-1.css')}}">
+    <script src="{{URL::asset('public/main/sliderengine/initslider-1.js')}}"></script>
 </head>
 <body>
 <!--PRELOADER-->
@@ -91,7 +96,7 @@
                                     <li><a href="#category" class="nav-link">محصولات<span class="sub-toggle"></span></a>
                                     </li>
                                     <li dir="rtl"><a href="#shopCart" class="shopCart nav-link">سبد خرید <span
-                                                    class="sub-toggle"></span><b>[</b><b id="basketCount"> </b><b>]</b></a>
+                                                    class="sub-toggle"></span><b>[</b><b id="basketCount"></b><b>]</b></a>
                                     </li>
                                     <li><a href="#gallery" class="nav-link">گالری</a></li>
                                     <li><a href="#loginRegister" class="nav-link">ورود / ثبت نام</a></li>
@@ -176,8 +181,9 @@
                                                     <li><a href="#about" class="nav-link">درباره ما</a></li>
                                                     <li><a href="#category" class="nav-link">محصولات<span
                                                                     class="sub-toggle"></span></a></li>
-                                                    <li><a href="#shopCart" class="nav-link shopCart">سبد خرید<span
-                                                                    class="sub-toggle"></span></a></li>
+                                                    <li dir="rtl"><a href="#shopCart" class="shopCart nav-link">سبد خرید <span
+                                                                    class="sub-toggle"></span><b>[</b><b id="basketCount"> </b><b>]</b></a>
+                                                    </li>
                                                     <li><a href="#gallery" class="nav-link">گالری</a></li>
                                                     <li><a href="#loginRegister" class="nav-link">ورود / ثبت نام</a>
                                                     </li>
@@ -510,7 +516,7 @@
         =============================-->
         <!--Gallery
         =============================-->
-        <div id="gallery" class="item">
+        <div id="gallery1" class="item">
             <div id="slides" class="clearfix">
                 <div class="cycle-slideshow"
                      data-cycle-fx=fade
@@ -543,12 +549,23 @@
         =============================-->
         <!--Gallery2
         =============================-->
-        <div id="gallery1" class="item">
+        <div id="gallery" class="item">
+            <br>
+            <br>
+            <br>
 
-            <br>
-            <br>
-            <br>
+            <div class="row cats margin-top-4">
+                <select class=" col-md-8 col-md-offset-2 ">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                </select>
+                <label class="col-md-2">
+                    انتخاب دسته بندی
+                </label>
+            </div>
             <div class="row" id="showpic">
+
                 <div class="col-md-1"></div>
                 <div class="col-md-10" id="amazingslider-wrapper-1"
                      style="display:block;position:relative;margin:0px auto 98px;">
@@ -579,16 +596,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-md-1"></div>
             </div>
-            <script>
-                $('#zoom').elevateZoom({
-                    zoomType: "inner",
-                    cursor: "crosshair",
-                    zoomWindowFadeIn: 500,
-                    zoomWindowFadeOut: 750
-                });
-            </script>
         </div>
         <!-- // Gallery Ends
         =============================-->
@@ -1740,5 +1748,47 @@
 <script>
     $('#birth_date').persianDatepicker();
 </script>
+<script>
+    $(".cats").on("change", function () {
+
+        var id = $(this).find(":selected").attr("id");
+        var name = $(this).find(":selected").attr("name");
+        $(".cats option").each(function (index, element) {
+            $(this).removeClass("active");
+        });
+        $(this).addClass("active");
+        if (id != "all" && name != "pid")
+            $.get("showpic.php", {cid: id}, function (data, s) {
+                $("#showpic").html(data)
+            });
+        else if( name != "pid")
+            $.get("showpic.php", {cid: "all"}, function (data, s) {
+                $("#showpic").html(data)
+            });
+        else
+        {
+            location.href="gallery.php?pid="+id;
+        }
+    });
+    $("#searchbutton").click(function () {
+        search();
+    });
+    function search() {
+        var keyword = $("#searchkey").val();
+        if (keyword.length > 1) {
+            $.post("showpicsearch.php", {key: keyword},
+                function (data, st) {
+                    if (data.length != 0) {
+                        $("#showpic").html(data);
+                    }
+                });
+        }
+        else
+            $.get("showpicsearch.php", function (data, s) {
+                $("#showpic").html(data)
+            });
+    };
+</script>
+
 </body>
 </html>
