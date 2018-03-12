@@ -471,10 +471,6 @@ class UserController extends Controller
         {
             abort(403);
         }else{
-            $checkFile = new CheckFiles();
-            $result    = $checkFile->checkCategoryFiles($request,'');
-            if(is_bool($result))
-            {
                 $newOrders                = new NewOrders();
                 $newOrders->user_id       = Auth::user()->id;
                 $newOrders->title         = trim($request->title);
@@ -484,12 +480,20 @@ class UserController extends Controller
                 $newOrders->width         = trim($request->width);
                 $newOrders->length        = trim($request->length);
                 $newOrders->description   = trim($request->description);
+                $newOrders->coordination  = trim($request->coordination);
                 if(!empty($request->file[0]))
                 {
-                    $file = $request->file[0];
-                    $src = $file->getClientOriginalName();
-                    $file->move('public/dashboard/orderImages/', $src);
-                    $newOrders->file = $request->file[0]->getClientOriginalName();
+                    $checkFile = new CheckFiles();
+                    $result    = $checkFile->checkCategoryFiles($request,'');
+                    if(is_bool($result)) {
+                        $file = $request->file[0];
+                        $src = $file->getClientOriginalName();
+                        $file->move('public/dashboard/orderImages/', $src);
+                        $newOrders->file = $request->file[0]->getClientOriginalName();
+                    }else
+                        {
+                            return response()->json(["message" => $result , "code" => "error"]);
+                        }
                 }
                 $newOrders->save();
                 if($newOrders)
@@ -512,7 +516,7 @@ class UserController extends Controller
                         return response()->json(['message' => 'در ثبت اطلاعات خطایی رخ داده است ، لطفا با بخش پشتیبانی تماس بگیرید' , 'code' => 'error1']);
                     }
             }
-        }
+
     }
 
     //below function is related to check length

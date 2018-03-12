@@ -119,6 +119,13 @@
 
                                     </div>
                                 </div>
+                                <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                                    <div class="col-md-12 col-sm-12 col-xs-12 form-group has-feedback">
+                                        <h2>لطفا آدرس تحویل سفارش خود را بطور کامل در کادر زیر بنویسید:</h2>
+                                        <textarea id="coordination"  name="coordination"  class="form-control"  ></textarea>
+
+                                    </div>
+                                </div>
                                 <div class="form-group">
                                     <div class="col-md-12">
                                         <button type="button" id="saveNewOrder" class="btn btn-success col-md-12" style="font-size:20px;">ثبت سفارش</button>
@@ -302,6 +309,12 @@
                             $('#description').css('border-color','red');
                             return false;
                         }
+                        else if($('#coordination').val() == '' || $('#coordination').val() == null)
+                        {
+                            $('#coordination').focus();
+                            $('#coordination').css('border-color','red');
+                            return false;
+                        }
                         else if(model == 'مستطیل') {
                             $(".rectangle").each(function () {
                                 if ($(this).val() == 0 || $(this).val() ==  'طول' || $(this).val() ==  'عرض' && $('#status').val() == 1) {
@@ -383,7 +396,7 @@
                     },
                     error       : function(error)
                     {
-                        console.log(error);
+                        console.log(error.status);
                         if(error.status === 500)
                         {
                             swal
