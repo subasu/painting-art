@@ -661,36 +661,33 @@
 {{--</script>--}}
 <!-- below function is related to refresh page for every 30 seconds -->
 <script>
-    $(function(){
-        setInterval(function(){
+    $(function () {
+        setInterval(function () {
             $.ajax
             ({
-                cache    : false,
-                url      : "{{url('admin/checkOrderStatus')}}",
-                type     : "get",
-                dataType : "json",
-                success  : function(response)
-                {
-                    if(response.message == 'exist')
-                    {
+                cache: false,
+                url: "{{url('admin/checkOrderStatus')}}",
+                type: "get",
+                dataType: "json",
+                success: function (response) {
+                    if (response.message == 'exist') {
                         console.log('new order...');
                         var audio = document.getElementById('audio');
                         audio.autoplay = true;
                         audio.load();
-//                        setTimeout(function(){
-//                            window.location.replace('ordersManagement');
-//                        },10000);
-                    }else
-                    {
+                        setTimeout(function(){
+                            audio.pause();
+                            // window.location.replace('ordersManagement');
+                        },2000);
+                    } else {
                         console.log('nothing new');
                     }
-                },error  : function(error)
-                {
+                }, error: function (error) {
 //                    console.log(error.responseText);
                     console.log(error);
                 }
             })
-        },10000);
+        }, 10000);
     })
 </script>
 <!-- below script is to handle zoom body -->
