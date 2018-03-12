@@ -96,7 +96,7 @@
                                     <li><a href="#category" class="nav-link">محصولات<span class="sub-toggle"></span></a>
                                     </li>
                                     <li dir="rtl"><a href="#shopCart" class="shopCart nav-link">سبد خرید <span
-                                                    class="sub-toggle"></span><b>[</b><b id="basketCount"></b><b>]</b></a>
+                                                    class="sub-toggle"></span><b>[</b><b class="basketCount"></b><b>]</b></a>
                                     </li>
                                     <li><a href="#gallery" class="nav-link">گالری</a></li>
                                     <li><a href="#loginRegister" class="nav-link">ورود / ثبت نام</a></li>
@@ -182,7 +182,7 @@
                                                     <li><a href="#category" class="nav-link">محصولات<span
                                                                     class="sub-toggle"></span></a></li>
                                                     <li dir="rtl"><a href="#shopCart" class="shopCart nav-link">سبد خرید <span
-                                                                    class="sub-toggle"></span><b>[</b><b id="basketCount"> </b><b>]</b></a>
+                                                                    class="sub-toggle"></span><b>[</b><b class="basketCount"> </b><b>]</b></a>
                                                     </li>
                                                     <li><a href="#gallery" class="nav-link">گالری</a></li>
                                                     <li><a href="#loginRegister" class="nav-link">ورود / ثبت نام</a>
@@ -553,46 +553,41 @@
             <br>
             <br>
             <br>
-
-            <div class="row cats margin-top-4">
-                <select class=" col-md-8 col-md-offset-2 ">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
+            <div class="row">
+            <div class="col-md-12 cats margin-top-4 categorySelect">
+                <select class="col-md-9 col-md-offset-1 cats" >
+                    <option value="all">همه ی تصاویر</option>
+                @foreach($GalleryCategory as $cat)
+                        <option value="{{$cat->id}}">{{$cat->title}}</option>
+                    @endforeach
                 </select>
                 <label class="col-md-2">
                     انتخاب دسته بندی
                 </label>
             </div>
+        </div>
             <div class="row" id="showpic">
-
                 <div class="col-md-1"></div>
-                <div class="col-md-10" id="amazingslider-wrapper-1"
+                <div class="col-md-10 col-md-offset-1" id="amazingslider-wrapper-1"
                      style="display:block;position:relative;margin:0px auto 98px;">
                     <div id="amazingslider-1" class="col-md-12" style="display:block;position:relative;margin:0 auto;">
                         <ul class="amazingslider-slides" style="display:none;">
-                            <li><img src="{{URL::asset('public/main/img/7.jpg')}}"
-                                     data-cycle-desc="خلق آثار خاص و منحصر به فرد"
-                                     class="fullBg picx"
-                                     alt=""></li>
-                            <li><img src="{{URL::asset('public/main/img/6.jpg')}}" data-cycle-desc="عالی ترین کیفیت"
-                                     class="fullBg"
-                                     class="picx"></li>
-                            <li><img src="{{URL::asset('public/main/img/1.jpg')}}" data-cycle-desc="خلاقیت و زیبایی"
-                                     class="fullBg"
-                                     class="picx"></li>
+                            @foreach($Gallery as $img)
+                                <li><img src="{{URL::asset('public/dashboard/Gallery') .'/'. $img->image_src}}"
+                                         data-cycle-desc="{{$img->title}}"
+                                         class="fullBg picx"
+                                         alt="{{$img->title}}" title="{{$img->title}}"></li>
+                            @endforeach
                         </ul>
                         <ul class="amazingslider-thumbnails" style="display:none;">
-                            <li><img src="{{URL::asset('public/main/img/7.jpg')}}" style="width:40px;height:36px;"
-                                     data-cycle-desc="خلق آثار خاص و منحصر به فرد"
-                                     class="fullBg picx"
-                                     alt=""></li>
-                            <li><img src="{{URL::asset('public/main/img/6.jpg')}}" style="width:40px;height:36px;" data-cycle-desc="عالی ترین کیفیت"
-                                     class="fullBg"
-                                     class="picx"></li>
-                            <li><img src="{{URL::asset('public/main/img/1.jpg')}}" style="width:40px;height:36px;" data-cycle-desc="خلاقیت و زیبایی"
-                                     class="fullBg"
-                                     class="picx"></li>
+                            @foreach($Gallery as $img)
+                                <li><img src="{URL::asset('public/dashboard/Gallery') .'/'. $img->image_src}}"
+                                         style="width:40px;height:36px;"
+                                         data-cycle-desc="{{$img->title}}"
+                                         class=" picx"
+                                         alt="{{$img->title}}" title="{{$img->title}}></li>
+                                <li>
+                            @endforeach
                         </ul>
                     </div>
                 </div>
@@ -730,12 +725,9 @@
             </div>
         </div>
         <!-- // Reservation
-
         =============================-->
-
         <!-- Contact Form
         =============================-->
-
     {{--<div id="contactform" class="item">--}}
     {{--<img src="{{URL::asset('public/main/img/map.jpg')}}" alt="the Paxton Gipsy Hill" class="fullBg">--}}
     {{--<div class="content">--}}
@@ -788,47 +780,36 @@
 
     <!-- // Contact Form
         =============================-->
-
-
     </div>
 </div>
 <!-- // Wrapper =============================-->
-
 <!--java script-->
 <!-- Preloader Starts -->
 <script type="text/javascript" src="{{URL::asset('public/main/js/jpreloader.min.js')}}"></script>
-
 <script type="text/javascript" src="{{URL::asset('public/main/js/bootstrap.min.js')}}"></script>
 <script type="text/javascript" src="{{URL::asset('public/main/js/jquery.scrollTo.min.js')}}"></script>
 <script type="text/javascript" src="{{URL::asset('public/main/js/jquery.validate.min.js')}}"></script>
 <script type="text/javascript" src="{{URL::asset('public/main/js/bootstrap-datetimepicker.min.js')}}"></script>
 <script type="text/javascript" src="{{URL::asset('public/main/js/jquery.fitvids.js')}}"></script>
-
 <!-- Tiled Sldier -->
 <script type="text/javascript" src="{{URL::asset('public/main/js/classie.js')}}"></script>
 <script type="text/javascript" src="{{URL::asset('public/main/js/boxesFx.js')}}"></script>
 <script type="text/javascript" src="{{URL::asset('public/main/js/wait.js')}}"></script>
-
-
 <!-- Cycle Slider Sldier -->
 <script type="text/javascript" src="{{URL::asset('public/main/js/jquery.cycle.all.js')}}"></script>
 <script type="text/javascript" src="{{URL::asset('public/main/js/jquery.cycle2.caption2.js')}}"></script>
 <script type="text/javascript" src="{{URL::asset('public/main/js/jquery.slicknav.min.js')}}"></script>
-
 <script src="{{URL::asset('public/main/js/jquery.nicescroll.min.js')}}"></script>
 <script type="text/javascript" src="{{URL::asset('public/main/js/jquery.mousewheel.min.js')}}"></script>
 <script type="text/javascript" src="{{URL::asset('public/main/js/jquery.easing.1.3.js')}}"></script>
 <!-- include retina js -->
 <script type="text/javascript" src="{{URL::asset('public/main/js/retina-1.1.0.min.js')}}"></script>
-
 <!-- History.js -->
 <!--[if (gte IE 10) | (!IE)]><!-->
 <script type="text/javascript" src="{{URL::asset('public/main/js/jquery.history.js')}}"></script>
 <script type="text/javascript" src="{{URL::asset('public/main/js/ajaxify-html5.js')}}"></script>
 <!--<![endif]-->
-
 <script type="text/javascript" src="{{URL::asset('public/main/js/custom_general_box.js')}}"></script>
-
 <script type="text/javascript" src="{{URL::asset('public/main/settings/settings/settings.js')}}"></script>
 <script type="text/javascript" src="{{URL::asset('public/main/settings/settings/jscolor.js')}}"></script>
 <script type="text/javascript" src="{{URL::asset('public/js/pnotify_3.2.1.min.js')}}"></script>
@@ -1270,7 +1251,7 @@
             dataType: "json",
             data: {'_token': token},
             success: function (response) {
-                $('#basketCount').text(response);
+                $('.basketCount').text(response);
                 if (response == 0 || response == '') {
                     $('#showOrders').css('display', 'none');
                 }
@@ -1752,42 +1733,60 @@
     $(".cats").on("change", function () {
 
         var id = $(this).find(":selected").attr("id");
-        var name = $(this).find(":selected").attr("name");
-        $(".cats option").each(function (index, element) {
-            $(this).removeClass("active");
-        });
+//        var name = $(this).find(":selected").attr("name");
+//        $(".cats option").each(function (index, element) {
+//            $(this).removeClass("active");
+//        });
         $(this).addClass("active");
-        if (id != "all" && name != "pid")
-            $.get("showpic.php", {cid: id}, function (data, s) {
-                $("#showpic").html(data)
+        if (id != "all" && name != "pid") {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
             });
-        else if( name != "pid")
-            $.get("showpic.php", {cid: "all"}, function (data, s) {
-                $("#showpic").html(data)
+            $.ajax
+            ({
+                url: "{{url('loadGallery')}}"+"/"+id,
+                type: "get",
+                dataType: "json",
+                success: function (response) {
+                    var showpic = $('#showpic');
+                    showpic.html('');
+                    var x = '<div class="col-md-1"></div>' +
+                        '<div class="col-md-10 col-md-offset-1" id="amazingslider-wrapper-1"' +
+                        'style="display:block;position:relative;margin:0px auto 98px;">' +
+                        '<div id="amazingslider-1" class="col-md-12" style="display:block;position:relative;margin:0 auto;">' +
+                        '<ul class="amazingslider-slides" style="display:none;">';
+
+                    $.each(response, function (key, value) {
+                        x += '<li><img src="public/dashboard/Gallery/' + value.image_src + '" ' +
+                            'data-cycle-desc="خلق آثار خاص و منحصر به فرد"' +
+                            'class="fullBg picx"alt=""></li>';
+                    });
+                    x += '</ul>' +
+                        '<ul class="amazingslider-thumbnails" style="display:none;">' +
+                        $.each(response, function (key, value) {
+                            x += '<li><img src="public/dashboard/Gallery/' + value.image_src + '"' +
+                                'style="width:40px;height:36px;"' +
+                                'data-cycle-desc= "خلق آثار خاص و منحصر به فرد"class=" picx"alt=""></li>' +
+                                '<li>';
+                        });
+                    x += '</ul> </div>' +
+                        '</div>';
+                    $("#showpic").append(x);
+                }
             });
-        else
-        {
-            location.href="gallery.php?pid="+id;
+//        else if( name != "pid")
+//            $.get("showpic.php", {cid: "all"}, function (data, s) {
+//                $("#showpic").html(data)
+//            });
+//        else
+//        {
+//            location.href="gallery.php?pid="+id;
+//        }
         }
     });
-    $("#searchbutton").click(function () {
-        search();
-    });
-    function search() {
-        var keyword = $("#searchkey").val();
-        if (keyword.length > 1) {
-            $.post("showpicsearch.php", {key: keyword},
-                function (data, st) {
-                    if (data.length != 0) {
-                        $("#showpic").html(data);
-                    }
-                });
-        }
-        else
-            $.get("showpicsearch.php", function (data, s) {
-                $("#showpic").html(data)
-            });
-    };
+
 </script>
 
 </body>

@@ -11,8 +11,6 @@
 */
 //main site
 
-    Route::get('/test', 'IndexController@test');
-    Route::get('/404', 'IndexController@load404');
     Route::get('/', 'IndexController@home');
     Route::post('/search', 'IndexController@search');
     Route::get('/aboutUs', 'IndexController@aboutUs');
@@ -20,6 +18,7 @@
     Route::get('products', 'IndexController@products');
     Route::get('getSubmenu/{id}', 'CommonController@getSubmenu');
     Route::get('showProducts/{id}', 'IndexController@showProducts');
+    Route::get('loadGallery/{id}', 'IndexController@loadGallery');
 //pagination for shopping product page
     Route::get('laravel-ajax-pagination', array('as' => 'ajax-pagination', 'uses' => 'IndexController@productList'));
     Route::get('order/{parameter}', 'IndexController@order');

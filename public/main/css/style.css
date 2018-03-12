@@ -84,7 +84,28 @@ html, body {
     margin: 0;
     padding: 0;
 }
-
+.categorySelect select{
+    height: 48px;
+    line-height: 45px;
+    font-size: 16px;
+    color: #777673;
+    background-color: #f5f5f5;
+    border: transparent;
+    border-radius: 3px;
+    margin-bottom: 10px;
+    text-align: right;
+}
+.categorySelect label{
+    height: 48px;
+    line-height: 45px;
+    font-size: 16px;
+    color: #777673;
+    margin-bottom: 10px;
+    text-align: right;
+}
+.categorySelect{
+    font-family: 'yekan';
+}
 body {
     height: 100%;
     width: 100%;

@@ -7,6 +7,8 @@ use App\Models\Basket;
 use App\Models\Category;
 use App\Models\CategoryProduct;
 use App\Models\City;
+use App\Models\Gallery;
+use App\Models\GalleryCategory;
 use App\Models\GoogleMap;
 use App\Models\Logo;
 use App\Models\Modol;
@@ -81,7 +83,7 @@ class IndexController extends Controller
         $menu = $this->loadMenu();
         //this block code add sub category to each main category collection
         foreach ($menu as $mnu) {
-            $counter=0;
+            $counter = 0;
             $mnu->submenu = $submenu = Category::where([['parent_id', $mnu->id], ['active', 1]])->orderBy('depth', 'DESC')->orderBy('id', 'DESC')->get();
             foreach ($submenu as $sm) {
                 $x = CategoryProduct::where([['category_id', $sm->id], ['active', 1]])->value('id');
@@ -95,9 +97,9 @@ class IndexController extends Controller
                 $count = count($products);
                 $sm->products = $products;
                 $sm->count = $count;
-                $counter+=$count;
+                $counter += $count;
             }
-            $mnu->countCat=$counter;
+            $mnu->countCat = $counter;
         }
 //        dd($menu);
         $pageTitle = 'صفحه ی اصلی';
@@ -108,13 +110,20 @@ class IndexController extends Controller
         $googleMap = GoogleMap::latest()->first();
         $products = Product::all();
         $aboutUs = About::all();
-        if (count($aboutUs))
-        {
+        $GalleryCategory = GalleryCategory::all();
+        $Gallery = Gallery::all();
+        if (count($aboutUs)) {
             $aboutUs = About::latest()->first()->value('description');
 
         }
-        return view('main.index', compact('pageTitle', 'menu', 'services', 'sliders', 'logo', 'googleMap','aboutUs','products','capital'));
+        return view('main.index', compact('pageTitle', 'menu', 'services', 'sliders', 'logo', 'googleMap', 'aboutUs', 'products', 'capital', 'GalleryCategory', 'Gallery'));
 
+    }
+
+    public function loadGallery($id)
+    {
+        $gallery = Gallery::where('galleryCategories_id', '=', $id)->get();
+        return response()->json($gallery);
     }
 
     //show login blade :in login blade there are 2 form for login and registeration
@@ -194,7 +203,7 @@ class IndexController extends Controller
      */
     protected function register(request $data)
     {
-        $validation='';
+        $validation = '';
         if ($data['frmtype'] == "user") {
             $validation = Validator::make($data->all(), [
                     'name' => 'sometimes|nullable|max:255',
@@ -274,22 +283,19 @@ class IndexController extends Controller
     {
         $categories = Category::find($id);
         $products = $categories->products()->get();
-        $i=count($products);
-        while ($i>0)
-        {$i--;
-        foreach($products[$i]->productFlags as $flag)
-        {
-            if($flag->active==1)
-            {
-                $products->flag=$flag->price;
+        $i = count($products);
+        while ($i > 0) {
+            $i--;
+            foreach ($products[$i]->productFlags as $flag) {
+                if ($flag->active == 1) {
+                    $products->flag = $flag->price;
+                }
+            }
+            foreach ($products[$i]->productImages as $img) {
+                $products->img = $img->image_src;
             }
         }
-        foreach($products[$i]->productImages as $img)
-        {
-            $products->img=$img->image_src;
-        }
-        }
-        return response()->json(['products'=>$products]);
+        return response()->json(['products' => $products]);
     }
 
     //below function is to return show product blade
@@ -300,36 +306,31 @@ class IndexController extends Controller
         $subcatId = Category::where('id', '=', $brand)->value('parent_id');
         $subcat = \App\Models\Category::where('id', '=', $subcatId)->value('title');
         $cat = Category::where('id', '=', $subcat)->value('title');
-        foreach($product->productImages as $img)
-        {
-            $product->image_src=$img->image_src;
+        foreach ($product->productImages as $img) {
+            $product->image_src = $img->image_src;
         }
-        foreach($product->productFlags as $flag) {
+        foreach ($product->productFlags as $flag) {
             if ($flag->active == 1)
                 $product->price = $flag->price;
         }
-        $sizeName='';
-        $modelName='';
-        if(!empty($product->productSizes))
-        {
-            foreach ($product->productSizes as $pr)
-            {
+        $sizeName = '';
+        $modelName = '';
+        if (!empty($product->productSizes)) {
+            foreach ($product->productSizes as $pr) {
                 $modelName = Modol::find($product->productSizes->model_id)->title;
                 $productSize = Size::find($product->productSizes->size_id);
-                if ($productSize->width !="") {
+                if ($productSize->width != "") {
                     $sizeName = $productSize->width . ' در ' . $productSize->length;
-                }
-                elseif ($productSize->diameter !="") {
-                    $sizeName =  ' قطر ' . $productSize->diameter;
-                }
-                elseif ($productSize->sideways !="") {
-                    $sizeName =  ' ضلع ' . $productSize->sideways;
+                } elseif ($productSize->diameter != "") {
+                    $sizeName = ' قطر ' . $productSize->diameter;
+                } elseif ($productSize->sideways != "") {
+                    $sizeName = ' ضلع ' . $productSize->sideways;
                 }
             }
         }
-        $product->sizeName=$sizeName;
-        $product->modelName=$modelName;
-        return response()->json(['product'=>$product]);
+        $product->sizeName = $sizeName;
+        $product->modelName = $modelName;
+        return response()->json(['product' => $product]);
     }
 
 
@@ -351,9 +352,8 @@ class IndexController extends Controller
                             $total += $basket->sum;
                             $basket->basket_id = $basket->pivot->basket_id;
                         }
-                        return response()->json(['baskets'=>$baskets,'total'=>$total]);
-                    }
-                    else
+                        return response()->json(['baskets' => $baskets, 'total' => $total]);
+                    } else
                         return response()->json($_COOKIE['addToArtBasket']);
                     break;
 
@@ -376,9 +376,9 @@ class IndexController extends Controller
                             }
                             $basket->basket_id = $basket->pivot->basket_id;
                             $basket->product_id = $basket->pivot->product_id;
-                            $totalDiscount+=$basket->sumOfDiscount;
+                            $totalDiscount += $basket->sumOfDiscount;
                             $totalPostPrice += $basket->post_price;
-                            $total+=$basket->sum;
+                            $total += $basket->sum;
 //                            if ($basket->discount_volume != null) {
 //                                $totalDiscount += $basket->discount_volume;
 //                                if ($totalDiscount > 0) {
@@ -388,7 +388,7 @@ class IndexController extends Controller
 
                         }
                         $finalPrice += ($total + $totalPostPrice) - $totalDiscount;
-                        return response()->json([' '=>$baskets,'total'=>$total,'totalPostPrice'=>$totalPostPrice,'finalPrice'=>$finalPrice,'totalDiscount'=>$totalDiscount,'basketId'=>$basketId,]);
+                        return response()->json([' ' => $baskets, 'total' => $total, 'totalPostPrice' => $totalPostPrice, 'finalPrice' => $finalPrice, 'totalDiscount' => $totalDiscount, 'basketId' => $basketId,]);
 //                        return view('main.orderDetail', compact('menu', 'pageTitle', 'baskets', 'total', , 'finalPrice', 'paymentTypes', 'logo', 'googleMap'));
                     } else {
                         return response()->json('errors.403');
