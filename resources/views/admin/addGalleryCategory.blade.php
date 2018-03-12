@@ -7,12 +7,8 @@
             padding-right: 4px;
             padding-left: 4px;
         }
-
         input, label {
             font-size: 15px;
-        }
-        .myAlertColor{
-            background-color: #28a745!important
         }
     </style>
     <div class="clearfix"></div>
