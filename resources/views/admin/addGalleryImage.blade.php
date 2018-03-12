@@ -44,13 +44,24 @@
                                 </ul>
                                 <div class="clearfix"></div>
                             </div>
+                            <div class="col-md-10">
+                            <div class="col-md-8 col-md-offset-2 col-sm-4 col-xs-9" id="change">
+                                <select id="category" name="category" class="form-control" >
+                                    <option value="0">انتخاب دسته بندی</option>
+                                </select>
+                            </div>
+                            <label class="control-label col-md-2 col-sm-4 col-xs-3" for="file">دسته بندی تصویر/تصاویر
+                                :
+                                <span class="star"></span>
+                            </label>
+                            <br><br><br>
+                            </div>
                             <div id="child" class="col-md-10">
-
-                                <div class="col-md-4 col-sm-6 col-xs-9 col-md-offset-2">
+                                <div class="col-md-4 col-sm-4 col-xs-9 col-md-offset-2">
                                     <input class="form-control col-md-12 col-xs-12 required"
                                            type="file" name="file[]" id="pic"/>
                                 </div>
-                                <div class="col-md-4 col-sm-6 col-xs-9 ">
+                                <div class="col-md-4 col-sm-4 col-xs-9 ">
                                     <input class="form-control col-md-12 col-xs-12 required"
                                            name="title[]" id="title"/>
                                 </div>
@@ -60,10 +71,8 @@
                                 </label>
                                 <br><br><br>
                             </div>
-
                         </div>
                         <br/>
-
                         </div>
                     <div class="col-md-12 ">
                         <button type="button" class="btn btn-dark col-md-6 col-md-offset-2" style="margin-top: 3%; margin-bottom: 3%;" id="reg"> ثبت تصویر یا تصاویر گالری</button>
@@ -72,7 +81,53 @@
                 </div>
             </form>
         </div>
+        <!-- below script is to get main units -->
+        <script>
+            $(function () {
+                //load MainUnitsCount
+                var option = '';
+                $.ajax
+                ({
+                    cache: false,
+                    url: "{{Url('api/v1/getGalleryCategories')}}",
+                    dataType: "json",
+                    type: "get",
+                    success: function (response) {
+                        if (response != 0) {
+                            var item = $('#category');
+                            $.each(response, function (key, value) {
+                                item.empty();
+                                item.append
+                                (
+                                    "<option selected='true' disabled='disabled'>دسته بندی های موجود</option>"
+                                )
+                                if(value.active == 1)
+                                {
+                                    item.append
+                                    (
+                                        option += "<option value='"+value.id+"'>"+value.title+"</option>"
+                                    );
+                                }
+                                if(value.active == 0)
+                                {
+                                    item.append
+                                    (
+                                        option += "<option value='"+value.id+"' style='background-color: lightgray;' disabled >"+value.title+"</option>"
+                                    );
+                                }
 
+                            });
+                        }
+                        else {
+                            $('#change').css('display','block');
+
+                            appendToChange();
+                        }
+                    }
+                });
+            })
+
+        </script>
         <!-- send product form -->
         <script>
             $(document).ready(function () {
