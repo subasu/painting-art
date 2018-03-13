@@ -132,6 +132,29 @@
             </div>
         </div>
 
+
+        <div class="clearfix"></div>
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="x_panel">
+                        <div class="x_title">
+                            <div class="x_content" style="">
+                                <div class="item" dir="rtl">
+                                    <h4 class="control-label col-md-12 col-xs-12 question"><i
+                                    class="fa fa-comments"></i><b> آدرس تحویل :</b>
+                                    </h4>
+                                <div id="description" name="description"
+                                    class="form-control col-md-12 col-xs-12 text-white"
+                                    style="height: max-content;height:-moz-max-content;margin-bottom: 0 !important;">
+                                    <p>{{$orders->coordination}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="clearfix"></div>
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">

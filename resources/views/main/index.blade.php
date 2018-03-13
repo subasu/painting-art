@@ -585,7 +585,7 @@
                                          style="width:40px;height:36px;"
                                          data-cycle-desc="{{$img->title}}"
                                          class=" picx"
-                                         alt="{{$img->title}}" title="{{$img->title}}></li>
+                                         alt="{{$img->title}}" title="{{$img->title}}"></li>
                                 <li>
                             @endforeach
                         </ul>
