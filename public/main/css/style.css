@@ -93,7 +93,7 @@ html, body {
     border: transparent;
     border-radius: 3px;
     margin-bottom: 10px;
-    text-align: right;
+    direction: rtl;
 }
 .categorySelect label{
     height: 48px;

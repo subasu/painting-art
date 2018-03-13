@@ -32,7 +32,7 @@
     <script src="{{URL::asset('public/main/js/jquery-1.11.1.min.js')}}"></script>
     <script src="{{URL::asset('public/main/js/jquery-ui.min.js')}}"></script>
     <script type="text/javascript" src="{{URL::asset('public/main/js/modernizr.custom.js')}}"></script>
-{{--    <script src="{{URL::asset('public/main/sliderengine/jquery.js')}}"></script>--}}
+    {{--    <script src="{{URL::asset('public/main/sliderengine/jquery.js')}}"></script>--}}
 
     <script src="{{URL::asset('public/main/sliderengine/amazingslider.js')}}"></script>
     <link rel="stylesheet" type="text/css" href="{{URL::asset('public/main/sliderengine/amazingslider-1.css')}}">
@@ -96,7 +96,8 @@
                                     <li><a href="#category" class="nav-link">محصولات<span class="sub-toggle"></span></a>
                                     </li>
                                     <li dir="rtl"><a href="#shopCart" class="shopCart nav-link">سبد خرید <span
-                                                    class="sub-toggle"></span><b>[</b><b class="basketCount"></b><b>]</b></a>
+                                                    class="sub-toggle"></span><b>[</b><b
+                                                    class="basketCount"></b><b>]</b></a>
                                     </li>
                                     <li><a href="#gallery" class="nav-link">گالری</a></li>
                                     <li><a href="#loginRegister" class="nav-link">ورود / ثبت نام</a></li>
@@ -181,8 +182,10 @@
                                                     <li><a href="#about" class="nav-link">درباره ما</a></li>
                                                     <li><a href="#category" class="nav-link">محصولات<span
                                                                     class="sub-toggle"></span></a></li>
-                                                    <li dir="rtl"><a href="#shopCart" class="shopCart nav-link">سبد خرید <span
-                                                                    class="sub-toggle"></span><b>[</b><b class="basketCount"> </b><b>]</b></a>
+                                                    <li dir="rtl"><a href="#shopCart" class="shopCart nav-link">سبد خرید
+                                                            <span
+                                                                    class="sub-toggle"></span><b>[</b><b
+                                                                    class="basketCount"> </b><b>]</b></a>
                                                     </li>
                                                     <li><a href="#gallery" class="nav-link">گالری</a></li>
                                                     <li><a href="#loginRegister" class="nav-link">ورود / ثبت نام</a>
@@ -554,18 +557,22 @@
             <br>
             <br>
             <div class="row">
-            <div class="col-md-12 cats margin-top-4 categorySelect">
-                <select class="col-md-9 col-md-offset-1 cats" >
-                    <option value="all">همه ی تصاویر</option>
-                @foreach($GalleryCategory as $cat)
-                        <option value="{{$cat->id}}">{{$cat->title}}</option>
-                    @endforeach
-                </select>
-                <label class="col-md-2">
-                    انتخاب دسته بندی
-                </label>
+                <div class="col-md-12 cats margin-top-4 categorySelect">
+                    <select class="col-md-9 col-md-offset-1 cats">
+                        <option value="all">همه ی تصاویر</option>
+                        @if(count($GalleryCategories))
+                            @foreach($GalleryCategories as $cat)
+                                @if($cat->hasGallery>0)
+                                <option value="{{$cat->id}}">{{$cat->title}}</option>
+                                @endif
+                            @endforeach
+                        @endif
+                    </select>
+                    <label class="col-md-1">
+                        دسته بندی
+                    </label>
+                </div>
             </div>
-        </div>
             <div class="row" id="showpic">
                 <div class="col-md-1"></div>
                 <div class="col-md-10 col-md-offset-1" id="amazingslider-wrapper-1"
@@ -581,12 +588,10 @@
                         </ul>
                         <ul class="amazingslider-thumbnails" style="display:none;">
                             @foreach($Gallery as $img)
-                                <li><img src="{URL::asset('public/dashboard/Gallery') .'/'. $img->image_src}}"
-                                         style="width:40px;height:36px;"
-                                         data-cycle-desc="{{$img->title}}"
-                                         class=" picx"
-                                         alt="{{$img->title}}" title="{{$img->title}}></li>
                                 <li>
+                                    <img src="{{URL::asset('public/dashboard/Gallery') .'/'. $img->image_src}}" style="width:40px;height:36px;"
+                                         alt="{{$img->title}}"/>
+                                </li>
                             @endforeach
                         </ul>
                     </div>
@@ -646,15 +651,15 @@
                                         <input type="hidden" value="user" name="frmtype">
                                         <div class="clearfix reserve_form">
                                             {{--<input type="text" name="name" id="name"--}}
-                                                   {{--class="validate['required'] textbox1 yekan a-right"--}}
-                                                   {{--placeholder=" نام : "--}}
-                                                   {{--onfocus="this.placeholder = ''"--}}
-                                                   {{--onBlur="this.placeholder = ' نام :'"/>--}}
+                                            {{--class="validate['required'] textbox1 yekan a-right"--}}
+                                            {{--placeholder=" نام : "--}}
+                                            {{--onfocus="this.placeholder = ''"--}}
+                                            {{--onBlur="this.placeholder = ' نام :'"/>--}}
                                             {{--<input type="text" name="family" id="family"--}}
-                                                   {{--class="validate['required'] textbox1 yekan a-right"--}}
-                                                   {{--placeholder=" نام خانوادگی : "--}}
-                                                   {{--onfocus="this.placeholder = ''"--}}
-                                                   {{--onBlur="this.placeholder = ' نام خانوادگی :'"/>--}}
+                                            {{--class="validate['required'] textbox1 yekan a-right"--}}
+                                            {{--placeholder=" نام خانوادگی : "--}}
+                                            {{--onfocus="this.placeholder = ''"--}}
+                                            {{--onBlur="this.placeholder = ' نام خانوادگی :'"/>--}}
                                             <input type="text" name="cellphone" id="cellphone"
                                                    class="validate['required','phone']  textbox1 yekan a-right"
                                                    placeholder="* تلفن همراه : " onFocus="this.placeholder = ''"
@@ -670,42 +675,42 @@
                                                    onfocus="this.placeholder = ''"
                                                    onBlur="this.placeholder = '* تکرار پسورد :'"/>
                                             {{--<input type="text" name="email" id="email"--}}
-                                                   {{--class="validate['required','email']  textbox1 yekan a-right"--}}
-                                                   {{--placeholder=" ایمیل : " onFocus="this.placeholder = ''"--}}
-                                                   {{--onBlur="this.placeholder = ' ایمیل :'"/>--}}
+                                            {{--class="validate['required','email']  textbox1 yekan a-right"--}}
+                                            {{--placeholder=" ایمیل : " onFocus="this.placeholder = ''"--}}
+                                            {{--onBlur="this.placeholder = ' ایمیل :'"/>--}}
                                             {{--<input type="text" name="phone"--}}
-                                                   {{--class="validate['required','phone']  textbox1 yekan a-right"--}}
-                                                   {{--placeholder="* شماره موبایل : " onFocus="this.placeholder = ''"--}}
-                                                   {{--onBlur="this.placeholder = '* تلفن موبایل :'"/>--}}
-                                           {{----}}
+                                            {{--class="validate['required','phone']  textbox1 yekan a-right"--}}
+                                            {{--placeholder="* شماره موبایل : " onFocus="this.placeholder = ''"--}}
+                                            {{--onBlur="this.placeholder = '* تلفن موبایل :'"/>--}}
+                                            {{----}}
                                             {{--<input type="text" name="birth_date" id="birth_date"--}}
-                                                   {{--class="validate['required']  textbox1 yekan a-right"--}}
-                                                   {{--placeholder="* تاریخ تولد : " onFocus="this.placeholder = ''"--}}
-                                                   {{--onBlur="this.placeholder = '* تاریخ تولد :'"/>--}}
+                                            {{--class="validate['required']  textbox1 yekan a-right"--}}
+                                            {{--placeholder="* تاریخ تولد : " onFocus="this.placeholder = ''"--}}
+                                            {{--onBlur="this.placeholder = '* تاریخ تولد :'"/>--}}
                                             {{--<select name="capital" id="capital"--}}
-                                                    {{--class="validate['required']  textbox1 yekan a-right"--}}
-                                                    {{--placeholder="* استان : " onFocus="this.placeholder = ''"--}}
-                                                    {{--onBlur="this.placeholder = '* استان :'">--}}
-                                                {{--<option class="align-right" value="-1">لطفا استان مورد نظر خود را انتخاب--}}
-                                                    {{--نمایید.--}}
-                                                {{--</option>--}}
-                                                {{--@foreach($capital as $cap)--}}
-                                                    {{--<option class="align-right"--}}
-                                                            {{--value="{{$cap->id}}">{{$cap->title}}</option>--}}
-                                                {{--@endforeach                                            </select>--}}
+                                            {{--class="validate['required']  textbox1 yekan a-right"--}}
+                                            {{--placeholder="* استان : " onFocus="this.placeholder = ''"--}}
+                                            {{--onBlur="this.placeholder = '* استان :'">--}}
+                                            {{--<option class="align-right" value="-1">لطفا استان مورد نظر خود را انتخاب--}}
+                                            {{--نمایید.--}}
+                                            {{--</option>--}}
+                                            {{--@foreach($capital as $cap)--}}
+                                            {{--<option class="align-right"--}}
+                                            {{--value="{{$cap->id}}">{{$cap->title}}</option>--}}
+                                            {{--@endforeach                                            </select>--}}
                                             {{--<select name="town" id="town"--}}
-                                                    {{--class="validate['required']  textbox1 yekan a-right"--}}
-                                                    {{--placeholder=" شهرستان : " onFocus="this.placeholder = ''"--}}
-                                                    {{--onBlur="this.placeholder = ' شهرستان :'">--}}
+                                            {{--class="validate['required']  textbox1 yekan a-right"--}}
+                                            {{--placeholder=" شهرستان : " onFocus="this.placeholder = ''"--}}
+                                            {{--onBlur="this.placeholder = ' شهرستان :'">--}}
                                             {{--</select>--}}
                                             {{--<input type="text" name="zipCode" id="zipCode"--}}
-                                                   {{--class="validate['required','phone']  textbox1 yekan a-right"--}}
-                                                   {{--placeholder=" کد پستی : " onFocus="this.placeholder = ''"--}}
-                                                   {{--onBlur="this.placeholder = ' کد پستی :'"/>--}}
+                                            {{--class="validate['required','phone']  textbox1 yekan a-right"--}}
+                                            {{--placeholder=" کد پستی : " onFocus="this.placeholder = ''"--}}
+                                            {{--onBlur="this.placeholder = ' کد پستی :'"/>--}}
                                             {{--<textarea name="address" id="address"--}}
-                                                      {{--class="validate['required'] messagebox1 yekan a-right"--}}
-                                                      {{--placeholder=" آدرس : " onFocus="this.placeholder = ''"--}}
-                                                      {{--onBlur="this.placeholder = ' آدرس :'"></textarea>--}}
+                                            {{--class="validate['required'] messagebox1 yekan a-right"--}}
+                                            {{--placeholder=" آدرس : " onFocus="this.placeholder = ''"--}}
+                                            {{--onBlur="this.placeholder = ' آدرس :'"></textarea>--}}
                                             <i class="fa fa-refresh fa-lg fa-2x captcha-reload col-md-1" height="50"
                                                width="50"></i>
                                             <img class="captcha col-md-4" alt="captcha.png" id="captcha-image"/>
@@ -1730,62 +1735,487 @@
     $('#birth_date').persianDatepicker();
 </script>
 <script>
-    $(".cats").on("change", function () {
+    $(document).ready(function(){
+        function slider()
+        {
+            jQuery(document).ready(function(){
 
-        var id = $(this).find(":selected").attr("id");
-//        var name = $(this).find(":selected").attr("name");
-//        $(".cats option").each(function (index, element) {
-//            $(this).removeClass("active");
-//        });
-        $(this).addClass("active");
-        if (id != "all" && name != "pid") {
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
-            $.ajax
-            ({
-                url: "{{url('loadGallery')}}"+"/"+id,
-                type: "get",
-                dataType: "json",
-                success: function (response) {
-                    var showpic = $('#showpic');
-                    showpic.html('');
-                    var x = '<div class="col-md-1"></div>' +
-                        '<div class="col-md-10 col-md-offset-1" id="amazingslider-wrapper-1"' +
-                        'style="display:block;position:relative;margin:0px auto 98px;">' +
-                        '<div id="amazingslider-1" class="col-md-12" style="display:block;position:relative;margin:0 auto;">' +
-                        '<ul class="amazingslider-slides" style="display:none;">';
+                var scripts = document.getElementsByTagName("script");
 
-                    $.each(response, function (key, value) {
-                        x += '<li><img src="public/dashboard/Gallery/' + value.image_src + '" ' +
-                            'data-cycle-desc="خلق آثار خاص و منحصر به فرد"' +
-                            'class="fullBg picx"alt=""></li>';
-                    });
-                    x += '</ul>' +
-                        '<ul class="amazingslider-thumbnails" style="display:none;">' +
-                        $.each(response, function (key, value) {
-                            x += '<li><img src="public/dashboard/Gallery/' + value.image_src + '"' +
-                                'style="width:40px;height:36px;"' +
-                                'data-cycle-desc= "خلق آثار خاص و منحصر به فرد"class=" picx"alt=""></li>' +
-                                '<li>';
-                        });
-                    x += '</ul> </div>' +
-                        '</div>';
-                    $("#showpic").append(x);
+                var jsFolder = "";
+
+                for (var i= 0; i< scripts.length; i++)
+
+                {
+
+                    if( scripts[i].src && scripts[i].src.match(/initslider-1\.js/i))
+
+                        jsFolder = scripts[i].src.substr(0, scripts[i].src.lastIndexOf("/") + 1);
+
                 }
+
+                jQuery("#amazingslider-1").amazingslider({
+
+                    sliderid:1,
+
+                    jsfolder:jsFolder,
+
+                    width:900,
+
+                    height:360,
+
+                    skinsfoldername:"",
+
+                    loadimageondemand:false,
+
+                    videohidecontrols:false,
+
+                    fullwidth:false,
+
+                    watermarkstyle:"text",
+
+                    donotresize:false,
+
+                    enabletouchswipe:true,
+
+                    fullscreen:false,
+
+                    autoplayvideo:false,
+
+                    addmargin:true,
+
+                    watermarklinkcss:"text-decoration:none;font:12px Arial,Tahoma,Helvetica,sans-serif;color:#333;",
+
+                    watermarktext:"amazingslider.com",
+
+                    watermarklink:"http://amazingslider.com?source=watermark",
+
+                    randomplay:false,
+
+                    isresponsive:true,
+
+                    pauseonmouseover:false,
+
+                    playvideoonclickthumb:true,
+
+                    showwatermark:false,
+
+                    slideinterval:5000,
+
+                    watermarkpositioncss:"display:block;position:absolute;bottom:4px;right:4px;",
+
+                    watermarkimage:"",
+
+                    watermarktextcss:"font:12px Arial,Tahoma,Helvetica,sans-serif;color:#333;padding:2px 4px;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;background-color:#fff;opacity:0.9;filter:alpha(opacity=90);",
+
+                    transitiononfirstslide:false,
+
+                    watermarktarget:"_blank",
+
+                    scalemode:"fit",
+
+                    loop:0,
+
+                    autoplay:true,
+
+                    navplayvideoimage:"play-32-32-0.png",
+
+                    navpreviewheight:60,
+
+                    timerheight:2,
+
+                    descriptioncssresponsive:"font-size:12px;",
+
+                    shownumbering:false,
+
+                    skin:"Events",
+
+                    addgooglefonts:false,
+
+                    navshowplaypause:true,
+
+                    navshowplayvideo:true,
+
+                    navshowplaypausestandalonemarginx:8,
+
+                    navshowplaypausestandalonemarginy:8,
+
+                    navbuttonradius:0,
+
+                    navthumbnavigationarrowimageheight:32,
+
+                    navpreviewarrowheight:8,
+
+                    lightboxshownavigation:false,
+
+                    showshadow:false,
+
+                    navfeaturedarrowimagewidth:16,
+
+                    navpreviewwidth:120,
+
+                    googlefonts:"",
+
+                    navborderhighlightcolor:"",
+
+                    bordercolor:"#ffffff",
+
+                    lightboxdescriptionbottomcss:"{color:#333; font-size:12px; font-family:Arial,Helvetica,sans-serif; overflow:hidden; text-align:left; margin:4px 0px 0px; padding: 0px;}",
+
+                    lightboxthumbwidth:80,
+
+                    navthumbnavigationarrowimagewidth:32,
+
+                    navthumbtitlehovercss:"text-decoration:underline;",
+
+                    texteffectresponsivesize:600,
+
+                    navcolor:"#999999",
+
+                    arrowwidth:32,
+
+                    texteffecteasing:"easeOutCubic",
+
+                    texteffect:"slide",
+
+                    lightboxthumbheight:60,
+
+                    navspacing:8,
+
+                    navarrowimage:"navarrows-28-28-0.png",
+
+                    ribbonimage:"ribbon_topleft-0.png",
+
+                    navwidth:120,
+
+                    navheight:60,
+
+                    arrowimage:"arrows-32-32-0.png",
+
+                    timeropacity:0.6,
+
+                    arrowhideonmouseleave:1000,
+
+                    navthumbnavigationarrowimage:"carouselarrows-32-32-0.png",
+
+                    navshowplaypausestandalone:true,
+
+                    texteffect1:"slide",
+
+                    navpreviewbordercolor:"#ffffff",
+
+                    texteffect2:"slide",
+
+                    customcss:"",
+
+                    ribbonposition:"topleft",
+
+                    navthumbdescriptioncss:"display:block;position:relative;padding:2px 4px;text-align:left;font:normal 12px Arial,Helvetica,sans-serif;color:#333;",
+
+                    lightboxtitlebottomcss:"{color:#333; font-size:14px; font-family:Armata,sans-serif,Arial; overflow:hidden; text-align:left;}",
+
+                    arrowstyle:"mouseover",
+
+                    navthumbtitleheight:18,
+
+                    textpositionmargintop:24,
+
+                    buttoncssresponsive:"",
+
+                    navswitchonmouseover:false,
+
+                    playvideoimage:"playvideo-64-64-0.png",
+
+                    arrowtop:50,
+
+                    textstyle:"dynamic",
+
+                    playvideoimageheight:64,
+
+                    navfonthighlightcolor:"#666666",
+
+                    showbackgroundimage:false,
+
+                    navpreviewborder:4,
+
+                    navshowplaypausestandaloneheight:48,
+
+                    shadowcolor:"#aaaaaa",
+
+                    navbuttonshowbgimage:true,
+
+                    navbuttonbgimage:"navbuttonbgimage-28-28-0.png",
+
+                    textbgcss:"display:none;",
+
+                    textpositiondynamic:"bottomleft",
+
+                    navpreviewarrowwidth:16,
+
+                    playvideoimagewidth:64,
+
+                    buttoncss:"display:block; position:relative; margin-top:8px;",
+
+                    navshowpreviewontouch:false,
+
+                    bottomshadowimagewidth:96,
+
+                    showtimer:true,
+
+                    navradius:0,
+
+                    navmultirows:false,
+
+                    navshowpreview:false,
+
+                    navmarginy:16,
+
+                    navmarginx:16,
+
+                    navfeaturedarrowimage:"featuredarrow-16-8-0.png",
+
+                    showribbon:false,
+
+                    navstyle:"thumbnails",
+
+                    textpositionmarginleft:24,
+
+                    descriptioncss:"display:block; position:relative; font:12px \"Lucida Sans Unicode\",\"Lucida Grande\",sans-serif,Arial; color:#fff; margin-top:8px;",
+
+                    navplaypauseimage:"navplaypause-48-48-0.png",
+
+                    backgroundimagetop:-10,
+
+                    timercolor:"#ffffff",
+
+                    numberingformat:"%NUM/%TOTAL ",
+
+                    navdirection:"horizontal",
+
+                    navfontsize:12,
+
+                    navhighlightcolor:"#333333",
+
+                    texteffectdelay1:1000,
+
+                    navimage:"bullet-24-24-5.png",
+
+                    texteffectdelay2:1500,
+
+                    texteffectduration1:600,
+
+                    navshowplaypausestandaloneautohide:true,
+
+                    texteffectduration2:600,
+
+                    navbuttoncolor:"",
+
+                    navshowarrow:false,
+
+                    texteffectslidedirection:"left",
+
+                    navshowfeaturedarrow:true,
+
+                    lightboxbarheight:64,
+
+                    titlecss:"display:block; position:relative; font:bold 14px \"Lucida Sans Unicode\",\"Lucida Grande\",sans-serif,Arial; color:#fff;",
+
+                    ribbonimagey:0,
+
+                    ribbonimagex:0,
+
+                    texteffectslidedistance1:120,
+
+                    texteffectslidedistance2:120,
+
+                    navrowspacing:8,
+
+                    navshowplaypausestandaloneposition:"bottomright",
+
+                    navshowbuttons:false,
+
+                    lightboxthumbtopmargin:12,
+
+                    titlecssresponsive:"font-size:12px;",
+
+                    navshowplaypausestandalonewidth:48,
+
+                    navfeaturedarrowimageheight:8,
+
+                    navopacity:0.8,
+
+                    textpositionmarginright:24,
+
+                    backgroundimagewidth:120,
+
+                    textautohide:true,
+
+                    navthumbtitlewidth:120,
+
+                    navpreviewposition:"top",
+
+                    texteffectseparate:false,
+
+                    arrowheight:32,
+
+                    arrowmargin:8,
+
+                    texteffectduration:600,
+
+                    bottomshadowimage:"bottomshadow-110-95-4.png",
+
+                    border:6,
+
+                    lightboxshowdescription:false,
+
+                    timerposition:"bottom",
+
+                    navfontcolor:"#333333",
+
+                    navthumbnavigationstyle:"arrow",
+
+                    borderradius:0,
+
+                    navbuttonhighlightcolor:"",
+
+                    textpositionstatic:"bottom",
+
+                    texteffecteasing2:"easeOutCubic",
+
+                    navthumbstyle:"imageandtitle",
+
+                    texteffecteasing1:"easeOutCubic",
+
+                    textcss:"display:block; padding:12px; text-align:left;",
+
+                    navbordercolor:"#ffffff",
+
+                    navpreviewarrowimage:"previewarrow-16-8-0.png",
+
+                    navthumbtitlecss:"display:block;position:relative;padding:2px 4px;text-align:center;font:bold 12px Arial,Helvetica,sans-serif;color:#333;",
+
+                    showbottomshadow:true,
+
+                    texteffectslidedistance:30,
+
+                    texteffectdelay:500,
+
+                    textpositionmarginstatic:0,
+
+                    backgroundimage:"",
+
+                    navposition:"bottom",
+
+                    texteffectslidedirection1:"right",
+
+                    navborder:2,
+
+                    textformat:"Bottom left",
+
+                    texteffectslidedirection2:"right",
+
+                    bottomshadowimagetop:98,
+
+                    texteffectresponsive:true,
+
+                    shadowsize:5,
+
+                    lightboxthumbbottommargin:8,
+
+                    textpositionmarginbottom:24,
+
+                    lightboxshowtitle:true,
+
+                    slice: {
+
+                        checked:true,
+
+                        effectdirection:0,
+
+                        effects:"up,down,updown",
+
+                        slicecount:10,
+
+                        duration:1500,
+
+                        easing:"easeOutCubic"
+
+                    },
+
+                    slide: {
+
+                        duration:1000,
+
+                        easing:"easeOutCubic",
+
+                        checked:true,
+
+                        effectdirection:0
+
+                    },
+
+                    transition:"slice,slide",
+
+                    scalemode:"fit",
+
+                    isfullscreen:false,
+
+                    textformat: {
+
+                    }
+
+                });
+
             });
-//        else if( name != "pid")
-//            $.get("showpic.php", {cid: "all"}, function (data, s) {
-//                $("#showpic").html(data)
-//            });
-//        else
-//        {
-//            location.href="gallery.php?pid="+id;
-//        }
         }
-    });
+            $(".cats").on("change", function () {
+                var id = $(this).val();
+                $(this).addClass("active");
+                $.ajaxSetup({
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        }
+                    });
+                $.ajax
+                ({
+                        url: "{{url('loadGallery')}}" + '/' + id,
+                        type: "get",
+                        dataType: "json",
+                        success: function (response) {
+                            var showpic = $('#showpic');
+                            showpic.empty();
+                            var x = '<div class="col-md-1"></div>' +
+                                '<div class="col-md-10 col-md-offset-1" id="amazingslider-wrapper-1"' +
+                                'style="display:block;position:relative;margin:0px auto 98px;">' +
+                                '<div id="amazingslider-1" class="col-md-12" style="display:block;position:relative;margin:0 auto;">' +
+                                '<ul class="amazingslider-slides" style="display:none;">';
+
+                            $.each(response, function (key, value) {
+                                x += '<li><img src="public/dashboard/Gallery/' + value.image_src + '" ' +
+                                    'data-cycle-desc="' + value.title + '"' +
+                                    'class="fullBg picx" alt="' + value.title + '"></li>';
+                            });
+                            x += '</ul>' +
+                                '<ul class="amazingslider-thumbnails" style="display:none;">' +
+                                $.each(response, function (key, value) {
+//                                    x += '<li><img src="public/dashboard/Gallery/' + value.image_src + '"' +
+//                                        'style="width:40px;height:36px;" alt="' + value.title + '"></li>' ;
+//                                    x+='<li><img src="public/dashboard/Gallery/' + value.image_src + '"style="width:40px;height:36px;"alt="' + value.title + '"/> </li>'
+                                    x+='<li>'+
+                                        '<img src="public/dashboard/Gallery/' + value.image_src + '" style="width:40px;height:36px;"'+
+                                    'alt="' + value.title + '"/>'+
+                                        '</li>';
+                                });
+
+                            x += '</ul> </div>' +
+                                '</div>';
+                            showpic.append(x);
+                            slider();
+                        }
+                    });
+            });
+        }
+    );
 
 </script>
 

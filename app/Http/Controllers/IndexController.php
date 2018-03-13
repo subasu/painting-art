@@ -110,18 +110,28 @@ class IndexController extends Controller
         $googleMap = GoogleMap::latest()->first();
         $products = Product::all();
         $aboutUs = About::all();
-        $GalleryCategory = GalleryCategory::all();
         $Gallery = Gallery::all();
+        $GalleryCategories = GalleryCategory::all();
+        foreach ($GalleryCategories as $cat) {
+            $y = Gallery::where('galleryCategories_id', '=', $cat->id)->value('galleryCategories_id');
+            if ($cat->id === $y)
+                $cat->hasGallery = 1;
+            else
+                $cat->hasGallery = 0;
+        }
         if (count($aboutUs)) {
             $aboutUs = About::latest()->first()->value('description');
 
         }
-        return view('main.index', compact('pageTitle', 'menu', 'services', 'sliders', 'logo', 'googleMap', 'aboutUs', 'products', 'capital', 'GalleryCategory', 'Gallery'));
+        return view('main.index', compact('pageTitle', 'menu', 'services', 'sliders', 'logo', 'googleMap', 'aboutUs', 'products', 'capital', 'GalleryCategories', 'Gallery'));
 
     }
 
     public function loadGallery($id)
     {
+        if($id=="all")
+        $gallery = Gallery::all();
+        else
         $gallery = Gallery::where('galleryCategories_id', '=', $id)->get();
         return response()->json($gallery);
     }
