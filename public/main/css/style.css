@@ -228,7 +228,7 @@ p {
     font-family: 'yekan', sans-serif;
     font-size: 12px;
     font-weight: 400;
-    color: #919191;
+    color: #313131;
     z-index: 9999999;
     line-height: 26px;
 }
@@ -505,7 +505,7 @@ CSS3 ANIMATIONS  PRELOADER CIRCLE
 
 .content_bold {
     font-weight: 400;
-    color: #919191;
+    color: #313131;
 }
 
 .normal {
@@ -1235,7 +1235,7 @@ Home Page
 
 .hour_table {
     margin-bottom: 40px;
-    color: #919191;
+    color: #313131;
 }
 
 .right_content {
@@ -1555,7 +1555,7 @@ Home Page
 
 blockquote {
     font-size: 17px;
-    color: #919191;
+    color: #313131;
 }
 
 blockquote p {
@@ -1565,7 +1565,7 @@ blockquote p {
 .quotes {
     font-size: 20px;
     font-weight: 600;
-    color: #919191;
+    color: #313131;
     font-family: 'Oswald';
 }
 
@@ -1659,7 +1659,7 @@ blockquote p {
 
 .location-street {
     font-family: 'Oswald';
-    color: #656565;
+    color: #313131;
     padding-bottom: 10px;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -1673,7 +1673,7 @@ blockquote p {
 
 .location-cateringlink {
     font-family: 'Raleway', sans-serif;
-    color: #919191;
+    color: #313131;
     padding-bottom: 20px;
 }
 
@@ -1713,7 +1713,7 @@ blockquote p {
 
 .pd_list ul li {
     font-family: 'Raleway', sans-serif;
-    color: #919191;
+    color: #313131;
     line-height: 22px;
 }
 

@@ -1784,7 +1784,7 @@
 
                     addmargin:true,
 
-                    watermarklinkcss:"text-decoration:none;font:12px Arial,Tahoma,Helvetica,sans-serif;color:#333;",
+                    watermarklinkcss:"text-decoration:none;font:12px yekan,Tahoma,Helvetica,sans-serif;color:#333;",
 
                     watermarktext:"amazingslider.com",
 
@@ -1806,7 +1806,7 @@
 
                     watermarkimage:"",
 
-                    watermarktextcss:"font:12px Arial,Tahoma,Helvetica,sans-serif;color:#333;padding:2px 4px;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;background-color:#fff;opacity:0.9;filter:alpha(opacity=90);",
+                    watermarktextcss:"font:12px yekan,Tahoma,Helvetica,sans-serif;color:#333;padding:2px 4px;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;background-color:#fff;opacity:0.9;filter:alpha(opacity=90);",
 
                     transitiononfirstslide:false,
 
@@ -1860,7 +1860,7 @@
 
                     bordercolor:"#ffffff",
 
-                    lightboxdescriptionbottomcss:"{color:#333; font-size:12px; font-family:Arial,Helvetica,sans-serif; overflow:hidden; text-align:left; margin:4px 0px 0px; padding: 0px;}",
+                    lightboxdescriptionbottomcss:"{color:#333; font-size:12px; font-family:yekan,Helvetica,sans-serif; overflow:hidden; text-align:left; margin:4px 0px 0px; padding: 0px;}",
 
                     lightboxthumbwidth:80,
 
@@ -1910,9 +1910,9 @@
 
                     ribbonposition:"topleft",
 
-                    navthumbdescriptioncss:"display:block;position:relative;padding:2px 4px;text-align:left;font:normal 12px Arial,Helvetica,sans-serif;color:#333;",
+                    navthumbdescriptioncss:"display:block;position:relative;padding:2px 4px;text-align:left;font:normal 12px yekan,Helvetica,sans-serif;color:#333;",
 
-                    lightboxtitlebottomcss:"{color:#333; font-size:14px; font-family:Armata,sans-serif,Arial; overflow:hidden; text-align:left;}",
+                    lightboxtitlebottomcss:"{color:#333; font-size:14px; font-family:Armata,sans-serif,yekan; overflow:hidden; text-align:left;}",
 
                     arrowstyle:"mouseover",
 
@@ -1980,7 +1980,7 @@
 
                     textpositionmarginleft:24,
 
-                    descriptioncss:"display:block; position:relative; font:12px \"Lucida Sans Unicode\",\"Lucida Grande\",sans-serif,Arial; color:#fff; margin-top:8px;",
+                    descriptioncss:"display:block; position:relative; font:12px \"Lucida Sans Unicode\",\"Lucida Grande\",sans-serif,yekan; color:#fff; margin-top:8px;",
 
                     navplaypauseimage:"navplaypause-48-48-0.png",
 
@@ -2018,7 +2018,7 @@
 
                     lightboxbarheight:64,
 
-                    titlecss:"display:block; position:relative; font:bold 14px \"Lucida Sans Unicode\",\"Lucida Grande\",sans-serif,Arial; color:#fff;",
+                    titlecss:"display:block; position:relative; font:bold 14px \"Lucida Sans Unicode\",\"Lucida Grande\",sans-serif,yekan; color:#fff;",
 
                     ribbonimagey:0,
 
@@ -2092,7 +2092,7 @@
 
                     navpreviewarrowimage:"previewarrow-16-8-0.png",
 
-                    navthumbtitlecss:"display:block;position:relative;padding:2px 4px;text-align:center;font:bold 12px Arial,Helvetica,sans-serif;color:#333;",
+                    navthumbtitlecss:"display:block;position:relative;padding:2px 4px;text-align:center;font:bold 12px yekan,Helvetica,sans-serif;color:#333;",
 
                     showbottomshadow:true,
 
@@ -2167,6 +2167,7 @@
                 });
 
             });
+
         }
             $(".cats").on("change", function () {
                 var id = $(this).val();
@@ -2196,17 +2197,16 @@
                                     'class="fullBg picx" alt="' + value.title + '"></li>';
                             });
                             x += '</ul>' +
-                                '<ul class="amazingslider-thumbnails" style="display:none;">' +
+                                '<ul class="amazingslider-thumbnails" style="display:none;">' ;
                                 $.each(response, function (key, value) {
 //                                    x += '<li><img src="public/dashboard/Gallery/' + value.image_src + '"' +
 //                                        'style="width:40px;height:36px;" alt="' + value.title + '"></li>' ;
 //                                    x+='<li><img src="public/dashboard/Gallery/' + value.image_src + '"style="width:40px;height:36px;"alt="' + value.title + '"/> </li>'
                                     x+='<li>'+
                                         '<img src="public/dashboard/Gallery/' + value.image_src + '" style="width:40px;height:36px;"'+
-                                    'alt="' + value.title + '"/>'+
+                                        'alt="' + value.title + '"/>'+
                                         '</li>';
                                 });
-
                             x += '</ul> </div>' +
                                 '</div>';
                             showpic.append(x);

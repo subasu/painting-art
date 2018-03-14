@@ -33,7 +33,7 @@ class IndexController extends Controller
         $admin_id = Role::where('title', '=', 'admin')->value('id');
         $user_id = Role::where('title', '=', 'user')->value('id');
         if ($role_id == $admin_id)
-            return view('layouts.adminLayout');
+            return view('admin.index');
         elseif ($role_id == $user_id)
             return view('layouts.userLayout');
     }

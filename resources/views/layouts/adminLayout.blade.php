@@ -359,23 +359,13 @@
         <!-- /top navigation -->
         <!-- page content -->
         <div class="right_col" role="main">
-            <!-- top tiles -->
-            <!-- /top tiles -->
             @yield('content')
         </div>
-        {{--<br/><br/><br/><br/>--}}
-        {{--<div align="center" dir="rtl">--}}
-            {{--<h1 class="col-md-10 col-md-offset-4">درود خدمت شما کاربر گرامی </h1>--}}
-            {{--<br/><br/><br/><br/>--}}
-            {{--<h3 class="col-md-10 col-md-offset-1 text-justify text-right">در صورت مواجه شدن با هرگونه مشکل در خصوص عملکرد پنل مدیریت و یا مواجه شدن مشکل در خصوص کار با پنل مدیریت میتوانید با شماره تلفن درج شده در زیر که مربوط به  بخش پشتیبانی شرکت مهندسی آرتان است ، تماس بگیرید</h3>--}}
-            {{--<br/><br/><br/><br/>--}}
-            {{--<h3 class="col-md-10 col-md-offset-1 text-right">شماره تلفن تماس :  03133376496 </h3>--}}
-        {{--</div>--}}
 
         <!-- footer content -->
         <footer>
             <div class="copyright-info">
-                <p class="text-center"><a href="#"> کلیه حقوق این پورتال متعلق به شرکت آرتان می باشد</a>
+                <p class="text-center"><a href="http://www.artansoftware.ir/"> کلیه حقوق این پورتال متعلق به شرکت آرتان می باشد</a>
                 </p>
             </div>
             <div class="clearfix"></div>
